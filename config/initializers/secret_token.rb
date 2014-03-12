@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RedesignGaswarnanlagenCom::Application.config.secret_key_base = 'ffe4570b1289299515da58c34c3948a47c94bb9fcc7bea60ccc43e18ffb4d0b3da3cae2d64bffae4cd87ecf46d1895efa5463c28d84e0f6316c2b969e2f9eb48'
+require 'securerandom'
+
+def secure_token
+    token_file = Rails.root.join('.secret')
+    if File.exist?(token_file)
+        # Use the existing token
+        File.read(token_file).chomp
+    else
+        # Generate a new token and store it in token_file
+        token = SecureRandom.hex(64)
+        File.write(token_file, token)
+        token
+    end
+end
+
+RedesignGaswarnanlagenCom::Application.config.secret_key_base = secure_token
+# 'ffe4570b1289299515da58c34c3948a47c94bb9fcc7bea60ccc43e18ffb4d0b3da3cae2d64bffae4cd87ecf46d1895efa5463c28d84e0f6316c2b969e2f9eb48'
