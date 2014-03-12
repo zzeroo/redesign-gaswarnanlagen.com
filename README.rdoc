@@ -1,0 +1,8 @@
+== Redesign gaswarnanlagen.com
+
+Vorschlag für die neue, dynamische gaswarnanlagen.com Webseite.
+
+=== Milestones
+
+# Statisches responsitive Layout 
+

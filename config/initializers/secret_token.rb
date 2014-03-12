@@ -1,0 +1,12 @@
+# Be sure to restart your server when you modify this file.
+
+# Your secret key is used for verifying the integrity of signed cookies.
+# If you change this key, all old signed cookies will become invalid!
+
+# Make sure the secret is at least 30 characters and all random,
+# no regular words or you'll be exposed to dictionary attacks.
+# You can use `rake secret` to generate a secure secret key.
+
+# Make sure your secret_key_base is kept private
+# if you're sharing your code publicly.
+RedesignGaswarnanlagenCom::Application.config.secret_key_base = 'ffe4570b1289299515da58c34c3948a47c94bb9fcc7bea60ccc43e18ffb4d0b3da3cae2d64bffae4cd87ecf46d1895efa5463c28d84e0f6316c2b969e2f9eb48'
