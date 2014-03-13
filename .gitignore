@@ -21,3 +21,8 @@ config/initializers/secret_token.rb
 
 # secret token http://ruby.railstutorial.org/book/ruby-on-rails-tutorial?version=4.0#code-demo_index_action
 .secret
+
+config/database.yml
+
+
+
