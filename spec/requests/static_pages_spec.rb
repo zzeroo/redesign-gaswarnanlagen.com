@@ -4,57 +4,35 @@ describe "StaticPages" do
 
   let(:base_title) {"RA-GAS GmbH"}
 
+  subject { page }
+
   describe "Home page" do
-    it "should have the content 'Redesign gaswarnanlagen.com'" do
-        visit '/static_pages/home'
-        expect(page).to have_content('Redesign gaswarnanlagen.com')
-    end
+    before { visit root_path }
 
-    it "should have the right title" do
-        visit '/static_pages/home'
-        expect(page).to have_title("#{base_title}")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Home')
-    end
+    it { should have_content('RA-GAS') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title("| Home") }
   end
 
   describe "Help page" do
-    it "should have the content 'Hilfe'" do
-        visit '/static_pages/help'
-        expect(page).to have_content('Hilfe')
-    end
+    before { visit help_path }
 
-    it "should have the right title" do
-        visit '/static_pages/help'
-        expect(page).to have_title("#{base_title} | Hilfe")
-    end
+    it { should have_content('Hilfe')}
+    it { should have_title(full_title('Hilfe')) }
   end
 
   describe "About page" do
-    it "should have the content 'Firmenprofil'" do
-        visit '/static_pages/about'
-        expect(page).to have_content('Firmenprofil')
-    end
+    before { visit about_path }
 
-    it "should have the right title" do
-        visit '/static_pages/about'
-        expect(page).to have_title("#{base_title} | Firmenprofil")
-    end
+    it { should have_content('Firmenprofil')}
+    it { should have_title(full_title('Firmenprofil')) }
   end
 
   describe "Contact page" do
-    it "should have the content 'Kontakt'" do
-        visit '/static_pages/contact'
-        expect(page).to have_content('Kontakt')
-    end
+    before { visit contact_path }
 
-    it "should have the right title" do
-        visit '/static_pages/contact'
-        expect(page).to have_title("#{base_title} | Kontakt")
-    end
+    it { should have_content('Kontakt')}
+    it { should have_title(full_title('Kontakt')) }
   end
 
 end

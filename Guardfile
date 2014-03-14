@@ -3,7 +3,6 @@
 require 'active_support/inflector'
 
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
-  notification :libnotify, :timeout => 1, :transient => true, :append => true, :urgency => :low
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -16,7 +15,6 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
 end
 
 guard 'rspec', all_after_pass: false, cli: '--drb' do
-  notification :libnotify, :timeout => 1, :transient => true, :append => true, :urgency => :low
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
