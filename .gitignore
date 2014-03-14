@@ -24,5 +24,6 @@ config/initializers/secret_token.rb
 
 config/database.yml
 bundler_stubs/
+doc/
 
 
