@@ -1,4 +1,16 @@
 @import "bootstrap";
+@import "bootstrap-responsive";
+
+/* responsive design http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design/ */
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
 
 /* mixins, variables, etc. */
 
@@ -8,10 +20,6 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
-}
-
-body {
-  padding-top: 60px;
 }
 
 section {
