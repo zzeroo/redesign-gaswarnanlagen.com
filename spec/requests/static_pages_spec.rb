@@ -49,7 +49,7 @@ describe "StaticPages" do
     click_link "Home"
     click_link "Hilfe"
     expect(page).to have_title(full_title('Hilfe'))
-    click_link "Anmelden"
+    click_link "Sign in"
     click_link "Über uns"
     expect(page).to have_title(full_title('Firmenprofil'))
     click_link "Kontakt"
