@@ -18,6 +18,18 @@ describe "StaticPages" do
 
     it_should_behave_like "all static pages"
     it { should_not have_title("| Home") }
+
+    describe "Signup button if not signed in" do
+      it { should have_link('Anmelden!') }
+    end
+
+    describe "No signup button if signed in" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+      before { visit root_path }
+
+      it { should_not have_link('Anmelden!') }
+    end
   end
 
   describe "Help page" do
