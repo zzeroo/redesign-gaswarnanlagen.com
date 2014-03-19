@@ -4,7 +4,7 @@
 /* responsive design http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design/ */
 
 body {
-  padding-top: 60px;
+  padding-top: 194px;
 }
 @media (max-width: 979px) {
   body {
@@ -88,6 +88,25 @@ p {
     text-decoration: none;
   }
 }
+
+.navbar .brand {
+  margin: 0;
+  padding: 0;
+}
+
+/* Page header */
+.page-header {
+  display: block;
+  width: 100%;
+  background: url('/assets/header-01.jpg') no-repeat scroll 0px 0px #E7001A;  
+  height: 134px;
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 
 /* footer */
 
@@ -195,3 +214,4 @@ input {
     }
   }
 }
+

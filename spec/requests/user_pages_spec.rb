@@ -47,6 +47,7 @@ describe "UserPages" do
           end.to change(User, :count).by(-1)
         end
         it { should_not have_link('löschen', href: user_path(admin)) }
+
       end
     end
   end
@@ -57,6 +58,14 @@ describe "UserPages" do
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+  end
+
+  describe "Users signedin should not see signin link" do
+    it { should_not have_link('Sign in') }
+  end
+
+  describe "Users signedin should not see signup link" do
+    it { should_not have_link('Sign up') }
   end
 
   describe "signup page" do
@@ -131,6 +140,10 @@ describe "UserPages" do
       it { should have_content("Profil bearbeiten") }
       it { should have_title("Profil bearbeiten") }
       it { should have_link('Benutzerbild ändern', href: 'http://gravatar.com/emails') }
+
+      describe "Link to change gravatar should open in new window or tab" do
+        it { find_link('Benutzerbild ändern')[:target].should == '_blank' }
+      end
     end
 
     describe "with invalid information" do
@@ -146,7 +159,7 @@ describe "UserPages" do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Bestätigung", with: user.password
         click_button "Änderungen speichern"
       end
 
@@ -155,6 +168,30 @@ describe "UserPages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
+    end
+
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password,
+                  password_confirmation: user.password } }
+      end
+      before do
+        sign_in user, no_capybara: true
+        patch user_path(user), params
+      end
+      specify { expect(user.reload).not_to be_admin }
+    end
+  end
+
+  describe "destroy" do
+    let(:admin) { FactoryGirl.create(:admin) }
+
+    before { sign_in admin, no_capybara: true }
+
+    it "admin can't destroy him self" do
+      expect do
+        delete user_path(admin)
+      end.to_not change(User, :count).by(-1)
     end
   end
 end
