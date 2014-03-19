@@ -11,7 +11,7 @@ Vorschlag für die neue, dynamische gaswarnanlagen.com Webseite.
 
 == Dokumentation ==
 
-Die Dokumentation kann mit dem Befehle ```rdoc --format=fivefish``` erstellt werden.
+Die Dokumentation kann mit dem Befehle <code>rdoc --format=fivefish</code> erstellt werden.
 
 
 === Darstellung der Modelbezieungen ===
@@ -23,8 +23,8 @@ dem Ruby Tool ERD erstellt werden.
 == Resourcen
 
 - http://ruby.railstutorial.org/book/ruby-on-rails-tutorial
-- http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design/
-- http://rails-erd.rubyforge.org/
+- http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design
+- http://rails-erd.rubyforge.org
 
 
 - http://www.mediawiki.org/wiki/Help:Formatting
