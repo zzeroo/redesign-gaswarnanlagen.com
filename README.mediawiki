@@ -1,0 +1,31 @@
+= Redesign gaswarnanlagen.com =
+
+Vorschlag für die neue, dynamische gaswarnanlagen.com Webseite.
+
+== Milestones ==
+
+# <strike>Statisches responsitive Layout</strike>
+# ERD Dokumentation anfertigen
+# Excel Import/ Export (http://railscasts.com/episodes/396-importing-csv-and-excel?view=asciicast)
+
+
+== Dokumentation ==
+
+Die Dokumentation kann mit dem Befehle ```rdoc --format=fivefish``` erstellt werden.
+
+
+=== Darstellung der Modelbezieungen ===
+
+Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit 
+dem Ruby Tool ERD erstellt werden.
+
+
+== Resourcen
+
+- http://ruby.railstutorial.org/book/ruby-on-rails-tutorial
+- http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design/
+- http://rails-erd.rubyforge.org/
+
+
+- http://www.mediawiki.org/wiki/Help:Formatting
+
