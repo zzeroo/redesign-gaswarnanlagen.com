@@ -22,10 +22,10 @@ dem Ruby Tool ERD erstellt werden.
 
 == Resourcen
 
-- http://ruby.railstutorial.org/book/ruby-on-rails-tutorial
-- http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design
-- http://rails-erd.rubyforge.org
+* http://ruby.railstutorial.org/book/ruby-on-rails-tutorial
+* http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design
+* http://rails-erd.rubyforge.org
 
 
-- http://www.mediawiki.org/wiki/Help:Formatting
+* http://www.mediawiki.org/wiki/Help:Formatting
 
