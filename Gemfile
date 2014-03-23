@@ -3,13 +3,19 @@ ruby '2.0.0'
 #ruby-gemset=redsign-gaswarnanlagen-com
 
 gem 'rails', '4.0.3'
-gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'pg', '0.15.1'
-gem 'gretel'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.1'
+gem 'jquery-rails', '3.0.4'
+gem 'turbolinks', '1.1.1'
+gem 'jbuilder', '1.0.2'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
@@ -52,13 +58,6 @@ group :test do
   # gem 'win32console', '1.3.2'
   # gem 'wdm', '0.1.0'
 end
-
-gem 'sass-rails', '4.0.1'
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.0.4'
-gem 'turbolinks', '1.1.1'
-gem 'jbuilder', '1.0.2'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
