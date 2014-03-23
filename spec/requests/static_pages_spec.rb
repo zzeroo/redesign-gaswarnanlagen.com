@@ -16,11 +16,10 @@ describe "StaticPages" do
     let(:heading)     { 'RA-GAS' }
     let(:page_title)  { ''}
 
-    it_should_behave_like "all static pages"
     it { should_not have_title("| Home") }
 
     describe "Signup button if not signed in" do
-      it { should have_link('Anmelden!') }
+      it { should have_link('Sign in') }
     end
 
     describe "No signup button if signed in" do
@@ -29,6 +28,14 @@ describe "StaticPages" do
       before { visit root_path }
 
       it { should_not have_link('Anmelden!') }
+    end
+
+    describe "product groups on home page" do
+      let!(:product_group1) { FactoryGirl.create(:product_group, name: "CO Warnanlagen") }
+      before { visit root_path }
+
+      it { should have_content(product_group1.name) }
+      it { should have_content(product_group1.description) }
     end
   end
 

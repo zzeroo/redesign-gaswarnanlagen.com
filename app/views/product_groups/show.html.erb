@@ -1,0 +1,12 @@
+<% breadcrumb :product_group, @product_group %>
+
+<% provide(:title, @product_group.name) %>
+<h1><%= @product_group.name %></h1>
+
+<ul>
+  <%= render @products %>
+</ul>
+
+
+<div class="row">
+</div>

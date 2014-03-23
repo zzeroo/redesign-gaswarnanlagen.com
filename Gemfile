@@ -9,6 +9,7 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'pg', '0.15.1'
+gem 'gretel'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
@@ -25,6 +26,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'forgery'
   gem 'rdoc-generator-fivefish'
 end
 

@@ -8,6 +8,6 @@ describe "GET index" do
 
     before { visit root_path }
 
-    it { should have_link('', href: '#') }
+    it { should have_link('', href: root_path) }
   end
 end

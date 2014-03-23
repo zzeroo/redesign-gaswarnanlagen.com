@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @product_groups = ProductGroup.all
   end
 
   def help

@@ -1,0 +1,15 @@
+<% provide(:title, 'Produkt Gruppen') %>
+<h1>Produkt Gruppen</h1>
+
+<ul>
+  <% for product_group in  @product_groups do %>
+    <li>
+      <div><%= link_to( product_group.name, product_group_path(product_group) ) %></div>
+      <div><%= product_group.description %></div>
+    </li>
+    <%end %>
+</ul>
+
+<div class="row center">
+  <%= link_to 'Neue Produkt Gruppe erstellen', new_product_group_path, class: "btn btn-large btn-primary" %>
+</div>

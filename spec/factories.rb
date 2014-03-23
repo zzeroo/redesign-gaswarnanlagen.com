@@ -9,4 +9,16 @@ FactoryGirl.define do
       admin true
     end
   end
+
+
+  factory(:product_group) do
+    sequence(:name) { |n| "Product Gruppe #{n}" }
+    sequence(:description) { Forgery::LoremIpsum.paragraphs(1) }
+  end
+
+  factory(:product) do
+    sequence(:number) { |n| "123-0101#{"%04d" % n}" }
+    sequence(:description) { Forgery::LoremIpsum.sentence }
+    sequence(:short_description) { Forgery::LoremIpsum.sentence }
+  end
 end
