@@ -13,8 +13,16 @@ require 'active_support/inflector'
 #   watch('test/test_helper.rb') { :test_unit }
 #   watch(%r{features/support/}) { :cucumber }
 # end
+guard 'spork', wait: 60, cucumber: false, rspec: true, test_unit: false do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('spec/spec_helper.rb')
+end
 
-guard 'rspec', all_after_pass: false, cli: '--drb' do
+guard 'rspec', all_after_pass: false, cli: '--drb --format progress --color' do
   #notification :libnotify, timeout: 3, transient: true, append: false
   notification :tmux, display_message: true
 

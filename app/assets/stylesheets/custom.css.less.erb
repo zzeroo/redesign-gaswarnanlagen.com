@@ -17,6 +17,11 @@ body {
   .row {
     height: 134px;
     background: url("<%= asset_path('header-01.jpg') %>") no-repeat scroll 0px 0px #E7001A;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -25,10 +30,11 @@ body {
   padding: 0 .5em .5em .5em;
   height: 368px;
   color: #FFF;
-  a h1{
+  a{
     color: #FFF;
     text-decoration: none;
   }
+
 }
 .boxgelb {
   background-color: @boxgelb;

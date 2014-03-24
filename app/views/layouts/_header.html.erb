@@ -7,19 +7,23 @@
     <% end %>
     <%= menu_group :pull => :right do %>
       <% if signed_in? %>
+        <%= drop_down "Administration" do %>
+          <%= menu_item "Produkte", products_path %>
+          <%= menu_item "Produkt Gruppen", product_groups_path %>
+        <% end %>
         <%= drop_down "Account" do %>
             <%= menu_item "Profil", user_path(current_user) %>
             <%= menu_item "Einstellungen", edit_user_path(current_user) %>
             <%= menu_item "Sign out", signout_path, method: "delete"  %>
         <% end %>
-        <% else %>
-          <%= menu_item "Sign in", signin_path %>
-        <% end %>
+      <% else %>
+        <%= menu_item "Sign in", signin_path %>
+      <% end %>
     <% end %>
 <% end %>
 <div id="content" class="bs-docs-header">
   <div class="container">
-    <div class="row">
+    <div class="row"><%= link_to '', root_path %>
       <div class="span12">
         <!-- TODO: Logo for text based browser -->
       </div>

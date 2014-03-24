@@ -3,6 +3,7 @@ namespace :db do
   task populate: :environment do
     make_users
     make_product_groups
+    make_products
   end
 end
 
@@ -33,5 +34,15 @@ def make_product_groups
                       description: "Messfühler zum Einsatz an Gaswarnanlagen für brennbare und toxische Gase, explosive Dämpfe oder Kältemittel als Halbleiter, Pelistor, elektrochemischem Sensor oder mit Infrarotmessverfahren.")
   ProductGroup.create!(name: "Leuchttransparente",
                       description: "Zeichenschreibung mit rechtlich geschütztem multilingualen Design, und somit international allgemein verständlich. Über Versorgungsspannung zentral aktivierbar, Akku-Entladeschutz, geringe Anschlussleistung, LED-Leuchtmittel hoher Betriebsdauer, große Erkennungsweite und sehr hoher Aufmerksamkeitsfaktor.")
+end
+
+def make_products
+  product_groups = ProductGroup.all(limit: 4)
+  50.times do |p|
+    number = "%d%02d-%03d" % [p/10, p, p]
+    description = Faker::Lorem.sentence(1)
+    short_description = Faker::Lorem.sentence(2)
+    product_groups.each {|product_group| product_group.products.create!(number: number, description: description, short_description: short_description) }
+  end
 end
 

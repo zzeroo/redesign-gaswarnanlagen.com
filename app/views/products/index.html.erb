@@ -1,13 +1,19 @@
 <% provide(:title, 'Produkte') %>
 <h1>Produkte</h1>
 
+<p>
+  Download:
+  <%= link_to "CSV", products_path(format: "csv") %> | 
+  <%= link_to "Excel", products_path(format: "xls") %>
+</p>
+
 <div class="table-responsive">
   <table class="table table-hover table-hover">
     <tr>
       <th>Art. Nr.</th>
       <th>Bezeichnung</th>
       <th>Kurztext</th>
-      <th>Kurztext</th>
+      <th>Produkt Gruppe</th>
     </tr>
   </div>
   <% for product in  @products do %>
@@ -17,6 +23,6 @@
     <td><%= product.short_description %></td>
     <td><%= product.product_group.name %></td>
   </tr>
-<%end %>
-</table>
+  <%end %>
+  </table>
 </div>

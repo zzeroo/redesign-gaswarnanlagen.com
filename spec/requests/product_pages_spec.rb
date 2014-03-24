@@ -23,6 +23,12 @@ describe "Products pages" do
         expect(page).to have_selector('td', text: product.product_group.name )
       end
     end
+
+    describe "Download links" do
+      it { should have_link "CSV", products_path(format: "csv") }
+      it { should have_link "Excel", products_path(format: "xls") }
+    end
+
   end
 end
 
