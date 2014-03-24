@@ -277,7 +277,7 @@ DEPENDENCIES
   pg (= 0.15.1)
   rails (= 4.0.3)
   rails-erd
-  rails_12factor (= 0.0.2)
+  rails_12factor
   rdoc-generator-fivefish
   rspec-rails (= 2.13.1)
   ruby-prof
