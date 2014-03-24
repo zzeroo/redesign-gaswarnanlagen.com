@@ -1,10 +1,12 @@
 <div class="row">
   <div class="span8">
     <div class="row">
+    <% @css_classes = %w(boxgelb boxrot  boxschwarz boxgruen); @counter = 0 %>
     <% @product_groups.each_slice(2) do |slice| -%>
       <div class="row">
         <% slice.each do |product_group| -%>
-          <div class="span4">
+          <div class="span4 box_homepage <%= @css_classes[@counter] %>">
+            <% @counter += 1 -%>
             <%= link_to(content_tag('h1', product_group.name), product_group_path(product_group ))  %>
             <div><%= product_group.description %></div>
           </div>
@@ -15,8 +17,8 @@
   </div>
   <div class="span4">
     <div class="row">
-      <div class="span4"><h1>Aktuell</h1><%= Faker::Lorem.paragraph(10) %></div>
-      <div class="span4"><h1>Nachrichten</h1><%= Faker::Lorem.paragraph(10) %></div>
+      <div class="span4 box_homepage boxaktuell"><a href="#"><h1>Aktuell</h1></a><%= Faker::Lorem.paragraph(10) %></div>
+      <div class="span4 box_homepage boxnachrichten"><a href="#"><h1>Nachrichten</h1></a><%= Faker::Lorem.paragraph(10) %></div>
     </div>
   </div
 </div>

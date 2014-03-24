@@ -71,7 +71,7 @@ describe "StaticPages" do
     click_link "Sign in"
     click_link "Über uns"
     expect(page).to have_title(full_title('Firmenprofil'))
-    click_link "Kontakt"
+    first(:link, 'Kontakt').click
     expect(page).to have_title(full_title('Kontakt'))
   end
 end

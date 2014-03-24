@@ -31,7 +31,6 @@ describe "AuthenticationPages" do
       before { sign_in user }
 
       it { should have_title(user.name) }
-      it { should have_link('Benutzer',  href: users_path) }
       it { should have_link('Profil',    href: user_path(user)) }
       it { should have_link('Einstellungen',  href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
