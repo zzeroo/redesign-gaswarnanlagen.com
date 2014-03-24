@@ -64,4 +64,7 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-gem 'rails_12factor', group: :production
+group: :production do
+  gem 'rails_12factor'
+  gem 'rails_serve_static_assets'
+end
