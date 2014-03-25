@@ -29,12 +29,4 @@
   </table>
 </div>
 
-
-<div>
-  <h2>Import Produkte</h2>  
-  <%= form_tag import_products_path, multipart: true do %>  
-    <%= file_field_tag :file %>  
-  <%= submit_tag "Import" %>  
-<% end %> 
-</div>
-
+<p><%= link_to "Produkte importieren", new_product_import_path %></p>
