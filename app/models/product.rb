@@ -14,4 +14,14 @@ class Product < ActiveRecord::Base
       end
     end
   end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      product = find_by(id: row["id"]) || new
+      parameters = ActionController::Parameters.new(row.to_hash)
+      product.update(parameters.permit(:id,:number,:description,:short_description,:created_at,:updated_at,:product_group_id))
+      product.save!
+    end
+  end
+
 end

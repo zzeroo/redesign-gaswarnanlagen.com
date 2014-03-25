@@ -12,5 +12,19 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def import
+    Product.import(params[:file])
+    redirect_to products_path, notice: "Produkte erfolgreich importiert."
+  end
+
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    flash[:success] = "Produkt wurde gelöscht.."
+    redirect_to products_url
+  end
+
+
 end
 

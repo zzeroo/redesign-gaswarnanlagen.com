@@ -29,6 +29,10 @@ describe "Products pages" do
       it { should have_link "Excel", products_path(format: "xls") }
     end
 
+    describe "Import link" do
+      it { should have_button('Import') }
+    end
+
   end
 end
 

@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     make_users
     make_product_groups
-    make_products
+    #make_products
   end
 end
 
@@ -13,6 +13,11 @@ def make_users
               password: "930440",
               password_confirmation: "930440",
               admin: true)
+  User.create!(name: "Webmaster",
+              email: "webmaster@gaswarnanlagen.com",
+              password: "930440",
+              password_confirmation: "930440",
+              admin: false)
 #    99.times do |n|
 #      name = Faker::Name.name
 #      email = "example-#{n+1}@gaswarnanlagen.com"

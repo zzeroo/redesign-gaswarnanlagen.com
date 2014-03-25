@@ -14,6 +14,7 @@
       <th>Bezeichnung</th>
       <th>Kurztext</th>
       <th>Produkt Gruppe</th>
+      <th></th>
     </tr>
   </div>
   <% for product in  @products do %>
@@ -22,7 +23,18 @@
     <td><%= product.description %></td>
     <td><%= product.short_description %></td>
     <td><%= product.product_group.name %></td>
+    <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %></td>
   </tr>
   <%end %>
   </table>
 </div>
+
+
+<div>
+  <h2>Import Produkte</h2>  
+  <%= form_tag import_products_path, multipart: true do %>  
+    <%= file_field_tag :file %>  
+  <%= submit_tag "Import" %>  
+<% end %> 
+</div>
+
