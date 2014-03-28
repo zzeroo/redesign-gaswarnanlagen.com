@@ -13,16 +13,14 @@
       <th>Art. Nr.</th>
       <th>Bezeichnung</th>
       <th>Kurztext</th>
-      <th>Produkt Gruppe</th>
       <th></th>
     </tr>
   </div>
   <% for product in  @products do %>
     <tr>
-    <td><%= product.number %></td>
+    <td><%= product.product_nr %></td>
     <td><%= product.description %></td>
     <td><%= product.short_description %></td>
-    <td><%= product.product_group.name %></td>
     <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %></td>
   </tr>
   <%end %>

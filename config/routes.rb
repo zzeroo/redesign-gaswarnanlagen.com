@@ -1,4 +1,7 @@
 RedesignGaswarnanlagenCom::Application.routes.draw do
+  get "news/new"
+  get "news/index"
+  resources :news
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :products 
@@ -8,7 +11,8 @@ RedesignGaswarnanlagenCom::Application.routes.draw do
   match '/signup', to: 'users#new',            via: 'get'
   match '/signin', to: 'sessions#new',        via: 'get'
   match '/signout', to: 'sessions#destroy',   via: 'delete'
-  match '/help',   to: 'static_pages#help',    via: 'get'
+  match '/distributors',  to: 'static_pages#distributors',   via: 'get'
+  match '/references',  to: 'static_pages#references',   via: 'get'
   match '/about',  to: 'static_pages#about',   via: 'get'
   match '/contact',to: 'static_pages#contact', via: 'get'
 

@@ -12,13 +12,21 @@ FactoryGirl.define do
 
 
   factory(:product_group) do
+    published true
     sequence(:name) { |n| "Product Gruppe #{n}" }
     sequence(:description) { Forgery::LoremIpsum.paragraphs(1) }
+    sequence(:product_nr_prefix) {|n| "#{n}00"}
   end
 
   factory(:product) do
-    sequence(:number) { |n| "123-0101#{"%04d" % n}" }
+    sequence(:product_nr) {|n| "%d%02d-%08d" % [n/10, n, n] }
+    #product_nr "100-00000001"
     sequence(:description) { Forgery::LoremIpsum.sentence }
     sequence(:short_description) { Forgery::LoremIpsum.sentence }
+  end
+
+  factory(:news) do
+    sequence(:title) { Forgery::LoremIpsum.sentence }
+    sequence(:news_body) { Forgery::LoremIpsum.sentence }
   end
 end

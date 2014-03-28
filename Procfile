@@ -1,2 +1,4 @@
 web:    bundle exec unicorn -p $PORT -c ./config/unicorn.rb
-#guard:  bundle exec guard
+guard:  bundle exec guard
+#console: bundle exec bin/rails console
+

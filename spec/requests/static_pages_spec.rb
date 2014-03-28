@@ -31,26 +31,41 @@ describe "StaticPages" do
     end
 
     describe "product groups on home page" do
-      let!(:product_group1) { FactoryGirl.create(:product_group, name: "CO Warnanlagen") }
+      let!(:product_group1) { FactoryGirl.create(:product_group, published: true) }
       before { visit root_path }
 
       it { should have_content(product_group1.name) }
       it { should have_content(product_group1.description) }
+
+      describe "non published product groups" do
+        let!(:non_published_product_group) { FactoryGirl.create(:product_group, published: false) }
+        before { visit root_path }
+
+        it { should_not have_content(non_published_product_group.name) }
+      end
     end
-  end
-
-  describe "Help page" do
-    before { visit help_path }
-    let(:heading)     { 'Hilfe' }
-    let(:page_title)  { 'Hilfe' }
-
-    it_should_behave_like "all static pages"
   end
 
   describe "About page" do
     before { visit about_path }
     let(:heading)     { 'Firmenprofil' }
     let(:page_title)  { 'Firmenprofil' }
+
+    it_should_behave_like "all static pages"
+  end
+
+  describe "References page" do
+    before { visit references_path }
+    let(:heading)     { 'Referenzen' }
+    let(:page_title)  { 'Referenzen' }
+
+    it_should_behave_like "all static pages"
+  end
+
+  describe "Distributors page" do
+    before { visit  distributors_path }
+    let(:heading)     { 'Vertriebspartner' }
+    let(:page_title)  { 'Vertriebspartner' }
 
     it_should_behave_like "all static pages"
   end
@@ -63,15 +78,4 @@ describe "StaticPages" do
     it_should_behave_like "all static pages"
   end
 
-  it "should have the right links on the layout" do
-    visit root_path
-    click_link "Home"
-    click_link "Hilfe"
-    expect(page).to have_title(full_title('Hilfe'))
-    click_link "Sign in"
-    click_link "Über uns"
-    expect(page).to have_title(full_title('Firmenprofil'))
-    first(:link, 'Kontakt').click
-    expect(page).to have_title(full_title('Kontakt'))
-  end
 end

@@ -5,11 +5,16 @@
   <% for product_group in  @product_groups do %>
     <li>
       <div><%= link_to( product_group.name, product_group_path(product_group) ) %></div>
-      <div><%= product_group.description %></div>
+      <div><%= simple_format product_group.description %></div>
+      <% if current_user && current_user.admin? %>
+      <div><%= link_to 'bearbeiten', edit_product_group_path(product_group) %></div>
+      <% end %>
     </li>
     <%end %>
 </ul>
 
 <div class="row center">
-  <%= link_to 'Neue Produkt Gruppe erstellen', new_product_group_path, class: "btn btn-large btn-primary" %>
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Neue Produkt Gruppe erstellen', new_product_group_path, class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>
