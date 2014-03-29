@@ -24,6 +24,7 @@ describe Product do
   end
 
   describe "default ordering scope" do
+    before { Product.all.each{|p| p.destroy! }}
     let!(:higher_product_nr) do
       FactoryGirl.create(:product, product_nr: "999-99999999")
     end
@@ -31,11 +32,9 @@ describe Product do
       FactoryGirl.create(:product, product_nr: "100-00000001" )
     end
 
-    xit "should have the right products in the right order (lower product_numer first)" do
+    it "should have the right products in the right order (lower product_numer first)" do
       expect(Product.all.to_a).to eq [lower_product_nr, higher_product_nr]
     end
-
   end
-
 
 end

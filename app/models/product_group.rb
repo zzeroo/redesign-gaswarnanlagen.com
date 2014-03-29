@@ -4,7 +4,6 @@ class ProductGroup < ActiveRecord::Base
   validates :name, presence: true
   #validates :product_nr_prefix, presence: true
 
-
   def products
     Product.all
   end
