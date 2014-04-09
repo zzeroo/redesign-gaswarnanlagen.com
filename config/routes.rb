@@ -1,6 +1,4 @@
 RedesignGaswarnanlagenCom::Application.routes.draw do
-  get "news/new"
-  get "news/index"
   resources :news
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

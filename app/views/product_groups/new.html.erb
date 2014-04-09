@@ -3,10 +3,10 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%#<%= form_for(@product_group) do |f| %>%>
-      <%#<%= render 'fields', f: f %>%>
-      <%#<%= f.submit "Produktgruppe anlegen", class: "btn btn-large btn-primary" %>%>
-    <%#<% end %>%>
+    <%= form_for(@product_group) do |f| %>
+      <%= render 'fields', f: f %>
+      <div><%= f.submit "Produktgruppe erstellen", class: "btn btn-large btn-primary" %></div>
+    <% end %>
   </div>
 </div>
 

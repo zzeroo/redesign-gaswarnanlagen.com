@@ -57,14 +57,13 @@ describe "AuthenticationPages" do
         end
 
         describe "after signing in" do
-
           it "should render the desired page" do
             expect(page).to have_title('Profil bearbeiten')
           end
         end
       end
-      describe "in the Users controller" do
 
+      describe "in the Users controller" do
         describe "visiting the users index" do
           before { visit users_path }
           it { should have_title('Sign in') }
@@ -77,6 +76,20 @@ describe "AuthenticationPages" do
 
         describe "submitting to the update action" do
           before { patch user_path(user) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
+
+      describe "in the ProductGroups controller" do
+        let(:product_group) {FactoryGirl.create(:product_group)}
+
+        describe "submitting the create action" do
+          before { post product_groups_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete product_group_path(product_group) }
           specify { expect(response).to redirect_to(signin_path) }
         end
       end

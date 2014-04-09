@@ -1,5 +1,5 @@
 module SessionsHelper
-  
+
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
@@ -22,6 +22,22 @@ module SessionsHelper
 
   def current_user?(user)
     user == current_user
+  end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Bitte anmelden"
+    end
+  end
+
+  def admin_user
+    if not signed_in?
+      store_location
+      redirect_to signin_url, notice: "Bitte anmelden"
+    elsif not current_user.admin?
+      redirect_to root_url, notice: "Keine ausreichenden Berechtigungen!"
+    end
   end
 
   def sign_out
