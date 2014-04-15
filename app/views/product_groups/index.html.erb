@@ -5,6 +5,7 @@
   <% for product_group in  @product_groups do %>
     <li>
       <div><%= link_to( product_group.name, product_group_path(product_group) ) %></div>
+      <div><%= image_tag product_group.logo.url, :width => '100px' %></div>
       <div><%= simple_format product_group.description %></div>
       <% if current_user && current_user.admin? %>
       <div>

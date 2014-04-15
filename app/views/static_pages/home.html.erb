@@ -8,7 +8,8 @@
           <div class="span4 box_homepage <%= @css_classes[@counter] %>">
             <% @counter += 1 -%>
             <%= link_to(content_tag('h1', product_group.name), product_group_path(product_group ))  %>
-            <div><%= product_group.description %></div>
+            <div class="logo"><%= image_tag product_group.logo.url %></div>
+            <div class="description"><%= product_group.description %></div>
           </div>
         <% end -%>
       </div>

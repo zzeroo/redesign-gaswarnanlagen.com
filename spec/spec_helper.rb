@@ -2,6 +2,7 @@ require 'rubygems'
 require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
+require "paperclip/matchers"
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
@@ -62,6 +63,8 @@ Spork.prefork do
     config.after(:each) do
       DatabaseCleaner.clean
     end
+
+    config.include Paperclip::Shoulda::Matchers
   end
 end
 

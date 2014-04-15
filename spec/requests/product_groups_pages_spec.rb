@@ -74,6 +74,24 @@ describe "ProductGroups pages" do
       it { should have_content(product1.description) }
       it { should have_content(product1.short_description) }
     end
+
+    describe "as user" do
+      before do
+        sign_in user
+        visit product_group_path(product_group)
+      end
+
+      it { should_not have_link('bearbeiten', edit_product_group_path(product_group)) }
+    end
+
+    describe "as admin" do
+      before do
+        sign_in admin
+        visit product_group_path(product_group)
+      end
+
+      it { should have_link('bearbeiten', edit_product_group_path(product_group)) }
+    end
   end
 
   describe "new product group_page" do

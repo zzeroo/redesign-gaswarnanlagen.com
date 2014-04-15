@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.0.0'
 #ruby-gemset=redsign-gaswarnanlagen-com
 
 gem 'rails', '4.0.3'
@@ -18,7 +18,7 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'unicorn'
 gem 'roo'
-
+gem 'paperclip'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'

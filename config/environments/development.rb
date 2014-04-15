@@ -33,4 +33,8 @@ RedesignGaswarnanlagenCom::Application.configure do
   config.logger.level = Logger.const_get(
     ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
   )
+
+  # Paperclip options
+  Paperclip.options[:command_path] = "/usr/bin"
+
 end
