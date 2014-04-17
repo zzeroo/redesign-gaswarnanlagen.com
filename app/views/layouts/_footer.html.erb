@@ -1,8 +1,4 @@
 <footer>
-  <%= nav_bar :fixed => :bottom do %>
-    <%= menu_group :pull => :right do %>
-      <%= menu_item "Über uns", about_path %>
-      <%= menu_item "Kontakt", contact_path %>
-    <% end %>
-  <% end %>
+  <%= link_to "Über uns", about_path %>
+  <%= link_to "Kontakt", contact_path %>
 </footer>
