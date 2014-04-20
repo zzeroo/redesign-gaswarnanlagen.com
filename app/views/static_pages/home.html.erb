@@ -1,28 +1,24 @@
 <div class="row">
-  <div class="span8">
+  <div class="col-md-9">
     <div class="row">
-    <% @css_classes = %w(boxgelb boxrot  boxschwarz boxgruen); @counter = 0 %>
-    <% @product_groups.each_slice(2) do |slice| -%>
-      <div class="row">
-        <% slice.each do |product_group| -%>
-          <div class="span4 box_homepage <%= @css_classes[@counter] %>">
-            <% @counter += 1 -%>
-            <%= link_to(content_tag('h1', product_group.name), product_group_path(product_group ))  %>
-            <div class="logo"><%= image_tag product_group.logo.url %></div>
-            <div class="description"><%= product_group.description %></div>
-          </div>
-        <% end -%>
+      <% @product_groups.each do |product_group| %>
+      <div class="col-md-6">
+        <%= link_to(content_tag('h1', product_group.name), product_group_path(product_group ))  %>
+        <p class="logo"><%= image_tag product_group.logo.url %></p>
+        <p class="description"><%= product_group.description %></p>
       </div>
-    <% end -%>
+      <% end %>
     </div>
   </div>
-  <div class="span4">
+  <div class="col-md-3">
     <div class="row">
       <div class="span4 box_homepage boxaktuell"><a href="#"><h1>Aktuell</h1></a><%= Faker::Lorem.paragraph(10) %></div>
       <div class="span4 box_homepage boxnachrichten"><a href="#"><h1>Nachrichten</h1></a><%= Faker::Lorem.paragraph(10) %></div>
     </div>
-  </div
+  </div>
 </div>
+
+
 
 <div class="row">
   <div class="span12">

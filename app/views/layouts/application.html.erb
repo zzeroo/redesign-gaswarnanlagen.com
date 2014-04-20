@@ -14,7 +14,7 @@
   <%= render 'layouts/header' %>
   <div class="container">
 
-    <%#= bootstrap_flash %>
+    <%= render partial: "shared/flash_messages", flash: flash %> 
     <%#= render_breadcrumbs %>
     <%= yield %>
     <%= render 'layouts/footer' %>

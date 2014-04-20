@@ -39,3 +39,8 @@ beendet alle Komponenten:
 ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print $2}' |xargs kill -9 
 {{/code}}
 
+===Flash Nachrichten===
+
+https://gist.github.com/roberto/3344628
+
+

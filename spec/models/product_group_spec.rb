@@ -13,16 +13,8 @@ describe ProductGroup do
   it { should respond_to(:published) }
   it { should respond_to(:product_nr_prefix)}
   it { should respond_to(:logo) }
+  it { should respond_to(:background_color) }
   
-  describe "PaperClip Attachment for logo" do
-    it { should have_attached_file(:logo) }
-    it { should validate_attachment_content_type(:logo).
-         allowing("image/jepg", "image/jpg", "image/gif", "image/png").
-         rejecting('text/plain', 'text/xml') }
-    it { should validate_attachment_size(:logo).
-          less_than(2.megabytes) }
-  end
-
   describe "when name is not present" do
     before { @product_group.name = nil }
     it { should_not be_valid }
@@ -40,4 +32,14 @@ describe ProductGroup do
       specify { expect(product_group.products).to_not include(product_not_in_range) }
     end
   end
+  
+  describe "PaperClip Attachment for logo" do
+    it { should have_attached_file(:logo) }
+    it { should validate_attachment_content_type(:logo).
+         allowing("image/jepg", "image/jpg", "image/gif", "image/png").
+         rejecting('text/plain', 'text/xml') }
+    it { should validate_attachment_size(:logo).
+          less_than(2.megabytes) }
+  end
+
 end
