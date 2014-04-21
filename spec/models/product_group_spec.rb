@@ -42,4 +42,42 @@ describe ProductGroup do
           less_than(2.megabytes) }
   end
 
+
+  describe "format of background_color" do
+
+    describe "empty background_color" do
+      before { @product_group.background_color = nil }
+      it { should be_valid }
+    end
+
+    describe "hash plus six right chars" do
+      before { @product_group.background_color = "#FFFFFF" }
+      it { should be_valid }
+    end
+
+    describe "hash plus three right chars" do
+      before { @product_group.background_color = "#FFF" }
+      it { should be_valid }
+    end
+
+    describe "without hash in front" do
+      before { @product_group.background_color = "FFFFFF" }
+      it { should_not be_valid }
+    end
+
+    describe "less then three chars" do
+      before { @product_group.background_color = "#FF" }
+      it { should_not be_valid }
+    end
+
+    describe "more then six chars" do
+      before { @product_group.background_color = "#FFFFFFF" }
+      it { should_not be_valid }
+    end
+
+    describe "other then #[0-9a-fA-F]" do
+      before { @product_group.background_color = "#zzZZzz" }
+      it { should_not be_valid }
+    end
+  end
 end
