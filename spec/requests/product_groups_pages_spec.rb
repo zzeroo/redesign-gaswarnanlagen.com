@@ -20,8 +20,8 @@ describe "ProductGroups pages" do
 
     it "should list all product groups" do
       ProductGroup.all.each do |product_group|
-        expect(page).to have_selector('li', text: product_group.name )
-        expect(page).to have_selector('li', text: product_group.description )
+        expect(page).to have_selector('h1', text: product_group.name )
+        expect(page).to have_selector('p', text: product_group.description )
       end
     end
 

@@ -7,6 +7,8 @@ class ProductGroup < ActiveRecord::Base
   validates :name, presence: true
   #validates :product_nr_prefix, presence: true
 
+  validates :background_color, format: { with: /(\A\z|\A#[0-9a-fA-F]{3}\z|\A#[0-9a-fA-F]{6}\z)/ }
+
   def products
     #Product.where(product_nr: self.product_nr_prefix.split(",").collect{|p| p + "%"})
     Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|'))

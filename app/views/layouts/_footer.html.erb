@@ -1,8 +1,9 @@
-<footer>
-  <%= nav_bar :fixed => :bottom do %>
-    <%= menu_group :pull => :right do %>
-      <%= menu_item "Über uns", about_path %>
-      <%= menu_item "Kontakt", contact_path %>
-    <% end %>
-  <% end %>
-</footer>
+<nav class="navbar navbar-custom navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Über uns", about_path %></li>
+      <li><%= link_to "Kontakt", contact_path %></li>
+    </ul>
+    <p class="navbar-text navbar-right">© RA-GAS · Rudolf-Diesel-Straße 22 · 71394 Kernen i.R. · Fon 07151 930440 · Fax 07151 930443 · <a href="mailto:info@gaswarnanlagen.com" class="navbar-link">info@gaswarnanlagen.com</a></p>
+  </div>
+</nav>

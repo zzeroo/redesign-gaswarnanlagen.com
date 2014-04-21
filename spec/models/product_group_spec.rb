@@ -13,16 +13,8 @@ describe ProductGroup do
   it { should respond_to(:published) }
   it { should respond_to(:product_nr_prefix)}
   it { should respond_to(:logo) }
+  it { should respond_to(:background_color) }
   
-  describe "PaperClip Attachment for logo" do
-    it { should have_attached_file(:logo) }
-    it { should validate_attachment_content_type(:logo).
-         allowing("image/jepg", "image/jpg", "image/gif", "image/png").
-         rejecting('text/plain', 'text/xml') }
-    it { should validate_attachment_size(:logo).
-          less_than(2.megabytes) }
-  end
-
   describe "when name is not present" do
     before { @product_group.name = nil }
     it { should_not be_valid }
@@ -38,6 +30,54 @@ describe ProductGroup do
     describe "product_nr_prefix filters products out" do
       specify { expect(product_group.products).to include(product_in_range) }
       specify { expect(product_group.products).to_not include(product_not_in_range) }
+    end
+  end
+  
+  describe "PaperClip Attachment for logo" do
+    it { should have_attached_file(:logo) }
+    it { should validate_attachment_content_type(:logo).
+         allowing("image/jepg", "image/jpg", "image/gif", "image/png").
+         rejecting('text/plain', 'text/xml') }
+    it { should validate_attachment_size(:logo).
+          less_than(2.megabytes) }
+  end
+
+
+  describe "format of background_color" do
+
+    describe "empty background_color" do
+      before { @product_group.background_color = nil }
+      it { should be_valid }
+    end
+
+    describe "hash plus six right chars" do
+      before { @product_group.background_color = "#FFFFFF" }
+      it { should be_valid }
+    end
+
+    describe "hash plus three right chars" do
+      before { @product_group.background_color = "#FFF" }
+      it { should be_valid }
+    end
+
+    describe "without hash in front" do
+      before { @product_group.background_color = "FFFFFF" }
+      it { should_not be_valid }
+    end
+
+    describe "less then three chars" do
+      before { @product_group.background_color = "#FF" }
+      it { should_not be_valid }
+    end
+
+    describe "more then six chars" do
+      before { @product_group.background_color = "#FFFFFFF" }
+      it { should_not be_valid }
+    end
+
+    describe "other then #[0-9a-fA-F]" do
+      before { @product_group.background_color = "#zzZZzz" }
+      it { should_not be_valid }
     end
   end
 end

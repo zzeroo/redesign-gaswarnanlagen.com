@@ -48,7 +48,7 @@ class ProductGroupsController < ApplicationController
   private
 
   def product_group_params
-    params.require(:product_group).permit(:name, :description, :published, :product_nr_prefix, :logo)
+    params.require(:product_group).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo)
   end
 
 end

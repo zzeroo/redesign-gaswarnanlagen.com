@@ -1,35 +1,70 @@
-<%= nav_bar :fixed => :top, :brand => "RA-GAS GmbH", :responsive => true do %>
-    <%= menu_group do %>
-        <%= menu_item "Home", root_path %>
-        <%= menu_divider %>
-        <%= menu_item "Aktuell", news_index_path %>
-        <%= menu_item "Firmenprofil", about_path %>
-        <%= menu_item "Referenzen", references_path %>
-        <%= menu_item "Vertriebspartner", distributors_path %>
-        <%= menu_item "Kontakt", contact_path %>
-    <% end %>
-    <%= menu_group :pull => :right do %>
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "RA-GAS GmbH", root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Aktuell", news_index_path %></li>
+        <li><%= link_to "Firmenprofil", about_path %></li>
+        <li><%= link_to "Referenzen", references_path %></li>
+        <li><%= link_to "Vertriebspartner", distributors_path %></li>
+        <li><%= link_to "Kontakt", contact_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Profil", user_path(current_user) %></li>
+            <li><%= link_to "Einstellungen", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete"  %></li>
+          </ul>
+        </li>
+        <% else %>
+        <li><%= link_to "Sign in", signin_path %></li>
+        <% end %>
+      </ul>
       <% if signed_in? %>
         <% if current_user.admin? %>
-          <%= drop_down "Administration" do %>
-            <%= menu_item "Produkte", products_path %>
-            <%= menu_item "Produkt Gruppen", product_groups_path %>
-          <% end %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Produkte", products_path %></li>
+              <li><%= link_to "Produkt Gruppen", product_groups_path %></li>
+              <%#<li class="divider"></li>%>
+              <%#<li><a href="#">Separated link</a></li>%>
+            </ul>
+          </li>
+        </ul>
         <% end %>
-        <%= drop_down "Account" do %>
-            <%= menu_item "Profil", user_path(current_user) %>
-            <%= menu_item "Einstellungen", edit_user_path(current_user) %>
-            <%= menu_item "Sign out", signout_path, method: "delete"  %>
-        <% end %>
-      <% else %>
-        <%= menu_item "Sign in", signin_path %>
       <% end %>
-    <% end %>
-<% end %>
+      <%#<form class="navbar-form navbar-right" role="search">%>
+        <%#<div class="form-group">%>
+          <%#<input type="text" class="form-control" placeholder="Search">%>
+        <%#</div>%>
+        <%#<button type="submit" class="btn btn-default">Submit</button>%>
+      <%#</form>%>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 <div id="content" class="bs-docs-header">
   <div class="container">
     <div class="row"><%= link_to '', root_path %>
-      <div class="span12">
+    <div class="span12">
         <!-- TODO: Logo for text based browser -->
       </div>
     </div>
