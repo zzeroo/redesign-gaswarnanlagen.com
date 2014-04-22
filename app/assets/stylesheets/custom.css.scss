@@ -8,7 +8,7 @@ $boxnachrichten: #5D5D5D;
 
 body { 
   padding-top: 50px; 
-  padding-bottom: 40px; 
+  padding-bottom: 140px; 
 }
 
 .bs-docs-header {
@@ -73,12 +73,12 @@ body {
 }
 
 .navbar-custom {
-  background-color: #eeeeee;
+  background-color: rgba(240,240,240,0.7);
   border-color: #dddddd;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#eeeeee));
-  background-image: -webkit-linear-gradient(top, #ffffff, 0%, #eeeeee, 100%);
-  background-image: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(rgba(255,255,255,0.0)), to(rgba(240,240,240,0.7)));
+  background-image: -webkit-linear-gradient(top, #ffffff, 0%, rgba(240,240,240,0.7));
+  background-image: -moz-linear-gradient(top, #ffffff 0%, rgba(240,240,240,0.7));
+  background-image: linear-gradient(to bottom, #ffffff 0%, rgba(240,240,240,0.7));
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
 }

@@ -22,6 +22,7 @@ gem "therubyracer"
 #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 gem 'sass-rails', '~> 4.0.2'
 gem 'bootstrap-sass', '~> 3.1.1'#
+gem 'font-awesome-sass'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'

@@ -5,7 +5,7 @@
         <% @product_groups.each do |product_group| %>
         <div class="col-md-6">
           <div class="my-inner box_product_group" style="background-color: <%= product_group.background_color %>">
-            <%= link_to(content_tag('h1', product_group.name), product_group_path(product_group ))  %>
+            <a href="<%= product_group_path(product_group) %>"><h1><%= product_group.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
             <p class="logo"><%= image_tag product_group.logo.url %></p>
             <p class="description"><%= product_group.description %></p>
           </div>
