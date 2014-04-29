@@ -18,8 +18,12 @@ describe Product do
     it { should_not be_valid }
   end
 
-  describe "when description is not present" do
-    before { @product.description = nil }
+  describe "when product_nr is not unique" do
+    before do
+      product_with_same_product_nr = @product.dup
+      product_with_same_product_nr.save
+    end
+    
     it { should_not be_valid }
   end
 

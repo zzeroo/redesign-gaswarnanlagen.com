@@ -59,16 +59,16 @@ describe "Categories pages" do
   end
 
   describe "category show page" do
-    let!(:category) { FactoryGirl.create(:category, product_nr_prefix: "100") }
+    let(:category) { FactoryGirl.create(:category, product_nr_prefix: "100") }
     let!(:product1) { FactoryGirl.create(:product, product_nr: "100-12345678") }
     let!(:product2) { FactoryGirl.create(:product, product_nr: "200-12345678") }
 
-    before{ visit categories_path(category) }
+    before{ visit category_path(category) }
 
-    xit { should have_content(category.name) }
-    xit { should have_title(category.name) }
+    it { should have_content(category.name) }
+    it { should have_title(category.name) }
 
-    describe "list of categories" do
+    describe "list of products" do
       it { should have_content(product1.product_nr) }
       it { should have_content(product1.description) }
       it { should have_content(product1.short_description) }

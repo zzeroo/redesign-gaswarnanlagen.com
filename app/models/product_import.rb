@@ -1,18 +1,8 @@
 class ProductImport
-  # switch to ActiveModel::Model in Rails 4
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
+  include ActiveModel::Model
 
-  attr_accessor :file
+  attr_accessor :file, :product_nr
 
-  def initialize(attributes = {})
-    attributes.each { |name, value| send("#{name}=", value) }
-  end
-
-  def persisted?
-    false
-  end
 
   def save
     if imported_products.map(&:valid?).all?
@@ -21,7 +11,7 @@ class ProductImport
     else
       imported_products.each_with_index do |product, index|
         product.errors.full_messages.each do |message|
-          errors.add :base, "Row #{index+2}: #{message}"
+          errors.add :base, "Row #{index+4}: #{message}"
         end
       end
       false
@@ -34,11 +24,13 @@ class ProductImport
 
   def load_imported_products
     spreadsheet = open_spreadsheet
-    header = spreadsheet.row(1)
-    (2..spreadsheet.last_row).map do |i|
+    header = translate_attributes( spreadsheet.row(1) )
+    puts header.inspect
+    (4..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = Product.find_by_id(row["id"]) || Product.new
       product.attributes = row.to_hash.slice(*Product.attribute_names)
+      puts product.inspect
       product
     end
   end
@@ -51,4 +43,21 @@ class ProductImport
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
+
+  # This function translate the given easyWinArt model attributes
+  # to attribute names of the own model
+  def translate_attributes(attributes)
+    translations = {
+      "Artikelnummer"   => "product_nr",
+      "Kurzbezeichnung" => "short_description",
+      "Langbezeichnung" => "description"
+    }
+
+    attributes.map! do |a|
+      translations[a].nil? ? a.parameterize.underscore : translations[a]
+    end
+    return attributes
+  end
+
+
 end

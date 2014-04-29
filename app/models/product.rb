@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
   default_scope { order(product_nr: :asc) }
 
-  validates :product_nr, presence: true
-  validates :description, presence: true
+  validates :product_nr, presence: true, uniqueness: true
+  #validates :description, presence: true
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
