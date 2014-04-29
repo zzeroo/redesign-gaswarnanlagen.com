@@ -80,16 +80,16 @@ describe "AuthenticationPages" do
         end
       end
 
-      describe "in the ProductGroups controller" do
-        let(:product_group) {FactoryGirl.create(:product_group)}
+      describe "in the Categories controller" do
+        let(:category) {FactoryGirl.create(:category)}
 
         describe "submitting the create action" do
-          before { post product_groups_path }
+          before { post categories_path }
           specify { expect(response).to redirect_to(signin_path) }
         end
 
         describe "submitting to the destroy action" do
-          before { delete product_group_path(product_group) }
+          before { delete category_path(category) }
           specify { expect(response).to redirect_to(signin_path) }
         end
       end

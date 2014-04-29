@@ -4,7 +4,8 @@ RedesignGaswarnanlagenCom::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :products 
   resources :product_imports
-  resources :product_groups
+  resources :categories
+
   root 'static_pages#home'
   match '/signup', to: 'users#new',            via: 'get'
   match '/signin', to: 'sessions#new',        via: 'get'

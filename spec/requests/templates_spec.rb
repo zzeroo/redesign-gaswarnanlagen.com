@@ -30,7 +30,7 @@ describe "GET index" do
 
     describe "as non admin user" do
       it { should_not have_link('Produkte', href: products_path) }
-      it { should_not have_link('Produkt Gruppen', href: product_groups_path) }
+      it { should_not have_link('Produkt Kategorien', href: categories_path) }
     end
 
     describe "as admin" do
@@ -38,7 +38,7 @@ describe "GET index" do
       before { sign_in admin }
 
       it { should have_link('Produkte', href: products_path) }
-      it { should have_link('Produkt Gruppen', href: product_groups_path) }
+      it { should have_link('Produkt Kategorien', href: categories_path) }
     end
   end
 end

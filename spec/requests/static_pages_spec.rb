@@ -30,18 +30,18 @@ describe "StaticPages" do
       it { should_not have_link('Anmelden!') }
     end
 
-    describe "product groups on home page" do
-      let!(:product_group1) { FactoryGirl.create(:product_group, published: true) }
+    describe "product categories on home page" do
+      let!(:category) { FactoryGirl.create(:category, published: true) }
       before { visit root_path }
 
-      it { should have_content(product_group1.name) }
-      it { should have_content(product_group1.description) }
+      it { should have_content(category.name) }
+      it { should have_content(category.description) }
 
-      describe "non published product groups" do
-        let!(:non_published_product_group) { FactoryGirl.create(:product_group, published: false) }
+      describe "non published category" do
+        let!(:non_published_category) { FactoryGirl.create(:category, published: false) }
         before { visit root_path }
 
-        it { should_not have_content(non_published_product_group.name) }
+        it { should_not have_content(non_published_category.name) }
       end
     end
   end

@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-md-9">
       <div class="row">
-        <% @product_groups.each do |product_group| %>
+        <% @categories.each do |category| %>
         <div class="col-md-6">
-          <div class="my-inner box_product_group" style="background-color: <%= product_group.background_color %>">
-            <a href="<%= product_group_path(product_group) %>"><h1><%= product_group.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <p class="logo"><%= image_tag product_group.logo.url %></p>
-            <p class="description"><%= product_group.description %></p>
+          <div class="my-inner box_category" style="background-color: <%= category.background_color %>">
+            <a href="<%= category_path(category) %>"><h1><%= category.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
+            <p class="logo"><%= image_tag category.logo.url %></p>
+            <p class="description"><%= category.description %></p>
           </div>
         </div>
       <% end %>
@@ -16,7 +16,7 @@
     <div class="col-md-3">
       <div class="row">
         <div class="col-md-12">
-          <div class="my-inner box_product_group box_aktuell">
+          <div class="my-inner box_category box_aktuell">
             <a href="#"><h1>Aktuell</h1></a>
             <p class="description">
               <%= Faker::Lorem.paragraph(10) %>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="my-inner box_product_group box_nachrichten">
+          <div class="my-inner box_category box_nachrichten">
             <a href="#"><h1>Nachrichten</h1></a>
             <p class="description">
               <%= Faker::Lorem.paragraph(10) %>

@@ -1,0 +1,16 @@
+<% provide(:title, @category.name) %>
+<h1>
+  <%= @category.name %>
+  <% if current_user && current_user.admin? %><small><%= link_to 'bearbeiten', edit_category_path(@category) %></small><% end %>
+</h1>
+
+<div class="table-responsive">
+  <table class="table table-hover table-hover">
+    <tr><th>Art. Nr.</th><th>Bezeichnung</th><th>Kurztext</th></tr>
+    <%= render @products %>
+  </table>
+</div>
+
+
+<div class="row">
+</div>

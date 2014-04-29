@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @product_groups = ProductGroup.where(published: true)
+    @categories = Category.where(published: true)
   end
 
   def references
