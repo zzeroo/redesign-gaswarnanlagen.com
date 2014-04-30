@@ -24,6 +24,15 @@ body {
   }
 }
 
+body > .jumbotron { 
+  background: none;
+  padding: 0;
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+}
+
 .box_category, .box_aktuell, .box_nachrichten {
   height: 368px;
   color: #FFF;
@@ -182,4 +191,7 @@ body {
 .navbar-custom .navbar-link:hover {
   color: #222222;
 }
+
+
+
 

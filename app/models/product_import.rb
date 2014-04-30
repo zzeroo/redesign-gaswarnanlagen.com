@@ -28,7 +28,7 @@ class ProductImport
     puts header.inspect
     (4..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      product = Product.find_by_id(row["id"]) || Product.new
+      product = Product.find_by(product_nr: row["product_nr"]) || Product.new
       product.attributes = row.to_hash.slice(*Product.attribute_names)
       puts product.inspect
       product
