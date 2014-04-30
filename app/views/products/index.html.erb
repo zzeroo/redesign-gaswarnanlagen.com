@@ -11,16 +11,16 @@
   <table class="table table-hover table-hover">
     <tr>
       <th>Art. Nr.</th>
-      <th>Bezeichnung</th>
       <th>Kurztext</th>
+      <th>Bezeichnung</th>
       <th></th>
     </tr>
   </div>
   <% for product in  @products do %>
     <tr>
     <td><%= product.product_nr %></td>
-    <td><%= product.description %></td>
     <td><%= product.short_description %></td>
+    <td><%= product.description %></td>
     <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %></td>
   </tr>
   <%end %>
