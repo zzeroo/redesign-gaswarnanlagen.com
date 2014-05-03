@@ -48,7 +48,7 @@ describe "StaticPages" do
 
   describe "About page" do
     before { visit about_path }
-    let(:heading)     { 'Firmenprofil' }
+    let(:heading)     { 'Mehr Sicherheit durch RA-GAS Warnsysteme' }
     let(:page_title)  { 'Firmenprofil' }
 
     it_should_behave_like "all static pages"

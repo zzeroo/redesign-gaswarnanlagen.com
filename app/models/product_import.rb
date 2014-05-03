@@ -1,7 +1,7 @@
 class ProductImport
   include ActiveModel::Model
 
-  attr_accessor :file, :product_nr
+  attr_accessor :file
 
 
   def save

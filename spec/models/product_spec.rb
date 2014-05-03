@@ -19,12 +19,12 @@ describe Product do
   end
 
   describe "when product_nr is not unique" do
-    before do
-      product_with_same_product_nr = @product.dup
-      product_with_same_product_nr.save
+    let!(:product) { FactoryGirl.create(:product, product_nr: "1") }
+    let!(:product2) { Product.new(product_nr: "1") }
+
+    it "should not be valid" do
+      expect(product2).not_to be_valid
     end
-    
-    it { should_not be_valid }
   end
 
   describe "default ordering scope" do

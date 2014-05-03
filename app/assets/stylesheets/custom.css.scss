@@ -5,7 +5,6 @@ $boxaktuell: #7C7C7C;
 $boxgruen: #0D440D;
 $boxnachrichten: #5D5D5D;
 
-
 body { 
   padding-top: 50px; 
   padding-bottom: 140px; 
@@ -71,6 +70,7 @@ body > .jumbotron {
 
 .box_nachrichten {
   background-color: $boxnachrichten;
+  height: 600px;
 }
 
 // http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/
