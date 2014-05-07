@@ -1,20 +1,9 @@
 <% provide(:title, 'Produkte importieren') %>
 <h1>Produkte importieren</h1>
 
-<p>Es kann eine CSV oder Excel Datei benutzt werden um die Produkte zu aktualisieren. Die erste Zeile muss die Spalten Namen der Datenbank enthalten! Folgende Spalten Namen sind vorhanden.</p>
+<p>Die WinEasyArt Excel Datei kann benutzt werden um die Produkte zu aktualisieren.</p>
 
-<ul>
-  <% Product.columns.each do |column| %>
-    <% if column.name.in? [*Product.attribute_names] %>
-      <li>
-        <strong><%= column.name %></strong> -
-        <%= column.type.to_s.titleize %> type
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<p>Ist eine <strong>id</strong> vorhanden, wird der entsprechende Datensatz in der Datenbank aktualisiert, ansonnsten wird eine neuer Eintrag in der Datenbank erstellt.</p>
+<p>Beim Import wird nach der <strong>Artikelnummer</strong> gesucht, ist diese vorhanden, wird der entsprechende Datensatz in der Datenbank aktualisiert, ansonnsten wird eine neuer Eintrag in der Datenbank erstellt.</p>
 
 <%= form_for @product_import do |f| %>
   <% if @product_import.errors.any? %>

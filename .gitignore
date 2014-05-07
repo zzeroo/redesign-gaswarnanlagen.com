@@ -26,5 +26,8 @@ config/database.yml
 bundler_stubs/
 doc/
 
-
 .env
+
+# Temp files form gedit?
+*~
+

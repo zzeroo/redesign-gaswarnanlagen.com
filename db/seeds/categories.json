@@ -13,7 +13,7 @@
     "name": "Gaswarnanlagen",
     "description": "Gaswarnanlagen vom Standardprogramm bis zur kundenspezifischen Lösung. Wir bieten das Universalprogramm zur Messung und Auswertung für brennbare und toxische Gase, explosive Dämpfe, Kältemittel. Ob als Kompaktwarnanlage im AP-Gehäuse aus Kunststoff oder als Schaltschrankeinbaugerät. Gaswarnanlagen als zuverlässige Schutz- und Alarm-Funktion im Einsatz zur Vermeidung von Personen-, Sach- und Umweltschäden.",
     "published": true,
-    "product_nr_prefix": "300",
+    "product_nr_prefix": null,
     "background_color": "#D13E26",
     "parent_id": null
   },
@@ -94,7 +94,7 @@
     "name": "Messfühler",
     "description": "Messfühler zum Einsatz an Gaswarnanlagen für brennbare und toxische Gase, explosive Dämpfe oder Kältemittel als Halbleiter, Pelistor, elektrochemischem Sensor oder mit Infrarotmessverfahren.",
     "published": true,
-    "product_nr_prefix": "510",
+    "product_nr_prefix": null,
     "background_color": "#00305E",
     "parent_id": null
   },

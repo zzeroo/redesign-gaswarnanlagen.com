@@ -78,11 +78,34 @@ body > .jumbotron {
 
 .box_aktuell {
   background-color: $boxaktuell;
+  overflow: hidden;
 }
 
 .box_nachrichten {
   background-color: $boxnachrichten;
-  height: 600px;
+  min-height: 726px;
+  overflow: hidden;
+}
+
+.box_nachrichten table {
+    background-color: #5d5d5d !important;
+    	margin-left: 10px;
+    	margin-top: 10px;
+    	width: 200px;
+}
+
+.box_nachrichten td {
+    background-color: #5d5d5d;
+    	line-height: 1.2;
+    	color: #aaa !important;
+    	font-size: 1em !important;
+}
+
+.box_nachrichten a {
+    text-decoration: none;
+    	color: white !important;
+    	font-size: 1em !important;
+    	line-height: 1.2;
 }
 
 // http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/

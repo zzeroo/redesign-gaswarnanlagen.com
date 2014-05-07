@@ -1,0 +1,17 @@
+<div class="row" style="padding-bottom: 2em">
+  <div class="col-md-2">
+    <%= link_to image_tag( news.news_image.url(:thump)), news.news_image.url  %>
+  </div>
+  <div class="col-md-10">
+    <b><%= news.updated_at.to_s( :db ) %></b>
+    <h4><%= news.title %></h4>
+    <p><%= news.news_body.html_safe %></p>
+    <% if current_user && current_user.admin? %>
+      <span>
+        <%= link_to 'bearbeiten', edit_news_path(news) %> | 
+        <%= link_to 'löschen', news, method: :delete, data: { confirm: "Bist du sicher?" } %>
+      </span>
+    <% end %>
+  </div>
+</div>
+

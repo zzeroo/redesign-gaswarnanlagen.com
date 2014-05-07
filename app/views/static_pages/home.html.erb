@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <div class="my-inner box_category" style="background-color: <%= category.background_color %>">
             <a href="<%= category_path(category) %>"><h1><%= category.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <p class="logo"><%= image_tag category.logo.url %></p>
+            <a href="<%= category_path(category) %>"><p class="logo"><%= image_tag category.logo.url %></p></a>
             <p class="description"><%= category.description %></p>
           </div>
         </div>
@@ -41,23 +41,23 @@
       <div class="row">
         <div class="col-md-12">
           <div class="my-inner box_category box_aktuell">
-            <a href="#"><h1>Aktuell</h1></a>
-            <p class="description">
-              <%= Faker::Lorem.paragraph(10) %>
-            </p>
+            <a href="#"><h1>Aktuell<i class="pull-right fa fa-chevron-down"></i></h1></a>
+            <ul>
+            <%= render partial: "news/news_list", collection: @news, as: :news %>
+            </li>
           </div>
         </div>
         <div class="col-md-12">
           <div class="my-inner box_category box_nachrichten">
-            <a href="#"><h1>Nachrichten</h1></a>
-            <p class="description">
-              <%= Faker::Lorem.paragraph(10) %>
-            </p>
+            <a href="#"><h1>Nachrichten<i class="pull-right fa fa-chevron-down"></i></h1></a>
+            <script type="text/javascript"  src="http://www.presseportal.de/services/content/userfeed.htx?id=f0db4e121a194683ace54a3e2fb93c31"  data-turbolinks-eval=true></script>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 

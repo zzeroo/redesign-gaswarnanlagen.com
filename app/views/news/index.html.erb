@@ -1,3 +1,18 @@
 <% provide(:title, 'Aktuell') %>
-<h1>Aktuell</h1>
+
+<div class="row" style="padding-top: 2em">
+  <div class="col-md-12">
+
+    <%= render @news %>
+
+  </div>
+</div>
+
+
+
+<div class="row center">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'News erstellen', new_news_path, class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
 

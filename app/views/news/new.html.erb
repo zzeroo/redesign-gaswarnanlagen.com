@@ -1,2 +1,11 @@
-<h1>News#new</h1>
-<p>Find me in app/views/news/new.html.erb</p>
+<% provide(:title, 'News') %>
+<h1>News</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @news, html: {:multipart => true, class: "form-horizontal", role: "form"}  do |f| %>
+      <%= render 'fields', f: f %>
+      <div><%= f.submit "News speichern", class: "btn btn-large btn-primary" %></div>
+    <% end %>
+  </div>
+</div>
