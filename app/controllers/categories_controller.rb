@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]<%= debug(params) if Rails.env.development? %>
  
   def index
-    @categories = Category.all
+    @categories = Category.where(children: nil)
   end
   
   def show

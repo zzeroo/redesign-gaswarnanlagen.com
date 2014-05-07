@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @categories = Category.where(published: true)
+    @categories = Category.where(parent: nil, published: true)
   end
 
   def references

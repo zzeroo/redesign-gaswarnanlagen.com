@@ -18,8 +18,8 @@ describe "Categories pages" do
     it { should have_title('Produkt Kategorien') }
     it { should have_content('Produkt Kategorien') }
 
-    it "should list all categories" do
-      Category.all.each do |category|
+    it "should list all root categories those without parents" do
+      Category.where(parent: nil).each do |category|
         expect(page).to have_selector('h1', text: category.name )
         expect(page).to have_selector('p', text: category.description )
       end

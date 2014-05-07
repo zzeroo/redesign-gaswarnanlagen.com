@@ -26,6 +26,15 @@ sind (siehe Beziehung Kategorie -> Produkte)
 Kategorien (Categories) enthalten Produkte (Products) oder Unterkategorien 
 (SubCategories through CategoryJoin) oder beides.
 
+http://stackoverflow.com/questions/6097288/how-can-i-do-self-reference-with-ruby-on-rails
+
+```
+class Category < ActiveRecord::Base
+  belongs_to :parent, :class_name => 'Category'
+  has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
+end
+```
+
 
 Milestones
 ----------
@@ -69,4 +78,18 @@ ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
 ### Hilfreiche Webseiten
 
 - [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
+
+### Misc
+
+#### ActiveRecord to JSON
+
+Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
+
+```
+# Einfach
+File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
+
+# Auswahl der wichtigen Attribute
+File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
+```
 

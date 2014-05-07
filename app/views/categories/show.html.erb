@@ -1,15 +1,36 @@
 <% provide(:title, @category.name) %>
-<h1>
-  <%= @category.name %>
-  <% if current_user && current_user.admin? %><small><%= link_to 'bearbeiten', edit_category_path(@category) %></small><% end %>
-</h1>
 
+<div><%= link_to "http://gaswarnanlagen.com", root_path %> > <%= @category.name %></div>
+
+<% if current_user && current_user.admin? %><%= link_to 'bearbeiten', edit_category_path(@category) %><% end %>
+
+<% unless @category.children.empty? %>
+<div class="my-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+      <% @category.children.each do |child| %>
+        <div class="col-md-3">
+          <div class="my-inner box_category_small" style="background-color: <%= child.background_color %>">
+            <a href="<%= category_path(child) %>"><h1><%= child.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
+            <p class="logo"><%= image_tag child.logo.url %></p>
+            <p class="description"><%= child.description %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if @products.present? %>
 <div class="table-responsive">
   <table class="table table-hover table-hover">
     <tr><th>Art. Nr.</th><th>Bezeichnung</th><th>Kurztext</th></tr>
     <%= render @products %>
   </table>
 </div>
+<% end %>
 
 
 <div class="row">

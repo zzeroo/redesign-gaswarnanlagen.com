@@ -3,24 +3,12 @@
 <h1>Produkt Kategorien</h1>
 
 <div class="row">
-  <div class="col-md-8">
-    <div class="row">
-      <% for category in  @categories do %>
-      <div class="col-md-6">
-        <h1><%= link_to( category.name, category_path(category) ) %><i class="icon icon-chevron-down pull-right"></i></h1>
-        
+  <div class="col-md-12">
 
-        <p><%= image_tag category.logo.url, :width => '100px' %></p>
-        <%= simple_format category.description %>
-        <% if current_user && current_user.admin? %>
-          <p>
-          <%= link_to 'bearbeiten', edit_category_path(category) %> | 
-          <%= link_to 'löschen', category, method: :delete, data: { confirm: "Bist du sicher?" } %>
-        </p>
-        <% end %>
-      </div>
-      <%end %>
-    </div>
+    <ul>
+      <%= render @categories %>
+    </ul>
+
   </div>
 </div>
 

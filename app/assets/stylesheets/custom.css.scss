@@ -32,8 +32,7 @@ body > .jumbotron {
   }
 }
 
-.box_category, .box_aktuell, .box_nachrichten {
-  height: 368px;
+@mixin h_and_links {
   color: #FFF;
   h1, .description {
     padding: .5em;
@@ -63,6 +62,19 @@ body > .jumbotron {
   }
 }
 
+.box_category, .box_aktuell, .box_nachrichten {
+  height: 368px;
+  @include h_and_links
+}
+
+.box_category_small {
+  height: 268px;
+  @include h_and_links
+}
+
+.box_category_small {
+  height: 268px;
+}
 
 .box_aktuell {
   background-color: $boxaktuell;
@@ -192,6 +204,10 @@ body > .jumbotron {
   color: #222222;
 }
 
-
+// custom image as li 
+ul
+{
+  list-style-image:url('r_s_strich.gif');
+}
 
 
