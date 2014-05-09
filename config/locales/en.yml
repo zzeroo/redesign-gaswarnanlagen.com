@@ -25,3 +25,6 @@ en:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
+  will_paginate:
+    previous_label: "« previous"
+    next_label: "next »"

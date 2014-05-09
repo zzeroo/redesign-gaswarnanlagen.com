@@ -1,5 +1,6 @@
-  <li>
-  <%= link_to( category.name, category_path(category) ) %>
+<li>
+<% unless category.children.empty? %><span><i class="fa fa-minus"></i></span> <% else %><span><i class="fa fa-leaf"></i></span> <% end %>
+<%= link_to( content_tag(:strong, category.name, class: 'h3' ), category_path(category) ) %>
   <%#= image_tag category.logo.url, :width => '100px' %>
   <%= simple_format category.description %>
   <% if current_user && current_user.admin? %>
@@ -14,5 +15,5 @@
     <%= render category.children %>
   </ul>
   <% end %>
-</li>
+  </li>
 

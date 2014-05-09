@@ -36,7 +36,7 @@ end
 ```
 
 
-Milestones
+TODO
 ----------
 
 1. ~~Statisches responsitive Layout~~
@@ -45,6 +45,8 @@ Milestones
 1. Produkte mit Passwort schützen
 1. Im Header der Navigation das RA-GAS GmbH durch ein schwarz/ weißes Logo ersetzen
 1. Module “Aktuell” und “Nachrichten” erstellen
+1. Kategorien als Baum darstellen (http://jsfiddle.net/jhfrench/GpdgF/)
+
 
 Dokumentation
 -------------
@@ -54,6 +56,15 @@ Die Dokumentation kann mit dem Befehle `rdoc --format=fivefish` erstellt werden.
 ### Darstellung der Modelbezieungen
 
 Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
+
+### Pagination
+
+Die Pagination wird mit will_paginate und dem Bootstrap3 Renderer will_paginate-bootstrap
+realisiert.
+
+- https://github.com/mislav/will_paginate.git
+- https://github.com/bootstrap-ruby/will_paginate-bootstrap.git
+
 
 Resourcen
 ---------

@@ -3,7 +3,16 @@
 
 <p>Die WinEasyArt Excel Datei kann benutzt werden um die Produkte zu aktualisieren.</p>
 
-<p>Beim Import wird nach der <strong>Artikelnummer</strong> gesucht, ist diese vorhanden, wird der entsprechende Datensatz in der Datenbank aktualisiert, ansonnsten wird eine neuer Eintrag in der Datenbank erstellt.</p>
+<p>Es müssen nicht immer alle Produkte in einer einzigen Tabelle stehen, 
+es ist durchaus möglich einzelne Produkte in unterschiedlichen Tabellen zu 
+pflegen und diese Tabellen dann nach einander hoch zu laden.</p>
+
+<p>Es dürfen in einer Tabelle niemals 2 unterschiedliche Zeilen mit ein und
+der selben <b>Artikelnummer</b> stehen!
+
+<p>Beim Import wird nach der <strong>Artikelnummer</strong> gesucht, 
+ist diese vorhanden, wird der entsprechende Datensatz in der Datenbank 
+aktualisiert, ansonnsten wird eine neuer Eintrag in der Datenbank erstellt.</p>
 
 <%= form_for @product_import do |f| %>
   <% if @product_import.errors.any? %>
@@ -20,5 +29,5 @@
   <div class="field">
     <%= f.file_field :file %>
   </div>
-  <div class="buttons"><%= f.submit "Import" %></div>
+  <div class="buttons"><%= f.submit "Import", class: "btn btn-large btn-primary"%></div>
 <% end %>

@@ -6,8 +6,13 @@ class ProductImport
 
   def save
     if imported_products.map(&:valid?).all?
-      imported_products.each(&:save!)
-      true
+      begin
+        imported_products.each(&:save!)
+        true
+      rescue ActiveRecord::RecordInvalid => invalid
+        errors.add :base, invalid.record.errors
+        false
+      end
     else
       imported_products.each_with_index do |product, index|
         product.errors.full_messages.each do |message|
@@ -25,12 +30,12 @@ class ProductImport
   def load_imported_products
     spreadsheet = open_spreadsheet
     header = translate_attributes( spreadsheet.row(1) )
-    puts header.inspect
-    (4..spreadsheet.last_row).map do |i|
+    # Before we map over all spreadsheet rows we reject that rows which,
+    # after we join them to a plain string, have onle emptyness in it's self
+    (4..spreadsheet.last_row).reject{|i| spreadsheet.row(i).join.empty? }.map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = Product.find_by(product_nr: row["product_nr"]) || Product.new
       product.attributes = row.to_hash.slice(*Product.attribute_names)
-      puts product.inspect
       product
     end
   end

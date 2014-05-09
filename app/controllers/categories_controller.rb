@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]<%= debug(params) if Rails.env.development? %>
  
   def index
-    @categories = Category.where(children: nil)
+    @categories = Category.where(children: nil).order(:id)
   end
   
   def show
     @category = Category.find(params[:id])
-    @products = @category.products
+    @products = @category.products.paginate(:page => params[:page], :per_page =>10 ) if @category.products
   end
 
   def new
@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo)
+    params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id)
   end
 
 end

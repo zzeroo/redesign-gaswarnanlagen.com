@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'active_support'
+require 'active_record'
 require 'json'
 
 def make_users
@@ -82,12 +83,19 @@ def make_news
 end
 
 
-
+# Helper to fix the ID colums for category
+# http://stackoverflow.com/questions/11068800/rails-auto-assigning-id-that-already-exists
+# Apie's answer
+def fix_postgres_index
+  ActiveRecord::Base.connection.tables.each do |t|
+    ActiveRecord::Base.connection.reset_pk_sequence!(t)
+  end;nil
+end
 
 make_users
 make_categories
 add_category_logo
 make_news
-
+fix_postgres_index
 
 
