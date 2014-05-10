@@ -29,6 +29,8 @@ gem 'jbuilder', '1.0.2'
 gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
+gem 'sunspot_rails'
+
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
@@ -51,6 +53,7 @@ end
 
 group :development do
   gem "rails-erd"
+  gem 'sunspot_solr'
 end
 
 group :test do

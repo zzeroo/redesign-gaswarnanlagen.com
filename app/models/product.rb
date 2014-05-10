@@ -1,4 +1,9 @@
 class Product < ActiveRecord::Base
+  searchable do
+    text :product_nr, boost: 5
+    text :description, :short_description
+  end
+
   default_scope { order(product_nr: :asc) }
 
   validates :product_nr, presence: true, uniqueness: true

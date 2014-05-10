@@ -65,6 +65,10 @@ realisiert.
 - https://github.com/mislav/will_paginate.git
 - https://github.com/bootstrap-ruby/will_paginate-bootstrap.git
 
+### Solr
+
+http://blogs.pigrider.com/blogs/26
+
 
 Resourcen
 ---------

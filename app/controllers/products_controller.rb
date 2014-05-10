@@ -1,7 +1,16 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.paginate(:page => params[:page], :per_page => 30)
+    # with solr search
+    @search = Product.search do
+      fulltext params[:search]
+      paginate  :per_page => 10
+    end
+    @products = @search.results #.paginate(:page => params[:page], :per_page => 30)
+    
+    # Without solr search 
+    #@products = Product.paginate(:page => params[:page], :per_page => 30)
+
     respond_to do |format|
       format.html
       format.csv { send_data @products.to_csv }

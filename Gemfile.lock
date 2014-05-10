@@ -148,6 +148,7 @@ GEM
       mime-types
     pg (0.15.1)
     polyglot (0.3.4)
+    pr_geohash (1.0.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -196,6 +197,8 @@ GEM
       nokogiri
       rubyzip
       spreadsheet (> 0.6.4)
+    rsolr (1.0.10)
+      builder (>= 2.1.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -247,6 +250,14 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sunspot (2.1.1)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.1.1)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.1.1)
+    sunspot_solr (2.1.1)
     test-unit (2.5.5)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
@@ -314,6 +325,8 @@ DEPENDENCIES
   spork-testunit
   sprockets (= 2.11.0)
   sprockets-rails
+  sunspot_rails
+  sunspot_solr
   therubyracer
   turbolinks (= 1.1.1)
   uglifier (>= 1.0.3)
