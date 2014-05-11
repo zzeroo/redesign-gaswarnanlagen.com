@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 #ruby-gemset=redsign-gaswarnanlagen-com
 
 gem 'rails', '~> 4.1.0.rc2'
@@ -15,13 +15,12 @@ end
 
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
+gem 'bootstrap-sass', '~> 3.1.1'#
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'pg', '0.15.1'
 gem "therubyracer"
-#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 gem 'sass-rails', '~> 4.0.2'
-gem 'bootstrap-sass', '~> 3.1.1'#
 gem 'font-awesome-sass'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
