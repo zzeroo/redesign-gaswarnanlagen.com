@@ -44,14 +44,12 @@
 </div>
 <% else %>
   <% unless @category.children.present? %>
-  <% if current_user && current_user.admin? %>
   <div class="row">
     <p class="bg-info">
-    Dieser Kategorie sind noch keine Produkte zugeordnet. <%= link_to 'Hier klicken', edit_category_path(@category) %> um diese Kategorie zu bearbeiten,
-    und dieser Kategorie <b>Produktnummern</b> zuordnen.
+    Dieser Kategorie sind noch keine Produkte zugeordnet. <% if current_user && current_user.admin? %><%= link_to 'Hier klicken', edit_category_path(@category) %> um diese Kategorie zu bearbeiten,
+    und dieser Kategorie <b>Produktnummern</b> zuordnen.<% end %>
     </p>
   </div>
-  <% end %>
   <% end %>
 <% end %>
 
