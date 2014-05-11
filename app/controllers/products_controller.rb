@@ -6,10 +6,8 @@ class ProductsController < ApplicationController
       fulltext params[:search]
       paginate  :per_page => 10
     end
-    @products = @search.results #.paginate(:page => params[:page], :per_page => 30)
-    
-    # Without solr search 
-    #@products = Product.paginate(:page => params[:page], :per_page => 30)
+
+    @products = @search.results
 
     respond_to do |format|
       format.html
