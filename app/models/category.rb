@@ -17,7 +17,6 @@ class Category < ActiveRecord::Base
     has_many :category_joins
     has_many :subcategories, through: :category_joins
 
-
   def products
     Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|')) if self.product_nr_prefix.present?
   end
