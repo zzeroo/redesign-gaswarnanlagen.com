@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <div class="my-inner box_category" style="background-color: <%= category.background_color %>">
             <a href="<%= category_path(category) %>"><h1><%= category.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <a href="<%= category_path(category) %>"><p class="logo"><%= image_tag category.logo.url %></p></a>
+            <a href="<%= category_path(category) %>"><p class="logo" style="background: url(<%= category.logo.url %>) no-repeat center center; background-size: cover;"></p></a>
             <p class="description"><%= category.description %></p>
           </div>
         </div>

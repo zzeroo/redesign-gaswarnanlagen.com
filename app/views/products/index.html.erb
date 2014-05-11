@@ -48,9 +48,9 @@
       </tr>
       <% for product in  @products do %>
       <tr>
-        <td><%= product.product_nr %></td>
-        <td><%= product.short_description %></td>
-        <td><%= highlight product.description, params[:search] %></td>
+        <td><%= highlight_it product.product_nr, params[:search] %></td>
+        <td><%= highlight_it product.short_description, params[:search] %></td>
+        <td><%= highlight_it product.description, params[:search] %></td>
         <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %></td>
       </tr>
       <%end %>

@@ -26,4 +26,15 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
+  def highlight_it(what, with)
+    #product.product_nr, params[:search]
+    what = what.nil? ? "" : what
+    with = with.nil? ? "" : with
+    return highlight what, with
+  end
+
 end
+
+
+
