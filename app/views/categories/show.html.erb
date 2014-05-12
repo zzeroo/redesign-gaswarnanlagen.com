@@ -1,6 +1,8 @@
 <% provide(:title, @category.name) %>
 
-<div data-no-turbolink><%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to( @category.parent.name, @category.parent ) + " > " if @category.parent %><%= @category.name %></div>
+<div class="breadcrub" data-no-turbolink>
+  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to( @category.parent.name, @category.parent ) + " > " if @category.parent %><%= @category.name %>
+  </div>
 
 <div class="row">
   <% if current_user && current_user.admin? %>
@@ -10,6 +12,8 @@
   <% end %>
 </div>
 
+
+<!-- Categories -->
 <% unless @category.children.empty? %>
 <div class="my-container">
   <div class="row">
@@ -29,6 +33,8 @@
 </div>
 <% end %>
 
+
+<!-- Products -->
 <% if @products.present? %>
 <div class="row">
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
@@ -42,6 +48,7 @@
 <div class="row">
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>
+<!-- Category nor Product present -->
 <% else %>
   <% unless @category.children.present? %>
   <div class="row">
