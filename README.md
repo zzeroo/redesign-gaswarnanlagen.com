@@ -70,10 +70,18 @@ realisiert.
 http://blogs.pigrider.com/blogs/26
 
 
-### Paperclip
+### Paperclip (Dateianhänge)
+
+Dateianhänge werden mit dem Paperclip gem realisiert. 
+Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
+wurde das Logo Attribut als has_one Beziehung realisiert.
+Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
+entwurfen welches für unterschiedliche Models geeignet sein wird. 
+
 
 - http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
-
+- http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
+- http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
 
 Resourcen

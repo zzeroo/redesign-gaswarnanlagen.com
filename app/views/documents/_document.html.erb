@@ -1,15 +1,19 @@
-<p>
+<p class="h2">
 <%= document.title %>
 </p>
 <p>
 <%= document.body %>
 </p>
 
-<ul>
+<div>
   <% document.attached_assets.each do |asset| %>
-    <li><%= asset.asset_file_name %></li>
+    <%= image_tag asset.asset(:thumbnail) if asset.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
+    <%= link_to asset.asset_file_name, asset.asset.url %>
+    <pre>
+    <%= asset.asset.url %>
+    </pre>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "löschen", document, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %>
 
