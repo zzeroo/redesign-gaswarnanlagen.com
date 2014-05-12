@@ -1,0 +1,18 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: 5, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <%= f.label :file_upload %>
+    <%= file_field_tag :file_uploads_array, multiple: true %>
+</div>
+
+

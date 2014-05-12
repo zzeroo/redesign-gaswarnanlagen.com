@@ -1,4 +1,5 @@
 RedesignGaswarnanlagenCom::Application.routes.draw do
+  resources :documents
   resources :news
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

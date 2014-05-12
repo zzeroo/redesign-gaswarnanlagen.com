@@ -70,6 +70,12 @@ realisiert.
 http://blogs.pigrider.com/blogs/26
 
 
+### Paperclip
+
+- http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
+
+
+
 Resourcen
 ---------
 

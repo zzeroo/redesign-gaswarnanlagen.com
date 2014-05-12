@@ -29,7 +29,7 @@ gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
 gem 'sunspot_rails'
-
+gem 'simple_form'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'

@@ -1,0 +1,12 @@
+
+
+<%= render @documents %>
+
+
+<div class="row center">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Neues Dokument anlegen', new_document_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+

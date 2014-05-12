@@ -1,0 +1,21 @@
+<% provide(:title, 'Neues Dokument anlegen') %>
+<h1>Neues Dokument</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= simple_form_for(@document, html: { multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+      <%= f.input :title %>
+    </div>
+    <div class="form-group">
+      <%= f.input :body %>
+    </div>
+    <div class="form-group">
+      <%= file_field_tag('document_attached_assets_asset', multiple: true, name: "document[attached_assets_attributes][][asset]") %>
+    </div>
+      <div><%= f.submit "Dokument erstellen", class: "btn btn-large btn-primary" %></div>
+    <% end %>
+  </div>
+</div>
+
+

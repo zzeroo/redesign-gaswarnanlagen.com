@@ -1,0 +1,15 @@
+<p>
+<%= document.title %>
+</p>
+<p>
+<%= document.body %>
+</p>
+
+<ul>
+  <% document.attached_assets.each do |asset| %>
+    <li><%= asset.asset_file_name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "löschen", document, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %>
+
