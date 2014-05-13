@@ -53,6 +53,7 @@ end
 group :development do
   gem "rails-erd"
   gem 'sunspot_solr'
+  gem 'capistrano'
 end
 
 group :test do

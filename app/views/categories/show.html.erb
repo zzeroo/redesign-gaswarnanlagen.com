@@ -83,16 +83,6 @@
 <div class="row">
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>
-<!-- Category nor Product present -->
-<% else %>
-  <% unless @category.children.present? %>
-  <div class="row">
-    <p class="bg-info">
-    Dieser Kategorie sind noch keine Produkte zugeordnet. <% if current_user && current_user.admin? %><%= link_to 'Hier klicken', edit_category_path(@category) %> um diese Kategorie zu bearbeiten,
-    und dieser Kategorie <b>Produktnummern</b> zuordnen.<% end %>
-    </p>
-  </div>
-  <% end %>
 <% end %>
 
 

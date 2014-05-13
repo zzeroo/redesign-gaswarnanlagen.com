@@ -17,9 +17,9 @@ def make_users
               admin: true)
   User.create!(name: "Webmaster",
               email: "webmaster@gaswarnanlagen.com",
-              password: "930440",
-              password_confirmation: "930440",
-              admin: false)
+              password: "930440Hk",
+              password_confirmation: "930440Hk",
+              admin: true)
 end
 
 def make_categories
@@ -47,20 +47,24 @@ def add_category_logo
 
 
     Category.find(12).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
-    Category.find(13).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))    
-    Category.find(14).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-03.jpg"))    
-    Category.find(15).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))    
-    Category.find(16).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-05.jpg"))    
-    Category.find(17).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))    
-    Category.find(18).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-07.jpg"))    
+    Category.find(13).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
+    Category.find(14).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-03.jpg"))
+    Category.find(15).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
+    Category.find(16).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-05.jpg"))
+    Category.find(17).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
+    Category.find(18).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-07.jpg"))
     Category.find(19).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-08.jpg"))
     
-    Category.find(21).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-01.jpg"))    
-    Category.find(22).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-02.jpg"))    
-    Category.find(23).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-03.jpg"))    
-    Category.find(24).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-04.jpg"))    
+    Category.find(21).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-01.jpg"))
+    Category.find(22).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-02.jpg"))
+    Category.find(23).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-03.jpg"))
+    Category.find(24).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-04.jpg"))
 end
 
+def add_category_images
+  Category.find(1).attached_assets.create!(asset: File.new("#{Rails.root}/app/assets/images/GMZS312_touch.gif"))
+  Category.find(1).attached_assets.create!(asset: File.new("#{Rails.root}/app/assets/images/GMZS312_touch.jpg"))
+end
 
 def make_news
   News.create!(title: "Aufstieg in die Handball-Baden-Württemberg-Oberliga (BWOL)", updated_at: "22.02.2014 13:00:00", news_body: "Mit einem 26:17-Sieg bei der HSG Strohgäu holen sich die Korber Frauen die beiden noch benötigten Punkte und führen vier Spieltage vor Schluss uneinholbar die Tabelle der Württemberliga Nord an. Endlich darf man in Korb das A-Wort in den Mund nehmen. AUFSTIEG in die BWOL... http://www.sckorb-handball.de/frauen1/presse1314.html", news_image: File.new("#{Rails.root}/app/assets/images/aufsteiger2011.jpg"))
@@ -95,6 +99,7 @@ end
 make_users
 make_categories
 add_category_logo
+add_category_images
 make_news
 fix_postgres_index
 
