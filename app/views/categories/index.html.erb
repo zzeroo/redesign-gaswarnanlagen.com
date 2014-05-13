@@ -1,6 +1,15 @@
 <% provide(:title, 'Produkt Kategorien') %>
 <h1>Produkt Kategorien</h1>
 
+
+<div class="row text-right">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Neue Produkt Kategorie erstellen', new_category_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+
+
 <div class="row">
   <div class="col-md-12">
 
@@ -15,7 +24,7 @@
 
 
 
-<div class="row center">
+<div class="row text-right">
   <% if current_user && current_user.admin? %>
     <%= link_to 'Neue Produkt Kategorie erstellen', new_category_path, class: "btn btn-large btn-primary" %>
   <% end %>

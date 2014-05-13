@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @categories = Category.where(parent: nil, published: true)
+    @categories = Category.where(parent: nil)
     @news = News.all
   end
 

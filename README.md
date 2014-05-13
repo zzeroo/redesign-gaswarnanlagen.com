@@ -83,7 +83,6 @@ entwurfen welches für unterschiedliche Models geeignet sein wird.
 - http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
 - http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
-
 Resourcen
 ---------
 
