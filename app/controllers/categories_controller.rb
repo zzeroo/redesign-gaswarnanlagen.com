@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :destroy]
-  #before_action :signed_in_user, only: [:new, :create, :destroy]<%= debug(params) if Rails.env.development? %>
+  #before_action :signed_in_user, only: [:new, :create, :destroy]
  
   def index
     @categories = Category.where(children: nil).order(:id)
@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id)
+    params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, :attached_assets_attributes => [:asset, :asset_file_name ])
   end
 
 end

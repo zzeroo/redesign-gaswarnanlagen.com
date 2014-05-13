@@ -13,6 +13,40 @@
 </div>
 
 
+<% if @category.attached_assets && @category.attached_assets.size == 1 %>
+  <%= image_tag @category.attached_assets.first.asset_file_name if @category.attached_assets.first.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
+<% end %>
+
+<% if @category.attached_assets && @category.attached_assets.size > 1 %>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 400px">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @category.attached_assets.each_with_index do |asset, index| %>
+    <li data-target="#carousel-example-generic" data-slide-to="<%= 0 + index %>" class="<%= 'active' if index == 0 %>"></li>
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" style="width:100%; max-height: 400px !important;">
+  <% @category.attached_assets.each_with_index do |asset, index| %>
+    <div class="item <%= 'active' if index == 0 %>">
+      <%= image_tag asset.asset_file_name, style: "width: 100%; display: block; "  if asset.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
+    </div>
+  <% end %>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+<% end %>
+
+
+
 <!-- Categories -->
 <% unless @category.children.empty? %>
 <div class="my-container">

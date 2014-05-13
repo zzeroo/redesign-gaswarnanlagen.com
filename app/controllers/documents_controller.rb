@@ -14,7 +14,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     if @document.save
-      flash[:notice] = 'Dokument gespeichert'
+      flash[:success] = 'Dokument gespeichert'
       redirect_to action: "index"
     else
       render :action => :new

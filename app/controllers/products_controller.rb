@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     # with solr search
     @search = Product.search do
       fulltext params[:search]
-      paginate  :per_page => 10
+      paginate page: params[:page], :per_page => 10
     end
 
     @products = @search.results

@@ -25,10 +25,17 @@
     <%= f.file_field :logo %>
 </div>
 
+
+<div class="form-group">
+  <%= f.label :pictures %>
+      <%= file_field_tag('category_attached_assets_asset', multiple: true, name: "category[attached_assets_attributes][][asset]") %>
+</div>
+
+
 <div class="form-group">
     <%= f.label  "Unterkategorie von" %>
     <% categories_array = Category.all.map{ |category| [category.name + "/" + truncate(category.description, :length => 30), category.id, category.children.empty? ? "" : {class: 'bold'}] } %>
-    <%= collection_select(:category, :parent_id, Category.all, :id, :name) %>
+    <%= collection_select(:category, :parent_id, Category.all, :id, :name, include_blank: "---" ) %>
 </div>
 
 
