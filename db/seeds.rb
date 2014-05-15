@@ -64,6 +64,7 @@ end
 def add_category_images
   Category.find(1).attached_assets.create!(asset: File.new("#{Rails.root}/app/assets/images/GMZS312_touch.gif"))
   Category.find(1).attached_assets.create!(asset: File.new("#{Rails.root}/app/assets/images/GMZS312_touch.jpg"))
+  Category.find(4).attached_assets.create!(asset: File.new("#{Rails.root}/app/assets/images/heizungsraeume.png"))
 end
 
 def make_news

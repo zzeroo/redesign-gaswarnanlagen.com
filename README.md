@@ -121,3 +121,40 @@ File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_gener
 File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
 ```
 
+# Deployment
+
+- https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
+- https://help.github.com/articles/using-ssh-agent-forwarding
+
+Auf dem Production System wird ein dezidierter Benutzer (gaswarnanlagen) 
+angelegt. Zudem wird noch eine Gruppe (deployment) angelgt um 
+die Dateisystem Berechtigungen feiner abstimmen zu können.
+
+## Postgres Datenbank auf Production System
+
+Folgende Programme werden auf dem Produktiv System installiert.
+
+```
+$ sudo apt-get install postgresql
+$ sudo apt-get install libpq-dev
+```
+
+Auch in der Postgres Datenbank wird ein eigener Benutzer (gaswarnanlgen)
+angelgt.
+Dabei wird <username> durch den richtigen Benutzer ersetzt, in diesem Fall
+gaswarnanlgen.
+
+```
+$ sudo su postgres -c psql
+postgres=# CREATE ROLE <username> SUPERUSER LOGIN;
+postgres=# \q
+```
+```
+```
+```
+
+- http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails
+
+
+
+

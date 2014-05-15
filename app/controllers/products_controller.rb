@@ -4,16 +4,10 @@ class ProductsController < ApplicationController
     # with solr search
     @search = Product.search do
       fulltext params[:search]
-      paginate page: params[:page], :per_page => 10
+      paginate page: params[:page], per_page: 30
     end
 
     @products = @search.results
-
-    respond_to do |format|
-      format.html
-      format.csv { send_data @products.to_csv }
-      format.xls
-    end
   end
   
   def show

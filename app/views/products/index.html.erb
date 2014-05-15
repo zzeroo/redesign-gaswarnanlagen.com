@@ -31,37 +31,28 @@
     <% end %>
 
 
+
+
+<!-- Products -->
+<% if @products.present? %>
 <div class="row">
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>
-
-
-<div class="row">
-  <div class="table-responsive">
-    <table class="table table-hover table-hover">
-      <tr>
-        <th>Art. Nr.</th>
-        <th>Kurztext</th>
-        <th>Bezeichnung</th>
-        <th></th>
-
-      </tr>
-      <% for product in  @products do %>
-      <tr>
-        <td><%= highlight_it product.product_nr, params[:search] %></td>
-        <td><%= highlight_it product.short_description, params[:search] %></td>
-        <td><%= highlight_it product.description, params[:search] %></td>
-        <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %></td>
-      </tr>
-      <%end %>
-    </table>
-  </div>
+<div class="table-responsive">
+  <table class="table table-hover table-hover">
+    <tr>
+      <th>Art. Nr.</th>
+      <th>Kurztext</th>
+      <th>Bezeichnung</th>
+  </tr>
+    <%= render @products %>
+  </table>
 </div>
-
-
 <div class="row">
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>
+<% end %>
+
 
 
 <div class="row">

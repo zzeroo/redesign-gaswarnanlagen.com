@@ -6,10 +6,8 @@ gem 'rails', '~> 4.1.0.rc2'
 
 group :assets do  
   gem 'uglifier', '>= 1.0.3'
-
   gem 'sprockets', '2.11.0' # 2.12.0 is broken
   gem 'sprockets-rails'
-
   gem 'coffee-rails'
 end
 
@@ -25,7 +23,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
-gem 'unicorn'
+#gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
 gem 'sunspot_rails'
@@ -53,7 +51,9 @@ end
 group :development do
   gem "rails-erd"
   gem 'sunspot_solr'
-  gem 'capistrano'
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
 end
 
 group :test do
@@ -80,5 +80,5 @@ group :doc do
 end
 
 group :production do
-  gem 'rails_12factor'
+#  gem 'rails_12factor'
 end
