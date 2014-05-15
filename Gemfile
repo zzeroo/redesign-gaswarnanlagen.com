@@ -23,7 +23,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
-#gem 'unicorn'
+gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
 gem 'sunspot_rails'
@@ -80,5 +80,5 @@ group :doc do
 end
 
 group :production do
-#  gem 'rails_12factor'
+  gem 'rails_12factor'
 end
