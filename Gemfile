@@ -26,6 +26,7 @@ gem 'jbuilder', '1.0.2'
 gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'simple_form'
 

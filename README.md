@@ -123,6 +123,13 @@ File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_gener
 
 # Deployment
 
+## Apache (SSL)
+
+```
+vim /usr/share/doc/apache2/README.Debian.gz
+```
+
+
 - https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
 - https://help.github.com/articles/using-ssh-agent-forwarding
 
@@ -149,10 +156,6 @@ $ sudo su postgres -c psql
 postgres=# CREATE ROLE <username> SUPERUSER LOGIN;
 postgres=# \q
 ```
-```
-```
-```
-
 - http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails
 
 
