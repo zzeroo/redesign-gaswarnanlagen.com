@@ -3,7 +3,6 @@ require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
-load 'lib/capistrano/tasks/seed.rb'
 
 # Includes tasks from other gems included in your Gemfile
 #
