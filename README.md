@@ -1,5 +1,4 @@
-Redesign gaswarnanlagen.com
-===========================
+# Redesign gaswarnanlagen.com
 
 Vorschlag für die neue, dynamische gaswarnanlagen.com Webseite.
 
@@ -8,8 +7,7 @@ Alle Funktionen der “alten” Webseite sollen auch in der neuen Webseite
 funktionieren.
 Zudem soll es möglich sein Exeltabellen mit Produkt Daten zu importieren.
 
-Aufbau der Webseite
-----
+## Aufbau der Webseite
 
 Auf der Homepage werden Gruppen von Produkten 
 (so genannte Kategorien, Categories Model)  dargestellt, 
@@ -36,8 +34,7 @@ end
 ```
 
 
-TODO
-----------
+# TODO
 
 1. ~~Statisches responsitive Layout~~
 1. ~~Excel Import/ Export (http://railscasts.com/episodes/396-importing-csv-and-excel?view=asciicast)~~
@@ -48,8 +45,7 @@ TODO
 1. Kategorien als Baum darstellen (http://jsfiddle.net/jhfrench/GpdgF/)
 
 
-Dokumentation
--------------
+## Dokumentation
 
 Die Dokumentation kann mit dem Befehle `rdoc --format=fivefish` erstellt werden.
 
@@ -65,23 +61,6 @@ realisiert.
 - https://github.com/mislav/will_paginate.git
 - https://github.com/bootstrap-ruby/will_paginate-bootstrap.git
 
-### Solr
-
-http://blogs.pigrider.com/blogs/26
-
-
-### Paperclip (Dateianhänge)
-
-Dateianhänge werden mit dem Paperclip gem realisiert. 
-Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
-wurde das Logo Attribut als has_one Beziehung realisiert.
-Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
-entwurfen welches für unterschiedliche Models geeignet sein wird. 
-
-
-- http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
-- http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
-- http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
 Resourcen
 ---------
@@ -129,6 +108,12 @@ File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_gener
 vim /usr/share/doc/apache2/README.Debian.gz
 ```
 
+## Solr
+
+- http://stackoverflow.com/questions/23503116/cant-get-solr-4-8-working-with-tomcat-7-and-ubuntu-12-04
+- http://gagannaidu.blogspot.no/2014/02/apache-solr-461-tomcat7-setup-on-ubuntu.html
+
+## Capistrano
 
 - https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
 - https://help.github.com/articles/using-ssh-agent-forwarding
@@ -158,6 +143,19 @@ postgres=# \q
 ```
 - http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails
 
+
+### Paperclip (Dateianhänge)
+
+Dateianhänge werden mit dem Paperclip gem realisiert. 
+Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
+wurde das Logo Attribut als has_one Beziehung realisiert.
+Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
+entwurfen welches für unterschiedliche Models geeignet sein wird. 
+
+
+- http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
+- http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
+- http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
 
 
