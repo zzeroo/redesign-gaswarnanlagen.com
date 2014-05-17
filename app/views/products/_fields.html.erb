@@ -1,0 +1,53 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="form-group">
+  <%= f.label :short_description %>
+  <%= f.text_field :short_description, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :product_nr %>
+  <%= f.text_field :product_nr, class: "form-control" %>
+</div>
+
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Achtung</h4>
+  <p>Die Felder Beschreibung, Kurztext1 und Kurztext2 sind besonders.
+  Entweder sollte Beschreibung gefüllt oder aber Kurztext1 und Kurztext2
+  gefüllt werden.</p>
+</div>
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", rows: 12 %>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-5">
+    <div class="form-group">
+      <%= f.label :short_text1 %>
+      <%= f.text_area :short_text1, class: "form-control", rows: 5 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :short_text2 %>
+      <%= f.text_area :short_text2, class: "form-control", rows: 5 %>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :technical_data %>
+  <%= f.text_area :technical_data, class: "form-control", rows: 10 %>
+</div>
+
+
+
+
+
+

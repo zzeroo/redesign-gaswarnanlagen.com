@@ -1,33 +1,111 @@
-<% provide(:title, 'Produkte importieren') %>
-<h1>Produkte importieren</h1>
+<div class="row">
+  <div class="col-md-9">
+    <% provide(:title, 'Produkte importieren') %>
+    <div class="bs-docs-section">
+      <h1 id="overview" class="page-header">Übersicht</h1>
 
-<p>Die WinEasyArt Excel Datei kann benutzt werden um die Produkte zu aktualisieren.</p>
+      <p class="lead">Im folgenden wird beschrieben wie die Produkte
+      in der Webseite gespeichert werden 
+      und woher die Daten importiert werden können.</p>
 
-<p>Es müssen nicht immer alle Produkte in einer einzigen Tabelle stehen, 
-es ist durchaus möglich einzelne Produkte in unterschiedlichen Tabellen zu 
-pflegen und diese Tabellen dann nach einander hoch zu laden.</p>
+      <p>In dieser Ansicht können div. Dateien (hauptsächlich Excel Dateien) in die 
+      Datenbank der Webseite importiert werden.</p>
 
-<p>Es dürfen in einer Tabelle niemals 2 unterschiedliche Zeilen mit ein und
-der selben <b>Artikelnummer</b> stehen!
-
-<p>Beim Import wird nach der <strong>Artikelnummer</strong> gesucht, 
-ist diese vorhanden, wird der entsprechende Datensatz in der Datenbank 
-aktualisiert, ansonnsten wird eine neuer Eintrag in der Datenbank erstellt.</p>
-
-<%= form_for @product_import do |f| %>
-  <% if @product_import.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product_import.errors.count, "error") %> folgende Zeilen verhinder das Speichern:</h2>
-      <ul>
-      <% @product_import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.file_field :file %>
+
+    <div class="bs-docs-section">
+      <h1 id="forms" class="page-header">Datenmodel</h1>
+
+      <h2 id="forms-example">Aufbau der Produkt-Tabelle dieser Webseite</h2>
+
+      <table class="table table-hover">
+        <tr>
+          <th>Beschreibung</th>
+          <th>unsere (intern) Bezeichnung<br/>Nach diesen Daten wird vom Programm gesucht</th>
+          <th>Name im Model der Webseite</th>
+          <th>Quelle (wo kommen die Daten her?)</th>
+        </tr>
+        <tr class="danger">
+          <td>Die Artikel Nummer ist der Primärschlüssel. Anhand dieser Nummer
+          werden die Datensätze gesucht. Ist ein Produkt mit dieser 
+          </td>
+          <td>Artikelnummer</td>
+          <td>product_nr</td>
+          <td>EasyWinArt</td>
+        </tr>
+        <tr>
+          <td>Kurzbezeichnung</td>
+          <td>Kurzbezeichnung</td>
+          <td>short_description</td>
+          <td>EasyWinArt</td>
+        </tr>
+        <tr>
+          <td>Beschreibung</td>
+          <td>Langbezeichnung</td>
+          <td>description</td>
+          <td>EasyWinArt</td>
+        </tr>
+        <tr>
+          <td>Kurztext bitte nicht mit der Kurzbezeichnung verwechseln. Evtl.
+          kann aber die Spalte aus der EasyWinArt Datenbank verwendet werden.
+          </td>
+          <td>Kurztext</td>
+          <td>short_text</td>
+          <td>Tabelle von Fr. Mack</td>
+        </tr>
+        <tr>
+          <td>Technische Daten</td>
+          <td>Technische Daten</td>
+          <td>technical_data</td>
+          <td>Tabelle von Fr. Mack</td>
+        </tr>
+        <tr>
+          <td>Sehr kleines Bild für die Übersichtsseiten</td>
+          <td>Artikel Logo</td>
+          <td>product_logo</td>
+          <td>werden manuell hoch geladen</td>
+        </tr>
+        <tr>
+          <td>viele Verschiedene Bilder zum Artikel</td>
+          <td>Artikel Bilder</td>
+          <td>AttachedAssets</td>
+          <td>werden manuell hoch geladen</td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="bs-docs-section">
+      <h1 id="forms" class="page-header">Import</h1>
+
+      <%= form_for @product_import, html: {class: "form-inline", role: "form"} do |f| %>
+        <div class="form-group">
+        <% if @product_import.errors.any? %>
+          <div id="error_explanation">
+          <h2><%= pluralize(@product_import.errors.count, "error") %> folgende Zeilen verhinder das Speichern:</h2>
+          <ul>
+            <% @product_import.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="field">
+          <%= f.file_field :file %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="buttons"><%= f.submit "Import", class: "btn btn-large btn-primary"%></div>
+      </div>
+    <% end %>
+    </div>
   </div>
-  <div class="buttons"><%= f.submit "Import", class: "btn btn-large btn-primary"%></div>
-<% end %>
+</div>
+
+
+

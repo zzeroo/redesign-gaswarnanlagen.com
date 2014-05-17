@@ -1,0 +1,21 @@
+<div class="row">
+  <%= content_tag(:strong, @product.short_description ) unless @product.short_description.blank? %>
+
+  <%= content_tag(:p, @product.product_nr) %>
+
+  <%= content_tag(:p, simple_format( @product.description )) unless @product.description.blank? %>
+
+  <%= content_tag(:p, @product.short_text1) unless @product.short_text1.blank? %>
+
+  <%= content_tag(:p, @product.short_text2) unless @product.short_text2.blank? %>
+
+  <%= content_tag(:p, @product.technical1_data) unless @product.technical_data.blank? %>
+</div>
+
+
+<% if current_user && current_user.admin? %>
+<div class="row">
+<%= link_to "bearbeiten", edit_product_path(@product) %>
+</div>
+<% end %>
+

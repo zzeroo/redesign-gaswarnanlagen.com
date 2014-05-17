@@ -113,6 +113,75 @@ vim /usr/share/doc/apache2/README.Debian.gz
 - http://stackoverflow.com/questions/23503116/cant-get-solr-4-8-working-with-tomcat-7-and-ubuntu-12-04
 - http://gagannaidu.blogspot.no/2014/02/apache-solr-461-tomcat7-setup-on-ubuntu.html
 
+
+```
+% cd
+% wget http://mirrors.ae-online.de/apache/lucene/solr/4.8.0/solr-4.8.0.tgz
+
+% sudo mv solr-4.8.0 /usr/share/solr
+% sudo cp /usr/share/solr/example/webapps/solr.war /usr/share/solr/example/solr/
+% sudo cp -r /usr/share/solr/example/lib/ext/* /usr/share/tomcat7/lib 
+% sudo cp -r /usr/share/solr/example/resources/log4j.properties /usr/share/tomcat7/lib
+```
+
+```
+% sudo vim /usr/share/tomcat7/lib/log4j.properties 
+```
+```
+#  Logging level 
+#solr.log=logs/
+solr.log=/usr/share/solr
+```
+```
+% sudo touch /usr/share/solr/solr.log
+```
+
+```
+% sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
+```
+```
+<Context docBase=”/usr/share/solr/example/solr/solr.war” debug=”0” crossContext=”true”> 
+  <Environment name=”solr/home” type=”java.lang.String” value=”/usr/share/solr/example/solr” override=”true” />
+</Context>
+```
+
+
+```
+% sudo vim /usr/share/solr/example/solr/solr.xml 
+% sudo sudo chown -R tomcat7 /usr/share/solr
+% sudo chown -R tomcat7 /usr/share/solr                                                                                                                                        :(
+% sudo cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
+% sudo vim  /etc/tomcat7/tomcat-users.xml
+%  sudo service tomcat7 restart
+```
+
+```
+% sudo vim /usr/share/solr/example/solr/solr.xml
+```
+```
+<?xml version="1.0" encoding="UTF-8" ?> 
+<solr> 
+ 
+  <solrcloud> 
+    <str name="host">${host:}</str> 
+    <int name="hostPort">${jetty.port:8983}</int> 
+    <str name="hostContext">${hostContext:solr}</str> 
+    <int name="zkClientTimeout">${zkClientTimeout:30000}</int> 
+    <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool> 
+  </solrcloud> 
+ 
+  <shardHandlerFactory name="shardHandlerFactory" 
+    class="HttpShardHandlerFactory"> 
+    <int name="socketTimeout">${socketTimeout:0}</int> 
+    <int name="connTimeout">${connTimeout:0}</int> 
+  </shardHandlerFactory> 
+ 
+</solr> 
+
+```
+
+
+
 ## Capistrano
 
 - https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
@@ -157,5 +226,7 @@ entwurfen welches für unterschiedliche Models geeignet sein wird.
 - http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
 - http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
+### Mapbox
 
+- http://vladigleba.com/blog/2013/11/14/using-mapbox-with-ruby-on-rails/
 

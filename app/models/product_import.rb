@@ -3,16 +3,19 @@ class ProductImport
 
   attr_accessor :file
 
-
   def save
+    #if imported_products.map(&:valid?).all?
+    #  begin
+    #    imported_products.each(&:save!)
+    #    true
+    #  rescue ActiveRecord::RecordInvalid => invalid
+    #    errors.add :base, invalid.record.errors
+    #    false
+    #  end
+    #else
     if imported_products.map(&:valid?).all?
-      begin
-        imported_products.each(&:save!)
-        true
-      rescue ActiveRecord::RecordInvalid => invalid
-        errors.add :base, invalid.record.errors
-        false
-      end
+      imported_products.each(&:save!)
+      true
     else
       imported_products.each_with_index do |product, index|
         product.errors.full_messages.each do |message|

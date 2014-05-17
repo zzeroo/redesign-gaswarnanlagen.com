@@ -1,5 +1,5 @@
 <tr>
-  <td><%= highlight_it product.product_nr, params[:search] %></td>
+  <td><%= link_to (highlight_it product.product_nr, params[:search]), product %></td>
   <td><%= highlight_it product.short_description, params[:search] %></td>
   <td><%= truncate((highlight_it product.description, params[:search]), :length => 60) %></td>
   <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %></td>

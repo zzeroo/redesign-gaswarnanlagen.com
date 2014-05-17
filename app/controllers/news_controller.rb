@@ -1,4 +1,7 @@
 class NewsController < ApplicationController
+  before_action :admin_user, only: [:new, :create, :destroy]
+  #before_action :signed_in_user, only: [:new, :create, :destroy]
+ 
   def index
     @news = News.all
   end

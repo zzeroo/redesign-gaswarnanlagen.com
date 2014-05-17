@@ -1,9 +1,58 @@
+# http://blog.plataformatec.com.br/2010/02/rails-3-i18n-changes/
+#
 de:
-  date:
+  time:
     formats:
-      default: "%Y-%m-%d"
-      short: "%b %d"
+      default: "%Y-%m-%d %H:%m"
+      short: "%Y-%m-%d"
       long: "%B %d, %Y"
+
   will_paginate:
     previous_label: "« zurück"
     next_label: "vor »"
+
+  attributes:
+    title: "Titel"
+    name: "Name"
+    description: "Beschreibung"
+    created_at: "erstellt am"
+    updated_at: "aktualisiert am"
+
+  activerecord:
+    models:
+      product: 
+        one: Produkt
+        other: Produkte
+
+    attributes:
+      attached_assets:
+        asset_file_name: "Dateiname"
+        asset_content_type: "Dateitype"
+        asset_file_size: "Dateigröße"
+        asset_updated_at: "Upload Zeit"
+
+      category:
+        published: "veröffentlicht?"
+        product_nr_prefix: "Produktnummern"
+        background_color: "Hintergrundfarbe"
+        logo_file_name: "Dateiname des Logos"
+
+      document:
+        body: "Inhalt"
+
+      news:
+        news_body: "Inhalt"
+        news_image_file_name: "Dateiname des Bildes"
+        news_image: "Bild"
+
+      product:
+        short_description: "Kurzbeschreibung"
+        product_nr: "Produktnummer"
+        short_text1: "Kurztext1"
+        short_text2: "Kurztext2"
+        technical_data: "Technische Daten"
+        has_ast: "AST vorhanden?"
+
+      user:
+        email: "Email Adresse"
+        admin: "Administrator?"

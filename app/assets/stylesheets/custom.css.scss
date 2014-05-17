@@ -12,10 +12,9 @@ body {
 }
 
 .bs-docs-header {
-  background-color: #E7001A;
   .row {
     height: 134px;
-    background: url("header-01.jpg") no-repeat scroll 0px 0px #E7001A;
+    background: url("header-01.png") no-repeat scroll 0px 0px;
     a {
       display: block;
       width: 100%;
@@ -250,3 +249,16 @@ a.navbar-brand {
     background: url("Logo RA-GAS sw.svg") no-repeat scroll 10px 15px;
     background-size: 126px;
 }
+
+// contact pages map
+#map-container {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: 0;
+    padding: 0;
+}
+#map { height: 680px; }
+
