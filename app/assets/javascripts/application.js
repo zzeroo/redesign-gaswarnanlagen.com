@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require leaflet
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap/scrollspy
