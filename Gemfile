@@ -30,7 +30,7 @@ gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'progress_bar'  # fancy progress bar for sunspot solr index
 gem 'simple_form'
-
+gem 'leaflet-rails'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'

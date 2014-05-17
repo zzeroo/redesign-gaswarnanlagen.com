@@ -136,6 +136,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
+    leaflet-rails (0.7.2)
     libnotify (0.8.0)
       ffi (>= 1.0.11)
     libv8 (3.16.14.3)
@@ -346,6 +347,7 @@ DEPENDENCIES
   guard-test
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  leaflet-rails
   libnotify (= 0.8.0)
   paperclip
   pg (= 0.15.1)
