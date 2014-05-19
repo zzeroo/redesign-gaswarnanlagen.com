@@ -9,20 +9,34 @@
 <% end %>
 
 <div class="container" style="position: absolute; top: 200px; width: 250px; background: rgba(255,255,255,0.7)">
-  <h2>Kontakt</h2>
+  <div class="row">
+    <div class="col-xs-8">
+      <h2>Kontakt</h2>
+    </div>
+    <div class="col-xs-4">
+      <h3>
+        <button type="button">
+          <span><i class="fa fa-eye"></i></span>
+        </button>
+      </h3>
+    </div>
+  </div>
 
-  <div>
-    <p>
+  <div id="contact">
+
+    <div>
+      <p>
       RA-GAS GmbH<br />
       Rudolf-Diesel-Straße 22<br />
       71394 Kernen
-    </p>
+      </p>
 
-    <p>
+      <p>
       <b>Fon</b> 07151 930440<br />
       <b>Fax</b> 07151 930443<br />
       <b>E-Mail</b> <%= link_to "info@gaswarnanlage.com", 'mailto:info@gaswarnanlage.com' %>
     </p>
+    </div>
   </div>
 </div>
 
