@@ -33,25 +33,7 @@
 
 
 
-<!-- Products -->
-<% if @products.present? %>
-<div class="row">
-  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
-</div>
-<div class="table-responsive">
-  <table class="table table-hover table-hover">
-    <tr>
-      <th><%= Product.human_attribute_name :product_nr %></th>
-      <th><%= Product.human_attribute_name :short_description %></th>
-      <th><%= Product.human_attribute_name :description %></th>
-  </tr>
-    <%= render @products %>
-  </table>
-</div>
-<div class="row">
-  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
-</div>
-<% end %>
+<%= render 'products/products_list', object: @products %>
 
 
 

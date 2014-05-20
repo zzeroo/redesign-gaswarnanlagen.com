@@ -1,3 +1,18 @@
+<% provide(:title, @product.product_nr) %>
+
+<div class="breadcrub" data-no-turbolink>
+  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to @product.product_nr, @product  %>
+  </div>
+
+<div class="row">
+  <% if current_user && current_user.admin? %>
+    <p class="text-right">
+  <%= link_to 'Produkt barbeiten', edit_product_path(@product), class: "btn btn-large btn-primary" %>
+  </p>
+  <% end %>
+</div>
+
+
 <div class="row">
   <%= content_tag(:strong, @product.short_description ) unless @product.short_description.blank? %>
 
@@ -9,13 +24,15 @@
 
   <%= content_tag(:p, @product.short_text2) unless @product.short_text2.blank? %>
 
-  <%= content_tag(:p, @product.technical1_data) unless @product.technical_data.blank? %>
+  <%= content_tag(:p, @product.technical_data) unless @product.technical_data.blank? %>
 </div>
 
 
-<% if current_user && current_user.admin? %>
 <div class="row">
-<%= link_to "bearbeiten", edit_product_path(@product) %>
+  <% if current_user && current_user.admin? %>
+    <p class="text-right">
+  <%= link_to 'Produkt barbeiten', edit_product_path(@product), class: "btn btn-large btn-primary" %>
+  </p>
+  <% end %>
 </div>
-<% end %>
 

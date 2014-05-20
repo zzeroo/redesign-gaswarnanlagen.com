@@ -3,7 +3,13 @@ RedesignGaswarnanlagenCom::Application.routes.draw do
   resources :news
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :products 
+
+  resources :products do
+    # Ausschreibungstexte werden durch die ast action im
+    # Products Controller generiert
+    get 'ast', on: :member
+  end
+
   resources :product_imports
   resources :categories
 

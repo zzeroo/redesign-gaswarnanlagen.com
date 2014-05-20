@@ -20,6 +20,16 @@
         <li><%= link_to "Vertriebspartner", distributors_path %></li>
         <li><%= link_to "Kontakt", contact_path %></li>
       </ul>
+
+      <ul class="nav navbar-nav">
+      <%= form_tag products_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Suche", size: 10 %>
+        </div>
+        <%= submit_tag "Suche", :name => nil, class: "btn btn-default" %>
+        <% end %>
+      </ul>
+
       <ul class="nav navbar-nav">
         <% if signed_in? %>
         <li class="dropdown">
@@ -50,14 +60,6 @@
       </ul>
         <% end %>
       <% end %>
-      <ul class="nav navbar-nav">
-      <%= form_tag products_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
-        <div class="form-group">
-          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Suche", size: 10 %>
-        </div>
-        <%= submit_tag "Suche", :name => nil, class: "btn btn-default" %>
-        <% end %>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -1,7 +1,17 @@
 <tr>
   <td><%= link_to (highlight_it product.product_nr, params[:search]), product %></td>
   <td><%= highlight_it product.short_description, params[:search] %></td>
+  <td></td>
   <td><%= truncate((highlight_it product.description, params[:search]), :length => 60) %></td>
-  <td><%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %></td>
+  <td>
+    <% if product.has_ast? %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt')) %>
+    <% end %>
+  </td>
+  <td></td>
+  <td>
+    <%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %> |
+    <%= link_to "bearbeiten", edit_product_path(product) %>
+  </td>
 </tr>
 
