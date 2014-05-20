@@ -20,10 +20,11 @@
 <% if @category.attached_assets && @category.attached_assets.size > 1 %>
 <div class="row">
   <% @category.attached_assets.each_with_index do |asset, index| %>
-    <div class="col-md-3">
+    <div class="col-md-3" style="padding-bottom: 1em">
       <%= link_to image_tag( asset.asset.url(:medium) ), asset.asset.url  %>
     </div>
     <div class="col-md-1"></div>
+    <% if ( index+1 ) % 3 == 0 %></div><div class="row"><% end %>
   <% end %>
 </div>
 <% end %>

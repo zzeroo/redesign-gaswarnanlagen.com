@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, :attached_assets_attributes => [:asset, :asset_file_name, :_destroy ])
+    params.require(:category).permit! #(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, :attached_assets_attributes => [:asset, :asset_file_name, :_destroy ])
   end
 
 end

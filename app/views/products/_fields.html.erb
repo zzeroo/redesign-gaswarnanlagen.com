@@ -40,7 +40,6 @@
   </div>
 </div>
 
-
 <div class="form-group">
   <%= f.label :technical_data %>
   <%= f.text_area :technical_data, class: "form-control", rows: 10 %>
@@ -50,8 +49,16 @@
 <div class="form-inline">
   <%= f.label :has_ast %>
   <%= f.check_box :has_ast, class: "form-control" %>
+  <span class="help-block">Wird dieses Häckchen gesetzt, erscheint in den
+    Übersichtsseiten ein Link zu den Ausschreibungstexten (AST). Die AST werden
+    dynamisch aus den Daten des Produkts zusammengesetzt.</span>
 </div>
 
+
+<div class="form-group">
+  <%= f.label :logo %>
+  <%= f.file_field :logo  %>
+</div>
 
 
 

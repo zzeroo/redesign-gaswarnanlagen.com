@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to (highlight_it product.product_nr, params[:search]), product %></td>
   <td><%= highlight_it product.short_description, params[:search] %></td>
-  <td></td>
+  <td><%= image_tag product.logo.url(:small) %></td>
   <td><%= truncate((highlight_it product.description, params[:search]), :length => 60) %></td>
   <td>
     <% if product.has_ast? %>
