@@ -10,8 +10,10 @@
   </td>
   <td></td>
   <td>
-    <%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} if current_user && current_user.admin? %> |
-    <%= link_to "bearbeiten", edit_product_path(product) %>
+    <% if current_user && current_user.admin? %>
+      <%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %> |
+      <%= link_to "bearbeiten", edit_product_path(product) %>
+    <% end %>
   </td>
 </tr>
 
