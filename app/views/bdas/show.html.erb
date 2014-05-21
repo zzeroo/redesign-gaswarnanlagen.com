@@ -1,28 +1,62 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @bda.name) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bda.name %>
-</p>
+<div class="breadcrub" data-no-turbolink>
+  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= @bda.name %>
+</div>
 
-<p>
-  <strong>Bezeichnung:</strong>
-  <%= @bda.description %>
-</p>
+<div class="row">
+  <div class="col-md-12">
 
-<p>
-  <strong>Produkt Nummern:</strong>
-  <%= @bda.product_nr_prefix %>
-</p>
-
-<% unless @bda.products.nil? %>
-  <ul>
-    <% @bda.products.each do |product| %>
-      <li><%= link_to product.short_description, product %></li>
-    <% end %>
-  </ul>
-<% end %>
+    <div class="row">
+      <% if current_user && current_user.admin? %>
+        <p class="text-right">
+      <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
+      </p>
+      <% end %>
+    </div>
 
 
-<%= link_to 'Edit', edit_bda_path(@bda) %> |
-<%= link_to 'Back', bdas_path %>
+    <div class="bs-docs-section">
+      <h1 id="overview" class="page-header"><%= @bda.name %></h1>
+
+      <p class="lead"><%= @bda.description %></p>
+    </div>
+
+
+    <div class="bs-docs-section">
+      <p>
+        <strong>Produkt Nummern:</strong>
+        <%= @bda.product_nr_prefix %>
+      </p>
+    </div>
+
+
+    <div class="bs-docs-section">
+      <% unless @bda.products.nil? %>
+        <h3>Produkte für diese Anleitung</h3>
+        <ul>
+          <% @bda.products.each do |product| %>
+            <li><%= link_to product.short_description, product %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+
+
+    <%= link_to icon('backward') + ' zurück', bdas_path, class: "btn btn-large btn-default" %>
+
+
+    <div class="row">
+      <% if current_user && current_user.admin? %>
+        <p class="text-right">
+      <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
+      </p>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+

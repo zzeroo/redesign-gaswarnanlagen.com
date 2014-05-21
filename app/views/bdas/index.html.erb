@@ -1,27 +1,58 @@
+<% provide(:title, 'Betriebsanleitungen') %>
 <h1>Betriebsanleitungen</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bezeichnung</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @bdas.each do |bda| %>
-      <tr>
-        <td><%= bda.name %></td>
-        <td><%= bda.description %></td>
-        <td><%= link_to 'Anzeigen', bda %></td>
-        <td><%= link_to 'Bearbeiten', edit_bda_path(bda) %></td>
-        <td><%= link_to 'Löschen', bda, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row text-right">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
 
-<br>
 
-<%= link_to 'Neue Betriebsanleitung', new_bda_path %>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Bezeichnung</th>
+            <th>Produkt Nummern</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @bdas.each do |bda| %>
+            <tr>
+              <td><%= link_to bda.name, bda %></td>
+              <td><%= bda.description %></td>
+              <td><%= bda.product_nr_prefix %></td>
+              <td>
+                <%= link_to icon('edit') +    ' Bearbeiten', edit_bda_path(bda) %><br />
+                <%= link_to icon('trash-o') + ' Löschen', bda, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="row text-right">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+
+
+
+
+
