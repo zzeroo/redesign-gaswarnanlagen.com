@@ -15,11 +15,14 @@
   </td>
   <td>
     <% product.bdas.each do |bda| %>
-      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), bda ) %>
+      <% bda.attached_assets.each do |asset| %>
+        <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), asset.asset.url ) %>
+      <% end %>
     <% end %>
   </td>
   <td>
     <% if current_user && current_user.admin? %>
+      <%= link_to icon('eye') + " anzeigen", product %><br />
       <%= link_to icon('trash-o') + " löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %><br />
       <%= link_to icon('edit') + " bearbeiten", edit_product_path(product) %>
     <% end %>

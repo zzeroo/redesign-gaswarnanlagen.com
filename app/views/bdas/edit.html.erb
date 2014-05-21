@@ -1,6 +1,24 @@
+<% provide(:title, "Betriebsanleitung bearbeiten") %>
 <h1>Betriebsanleitung bearbeiten</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-9">
 
-<%= link_to 'Anzeigen', @bda %> |
-<%= link_to 'Zurück', bdas_path %>
+    <%= form_for(@bda, :html => { class: "form-horizontal", role: "form" }) do |f| %>
+      <%= render 'fields', f: f %>
+      <div><%= f.submit "Änderungen speichern", class: "btn btn-large btn-primary" %></div>
+    <% end %>
+
+
+  </div>
+</div>
+
+
+<div class="row" style="padding-top: 5em">
+  <div class="col-md-9">
+    <%= link_to icon('backward') + ' zurück', bdas_path, class: "btn btn-large btn-default" %>
+    <%= link_to 'Anzeigen', @bda, class: "btn btn-large btn-primary" %>
+
+  </div>
+</div>
+

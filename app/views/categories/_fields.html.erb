@@ -29,7 +29,7 @@
 <div class="form-group">
   <%= f.label :pictures %>
 
-  <% if @category.new_record? %>
+  <% if @category.new_record? || @category.attached_assets.size == 0 %>
     <%= f.file_field :attached_assets, multiple: true, name: "category[attached_assets_attributes][][asset]" %>
   <% end %>
 

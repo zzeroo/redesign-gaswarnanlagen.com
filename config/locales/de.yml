@@ -36,6 +36,7 @@ de:
         product_nr_prefix: "Produktnummern"
         background_color: "Hintergrundfarbe"
         logo_file_name: "Dateiname des Logos"
+        pictures: "Bilder"
 
       document:
         body: "Inhalt"
@@ -52,7 +53,13 @@ de:
         short_text2: "Kurztext2"
         technical_data: "Technische Daten"
         has_ast: "AST vorhanden?"
+        tdb:  "Technisches Datenblatt"
 
       user:
         email: "Email Adresse"
         admin: "Administrator?"
+
+      bda:
+        product_nr_prefix: "Produktnummern"
+        bdas: "Technische Datenblätter"
+

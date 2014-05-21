@@ -10,8 +10,9 @@
     <div class="row">
       <% if current_user && current_user.admin? %>
         <p class="text-right">
-      <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
-      </p>
+          <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
+          <%= link_to icon('trash-o'), bda_path(@bda), method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+        </p>
       <% end %>
     </div>
 
@@ -29,6 +30,20 @@
         <%= @bda.product_nr_prefix %>
       </p>
     </div>
+
+
+    <% if @bda.attached_assets.size > 0 %>
+    <div class="bs-docs-section">
+      <h1 id="forms" class="page-header">Dateien</h1>
+
+      <ul>
+      <% @bda.attached_assets.each do |asset| %>
+        <li><%= link_to asset.asset_file_name, asset.asset.url %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
 
 
     <div class="bs-docs-section">
@@ -50,8 +65,9 @@
     <div class="row">
       <% if current_user && current_user.admin? %>
         <p class="text-right">
-      <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
-      </p>
+          <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
+          <%= link_to icon('trash-o'), bda_path(@bda), method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+        </p>
       <% end %>
     </div>
 
