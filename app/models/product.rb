@@ -52,4 +52,20 @@ class Product < ActiveRecord::Base
     else raise "Unbekannter Datei Typ: #{file.original_filename}"
     end
   end
+
+  # Liste mit allen BDAs
+  # Alle BDA werden durchlaufen, anschließend wird geprüft ob das Product (self)
+  # in der Liste der Producte ist
+  def bdas
+    ret = []
+    Bda.all.each do |bda|
+      ret << bda if bda.products.include?(self)
+    end
+    return ret
+  end
+
 end
+
+
+
+

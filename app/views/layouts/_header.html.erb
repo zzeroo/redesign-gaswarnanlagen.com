@@ -51,8 +51,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "News bearbeiten", news_index_path %></li>
-            <li><%= link_to "Produkte bearbeiten", products_path %></li>
-            <li><%= link_to "Produkt Kategorien bearbeiten", categories_path, data: { no_turbolink: true } %></li>
+            <li><%= link_to "Produkte importieren/ bearbeiten", products_path %></li>
+            <li><%= link_to "Produkt-Kategorien bearbeiten", categories_path, data: { no_turbolink: true } %></li>
+            <li><%= link_to "BDA's verwalten", bdas_path, data: { no_turbolink: true } %></li>
             <%#<li class="divider"></li>%>
             <%#<li><a href="#">Separated link</a></li>%>
           </ul>

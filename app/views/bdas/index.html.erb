@@ -1,0 +1,27 @@
+<h1>Betriebsanleitungen</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bezeichnung</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bdas.each do |bda| %>
+      <tr>
+        <td><%= bda.name %></td>
+        <td><%= bda.description %></td>
+        <td><%= link_to 'Anzeigen', bda %></td>
+        <td><%= link_to 'Bearbeiten', edit_bda_path(bda) %></td>
+        <td><%= link_to 'Löschen', bda, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Neue Betriebsanleitung', new_bda_path %>

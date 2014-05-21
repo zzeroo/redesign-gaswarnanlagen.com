@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521090911) do
+ActiveRecord::Schema.define(version: 20140521092852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20140521090911) do
     t.datetime "asset_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bdas", force: true do |t|
+    t.string   "name"
+    t.string   "product_nr_prefix"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

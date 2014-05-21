@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bda.name %>
+</p>
+
+<p>
+  <strong>Bezeichnung:</strong>
+  <%= @bda.description %>
+</p>
+
+<p>
+  <strong>Produkt Nummern:</strong>
+  <%= @bda.product_nr_prefix %>
+</p>
+
+<% unless @bda.products.nil? %>
+  <ul>
+    <% @bda.products.each do |product| %>
+      <li><%= link_to product.short_description, product %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= link_to 'Edit', edit_bda_path(@bda) %> |
+<%= link_to 'Back', bdas_path %>

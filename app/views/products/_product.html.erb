@@ -10,14 +10,18 @@
   </td>
   <td>
     <% if product.tdb.present? %>
-      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), product.tdb.url) %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Technisches Datenblatt"), product.tdb.url) %>
     <% end %>
   </td>
-  <td></td>
+  <td>
+    <% product.bdas.each do |bda| %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), bda ) %>
+    <% end %>
+  </td>
   <td>
     <% if current_user && current_user.admin? %>
-      <%= link_to "löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %> |
-      <%= link_to "bearbeiten", edit_product_path(product) %>
+      <%= link_to icon('trash-o') + " löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %><br />
+      <%= link_to icon('edit') + " bearbeiten", edit_product_path(product) %>
     <% end %>
   </td>
 </tr>

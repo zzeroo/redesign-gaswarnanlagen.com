@@ -1,4 +1,6 @@
 RedesignGaswarnanlagenCom::Application.routes.draw do
+  resources :bdas
+
   resources :documents
   resources :news
   resources :users
