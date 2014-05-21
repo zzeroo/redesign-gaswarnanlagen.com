@@ -29,15 +29,21 @@
 <div class="form-group">
   <%= f.label :pictures %>
 
+  <% if @category.new_record? %>
+    <%= f.file_field :attached_assets, multiple: true, name: "category[attached_assets_attributes][][asset]" %>
+  <% end %>
+
   <div>
     <% @category.attached_assets.each do |asset| %>
       <%= f.fields_for :attached_assets, asset do |builder| %>
-      <%= builder.check_box '_destroy' %>
-    <%= builder.label :_destroy, asset.asset_file_name %>
-  <% end %>
-  <% end %>
+        <% unless @category.new_record? %>
+          <%= builder.check_box '_destroy' %>
+          <%= builder.label :_destroy, asset.asset_file_name %>
+          <%= builder.file_field :asset %>
+        <% end %>
+      <% end %>
+    <% end %>
 
-    <%= f.file_field :attached_assets, multiple: true, name: "category[attached_assets_attributes][][asset]" %>
     <%#= file_field_tag('category_attached_assets_asset', multiple: true, name: "category[attached_assets_attributes][][asset]") %>
   </div>
 </div>

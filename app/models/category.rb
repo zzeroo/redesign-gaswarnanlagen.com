@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   has_many :attached_assets, :as => :attachable
-  accepts_nested_attributes_for :attached_assets, :allow_destroy => true
+  accepts_nested_attributes_for :attached_assets, :allow_destroy => true #, reject_if: lambda{|attributes| attributes['asset_file_name'].blank? }
 
   # FIXME: published scope isn't needed anymore
   scope :published, -> { where(published: true) }

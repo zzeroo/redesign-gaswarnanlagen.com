@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.update_attributes(category_params)
       flash[:success] = "Produktgruppe wurde aktualisiert"
-      redirect_to @category
+      redirect_to categories_path
     else
       render 'edit'
     end
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit! #(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, :attached_assets_attributes => [:asset, :asset_file_name, :_destroy ])
+      params.require(:category).permit! #(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, asset: [:filename, :content_type], attached_assets_attributes: [:id, :asset_file_name, :asset_content_type, :asset_file_size, :asset_updated_at, :attachable_id, :attachable_type, :created_at, :updated_at, :_destroy] )
   end
 
 end
