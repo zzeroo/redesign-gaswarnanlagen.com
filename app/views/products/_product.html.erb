@@ -8,6 +8,11 @@
       <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt')) %>
     <% end %>
   </td>
+  <td>
+    <% if product.tdb.present? %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), product.tdb.url) %>
+    <% end %>
+  </td>
   <td></td>
   <td>
     <% if current_user && current_user.admin? %>

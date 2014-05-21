@@ -14,6 +14,9 @@ class Product < ActiveRecord::Base
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/
 
+  has_attached_file :tdb,
+                    :storage => :s3,
+                    :s3_credentials => Rails.root.join("config/s3_credentials.yml")
 
 
   validates :product_nr, presence: true, uniqueness: true

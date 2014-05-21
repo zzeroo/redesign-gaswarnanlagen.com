@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520081700) do
+ActiveRecord::Schema.define(version: 20140521090911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,10 @@ ActiveRecord::Schema.define(version: 20140520081700) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "tdb_file_name"
+    t.string   "tdb_content_type"
+    t.integer  "tdb_file_size"
+    t.datetime "tdb_updated_at"
   end
 
   create_table "users", force: true do |t|
