@@ -1,7 +1,7 @@
 <% provide(:title, @product.product_nr) %>
 
 <div class="breadcrub" data-no-turbolink>
-  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to @product.product_nr, @product  %>
+  <%= link_to "http://gaswarnanlagen.com", root_path %>&nbsp;>&nbsp;<%= link_to @product.product_nr, @product  %>
   </div>
 
 <div class="row">
@@ -14,17 +14,24 @@
 
 
 <div class="row">
-  <%= content_tag(:strong, @product.short_description ) unless @product.short_description.blank? %>
+  <% unless @product.short_description.blank? %>
+    <%= content_tag(:h2, @product.short_description ) %>
+  <% end %>
 
-  <%= content_tag(:p, @product.product_nr) %>
+  <p>
+    <b>Produkt Nummer:&nbsp;</b><%= @product.product_nr %>
+  </p>
 
   <%= content_tag(:p, simple_format( @product.description )) unless @product.description.blank? %>
 
-  <%= content_tag(:p, @product.short_text1) unless @product.short_text1.blank? %>
+  <%= content_tag(:p, simple_format( @product.short_text1 )) unless @product.short_text1.blank? %>
 
-  <%= content_tag(:p, @product.short_text2) unless @product.short_text2.blank? %>
+  <%= content_tag(:p, simple_format( @product.short_text2 )) unless @product.short_text2.blank? %>
 
-  <%= content_tag(:p, @product.technical_data) unless @product.technical_data.blank? %>
+  <% unless @product.technical_data.blank? %>
+    <h4>Technische Daten:</h4>
+    <%= content_tag(:p, simple_format( @product.technical_data )) %>
+  <% end %>
 </div>
 
 

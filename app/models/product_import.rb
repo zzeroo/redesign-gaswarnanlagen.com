@@ -35,7 +35,7 @@ class ProductImport
     header = translate_attributes( spreadsheet.row(1) )
     # Before we map over all spreadsheet rows we reject that rows which,
     # after we join them to a plain string, have onle emptyness in it's self
-    (5..spreadsheet.last_row).reject{|i| spreadsheet.row(i).join.empty? }.map do |i|
+    (4..spreadsheet.last_row).reject{|i| spreadsheet.row(i).join.empty? }.map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = Product.find_by(product_nr: row["product_nr"]) || Product.new
       product.attributes = row.to_hash.slice(*Product.attribute_names)

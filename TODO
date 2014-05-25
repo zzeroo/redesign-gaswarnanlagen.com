@@ -1,4 +1,8 @@
-#TODO: List with ideas 
+#TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
-- Product Group new/ edit add ProductGroup name in title 'Produktgruppe bearbeiten' -> 'CO Warnanlage bearbeiten'
--
+- ProductImport Update von existierenden Datensätzen funktioniert nicht
+- Wenn die Felder "Kurztext 1", "Kurztext 2" und/ oder "Technische Daten" 
+vorhanden sind sollte diese Felder im Product Show View gezeigt werden 
+und nicht mehr der "short_description" Inhalt
+
+
