@@ -6,17 +6,13 @@ class Product < ActiveRecord::Base
 
   default_scope { order(product_nr: :asc) }
 
-  has_attached_file :logo,
-                    :storage => :s3,
-                    :s3_credentials => Rails.root.join("config/s3_credentials.yml"),
-                    styles: {small: "x30" }
+  has_attached_file :logo, {
+                      styles: {small: "x30" } }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/
 
-  has_attached_file :tdb,
-                    :storage => :s3,
-                    :s3_credentials => Rails.root.join("config/s3_credentials.yml")
+  has_attached_file :tdb, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
 
 
   validates :product_nr, presence: true, uniqueness: true

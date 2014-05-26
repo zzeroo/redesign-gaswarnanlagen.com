@@ -5,4 +5,6 @@
 vorhanden sind sollte diese Felder im Product Show View gezeigt werden 
 und nicht mehr der "short_description" Inhalt
 
+# PDF Erstellung
+- https://github.com/tienle/docsplit-paperclip-processor
 

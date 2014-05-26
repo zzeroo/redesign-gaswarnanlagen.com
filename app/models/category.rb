@@ -5,10 +5,8 @@ class Category < ActiveRecord::Base
   # FIXME: published scope isn't needed anymore
   scope :published, -> { where(published: true) }
 
-  has_attached_file :logo,
-                    :storage => :s3,
-                    :s3_credentials => Rails.root.join("config/s3_credentials.yml"),
-                    :default_url => "rails.png"
+  has_attached_file :logo, {
+                            default_url: "rails.png" }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/

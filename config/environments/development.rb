@@ -37,4 +37,5 @@ RedesignGaswarnanlagenCom::Application.configure do
   # Paperclip options
   Paperclip.options[:command_path] = "/usr/bin"
 
+  PAPERCLIP_STORAGE_OPTIONS = {}
 end

@@ -78,4 +78,10 @@ RedesignGaswarnanlagenCom::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+
+PAPERCLIP_STORAGE_OPTIONS = { :storage => :s3,
+                              :s3_credentials => Rails.root.join("config/s3_credentials.yml") }
+
 end
