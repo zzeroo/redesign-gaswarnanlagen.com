@@ -35,6 +35,18 @@
 </div>
 
 
+<% if @product.has_ast? %>
+  <h4>Ausschreibungstext</h4>
+  <%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), ast_product_path(@product, format: 'txt')) %>
+<% end %>
+
+<% if @product.tdb.present? %>
+  <h4>Technisches Datenblatt</h4>
+  <%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), @product.tdb.url) %>
+  <%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "PDF Format", style: "color: darkred;"), @product.tdb.url(:pdf)) %>
+<% end %>
+
+
 <div class="row">
   <% if current_user && current_user.admin? %>
     <p class="text-right">

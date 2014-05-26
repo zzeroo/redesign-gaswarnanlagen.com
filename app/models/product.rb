@@ -12,7 +12,14 @@ class Product < ActiveRecord::Base
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/
 
-  has_attached_file :tdb, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
+  has_attached_file :tdb, {
+                        :styles => {
+                          :pdf => {
+                            :format => "pdf",
+                            :processors => [:docsplit_pdf]
+                          }
+                        }
+                    }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
 
   validates :product_nr, presence: true, uniqueness: true

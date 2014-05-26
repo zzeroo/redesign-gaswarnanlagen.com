@@ -25,6 +25,7 @@ gem 'jbuilder', '1.0.2'
 gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
+gem 'docsplit-paperclip-processor', github: 'zzeroo/docsplit-paperclip-processor'
 gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'progress_bar'  # fancy progress bar for sunspot solr index
