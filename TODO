@@ -1,10 +1,11 @@
 #TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
-- ProductImport Update von existierenden Datensätzen funktioniert nicht
-- Wenn die Felder "Kurztext 1", "Kurztext 2" und/ oder "Technische Daten" 
-vorhanden sind sollte diese Felder im Product Show View gezeigt werden 
-und nicht mehr der "short_description" Inhalt
+- Product index -> Wenn Beschreibung leer, dann Kurztext 1 verwenden
+- TDB löschbar machen
+- TDB in Übersicht als PDF Symbol anzeigen
+- TDB Symbol nach Dateityp
+- Produkt Bilder überarbeiten
+  * Logo entfernen und dafür AttachedAssets einbinden
+  * das erste Hochgeladene Bild sollte als Logo umgewandelt werden
 
-# PDF Erstellung
-- https://github.com/tienle/docsplit-paperclip-processor
-
+TESTS, TESTS, TESTS, TESTS schreiben!!!!!!!!!111!1

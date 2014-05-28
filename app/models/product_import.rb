@@ -60,7 +60,8 @@ class ProductImport
       "Kurzbezeichnung" => "short_description",
       "Langbezeichnung" => "description",
       "Kurztext 1"      => "short_text1",
-      "Kurztext 2"      => "short_text2"
+      "Kurztext 2"      => "short_text2",
+      "Technische Daten"  => "technical_data"
     }
 
     attributes.map! do |a|

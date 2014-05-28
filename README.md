@@ -232,6 +232,11 @@ entwurfen welches für unterschiedliche Models geeignet sein wird.
 $ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript tesseract-ocr pdftk
 ```
 
+##### PDF Erstellung
+- https://github.com/tienle/docsplit-paperclip-processor
+
+
+
 ### Mapbox
 Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 
