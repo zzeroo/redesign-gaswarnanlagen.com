@@ -11,7 +11,6 @@ describe "Categories pages" do
     let!(:category) { FactoryGirl.create(:category, published: true ) }
 
     before do
-      sign_in user
       visit categories_path
     end
 
@@ -20,7 +19,7 @@ describe "Categories pages" do
 
     it "should list all root categories those without parents" do
       Category.where(parent: nil).each do |category|
-        expect(page).to have_selector('h1', text: category.name )
+        expect(page).to have_selector('strong', text: category.name )
         expect(page).to have_selector('p', text: category.description )
       end
     end

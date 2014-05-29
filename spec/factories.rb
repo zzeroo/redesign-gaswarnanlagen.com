@@ -40,4 +40,8 @@ FactoryGirl.define do
     sequence(:title) { Forgery::LoremIpsum.sentence }
     sequence(:news_body) { Forgery::LoremIpsum.sentence }
   end
+
+  factory(:bda) do
+    name "MyString"
+  end
 end

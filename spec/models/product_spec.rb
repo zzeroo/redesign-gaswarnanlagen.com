@@ -28,7 +28,9 @@ describe Product do
   end
 
   describe "default ordering scope" do
+    # cleanup
     before { Product.all.each{|p| p.destroy! }}
+
     let!(:higher_product_nr) do
       FactoryGirl.create(:product, product_nr: "999-99999999")
     end
