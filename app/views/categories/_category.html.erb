@@ -1,3 +1,5 @@
+
+
 <li>
 <% unless category.children.empty? %><span><i class="fa fa-minus"></i></span> <% else %><span><i class="fa fa-leaf"></i></span> <% end %>
 <%= link_to( content_tag(:strong, category.name, class: 'h3' ), category_path(category) ) %>

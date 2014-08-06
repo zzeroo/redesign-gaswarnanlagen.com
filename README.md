@@ -1,17 +1,18 @@
-# Redesign gaswarnanlagen.com
-
-Vorschlag für die neue, dynamische gaswarnanlagen.com Webseite.
+# Webauftritt http://gaswarnanlagen.com
+## Redesign und Dynamisierung der Webseite
+Informationen und Beschreibungen zum Aufbau der neuen, 
+dynamischen (gaswarnanlagen.com) Webseite.
 
 Der erste Ausbau sollte alles in Allem eine Kopie der alten Webseite darstellen.
 Alle Funktionen der “alten” Webseite sollen auch in der neuen Webseite
 funktionieren.
-Zudem soll es möglich sein Exeltabellen mit Produkt Daten zu importieren.
+Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die 
+Datenbank der Webseite zu importieren.
 
 ## Aufbau der Webseite
-
 Auf der Homepage werden Gruppen von Produkten 
-(so genannte Kategorien, Categories Model)  dargestellt, 
-nur die Gruppen, keine Produkte an sich.  
+(so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, 
+keine Produkte an sich.  
 Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten 
 (aus eine externen Quelle) dargestellt. 
 
@@ -19,8 +20,8 @@ Klickt man auf eine Produkt Kategorie (Categories Model) werden entweder
 Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunde
 sind (siehe Beziehung Kategorie -> Produkte)
 
-### Beziehung Kategorie -> Produkte
-
+## Beziehungen
+### Kategorie -> Produkte
 Kategorien (Categories) enthalten Produkte (Products) oder Unterkategorien 
 (SubCategories through CategoryJoin) oder beides.
 
@@ -36,7 +37,8 @@ end
 
 
 ## Dokumentation
-Die Dokumentation kann mit dem Befehle `rdoc --format=fivefish` erstellt werden.
+Eine ausführliche  Dokumentation kann mit dem Befehle `rdoc --format=fivefish` 
+erstellt werden.
 
 ### Bootstrap3
 - [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
@@ -58,20 +60,12 @@ realisiert.
 Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
 
 
-## Resourcen und Links
-- <http://ruby.railstutorial.org/book/ruby-on-rails-tutorial>
-- <http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design>
-- <http://rails-erd.rubyforge.org>
-
-- <http://www.mediawiki.org/wiki/Help:Formatting>
-
-
-
 ## Entwicklungsumgebung
-Die Entwicklungsumgebung wird durch das Foreman gem gestartet. 
-Scheinbar werden beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
+Die Entwicklungsumgebung wird durch das Foreman gem gestartet.
 
-    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
+
+###Rails Update
+Diese Webseite beschreibt hervorragend den Updatevorgang: http://railsapps.github.io/updating-rails.html
 
 ### ActiveRecord to JSON
 Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
@@ -222,4 +216,20 @@ $ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript tes
 Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 
 - http://vladigleba.com/blog/2013/11/14/using-mapbox-with-ruby-on-rails/
+
+
+## Resourcen und Links
+- <http://ruby.railstutorial.org/book/ruby-on-rails-tutorial>
+- <http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design>
+- <http://rails-erd.rubyforge.org>
+
+- <http://www.mediawiki.org/wiki/Help:Formatting>
+
+
+## Problemlösungen und Tricks
+### Foreman gem
+Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
+
+    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
+
 

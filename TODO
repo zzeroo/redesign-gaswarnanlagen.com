@@ -1,8 +1,6 @@
 #TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
-1. ERD Dokumentation anfertigen
-1. Kategorien Javascript Menü wieder zum laufen bringen
-1. Kategorieen -> Unterkategorien Funktion wieder herstellen
+1. Kategorien -> Unterkategorien Funktion wieder herstellen
 1. Im Bda Controller 'bda_params' anpassen
 1. Administration Menü anpassen. 
 1.1. News durch Aktuell ersetzen
@@ -15,15 +13,5 @@
 1. Produkt Bilder überarbeiten
   1.1. Logo entfernen und dafür AttachedAssets einbinden
   1.1. das erste Hochgeladene Bild sollte als Logo umgewandelt werden
-
-##Erledigt
-2. ~~Statisches responsitive Layout~~
-2. ~~Excel Import/ Export (http://railscasts.com/episodes/396-importing-csv-and-excel?view=asciicast)~~
-2. ~~Produkte mit Passwort schützen~~
-2. ~~Im Header der Navigation das RA-GAS GmbH durch ein schwarz/ weißes Logo ersetzen~~
-2. ~~Module “Aktuell” und “Nachrichten” erstellen~~
-  2.1. ~~Nachrichten sind extern~~
-  2.1. ~~Aktuell sind interne Meldungen und News~~
-2. ~~Kategorien als Baum darstellen~~ (http://jsfiddle.net/jhfrench/GpdgF/)
 
 TESTS, TESTS, TESTS, TESTS schreiben!!!!!!!!!111!1
