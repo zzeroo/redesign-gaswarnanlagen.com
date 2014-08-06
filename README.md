@@ -34,17 +34,6 @@ end
 ```
 
 
-# TODO
-
-1. ~~Statisches responsitive Layout~~
-1. ~~Excel Import/ Export (http://railscasts.com/episodes/396-importing-csv-and-excel?view=asciicast)~~
-1. ERD Dokumentation anfertigen
-1. Produkte mit Passwort schützen
-1. Im Header der Navigation das RA-GAS GmbH durch ein schwarz/ weißes Logo ersetzen
-1. Module “Aktuell” und “Nachrichten” erstellen
-1. Kategorien als Baum darstellen (http://jsfiddle.net/jhfrench/GpdgF/)
-1. Bda Controller bda_params anpassen
-
 ## Dokumentation
 
 Die Dokumentation kann mit dem Befehle `rdoc --format=fivefish` erstellt werden.
