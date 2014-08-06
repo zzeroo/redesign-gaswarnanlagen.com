@@ -36,12 +36,19 @@ FactoryGirl.define do
     sequence(:short_description) { Forgery::LoremIpsum.sentence }
   end
 
+  factory(:document) do
+    sequence(:title) { Forgery::LoremIpsum.sentence }
+    sequence(:body) { Forgery::LoremIpsum.sentence }
+  end
+
   factory(:news) do
     sequence(:title) { Forgery::LoremIpsum.sentence }
     sequence(:news_body) { Forgery::LoremIpsum.sentence }
   end
 
   factory(:bda) do
-    name "MyString"
+    sequence(:name) { |n| "Bda #{n}" }
+    sequence(:description) { Forgery::LoremIpsum.paragraphs(1) }
+    sequence(:product_nr_prefix) {|n| "#{n}00"}
   end
 end

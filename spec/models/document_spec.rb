@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Document do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @document = FactoryGirl.create(:document)
+  end
+
+  subject { @document }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:body) }
+
 end

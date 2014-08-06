@@ -5,7 +5,7 @@ describe "StaticPages" do
   let(:base_title) {"RA-GAS GmbH"}
 
   shared_examples_for "all static pages" do
-    it { should have_selector('h1', text: heading) }
+    it { should have_selector('h2', text: heading) }
     it { should have_title(full_title(page_title)) }
   end
 
@@ -19,7 +19,7 @@ describe "StaticPages" do
     it { should_not have_title("| Home") }
 
     describe "Signup button if not signed in" do
-      it { should have_link('Sign in') }
+      it { should have_link('Login') }
     end
 
     describe "No signup button if signed in" do

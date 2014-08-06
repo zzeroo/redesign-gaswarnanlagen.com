@@ -43,7 +43,7 @@ end
 1. Im Header der Navigation das RA-GAS GmbH durch ein schwarz/ weißes Logo ersetzen
 1. Module “Aktuell” und “Nachrichten” erstellen
 1. Kategorien als Baum darstellen (http://jsfiddle.net/jhfrench/GpdgF/)
-
+1. Bda Controller bda_params anpassen
 
 ## Dokumentation
 

@@ -14,7 +14,7 @@ describe "bdas/edit" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", bda_path(@bda), "post" do
       assert_select "input#bda_name[name=?]", "bda[name]"
-      assert_select "textarea#bda_description[name=?]", "bda[description]"
+      assert_select "input#bda_description[name=?]", "bda[description]"
     end
   end
 end

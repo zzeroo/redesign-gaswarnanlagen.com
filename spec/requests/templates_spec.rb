@@ -22,23 +22,13 @@ describe "GET index" do
     end
   end
 
-  describe "basic look and feel" do
-
-    before { visit root_path }
-
-    it { should have_link('', href: root_path) }
-
-    describe "as non admin user" do
-      it { should_not have_link('Produkte', href: products_path) }
-      it { should_not have_link('Produkt Kategorien', href: categories_path) }
-    end
+  describe "'Administation' menu" do
 
     describe "as admin" do
       let(:admin) { FactoryGirl.create(:admin) }
       before { sign_in admin }
 
-      it { should have_link('Produkte', href: products_path) }
-      it { should have_link('Produkt Kategorien', href: categories_path) }
+      it { should have_link('News bearbeiten', href: news_index_path) }
     end
   end
 end

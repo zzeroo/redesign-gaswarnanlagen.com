@@ -43,11 +43,6 @@ describe Category do
   end
 
 
-  describe ".subcategories" do
-    it { should respond_to :subcategories }
-
-  end
-
   describe "format of background_color" do
 
     describe "empty background_color" do

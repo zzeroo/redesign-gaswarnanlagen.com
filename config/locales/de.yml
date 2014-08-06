@@ -7,6 +7,19 @@ de:
       short: "%Y-%m-%d"
       long: "%B %d, %Y"
 
+  number:
+    human:
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
   will_paginate:
     previous_label: "« zurück"
     next_label: "vor »"

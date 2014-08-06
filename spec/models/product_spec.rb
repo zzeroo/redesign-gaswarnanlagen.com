@@ -11,7 +11,6 @@ describe Product do
   it { should respond_to(:product_nr) }
   it { should respond_to(:description) }
   it { should respond_to(:short_description) }
-  it { should respond_to(:product_group_id) }
 
   describe "when product_nr is not present" do
     before { @product.product_nr = nil }
