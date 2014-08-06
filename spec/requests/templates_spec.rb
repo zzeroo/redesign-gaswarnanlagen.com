@@ -28,7 +28,11 @@ describe "GET index" do
       let(:admin) { FactoryGirl.create(:admin) }
       before { sign_in admin }
 
-      it { should have_link('News bearbeiten', href: news_index_path) }
+      it { should have_link("Aktuell", href: news_index_path) }
+      it { should have_link("Produkte", href: products_path ) }
+      it { should have_link("Produkt-Kategorien", href: categories_path ) }
+      it { should have_link("BDA's", href: bdas_path ) }
+
     end
   end
 end
