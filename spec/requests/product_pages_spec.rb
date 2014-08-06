@@ -28,10 +28,11 @@ describe "Products pages" do
     describe "As admin" do
       before do
         sign_in admin
+        visit products_path
       end
 
       describe "Import link" do
-        it { should have_link('Produkte importieren', new_product_import_path) }
+        it { should have_link('Produkte importieren', href: new_product_import_path) }
       end
     end
 
