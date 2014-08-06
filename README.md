@@ -34,51 +34,46 @@ end
 ```
 
 
-## Dokumentation
 
+## Dokumentation
 Die Dokumentation kann mit dem Befehle `rdoc --format=fivefish` erstellt werden.
 
-### Darstellung der Modelbezieungen
-
-Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
+### Bootstrap3
+- [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
 
 ### Pagination
-
 Die Pagination wird mit will_paginate und dem Bootstrap3 Renderer will_paginate-bootstrap
 realisiert.
 
 - https://github.com/mislav/will_paginate.git
 - https://github.com/bootstrap-ruby/will_paginate-bootstrap.git
 
+### Flash Nachrichten
+- https://gist.github.com/roberto/3344628
 
-Resourcen
----------
+### Tree Navigation (Verwendung in Kategorien)
+- http://jsfiddle.net/jhfrench/GpdgF/
 
+### Darstellung der Modelbezieungen
+Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
+
+
+## Resourcen und Links
 - <http://ruby.railstutorial.org/book/ruby-on-rails-tutorial>
 - <http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design>
 - <http://rails-erd.rubyforge.org>
 
 - <http://www.mediawiki.org/wiki/Help:Formatting>
 
-Entwicklung
------------
 
-Die Entwicklungsumgebung wird durch das Foreman gem gestartet. Scheinbar werden beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
 
-ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
+## Entwicklungsumgebung
+Die Entwicklungsumgebung wird durch das Foreman gem gestartet. 
+Scheinbar werden beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
 
-### Flash Nachrichten
+    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
 
-<https://gist.github.com/roberto/3344628>
-
-### Hilfreiche Webseiten
-
-- [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
-
-### Misc
-
-#### ActiveRecord to JSON
-
+### ActiveRecord to JSON
 Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
 
 ```
@@ -89,15 +84,12 @@ File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_gener
 File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
 ```
 
-# Deployment
 
-## Apache (SSL)
+### Apache (SSL)
 
-```
-vim /usr/share/doc/apache2/README.Debian.gz
-```
+    vim /usr/share/doc/apache2/README.Debian.gz
 
-## Solr
+### Solr
 
 - http://stackoverflow.com/questions/23503116/cant-get-solr-4-8-working-with-tomcat-7-and-ubuntu-12-04
 - http://gagannaidu.blogspot.no/2014/02/apache-solr-461-tomcat7-setup-on-ubuntu.html
@@ -171,7 +163,7 @@ solr.log=/usr/share/solr
 
 
 
-## Capistrano
+### Capistrano
 
 - https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
 - https://help.github.com/articles/using-ssh-agent-forwarding
@@ -180,7 +172,7 @@ Auf dem Production System wird ein dezidierter Benutzer (gaswarnanlagen)
 angelegt. Zudem wird noch eine Gruppe (deployment) angelgt um 
 die Dateisystem Berechtigungen feiner abstimmen zu können.
 
-## Postgres Datenbank auf Production System
+### Postgres Datenbank auf Production System
 
 Folgende Programme werden auf dem Produktiv System installiert.
 
