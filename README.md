@@ -230,6 +230,6 @@ Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 ### Foreman gem
 Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
 
-    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print \$2}' |xargs kill -9
+    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print $2}' |xargs kill -9
 
 
