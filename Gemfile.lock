@@ -138,6 +138,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     kgio (2.9.2)
     leaflet-rails (0.7.2)
@@ -375,6 +377,7 @@ DEPENDENCIES
   guard-test
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  jquery-ui-rails
   leaflet-rails
   libnotify (= 0.8.0)
   paperclip

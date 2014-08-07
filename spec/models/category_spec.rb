@@ -91,6 +91,7 @@ describe Category do
       subject{ parent.save! }.should_not eq(true)
     end
 
+    # http://brightbit.com/blog/2012/06/25/testing-custom-activerecord-validations-in-ruby-on-rails-with-rspec/
     it "should print out a short error description" do
       cat = Category.new(name: "foo", id: 12345, parent_id: 12345)
 

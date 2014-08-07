@@ -11,14 +11,20 @@ tree = ->
     else
       children.show('fast')
       $(this).attr('title', 'Zweig schließen').find(' > i').addClass('fa-minus').removeClass('fa-plus')
+    e.stopPropagation();
 
-  e.stopPropagation();
+
+close = ->
+  $('.tree li.parent_li > span > i').parent().effect( "highlight", { color: "#FFE700" }, 2000 );
+  $('.tree li.parent_li').find(' > ul > li').delay(1000).hide('slow')
+  $('.tree li.parent_li > span').find(' > i').addClass('fa-plus').removeClass('fa-minus')
 
 
 
 ready = ->
   carousel();
   tree();
+  close();
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
