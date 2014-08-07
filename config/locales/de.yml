@@ -32,6 +32,13 @@ de:
     updated_at: "aktualisiert am"
 
   activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            parent_id:
+              parent_not_self: 'Eine Kategorie kann nicht Unterkategorie von sich selbst sein!'
+
     models:
       product: 
         one: Produkt

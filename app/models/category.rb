@@ -8,16 +8,27 @@ class Category < ActiveRecord::Base
   has_attached_file :logo, {
                             default_url: "rails.png" }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
-  validates_attachment :logo, :size => { :in => 0..2.megabytes }
-  validates_attachment_content_type :logo, :content_type => /\Aimage/
 
   validates :name, presence: true
   validates :background_color, format: { with: /(\A\z|\A#[0-9a-fA-F]{3}\z|\A#[0-9a-fA-F]{6}\z)/ }
+  # Validate Category can not children of her self
+  validate :parent_not_self
+  validates_attachment :logo, :size => { :in => 0..2.megabytes }
+  validates_attachment_content_type :logo, :content_type => /\Aimage/
+
 
 
   # Neues besseres Join Model 
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
+
+  def parent_not_self
+    unless parent_id.nil?
+      if parent_id == id
+        errors.add(:parent_id, :parent_not_self)
+      end
+    end
+  end
 
   def products
     Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|')) if self.product_nr_prefix.present?

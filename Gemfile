@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 gem 'rails', '4.1.4'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
 group :assets do  
   gem 'uglifier', '>= 1.0.3'

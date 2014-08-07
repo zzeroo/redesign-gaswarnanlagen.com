@@ -44,7 +44,6 @@ describe Category do
 
 
   describe "format of background_color" do
-
     describe "empty background_color" do
       before { @category.background_color = nil }
       it { should be_valid }
@@ -79,5 +78,26 @@ describe Category do
       before { @category.background_color = "#zzZZzz" }
       it { should_not be_valid }
     end
+  end
+
+  describe "Validation Categories" do
+    let!(:parent) { FactoryGirl.create(:category) }
+
+    before do
+      parent.parent_id = parent.id
+    end
+
+    it "can't be parent of her self" do
+      subject{ parent.save! }.should_not eq(true)
+    end
+
+    it "should print out a short error description" do
+      cat = Category.new(name: "foo", id: 12345, parent_id: 12345)
+
+      cat.valid?  # trigger validation to run (without saving)
+      cat.errors[:parent_id].should include I18n.t('activerecord.errors.models.category.attributes.parent_id.parent_not_self')
+    end
+
+
   end
 end

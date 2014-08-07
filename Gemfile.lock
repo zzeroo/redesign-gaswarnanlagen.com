@@ -203,6 +203,32 @@ GEM
       activesupport (>= 3.0)
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
+    rails-i18n (4.0.2)
+      i18n (~> 0.6)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
+      rails (>= 4.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -357,6 +383,7 @@ DEPENDENCIES
   progress_bar
   rails (= 4.1.4)
   rails-erd
+  rails-i18n (~> 4.0.0)
   rails_12factor
   rb-readline (~> 0.5.0)
   roo

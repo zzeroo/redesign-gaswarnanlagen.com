@@ -51,8 +51,7 @@
 
 <div class="form-group">
   <%= f.label  "Unterkategorie von" %>
-  <% categories_array = Category.all.map{ |category| [category.name + "/" + truncate(category.description, :length => 30), category.id, category.children.empty? ? "" : {class: 'bold'}] } %>
-  <%= select(:category, :parent_id, options_for_select(categories_array), include_blank: "---" ) %>
+  <%= select(:category, :parent_id, categories_for_select, include_blank: "---" ) %>
 </div>
 
 
