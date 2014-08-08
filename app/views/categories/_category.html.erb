@@ -1,16 +1,23 @@
-
-
 <li>
-<% unless category.children.empty? %><span><i class="fa fa-minus"></i></span> <% else %><span><i class="fa fa-leaf"></i></span> <% end %>
-<%= link_to( content_tag(:strong, category.name, class: 'h3' ), category_path(category) ) %>
-  <%#= image_tag category.logo.url, :width => '100px' %>
+  <% unless category.children.empty? %><span><i class="fa fa-minus spantree"></i></span> <% else %><span><i class="fa fa-leaf spantree"></i></span> <% end %>
+  <%= link_to( content_tag(:strong, category.name, class: 'h3' ), category_path(category) ) %>
+
+  <p>
+    <p style="display:inline;font-size:small">Erstellt: <%= category.created_at.to_s(:db) %></p>
+    <p style="display:inline;font-size:small"><b>Letztes Update: <%= category.created_at.to_s(:short) %></b></p>
+  </p>
+
   <%= simple_format category.description %>
-  <% if current_user && current_user.admin? %>
-    <span>
-      <%= link_to 'bearbeiten', edit_category_path(category) %> | 
-      <%= link_to 'löschen', category, method: :delete, data: { confirm: "Bist du sicher?" } %>
-    </span>
-  <% end %>
+
+  <div class="row">
+    <% if current_user && current_user.admin? %>
+      <p class="text-left">
+        <%= link_to 'bearbeiten', edit_category_path(category), title: "Kategorie bearbeiten", class: "btn btn-large btn-primary" %>
+        <%= link_to icon('trash-o'), category_path(category)  , title: "Kategorie löschen", method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+      </p>
+    <% end %>
+  </div>
+
 
   <% unless category.children.empty? %>
   <ul>
@@ -18,4 +25,3 @@
   </ul>
   <% end %>
 </li>
-

@@ -9,7 +9,7 @@ funktionieren.
 Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die 
 Datenbank der Webseite zu importieren.
 
-## Aufbau der Webseite
+## Aufbau und Logic der Webseite
 Auf der Homepage werden Gruppen von Produkten 
 (so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, 
 keine Produkte an sich.  
@@ -21,7 +21,7 @@ Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunde
 sind (siehe Beziehung Kategorie -> Produkte)
 
 ## Beziehungen
-### Kategorie -> Produkte
+### Kategorie zu -> Produkte
 Kategorien (Categories) enthalten Produkte (Products) oder Unterkategorien 
 (SubCategories through CategoryJoin) oder beides.
 
@@ -34,9 +34,10 @@ class Category < ActiveRecord::Base
 end
 ```
 
+### Ausschreibungstexte AST zu -> Produkten
 
 
-## Dokumentation
+## Dokumentation Komponenten der Webseite
 Eine ausführliche  Dokumentation kann mit dem Befehle `rdoc --format=fivefish` 
 erstellt werden.
 
@@ -60,23 +61,38 @@ realisiert.
 Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
 
 
-## Entwicklungsumgebung
-Die Entwicklungsumgebung wird durch das Foreman gem gestartet.
+
+
+
+## Entwicklung
+### Setup der Entwicklungsumgebung
+
+#### Verwendete Werkzeuge
+##### Zsh, Tmux, Tmuxinator
+Die Entwicklungsumgebung wird durch das Foreman gem gestartet. Außerdem setze ich Tmux, Zsh und [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
+ein. Unter dem [Link](http://shapeshed.com/instant-rails-dev-environments-with-tmuxinator-and-foreman/) wird hervorragend erklährt wie diese Tools optimal eingesetzt werden.
+
+
+
+##### Pandoc
+Mit Pandoc kann Text aus so ziemlich allen gängigen Dateiformaten extrahiert werden.
+Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders 
+umzuwandeln.
+
+Mit dem folgenden Befehl zum Beispiel kann die README im Markdown Format
+in eine README im html Format umgewandelt werden.
+
+    pandoc -s README.md -o doc/README.html
+
+das geht nätürlich auch mit anderen Dateien als der README
+
+    pandoc -s TODO.md -o doc/TODO.html
+
 
 
 ###Rails Update
-Diese Webseite beschreibt hervorragend den Updatevorgang: http://railsapps.github.io/updating-rails.html
+[Diese Webseite beschreibt hervorragend den “Ruby on Rails” Updatevorgang:](http://railsapps.github.io/updating-rails.html)
 
-### ActiveRecord to JSON
-Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
-
-```
-# Einfach
-File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
-
-# Auswahl der wichtigen Attribute
-File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
-```
 
 
 ### Apache (SSL)
@@ -155,6 +171,20 @@ solr.log=/usr/share/solr
 
 ```
 
+### ActiveRecord to JSON
+TODO: keine Ahnung warum ich das hier in der Doku habe :)
+
+Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
+
+```
+# Einfach
+File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
+
+# Auswahl der wichtigen Attribute
+File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
+```
+
+
 
 
 ### Capistrano
@@ -219,11 +249,11 @@ Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 
 
 ## Resourcen und Links
-- <http://ruby.railstutorial.org/book/ruby-on-rails-tutorial>
-- <http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design>
-- <http://rails-erd.rubyforge.org>
+- (http://ruby.railstutorial.org/book/ruby-on-rails-tutorial)
+- (http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design)
+- (http://rails-erd.rubyforge.org)
 
-- <http://www.mediawiki.org/wiki/Help:Formatting>
+- (http://www.mediawiki.org/wiki/Help:Formatting)
 
 
 ## Problemlösungen und Tricks

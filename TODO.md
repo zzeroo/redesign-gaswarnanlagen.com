@@ -1,5 +1,6 @@
 #TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
+1. Rspec Specs verbessern [http://betterspecs.org/](http://betterspecs.org/) sollte dabei helfen
 1. Kategorien -> Unterkategorien Funktion wieder herstellen
 1. Im Bda Controller 'bda_params' anpassen
 1. Administration Menü anpassen. 

@@ -1,4 +1,14 @@
 <% provide(:title, 'Aktuell') %>
+<h2>Aktuell</h2>
+
+<div class="row">
+  <% if current_user && current_user.admin? %>
+    <p class="text-right">
+    <%= link_to 'News erstellen', new_news_path, class: "btn btn-large btn-primary" %>
+    </p>
+  <% end %>
+</div>
+
 
 <div class="row" style="padding-top: 2em">
   <div class="col-md-12">
@@ -9,10 +19,11 @@
 </div>
 
 
-
-<div class="row center">
+<div class="row">
   <% if current_user && current_user.admin? %>
+    <p class="text-right">
     <%= link_to 'News erstellen', new_news_path, class: "btn btn-large btn-primary" %>
-<% end %>
+    </p>
+  <% end %>
 </div>
 

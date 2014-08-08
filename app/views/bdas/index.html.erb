@@ -1,13 +1,14 @@
 <% provide(:title, 'Betriebsanleitungen') %>
-<h1>Betriebsanleitungen</h1>
+<h2>Betriebsanleitungen</h2>
 
 
-<div class="row text-right">
+<div class="row">
   <% if current_user && current_user.admin? %>
-    <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+    <p class="text-right">
+      <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+    </p>
   <% end %>
 </div>
-
 
 
 <div class="row">
@@ -45,10 +46,11 @@
 </div>
 
 
-
-<div class="row text-right">
+<div class="row">
   <% if current_user && current_user.admin? %>
-    <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+    <p class="text-right">
+      <%= link_to 'Neue Betriebsanleitung', new_bda_path, class: "btn btn-large btn-primary" %>
+    </p>
   <% end %>
 </div>
 

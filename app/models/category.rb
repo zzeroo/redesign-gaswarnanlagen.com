@@ -22,15 +22,18 @@ class Category < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
 
+  def products
+    Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|')) if self.product_nr_prefix.present?
+  end
+
+
+  private
+
   def parent_not_self
     unless parent_id.nil?
       if parent_id == id
         errors.add(:parent_id, :parent_not_self)
       end
     end
-  end
-
-  def products
-    Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|')) if self.product_nr_prefix.present?
   end
 end
