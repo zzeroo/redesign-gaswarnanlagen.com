@@ -79,11 +79,23 @@ Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 - http://vladigleba.com/blog/2013/11/14/using-mapbox-with-ruby-on-rails/
 
 
-
-
-
+----
 
 ## Aufbau der Entwicklungsumgebung
+
+### AWS EC2 
+Die Webseite ist in der Amazon Elastic Cloud gehostet. Zur Verwaltung, wie zum Beispiel zum erstellen eines Backups, muss das Tool awscli lokal installiert werden.
+
+#### awscli
+Amazon stellt für den Zugriff auf die Amazon Cloud Dienste ein Tool namens `awscli` zur Verfügung.
+Dieses Tool ist ein python Tool das scheinbar auf [Boto](https://github.com/boto/boto) basiert.
+
+Die Installation unter Debian ist denkbar einfach
+
+    sudo apt-get install -y python-pip
+    sudo pip install awscli
+
+Diese [Webseite](http://alestic.com/2013/08/awscli) hat ausführliche Infos zu dem Tool.
 
 ### Verwendete Werkzeuge
 #### Zsh, Tmux, Tmuxinator
@@ -115,13 +127,7 @@ Zusammen mit diesem angepassten Befehl erhält man eine Datei gerendert die im A
 [Diese Webseite beschreibt hervorragend den “Ruby on Rails” Updatevorgang:](http://railsapps.github.io/updating-rails.html)
 
 
-
-
-
-
-
-
-
+----
 
 ## Aufbau Produktiv System
 
@@ -166,6 +172,13 @@ Die Webseite wird nach `/var/www/gaswarnanlagen.com/` deployed. Folgende Befehle
     chown gaswarnanlagen: /home/gaswarnanlagen/.ssh -R
     chmod u=rwX /home/gaswarnanlagen/.ssh -R
 
+### Installation div. Tools
+
+Folgende Tools müssen installiert werden:
+- [Git](http://git-scm.com/)
+- [Image Magic](http://www.imagemagick.org/)
+
+    apt-get install git imagemagick
 
 ### RVM Installation
 
@@ -176,6 +189,19 @@ Dazu werden folgende Befehle als Root ausgeführt
     \curl -sSL https://get.rvm.io | bash -s stable --rails --ruby
 
     gpasswd -a gaswarnanlagen rvm
+
+### Apache2 und Passenger
+
+Der Webserver wird mit dem Apache2 realisiert, die vermittlung Ruby -> Apache wird durch [ Passenger ][passenger] gehandelt.
+
+    apt-get update
+    apt-get upgrade
+    apt-get install build-essential
+    gem install passenger
+
+    passenger-install-apache2-module
+
+Die genauen Schritte werden hervorragend im `passenger-install-apache2-module` beschrieben. Einfach diesen folgen.
 
 
 ### Postgres Datenbank
@@ -192,57 +218,60 @@ Auch in der Postgres Datenbank wird ein eigener Benutzer `gaswarnanlagen` angelg
     postgres=# \password gaswarnanlagen
     postgres=# \q
 
+Die Postgres Shell nicht verlassen! Wir legen gleich noch die Datenbank an.
+
+    postgres=# CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;
 
 ### Capistrano
 
+**Mit dem Befehl `cap production deploy:check` kann überprüft werden ob alle Einstellungen und Dateien passen.**
+
 #### SSH Forwarding
-Damit Capistrano auf das Github Repo zugreifen kann müsste eigentlich der Github SSH Key auf den Webserver kopiert werden. Das kann man mit der SSH-Agent-Forwarding Technik umgehen. Dabei wird der locale SSH-Agent (in jeder Gnome Installation mit dabei und gestartet) beauftragt den Zugriff auf Github frei zu geben, der Webserver fragt also unseren localen Rechner, kann der locale Rechner auf Github zugreifen, dann gibt er diese Erlaubnis an den Webserver weiter. Siehe diesen hervorragenden Blog Post [SSH Agent Forwarding](https://help.github.com/articles/using-ssh-agent-forwarding)
+Damit Capistrano auf das Github Repo zugreifen kann müsste eigentlich der Github SSH Key auf den Webserver kopiert werden. Das kann man mit der SSH-Agent-Forwarding Technik umgehen. Dabei wird der lokale SSH-Agent (in jeder Gnome Installation mit dabei und gestartet) beauftragt den Zugriff auf Github frei zu geben, der Webserver fragt also unseren lokalen Rechner, kann der lokale Rechner auf Github zugreifen, dann gibt er diese Erlaubnis an den Webserver weiter. Siehe diesen hervorragenden Blog Post [SSH Agent Forwarding](https://help.github.com/articles/using-ssh-agent-forwarding)
 
 Nun wird capistrano installiert (via Gemfile) und mit `capify .` die nötigen Dateien erzeugt.
 
     cap deploy:setup
 
+#### Geschützte Konfigurationsdateien
+
+Die S3 und Datenbank Konfiguration `config/s3_credentials.yml` und `config/database.yml` sind nicht im öffentlich zugänglichen Github Repository enthalten, desshalb können diese Dateien auch nicht von Capistrano ausgelesen werden. Capistrano kopiert ja nur das Repo von Github. In der Datei `config/deploy.rb` gibt es einen Eintrag `set :linked_files, %w{ config/database.yml  config/s3_credentials.yml }`, dieser sorgt dafür das Capistrano nach dem Checkout des Github Repos die Dateien `config/database.yml` und `config/s3_credentials.yml` verlinkt (mit dem normalen `ln` Linux Tool)
+Die Quelle diese Links sind `/var/www/gaswarnanlagen.com/shared/config/database.yml` bzw. `/var/www/gaswarnanlagen.com/shared/config/s3_credentials.yml`.
+Nachdem nun dieses Verzeichnis auf dem Webserver erzeugt wurde, werden die beiden Dateien per `scp` auf den Webserver kopiert.
+
+    ssh gaswarnanlagen@web.gaswarnanlagen.com -c “mkdir -p /var/www/gaswarnanlagen.com/shared/config”
+    scp config/database.yml gaswarnanlagen@web.gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+    scp config/s3_credentials.yml gaswarnanlagen@web.gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+
 - [Capistrano Handbuch](https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown)
 
-
+----
 
 ## Problemlösungen und Tricks
 ### Foreman gem
+
 Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
 
-    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print $2}' |xargs kill -9
+    ps -ef |egrep ‘webkit|rspec|unicorn|rails|solr’ |awk ‘{print $2}’ |xargs kill -9
 
 
-## AWS EC2 
-Die Webseite ist in der Amazon Elastic Cloud gehostet.
+----
 
-### awscli
-Amazon stellt für den Zugriff auf die Amazon Cloud Dienste ein Tool namens `awscli` zur Verfügung.
-Dieses Tool ist ein python Tool das scheinbar auf [Boto](https://github.com/boto/boto) basiert.
-
-Die Installation unter Debian ist denkbar einfach
-
-
-### Datensicherung der AWS EC2 Instance
+## Datensicherung der AWS EC2 Instance
 
     aws ec2 create-snapshot --volume-id vol-6f5f3368 --description "root volume snapshot gaswarnanlagen.com"
 
+
+----
 
 ## Resourcen und Links
 - Das [Ruby on Rails Tutorial](http://ruby.railstutorial.org/book/ruby-on-rails-tutorial) bietet einen hervorragenden Einstieg in die Welt von RoR
 - Und in diesem Blog Post wird erklärt wie man das Layout aus dem Ruby on Rails Tutorial in ein [Responsives Layout](http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design) verwandelt
 
+[passenger]: https://www.phusionpassenger.com/
 
 
 
-
----
-
-
-
-### Apache (SSL)
-
-    vim /usr/share/doc/apache2/README.Debian.gz
 
 
 ### Solr
@@ -262,12 +291,13 @@ Die Installation unter Debian ist denkbar einfach
 
     % sudo vim /usr/share/tomcat7/lib/log4j.properties 
 
+    #  Logging level 
+
+    #solr.log=logs/
+    solr.log=/usr/share/solr
 
 
-#  Logging level 
-
-#solr.log=logs/
-solr.log=/usr/share/solr
+Solr Log Datei erstellen
 
     % sudo touch /usr/share/solr/solr.log
 
