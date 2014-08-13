@@ -82,6 +82,7 @@ RedesignGaswarnanlagenCom::Application.configure do
 
 
 PAPERCLIP_STORAGE_OPTIONS = { :storage => :s3,
-                              :s3_credentials => Rails.root.join("config/s3_credentials.yml") }
+                              :s3_credentials => Rails.root.join("config/s3_credentials.yml"),
+                              :url  => ":s3_eu_url" }
 
 end
