@@ -177,8 +177,9 @@ Die Webseite wird nach `/var/www/gaswarnanlagen.com/` deployed. Folgende Befehle
 Folgende Tools müssen installiert werden:
 - [Git](http://git-scm.com/)
 - [Image Magic](http://www.imagemagick.org/)
+- [Zsh](http://www.zsh.org/)
 
-    apt-get install git imagemagick
+    apt-get install git imagemagick zsh
 
 ### RVM Installation
 
@@ -221,6 +222,13 @@ Auch in der Postgres Datenbank wird ein eigener Benutzer `gaswarnanlagen` angelg
 Die Postgres Shell nicht verlassen! Wir legen gleich noch die Datenbank an.
 
     postgres=# CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;
+
+#### Tipp !!DANGER!!!
+
+    service apache2 stop
+    su postgres -c ‘psql -c “DROP DATABASE gaswarnanlagen;”’
+    su postgres -c ‘psql -c “CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;”’
+
 
 ### Capistrano
 
