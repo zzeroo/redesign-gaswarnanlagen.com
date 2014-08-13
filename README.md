@@ -1,20 +1,20 @@
-# Webauftritt http://gaswarnanlagen.com
-## Redesign und Dynamisierung der Webseite
+# Webauftritt
+## http://gaswarnanlagen.com
+### Redesign und Dynamisierung der Webseite
 Informationen und Beschreibungen zum Aufbau der neuen, 
 dynamischen (gaswarnanlagen.com) Webseite.
 
-Der erste Ausbau sollte alles in Allem eine Kopie der alten Webseite darstellen.
-Alle Funktionen der “alten” Webseite sollen auch in der neuen Webseite
+## Anforderung
+Im ersten Ausbau sollte alles in Allem eine Kopie der alten Webseite entstehen.
+Alle Funktionen der [“alten” Webseite](http://web.archive.org/web/20140517110348/http://gaswarnanlagen.com/) sollen auch in der neuen Webseite
 funktionieren.
 Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die 
-Datenbank der Webseite zu importieren.
+Datenbank der Webseite zu importieren. Die Daten aus dem Programm ‘Easy Win Art’
+sollten über die Exeltabellen Import Funktion in die Webseite importiert werden
+können.
 
 ## Aufbau und Logic der Webseite
-Auf der Homepage werden Gruppen von Produkten 
-(so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, 
-keine Produkte an sich.  
-Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten 
-(aus eine externen Quelle) dargestellt. 
+Auf der Homepage werden Gruppen von Produkten (so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, keine Produkte an sich. Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten (aus eine externen Quelle) dargestellt. 
 
 Klickt man auf eine Produkt Kategorie (Categories Model) werden entweder
 Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunde
@@ -34,14 +34,10 @@ class Category < ActiveRecord::Base
 end
 ```
 
-### Ausschreibungstexte AST zu -> Produkten
-
-
-## Dokumentation Komponenten der Webseite
-Eine ausführliche  Dokumentation kann mit dem Befehle `rdoc --format=fivefish` 
-erstellt werden.
-
+## Komponenten und Techniken der Webseite
 ### Bootstrap3
+Das CSS Framework der Webseite ist Bootstrap3.
+
 - [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
 
 ### Pagination
@@ -57,24 +53,44 @@ realisiert.
 ### Tree Navigation (Verwendung in Kategorien)
 - http://jsfiddle.net/jhfrench/GpdgF/
 
-### Darstellung der Modelbezieungen
-Die visuelle Darstellung der Beziehungen der Modelle untereinander sollte mit dem Ruby Tool ERD erstellt werden.
+### Paperclip (Dateianhänge)
+Dateianhänge werden mit dem Paperclip gem realisiert. 
+Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
+wurde das Logo Attribut als has_one Beziehung realisiert.
+Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
+entwurfen welches für unterschiedliche Models geeignet sein wird. 
+
+- https://github.com/thoughtbot/paperclip
+- http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
+- http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
+- http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
+
+#### Docsplit Dokumenten Konvertierung
+```
+$ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript tesseract-ocr pdftk
+```
+
+##### PDF Erstellung
+- https://github.com/tienle/docsplit-paperclip-processor
+
+### Mapbox
+Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
+
+- http://vladigleba.com/blog/2013/11/14/using-mapbox-with-ruby-on-rails/
 
 
 
 
 
-## Entwicklung
-### Setup der Entwicklungsumgebung
 
-#### Verwendete Werkzeuge
-##### Zsh, Tmux, Tmuxinator
+## Aufbau der Entwicklungsumgebung
+
+### Verwendete Werkzeuge
+#### Zsh, Tmux, Tmuxinator
 Die Entwicklungsumgebung wird durch das Foreman gem gestartet. Außerdem setze ich Tmux, Zsh und [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
 ein. Unter dem [Link](http://shapeshed.com/instant-rails-dev-environments-with-tmuxinator-and-foreman/) wird hervorragend erklährt wie diese Tools optimal eingesetzt werden.
 
-
-
-##### Pandoc
+#### Pandoc
 Mit Pandoc kann Text aus so ziemlich allen gängigen Dateiformaten extrahiert werden.
 Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders 
 umzuwandeln.
@@ -84,14 +100,143 @@ in eine README im html Format umgewandelt werden.
 
     pandoc -s README.md -o doc/README.html
 
-das geht nätürlich auch mit anderen Dateien als der README
+das geht natürlich auch mit anderen Dateien als der README
 
     pandoc -s TODO.md -o doc/TODO.html
 
+##### Pandoc on Steroid
 
+In diesen [Github Repo](https://github.com/tonyblundell/pandoc-bootstrap-template) stellt Tony Blundell eine template.html und template.css Datei zur Verfügung.
+Zusammen mit diesem angepassten Befehl erhält man eine Datei gerendert die im Aussehen an die Github Pages erinnert.
 
-###Rails Update
+    pandoc -s README.md -o doc/README.html --template doc/template.html --css doc/template.css --self-contained --toc --toc-depth 2
+
+### Rails Update
 [Diese Webseite beschreibt hervorragend den “Ruby on Rails” Updatevorgang:](http://railsapps.github.io/updating-rails.html)
+
+
+
+
+
+
+
+
+
+
+## Aufbau Produktiv System
+
+Folgende Punkte beschreiben das grundlegende Setup, welches auf jedem Produktiv
+Server durchzuführen ist.
+
+### Locale einstellen
+
+Mit folgenden Befehlen wird das gesammte System als deutsche Umgebung eingerichtet
+
+    locale-gen de_DE.UTF-8
+
+Anschließend muss noch folgende Zeile in die Datei `/etc/environment` eingefügt, und der Rechner anschließend neu gestartet werden.
+
+    LC_ALL="de_DE.UTF-8"
+
+### Deployment Benutzer und Gruppe
+
+Alle Dienste des Webauftritts werden unter dem Benutzer `gaswarnanlagen` gestartet. Wir legen diesen Benutzer an, geben ihm ein Password und fügen den Benutzer der `sudo` Gruppe hinzu.
+
+    adduser gaswarnanlagen
+    gpasswd -a gaswarnanlagen sudo
+
+Zum feineren Abstimmen der Berechtigungen legen wir zum Schluss noch eine Gruppe `deployment` an und fügen den Benutzer `gaswarnanlagen` in diese ein.
+
+    addgroup deployers
+    gpasswd -a gaswarnanlagen deployers
+
+### Verzeichnisse anlegen
+
+Die Webseite wird nach `/var/www/gaswarnanlagen.com/` deployed. Folgende Befehle erstellen den Pfad und setzen die Dateisystemberechtigungen.
+
+    mkdir /var/www/gaswarnanlagen.com -p
+    chown -R gaswarnanlagen:deployers /var/www/gaswarnanlagen.com/
+    chmod -R g+w /var/www/gaswarnanlagen.com/
+
+
+### SSH Zugang einrichten
+
+    mkdir /home/gaswarnanlagen/.ssh
+    cp /home/ubuntu/.ssh/authorized_keys /home/gaswarnanlagen/.ssh/
+    chown gaswarnanlagen: /home/gaswarnanlagen/.ssh -R
+    chmod u=rwX /home/gaswarnanlagen/.ssh -R
+
+
+### RVM Installation
+
+Die Webseite ist eine in Ruby programmierte Ruby-on-Rails  Anwendung. Ruby und Rails werden durch den [ Ruby Version Manager RVM ] installiert.
+
+Dazu werden folgende Befehle als Root ausgeführt
+
+    \curl -sSL https://get.rvm.io | bash -s stable --rails --ruby
+
+    gpasswd -a gaswarnanlagen rvm
+
+
+### Postgres Datenbank
+Folgende Programme werden auf dem Produktiv System installiert.
+
+    apt-get install postgresql
+    apt-get install libpq-dev
+
+Auch in der Postgres Datenbank wird ein eigener Benutzer `gaswarnanlagen` angelgt, und das Password gesetzt.
+
+    sudo su postgres -c psql
+
+    postgres=# CREATE ROLE gaswarnanlagen SUPERUSER LOGIN;
+    postgres=# \password gaswarnanlagen
+    postgres=# \q
+
+
+### Capistrano
+
+#### SSH Forwarding
+Damit Capistrano auf das Github Repo zugreifen kann müsste eigentlich der Github SSH Key auf den Webserver kopiert werden. Das kann man mit der SSH-Agent-Forwarding Technik umgehen. Dabei wird der locale SSH-Agent (in jeder Gnome Installation mit dabei und gestartet) beauftragt den Zugriff auf Github frei zu geben, der Webserver fragt also unseren localen Rechner, kann der locale Rechner auf Github zugreifen, dann gibt er diese Erlaubnis an den Webserver weiter. Siehe diesen hervorragenden Blog Post [SSH Agent Forwarding](https://help.github.com/articles/using-ssh-agent-forwarding)
+
+Nun wird capistrano installiert (via Gemfile) und mit `capify .` die nötigen Dateien erzeugt.
+
+    cap deploy:setup
+
+- [Capistrano Handbuch](https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown)
+
+
+
+## Problemlösungen und Tricks
+### Foreman gem
+Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
+
+    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print $2}' |xargs kill -9
+
+
+## AWS EC2 
+Die Webseite ist in der Amazon Elastic Cloud gehostet.
+
+### awscli
+Amazon stellt für den Zugriff auf die Amazon Cloud Dienste ein Tool namens `awscli` zur Verfügung.
+Dieses Tool ist ein python Tool das scheinbar auf [Boto](https://github.com/boto/boto) basiert.
+
+Die Installation unter Debian ist denkbar einfach
+
+
+### Datensicherung der AWS EC2 Instance
+
+    aws ec2 create-snapshot --volume-id vol-6f5f3368 --description "root volume snapshot gaswarnanlagen.com"
+
+
+## Resourcen und Links
+- Das [Ruby on Rails Tutorial](http://ruby.railstutorial.org/book/ruby-on-rails-tutorial) bietet einen hervorragenden Einstieg in die Welt von RoR
+- Und in diesem Blog Post wird erklärt wie man das Layout aus dem Ruby on Rails Tutorial in ein [Responsives Layout](http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design) verwandelt
+
+
+
+
+
+---
 
 
 
@@ -99,57 +244,55 @@ das geht nätürlich auch mit anderen Dateien als der README
 
     vim /usr/share/doc/apache2/README.Debian.gz
 
+
 ### Solr
 
 - http://stackoverflow.com/questions/23503116/cant-get-solr-4-8-working-with-tomcat-7-and-ubuntu-12-04
 - http://gagannaidu.blogspot.no/2014/02/apache-solr-461-tomcat7-setup-on-ubuntu.html
 
 
-```
-% cd
-% wget http://mirrors.ae-online.de/apache/lucene/solr/4.8.0/solr-4.8.0.tgz
+    % cd
+    % wget http://mirrors.ae-online.de/apache/lucene/solr/4.8.0/solr-4.8.0.tgz
 
-% sudo mv solr-4.8.0 /usr/share/solr
-% sudo cp /usr/share/solr/example/webapps/solr.war /usr/share/solr/example/solr/
-% sudo cp -r /usr/share/solr/example/lib/ext/* /usr/share/tomcat7/lib 
-% sudo cp -r /usr/share/solr/example/resources/log4j.properties /usr/share/tomcat7/lib
-```
+    % sudo mv solr-4.8.0 /usr/share/solr
+    % sudo cp /usr/share/solr/example/webapps/solr.war /usr/share/solr/example/solr/
+    % sudo cp -r /usr/share/solr/example/lib/ext/* /usr/share/tomcat7/lib 
+    % sudo cp -r /usr/share/solr/example/resources/log4j.properties /usr/share/tomcat7/lib
 
-```
-% sudo vim /usr/share/tomcat7/lib/log4j.properties 
-```
-```
+
+    % sudo vim /usr/share/tomcat7/lib/log4j.properties 
+
+
+
 #  Logging level 
+
 #solr.log=logs/
 solr.log=/usr/share/solr
-```
-```
-% sudo touch /usr/share/solr/solr.log
-```
 
-```
-% sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
-```
-```
+    % sudo touch /usr/share/solr/solr.log
+
+
+    % sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
+
+`
 <Context docBase=”/usr/share/solr/example/solr/solr.war” debug=”0” crossContext=”true”> 
   <Environment name=”solr/home” type=”java.lang.String” value=”/usr/share/solr/example/solr” override=”true” />
 </Context>
-```
+`
 
 
-```
-% sudo vim /usr/share/solr/example/solr/solr.xml 
-% sudo sudo chown -R tomcat7 /usr/share/solr
-% sudo chown -R tomcat7 /usr/share/solr                                                                                                                                        :(
-% sudo cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
-% sudo vim  /etc/tomcat7/tomcat-users.xml
-%  sudo service tomcat7 restart
-```
+    % sudo vim /usr/share/solr/example/solr/solr.xml 
+    % sudo sudo chown -R tomcat7 /usr/share/solr
+    % sudo chown -R tomcat7 /usr/share/solr                                                                                                                                        :(
+    % sudo cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
+    % sudo vim  /etc/tomcat7/tomcat-users.xml
+    %  sudo service tomcat7 restart
 
-```
-% sudo vim /usr/share/solr/example/solr/solr.xml
-```
-```
+
+
+    % sudo vim /usr/share/solr/example/solr/solr.xml
+
+`
 <?xml version="1.0" encoding="UTF-8" ?> 
 <solr> 
  
@@ -169,97 +312,19 @@ solr.log=/usr/share/solr
  
 </solr> 
 
-```
+`
 
 ### ActiveRecord to JSON
 TODO: keine Ahnung warum ich das hier in der Doku habe :)
 
 Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
 
-```
-# Einfach
-File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
+    # Einfach
+    File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
 
-# Auswahl der wichtigen Attribute
-File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
-```
+    # Auswahl der wichtigen Attribute
+    File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
 
 
-
-
-### Capistrano
-
-- https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown
-- https://help.github.com/articles/using-ssh-agent-forwarding
-
-Auf dem Production System wird ein dezidierter Benutzer (gaswarnanlagen) 
-angelegt. Zudem wird noch eine Gruppe (deployment) angelgt um 
-die Dateisystem Berechtigungen feiner abstimmen zu können.
-
-### Postgres Datenbank auf Production System
-
-Folgende Programme werden auf dem Produktiv System installiert.
-
-```
-$ sudo apt-get install postgresql
-$ sudo apt-get install libpq-dev
-```
-
-Auch in der Postgres Datenbank wird ein eigener Benutzer (gaswarnanlgen)
-angelgt.
-Dabei wird <username> durch den richtigen Benutzer ersetzt, in diesem Fall
-gaswarnanlgen.
-
-```
-$ sudo su postgres -c psql
-postgres=# CREATE ROLE <username> SUPERUSER LOGIN;
-postgres=# \q
-```
-- http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails
-
-
-### Paperclip (Dateianhänge)
-
-Dateianhänge werden mit dem Paperclip gem realisiert. 
-Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
-wurde das Logo Attribut als has_one Beziehung realisiert.
-Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
-entwurfen welches für unterschiedliche Models geeignet sein wird. 
-
-- https://github.com/thoughtbot/paperclip
-- http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
-- http://www.tkalin.com/blog_posts/multiple-file-upload-with-rails-3-2-paperclip-html5-and-no-javascript
-- http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
-
-#### Docsplit Dokumenten Konvertierung
-
-```
-$ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript tesseract-ocr pdftk
-```
-
-##### PDF Erstellung
-- https://github.com/tienle/docsplit-paperclip-processor
-
-
-
-### Mapbox
-Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
-
-- http://vladigleba.com/blog/2013/11/14/using-mapbox-with-ruby-on-rails/
-
-
-## Resourcen und Links
-- (http://ruby.railstutorial.org/book/ruby-on-rails-tutorial)
-- (http://techbrownbags.wordpress.com/2013/06/03/rails-tutorial-responsive-web-design)
-- (http://rails-erd.rubyforge.org)
-
-- (http://www.mediawiki.org/wiki/Help:Formatting)
-
-
-## Problemlösungen und Tricks
-### Foreman gem
-Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt. Folgender Befehl beendet alle Komponenten:
-
-    ps -ef |egrep 'webkit|rspec|unicorn|rails' |awk '{print $2}' |xargs kill -9
 
 

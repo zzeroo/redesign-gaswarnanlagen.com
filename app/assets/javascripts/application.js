@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require leaflet
 // Loads all Bootstrap javascripts
 //= require bootstrap
@@ -21,3 +21,4 @@
 //= require bootstrap/modal
 //= require bootstrap/dropdown
 //= require_tree .
+//= require turbolinks
