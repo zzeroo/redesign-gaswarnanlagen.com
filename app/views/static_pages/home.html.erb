@@ -1,5 +1,6 @@
 <div class="my-container">
   <div class="row">
+
     <div class="col-md-9">
       <div class="row">
         <% @categories.each do |category| %>
@@ -11,9 +12,10 @@
           </div>
         </div>
       <% end %>
-      </div>
+    </div><!-- End row -->
+
       <div class="row">
-        <div>
+        <div class="col-md-12">
           <h2>Mehr Sicherheit durch RA-GAS Warnsysteme ...</h2>
           <p>
             ... das Versprechen Meister, Diplomingenieure, Techniker und Facharbeiter des zertifizierten Unternehmens RA-GAS GmbH (LNS-Network-Integrator).
@@ -36,17 +38,21 @@
           </p>
         </div>
       </div>
-    </div>
+    </div><!-- End col-md-9 -->
+
     <div class="col-md-3">
       <div class="row">
         <div class="col-md-12">
-          <div class="my-inner box_category box_aktuell">
+          <div class="my-inner box_category" style="background-color: #5D5D5D">
             <a href="/news"><h1>Aktuell<i class="pull-right fa fa-chevron-down"></i></h1></a>
             <ul>
             <%= render partial: "news/news_list", collection: @news, as: :news %>
             </li>
-          </div>
-        </div>
+          </div><!-- End my-inner box_cat .. -->
+        </div><!-- End col-md-12 -->
+      </div><!-- End row -->
+
+      <div class="row" style="padding-top: 1.2em">
         <div class="col-md-12">
           <div class="my-inner box_category box_nachrichten">
             <a href="#"><h1>Nachrichten<i class="pull-right fa fa-chevron-down"></i></h1></a>
@@ -54,9 +60,10 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!-- End col-md-3 -->
+
+  </div><!-- End row -->
+</div> <!-- End my-container -->
 
 
 

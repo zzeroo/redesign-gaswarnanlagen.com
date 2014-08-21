@@ -1,5 +1,10 @@
 #TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
+1. Downloads Model schaffen
+1.1. gaswarnanlagen.com/downloads/AGB-RAGAS.pdf
+1.1. gaswarnanlagen.com/downloads/AGB-KLS.pdf
+1.1. gaswarnanlagen.com/downloads/FSB-RAGAS.pdf
+1.1. gaswarnanlagen.com/downloads/FSB-KLS.pdf
 1. Rspec Specs verbessern [http://betterspecs.org/](http://betterspecs.org/) sollte dabei helfen
 1. Kategien -> edit; Hintergrundfarbe des Parent übernehmen
   Das kann man mit einem Häckchen machen, wird das bei einer Root Cat. gemacht dann NILt das einfach die BG

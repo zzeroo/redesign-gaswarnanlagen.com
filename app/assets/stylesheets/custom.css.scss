@@ -51,7 +51,7 @@ body > .jumbotron {
   // Product group logo
   .logo {
     width: 100%;
-    height: 130px;
+    height: 230px;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -60,11 +60,15 @@ body > .jumbotron {
       min-height: 100%;
     }
   }
+  p.description { font-size: 0.85em; }
 }
 
-.box_category, .box_aktuell, .box_nachrichten {
-  height: 368px;
+.box_category {
+  height: 468px;
   @include h_and_links
+}
+
+.box_aktuell, .box_nachrichten {
 }
 
 .box_category_small {
