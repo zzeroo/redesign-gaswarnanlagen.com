@@ -226,8 +226,9 @@ Die Postgres Shell nicht verlassen! Wir legen gleich noch die Datenbank an.
 #### Tipp !!DANGER!!!
 
     service apache2 stop
-    su postgres -c ‘psql -c “DROP DATABASE gaswarnanlagen;”’
-    su postgres -c ‘psql -c “CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;”’
+    su postgres -c 'psql -c "DROP DATABASE gaswarnanlagen;"'
+    su postgres -c 'psql -c "CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;"'
+    service apache2 start
 
 
 ### Capistrano
@@ -284,84 +285,105 @@ Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt.
 
 ### Solr
 
-- http://stackoverflow.com/questions/23503116/cant-get-solr-4-8-working-with-tomcat-7-and-ubuntu-12-04
-- http://gagannaidu.blogspot.no/2014/02/apache-solr-461-tomcat7-setup-on-ubuntu.html
+Installation der Solr Suche.
 
+Zu Begin wird das System aktualisiert
 
-    % cd
-    % wget http://mirrors.ae-online.de/apache/lucene/solr/4.8.0/solr-4.8.0.tgz
+    sudo apt-get update && sudo apt-get dist-upgrade
+    sudo apt-get autoremove
 
-    % sudo mv solr-4.8.0 /usr/share/solr
-    % sudo cp /usr/share/solr/example/webapps/solr.war /usr/share/solr/example/solr/
-    % sudo cp -r /usr/share/solr/example/lib/ext/* /usr/share/tomcat7/lib 
-    % sudo cp -r /usr/share/solr/example/resources/log4j.properties /usr/share/tomcat7/lib
+Dannn erfolgt die Installation von Java und Tomcat
 
+    sudo apt-get install openjdk-7-jdk
+    sudo apt-get install tomcat7 tomcat7-docs tomcat7-examples tomcat7-admin
 
-    % sudo vim /usr/share/tomcat7/lib/log4j.properties 
+In der Konfiguration wird Tomcat der Benutzer und dessen Password übergeben
 
-    #  Logging level 
+    cat <<EOF |sudo tee /etc/tomcat7/tomcat-users.xml\
+    <?xml version='1.0' encoding='utf-8'?>
+    <tomcat-users>
+      <role rolename="manager"/>
+      <role rolename="admin"/>
+      <role rolename="admin-gui"/>
+      <role rolename="manager-gui"/>
+      <user username="tomcat" password="930440Hk" roles="manager,admin,manager-gui,admin-gui"/>
+    </tomcat-users>
+    EOF
 
-    #solr.log=logs/
+Jetzt kann Solr heruntergeladen werden
+
+    wget http://mirror.derwebwolf.net/apache/lucene/solr/4.9.0/solr-4.9.0.tgz
+    tar xfvz solr-4.9.0.tgz
+    sudo mv solr-4.9.0 /usr/share/solr
+
+**Jetzt muss zur Entwicklungsumgebung gewechselt werden.** Hier wird im Root des Repository das gesammte Verzeichnis ./solr gepackt, und auf den Webserver hoch geladen.
+
+    tar cfvz solr.tgz solr
+    scp solr.tgz gaswarnanlagen@gaswarnanlagen.com:~/
+
+Anschließend wird wieder auf dem Webserver weiter gearbeitet. Hier wird das soeben hoch geladene solr.tgz Archiv entpackt und das Solr Schema ins System kopiert.
+
+    tar xfvz solr.tgz
+    cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
+
+Folgende Konfiguration konfiguriert den Solr Core
+
+    cat <<EOF |sudo tee /usr/share/solr/example/solr/solr.xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+
+    <solr>
+
+      <solrcloud>
+        <str name="host">${host:}</str>
+        <int name="hostPort">${jetty.port:8983}</int>
+        <str name="hostContext">${hostContext:solr}</str>
+        <int name="zkClientTimeout">${zkClientTimeout:30000}</int>
+        <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool>
+      </solrcloud>
+
+      <shardHandlerFactory name="shardHandlerFactory"
+        class="HttpShardHandlerFactory">
+        <int name="socketTimeout">${socketTimeout:0}</int>
+        <int name="connTimeout">${connTimeout:0}</int>
+      </shardHandlerFactory>
+
+    </solr>
+    EOF
+
+Nun muss noch das Log Verzeichnis erstellt werden.
+
+    sudo touch /usr/share/solr/solr.log
+    sudo chown -R tomcat7 /usr/share/solr
+
+Der Pfad dieser Log Datei wird im Konfigurations Attribut `solr.log` der Datei `/usr/share/tomcat7/lib/log4j.properties` eingestellt
+
+    sudo vim /usr/share/tomcat7/lib/log4j.properties
+
+    # Pfad zur Log Datei
     solr.log=/usr/share/solr
 
+Jetzt muss noch der Tomcat konfiguriert werden.
 
-Solr Log Datei erstellen
+    sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
 
-    % sudo touch /usr/share/solr/solr.log
+Hierzu muss der folgende Eintrag zu finden sein
 
+    <?xml version="1.0" encoding="utf-8"?>
+    <Context docBase="/usr/share/solr/example/solr/solr.war" debug="0" crossContext="true">
+      <Environment name="solr/home" type="java.lang.String" value="/usr/share/solr/example/solr" override="true" />
+    </Context>
 
-    % sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
+Zum Abschluss der Solr Installation werden noch die Dateisystemberechtigungen gesetzt und der Tomcat Server neu gestartet.
 
-`
-<Context docBase=”/usr/share/solr/example/solr/solr.war” debug=”0” crossContext=”true”> 
-  <Environment name=”solr/home” type=”java.lang.String” value=”/usr/share/solr/example/solr” override=”true” />
-</Context>
-`
+    sudo sudo chown -R tomcat7 /usr/share/solr
+    sudo service tomcat7 restart
 
+Nun muss noch der Solr Index neu aufgebaut werden.
 
-    % sudo vim /usr/share/solr/example/solr/solr.xml 
-    % sudo sudo chown -R tomcat7 /usr/share/solr
-    % sudo chown -R tomcat7 /usr/share/solr                                                                                                                                        :(
-    % sudo cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
-    % sudo vim  /etc/tomcat7/tomcat-users.xml
-    %  sudo service tomcat7 restart
+    RAILS_ENV=production bundle exec rake sunspot:reindex
 
 
 
-    % sudo vim /usr/share/solr/example/solr/solr.xml
-
-`
-<?xml version="1.0" encoding="UTF-8" ?> 
-<solr> 
- 
-  <solrcloud> 
-    <str name="host">${host:}</str> 
-    <int name="hostPort">${jetty.port:8983}</int> 
-    <str name="hostContext">${hostContext:solr}</str> 
-    <int name="zkClientTimeout">${zkClientTimeout:30000}</int> 
-    <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool> 
-  </solrcloud> 
- 
-  <shardHandlerFactory name="shardHandlerFactory" 
-    class="HttpShardHandlerFactory"> 
-    <int name="socketTimeout">${socketTimeout:0}</int> 
-    <int name="connTimeout">${connTimeout:0}</int> 
-  </shardHandlerFactory> 
- 
-</solr> 
-
-`
-
-### ActiveRecord to JSON
-TODO: keine Ahnung warum ich das hier in der Doku habe :)
-
-Mit den folgenden Ruby Snippets wird das Categoy Model in eine json Datei geschrieben.
-
-    # Einfach
-    File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json )) }
-
-    # Auswahl der wichtigen Attribute
-    File.open(‘test_export.json’, ‘w’){ |file| file.write( JSON.pretty_generate(Category.all.as_json(:except => [ :created_at, :updated_at, :logo_file_name, :logo_content_type, :logo_file_size, :logo_updated_at ]) )) }
 
 
 
