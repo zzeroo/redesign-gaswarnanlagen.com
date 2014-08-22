@@ -9,7 +9,7 @@
     <% end %>
   </td>
   <td>
-    <% if product.tdb.present? %>
+    <% if @product.tdb.present? %>
       <%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "Technisches Datenblatt", style: "color: darkred;"), @product.tdb.url(:pdf)) %>
     <% end %>
   </td>
