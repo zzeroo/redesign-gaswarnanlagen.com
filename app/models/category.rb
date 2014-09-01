@@ -22,8 +22,17 @@ class Category < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
 
+  # Category -> Products Beziehung ist weich, d.h. nicht durch eine echte ActiveRecord Beziehung gestaltet.
   def products
-    Product.where("product_nr ~* ?", self.product_nr_prefix.split(',').collect{|p| "^" + p}.join('|')) if self.product_nr_prefix.present?
+    # Liefert ein Array mit den Product Nummern zurück
+    product_nrs = self.product_nr_prefix.split(',').collect{|x| x.strip }
+
+    if self.product_nr_prefix.present?
+      # Die where Clausel wird mit den Productnummern zusammengesetzt.
+      # Die Product Nummern werden mit '|' gejoint
+      # Das sieht dann z.B. so aus: where("product_nr ~ * ?", "^310|^100|^123")
+      Product.where("product_nr ~* ?", product_nrs.collect{|p| "^" + p}.join('|'))
+    end
   end
 
 

@@ -63,7 +63,7 @@ class Product < ActiveRecord::Base
   def bdas
     ret = []
     Bda.all.each do |bda|
-      unless bda.products.nil?
+      if bda.products.present?
         ret << bda if bda.products.include?(self)
       end
     end
