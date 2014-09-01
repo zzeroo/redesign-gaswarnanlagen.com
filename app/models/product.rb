@@ -67,6 +67,20 @@ class Product < ActiveRecord::Base
     return ret
   end
 
+  # Liste aller Categories die dieses Produkt enthalten
+  def categories
+    ret = []
+    Category.all.each do |cat|
+      unless cat.product_nr_prefix.blank?
+        product_nrs = cat.product_nr_prefix.split(',').collect{|x| x.strip}
+        product_nrs.each{|nr| ret << cat if !!(self.product_nr =~ Regexp.new(nr)) }
+      end
+    end
+    return ret
+  end
+
+
+
 end
 
 

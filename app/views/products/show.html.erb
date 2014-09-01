@@ -1,7 +1,11 @@
 <% provide(:title, @product.product_nr) %>
 
 <div class="breadcrumb" data-no-turbolink>
-  <%= link_to "http://gaswarnanlagen.com", root_path %>&nbsp;>&nbsp;<%= link_to @product.product_nr, @product  %>
+  <%= link_to "http://gaswarnanlagen.com", root_path %>&nbsp;>&nbsp;
+  <!-- TODO: Das muss refactoriert werden. Außerdem muss der Umstand beachtet werden, das ein Produkt in mehreren 
+            Kategorien vorhanden sein kann -->
+  <%= link_to @product.categories.first.name, @product.categories.first  unless @product.categories.first.nil? %>&nbsp;>&nbsp;
+  <%= link_to @product.product_nr, @product  %>
   </div>
 
 <div class="row">
