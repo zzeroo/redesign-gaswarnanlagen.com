@@ -1,18 +1,25 @@
 <tr>
+  <!-- Produktnummer -->
   <td><%= link_to (highlight_it product.product_nr, params[:search]), product %></td>
-  <td><%= highlight_it product.short_description, params[:search] %></td>
+  <!-- Kurzbeschreibung -->
+  <td><%= show_short_description( product, params[:search] ) %><%= link_to 'mehr', product_path(product) %></td>
+  <!-- Bild -->
   <td><%= image_tag product.logo.url(:small) %></td>
-  <td><%= truncate((highlight_it product.description, params[:search]), :length => 60) %></td>
+  <!-- Beschreibung -->
+  <td><%= show_description( product, params[:search] ) %><%= link_to 'mehr', product_path(product) %></td>
+  <!-- AST -->
   <td>
     <% if product.has_ast? %>
       <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt')) %>
     <% end %>
   </td>
+  <!-- TDB -->
   <td>
     <% if product.tdb.present? %>
       <%= link_to(icon('file-pdf-o', '', class: 'fa-2x', title: "Technisches Datenblatt", style: "color: darkred;"), product.tdb.url(:pdf)) %>
     <% end %>
   </td>
+  <!-- BDA -->
   <td>
     <% product.bdas.each do |bda| %>
       <% bda.attached_assets.each do |asset| %>
@@ -20,6 +27,7 @@
       <% end %>
     <% end %>
   </td>
+  <!-- Admin Links -->
   <td>
     <% if current_user && current_user.admin? %>
       <%= link_to icon('eye') + " anzeigen", product %><br />

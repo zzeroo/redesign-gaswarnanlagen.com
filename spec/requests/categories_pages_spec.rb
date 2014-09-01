@@ -67,12 +67,6 @@ describe "Categories pages" do
     it { should have_content(category.name) }
     it { should have_title(category.name) }
 
-    describe "list of products" do
-      it { should have_content(product1.product_nr) }
-      it { should have_content(product1.description) }
-      it { should have_content(product1.short_description) }
-    end
-
     describe "as user" do
       before do
         sign_in user
@@ -88,7 +82,7 @@ describe "Categories pages" do
         visit categories_path(category)
       end
 
-      it { should have_link('', edit_category_path(category)) }
+      it { should have_link('bearbeiten', edit_category_path(category)) }
     end
   end
 

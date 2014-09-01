@@ -42,6 +42,7 @@ group :development, :test do
   gem 'guard-test'
   gem 'ruby-prof'
   gem 'rspec-rails'
+  gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'forgery'
   gem 'spring-commands-rspec'
@@ -54,8 +55,8 @@ group :development do
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
-  gem "spring"
-  gem 'guard-livereload', require: false
+  gem 'spring'
+  gem 'ruby-graphviz'
 end
 
 group :test do

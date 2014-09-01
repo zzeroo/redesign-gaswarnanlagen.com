@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
- 
 
   def index
     # with solr search
@@ -12,18 +11,12 @@ class ProductsController < ApplicationController
 
     @products = @search.results
   end
-  
+
   def show
     @product = Product.find(params[:id])
   end
 
-  def ast
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.txt
-    end
+  def new
   end
 
   def edit
@@ -45,6 +38,17 @@ class ProductsController < ApplicationController
     product.destroy
     flash[:success] = "Produkt wurde gelöscht."
     redirect_to products_url
+  end
+
+  # TODO: Beschreibund dieser Action
+  # FIXME: Restfull ist das nicht
+  def ast
+    @product = Product.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.txt
+    end
   end
 
   private
