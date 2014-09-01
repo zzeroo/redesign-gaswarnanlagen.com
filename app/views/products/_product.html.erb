@@ -22,8 +22,8 @@
   <!-- BDA -->
   <td>
     <% product.bdas.each do |bda| %>
-      <% bda.attached_assets.each do |asset| %>
-        <%= link_to(icon('file-text', '', class: 'fa-2x', title: "Betriebsanleitung"), asset.asset.url ) %>
+      <% bda.attached_assets.each do |a| %>
+        <p><%= icon_link_to( a, "Betriebsanleitung" ) %></p>
       <% end %>
     <% end %>
   </td>
