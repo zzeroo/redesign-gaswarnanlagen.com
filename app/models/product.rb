@@ -59,10 +59,13 @@ class Product < ActiveRecord::Base
   # Liste mit allen BDAs
   # Alle BDA werden durchlaufen, anschließend wird geprüft ob das Product (self)
   # in der Liste der Producte ist
+  # FIXME: Bda.all ist viiiiel zu verbose. Hier muss dringend ein index rein!!!1
   def bdas
     ret = []
     Bda.all.each do |bda|
-      ret << bda if bda.products.include?(self)
+      unless bda.products.nil?
+        ret << bda if bda.products.include?(self)
+      end
     end
     return ret
   end
