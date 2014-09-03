@@ -14,6 +14,7 @@ production:
     id_site: 1
     url: piwik.gaswarnanlagen.com
     use_async: true
+    trackingTimer: 750
     disabled: false
 
 development:
