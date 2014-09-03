@@ -15,9 +15,9 @@ GIT
 
 GIT
   remote: https://github.com/zzeroo/piwik_analytics.git
-  revision: 57e1f0867334af7ed725a0b6ba0a3ec2076d476a
+  revision: 247f48f7e310fb1127dc1c6e08778952f523d9cf
   specs:
-    piwik_analytics (1.0.4)
+    piwik_analytics (1.0.5)
       actionpack
       activesupport
       rails (>= 3.0.0)
@@ -401,7 +401,7 @@ DEPENDENCIES
   libnotify (= 0.8.0)
   paperclip
   pg (= 0.15.1)
-  piwik_analytics (~> 1.0.3)!
+  piwik_analytics (~> 1.0.5)!
   progress_bar
   rails (= 4.1.4)
   rails-erd
