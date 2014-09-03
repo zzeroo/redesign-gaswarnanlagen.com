@@ -20,6 +20,8 @@
   1.1. das erste Hochgeladene Bild sollte als Logo umgewandelt werden
 1. Rspec Specs verbessern [http://betterspecs.org/](http://betterspecs.org/) sollte dabei helfen
 
+1. Interessante Seite mit custom exeption handler und Error Seiten Support [](https://github.com/richpeck/exception_handler)
+
 TESTS, TESTS, TESTS, TESTS schreiben!!!!!!!!!111!1
 
 # Komponenten die man evtl. auch noch einbauen kann

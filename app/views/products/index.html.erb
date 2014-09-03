@@ -10,6 +10,7 @@
 </div>
 
 
+<% if current_user && current_user.admin? %>
 <div class="row">
   <p>
   Download:
@@ -17,6 +18,7 @@
   <%= link_to "Excel", products_path(format: "xls") %>
   </p>
 </div>
+  <% end %>
 
 
 <%= render 'products/products_list', object: @products %>
