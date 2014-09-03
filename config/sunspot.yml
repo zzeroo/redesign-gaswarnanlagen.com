@@ -9,6 +9,10 @@ production:
 
 development:
   solr:
+    min_memory: 512M
+    max_memory: 1G
+    #solr_jar: /path/to/start.jar
+    #log_level: DEBUG
     hostname: localhost
     port: 8982
     log_level: INFO
