@@ -14,13 +14,20 @@ body {
 .bs-docs-header {
   .row {
     height: 134px;
-    #background: url("header-01.png") no-repeat scroll 0px 0px;
     background: url("Header RA-GAS GmbH.png") no-repeat scroll 0px 0px;
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      } 
+      div#logo {
+        position: absolute;
+        top: 1.3em;
+        left: .2em;
+        width: 240px; 
+        height: 80px;
+        background: url("Logo RA-GAS GmbH.svg") no-repeat scroll 0px 0px;
+      }
   }
 }
 
