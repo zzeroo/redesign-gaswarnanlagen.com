@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]
  
   def index
-    @news = News.order(:news_date, :created_at)
+    @news = News.order(news_date: :desc)
   end
   
   def new

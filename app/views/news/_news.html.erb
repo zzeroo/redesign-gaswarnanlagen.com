@@ -3,7 +3,13 @@
     <%= link_to image_tag( news.news_image.url(:thump)), news.news_image.url  %>
   </div>
   <div class="col-md-10">
-    <b><%= l news.updated_at, format: :short %></b>
+    <p style="font-weight: bold">
+    <% if news.news_date.present? %>
+      <%= l news.news_date, format: :short %>
+    <% else %>
+      <%= l news.created_at, format: :short %>
+    <% end %>
+    </p>
     <h4><%= news.title %></h4>
     <p><%= news.news_body.html_safe %></p>
     <% if current_user && current_user.admin? %>
