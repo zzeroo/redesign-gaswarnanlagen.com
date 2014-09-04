@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]
  
   def index
-    @news = News.all
+    @news = News.order(:news_date, :created_at)
   end
   
   def new
@@ -43,7 +43,7 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:title, :news_body, :news_image)
+    params.require(:news).permit(:title, :news_date, :news_body, :news_image)
   end
 
 end
