@@ -26,7 +26,8 @@ body {
         left: .2em;
         width: 240px; 
         height: 80px;
-        background: url("Logo RA-GAS GmbH.svg") no-repeat scroll 0px 0px;
+        background: url("Logo RA-GAS GmbH.png") no-repeat scroll 0px 0px;
+        #background: none, url("Logo RA-GAS GmbH.svg") no-repeat scroll 0px 0px;
       }
   }
 }
@@ -258,8 +259,9 @@ mark, .mark {
 
 a.navbar-brand {
   min-width: 150px;
-    background: url("Logo RA-GAS sw.svg") no-repeat scroll 10px 15px;
-    background-size: 126px;
+    background: url("Logo RA-GAS sw.png") no-repeat scroll 10px 15px;
+    background: none, url("Logo RA-GAS sw.svg") no-repeat scroll 10px 15px;
+    background-size: 126px 28px;
 }
 
 // contact pages map
