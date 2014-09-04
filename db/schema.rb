@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807124326) do
+ActiveRecord::Schema.define(version: 20140904085120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140807124326) do
     t.string   "news_image_content_type"
     t.integer  "news_image_file_size"
     t.datetime "news_image_updated_at"
+    t.datetime "news_date"
   end
 
   create_table "product_groups", force: true do |t|
