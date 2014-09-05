@@ -6,17 +6,22 @@
 
 <div class="row">
   <% if current_user && current_user.admin? %>
-    <p class="text-right">
-  <%= link_to 'Kategorie barbeiten', edit_category_path(@category), class: "btn btn-large btn-primary" %>
+  <p class="text-right">
+    <span><%= link_to 'Kategorie barbeiten', edit_category_path(@category), class: "btn btn-large btn-primary" %></span>
+    <span><%= link_to 'neue Kategorie anlegen', new_category_path(), class: "btn btn-large btn-primary" %></span>
+  </p>
+  <p class="text-right">
+    <%= link_to 'Übersicht Kategorien', categories_path() %>
   </p>
   <% end %>
 </div>
 
-
+<%-# commented line -%>
 <% if @category.attached_assets && @category.attached_assets.size == 1 %>
   <%= image_tag @category.attached_assets.first.asset_file_name if @category.attached_assets.first.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
 <% end %>
 
+<%-# commented line -%>
 <% if @category.attached_assets && @category.attached_assets.size > 1 %>
 <div class="row">
   <% @category.attached_assets.each_with_index do |asset, index| %>
@@ -30,8 +35,7 @@
 <% end %>
 
 
-
-<!-- Categories -->
+<%-# Categories -%>
 <% unless @category.children.empty? %>
 <div class="my-container">
   <div class="row">

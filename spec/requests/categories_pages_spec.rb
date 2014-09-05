@@ -163,11 +163,6 @@ describe "Categories pages" do
       end
 
       it { should have_link '', category_path(category) }
-
-      it "should delete a category" do
-        pending "Finde zur Zeit keine Lösung für die delete Links (als Buttons)"
-        #expect { delete category_path(category)}.to change(Category, :count).by(-1)
-      end
     end
 
   end
