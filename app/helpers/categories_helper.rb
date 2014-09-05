@@ -1,13 +1,51 @@
 module CategoriesHelper
-  def categories_for_select
-    # category| [category.name + "   '" + truncate(category.description, :length => 30) + "'", category.id, category.children.empty? ? "" : {class: 'bold'}] }
 
-    Category.all.order(:created_at).collect do |c|
-      [
-       c.parent.blank? ? c.name : c.name + "   '" + truncate(c.description, :length => 30) + "'", 
-       c.id, 
-       c.parent.blank? ? {class: 'bold'} : "" 
-      ]
+  # Konstructs the select field
+  def categories_for_select
+    @retval = []
+
+    Category.where(parent:nil).collect do |c|
+      @retval << make_array(c)
+
+      c.children.each do |child|
+        recurs(child)
+      end
     end
+
+    return @retval
   end
+
+
+  private
+
+    def recurs(child)
+      @retval << make_array(child)
+
+      return if child.children.blank?
+
+      child.children.each do |child|
+        recurs(child)
+      end
+    end
+
+    def make_array(category)
+      [ category_name(category), category.id ]
+    end
+
+    def category_name(category)
+      if category.parent.blank?
+        category.name + " [Hauptkategorie]"
+      else
+        category_name_description(category)
+      end
+    end
+
+    def category_name_description(category)
+      if category.description.blank?
+        description = ""
+      else
+        description = "> " + truncate(category.description, :length => 30) 
+      end
+      "..." + category.name + description
+    end
 end

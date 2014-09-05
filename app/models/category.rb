@@ -17,10 +17,10 @@ class Category < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage/
 
 
-
   # Neues besseres Join Model 
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
+
 
   # Category -> Products Beziehung ist weich, d.h. nicht durch eine echte ActiveRecord Beziehung gestaltet.
   def products
@@ -40,6 +40,7 @@ class Category < ActiveRecord::Base
 
   private
 
+  # Helper function to check if category is parent of her self
   def parent_not_self
     unless parent_id.nil?
       if parent_id == id

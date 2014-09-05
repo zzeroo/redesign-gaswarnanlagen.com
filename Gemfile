@@ -40,6 +40,7 @@ group :development, :test do
 #  gem 'sqlite3', '1.3.8'
   gem 'spork-testunit'
   gem 'guard-test'
+  gem 'guard-rspec'
   gem 'ruby-prof'
   gem 'rspec-rails'
   gem 'guard-livereload', require: false
