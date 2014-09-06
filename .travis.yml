@@ -15,9 +15,10 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.default config/database.yml
 
-env:
-  - GEM=sunspot
-  - GEM=sunspot_rails RAILS=4.0.0
+#env:
+#  - GEM=sunspot
+#  - GEM=sunspot_rails RAILS=4.0.0
+
 script:
   - ci/travis.sh
 
