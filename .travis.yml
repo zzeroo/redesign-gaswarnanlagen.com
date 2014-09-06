@@ -4,6 +4,8 @@ rvm:
 
 bundler_args: --without production
 
+before_script: curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=3.6.1 bash
+
 script:
   - bin/rake db:migrate RAILS_ENV=test
   - bundle exec rspec spec
@@ -14,6 +16,4 @@ addons:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.default config/database.yml
-
-before_script: curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=3.6.1 bash
 
