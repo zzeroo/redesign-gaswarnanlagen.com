@@ -44,7 +44,6 @@ group :development, :test do
   gem 'ruby-prof'
   gem 'rspec-rails'
   gem 'guard-livereload', require: false
-  gem 'guard-rspec'
   gem 'forgery'
   gem 'spring-commands-rspec'
   gem 'capybara'
