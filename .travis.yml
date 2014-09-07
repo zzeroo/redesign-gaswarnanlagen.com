@@ -4,7 +4,7 @@ rvm:
 
 bundler_args: --without production
 
-before_script: curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.9.0 bash
+before_script: curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.9.0 SOLR_CONFS="./solr/conf/schema.xml ./solr/conf/solrconfig.xml" bash
 
 script:
   - bin/rake db:migrate RAILS_ENV=test
