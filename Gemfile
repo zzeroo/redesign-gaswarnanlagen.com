@@ -47,11 +47,11 @@ group :development, :test do
   gem 'forgery'
   gem 'spring-commands-rspec'
   gem 'capybara'
+  gem 'sunspot_solr'
 end
 
 group :development do
   gem "rails-erd"
-  gem 'sunspot_solr'
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
