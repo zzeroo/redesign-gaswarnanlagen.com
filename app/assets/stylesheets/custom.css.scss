@@ -81,12 +81,9 @@ body > .jumbotron {
 }
 
 .box_category_small {
+  overflow: hidden;
   height: 268px;
   @include h_and_links
-}
-
-.box_category_small {
-  height: 268px;
 }
 
 .box_aktuell {
