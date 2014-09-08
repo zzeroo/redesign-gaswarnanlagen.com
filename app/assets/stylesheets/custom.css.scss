@@ -43,10 +43,15 @@ body > .jumbotron {
 
 @mixin h_and_links {
   color: #FFF;
-  h1, .description {
-    padding: .5em;
+  h1, .logo, .description {
+    padding: 0;
+    overflow: hidden;
+  }
+  h1, .description, i.fa {
+    margin: 0 .5em 0 .5em;
   }
   h1 {
+    height: 3em;
     font-size: 1.5em;
     font-weight: normal;
     color: #FFF;
@@ -59,44 +64,40 @@ body > .jumbotron {
   }
   // Product group logo
   .logo {
-    width: 100%;
-    height: 230px;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+    height: 20em;
     img {
       min-width: 100%;
       min-height: 100%;
     }
   }
-  p.description { font-size: 0.85em; }
+  .description { 
+    height: 15em;
+    font-size: 0.85em; 
+  }
 }
 
 .box_category {
-  height: 468px;
   @include h_and_links
 }
 
 .box_aktuell, .box_nachrichten {
-}
-
-.box_category_small {
-  height: 268px;
   @include h_and_links
-}
-
-.box_category_small {
-  height: 268px;
 }
 
 .box_aktuell {
   background-color: $boxaktuell;
   overflow: hidden;
+ 
+  .description { 
+    height: 100%;
+    font-size: 1em; 
+  }
 }
 
 .box_nachrichten {
   background-color: $boxnachrichten;
-  min-height: 726px;
+  min-height: 100%;
+  padding-left: 1em;
   overflow: hidden;
 }
 
