@@ -1,10 +1,12 @@
 class AttachedAsset < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   has_attached_file :asset, {
-                      styles: {thumbnail: "60x60#", 
-                             small: "x100", 
-                             medium: "300x300", 
-                             big: "800x800" }
+                      styles: {
+                        thumbnail: "60x60#", 
+                        small: "x100", 
+                        medium: "300x300", 
+                        big: "800x800" 
+                      }
                     }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   do_not_validate_attachment_file_type :asset
