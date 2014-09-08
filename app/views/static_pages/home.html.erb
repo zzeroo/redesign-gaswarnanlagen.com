@@ -2,17 +2,9 @@
   <div class="row">
 
     <div class="col-md-9">
-      <div class="row">
-        <% @categories.each do |category| %>
-        <div class="col-md-6">
-          <div class="my-inner box_category" style="background-color: <%= category.background_color %>">
-            <a href="<%= category_path(category) %>"><h1><%= category.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <a href="<%= category_path(category) %>"><p class="logo" style="background: url(<%= category.logo.url %>) no-repeat center center; background-size: cover;"></p></a>
-            <p class="description"><%= category.description %></p>
-          </div>
-        </div>
-      <% end %>
-    </div><!-- End row -->
+      <div class="row"><!-- Category boxes -->
+        <%= render partial: "categories/category_box", collection: @categories, as: :category, locals: {size: 6} %>
+      </div><!-- End row -->
 
       <div class="row">
         <div class="col-md-12">
@@ -43,11 +35,22 @@
     <div class="col-md-3">
       <div class="row">
         <div class="col-md-12">
-          <div class="my-inner box_category" style="background-color: #5D5D5D">
-            <a href="/news"><h1>Aktuell<i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <ul>
-            <%= render partial: "news/news_list", collection: @news, as: :news %>
-            </li>
+          <div class="my-inner box_aktuell">
+            <div class="row">
+              <div class="col-md-10">
+                <a href="/news"><h1>Aktuell</h1></a>
+              </div>
+              <div class="col-md-2">
+                <i class="pull-right fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="description">
+                <ul>
+                <%= render partial: "news/news_list", collection: @news, as: :news %>
+                </li>
+              </div>
+            </div>
           </div><!-- End my-inner box_cat .. -->
         </div><!-- End col-md-12 -->
       </div><!-- End row -->
@@ -55,8 +58,19 @@
       <div class="row" style="padding-top: 1.2em">
         <div class="col-md-12">
           <div class="my-inner box_category box_nachrichten">
-            <a href="#"><h1>Nachrichten<i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <script type="text/javascript"  src="//www.presseportal.de/services/content/userfeed.htx?id=f0db4e121a194683ace54a3e2fb93c31"  data-turbolinks-eval=true></script>
+            <div class="row">
+              <div class="col-md-10">
+                <a href="#"><h1>Nachrichten</h1></a>
+              </div>
+              <div class="col-md-2">
+                <i class="pull-right fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="content_nachrichten">
+                <script type="text/javascript"  src="//www.presseportal.de/services/content/userfeed.htx?id=f0db4e121a194683ace54a3e2fb93c31"  data-turbolinks-eval=true></script>
+              </div>
+            </div>
           </div>
         </div>
       </div>

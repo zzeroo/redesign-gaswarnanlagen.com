@@ -49,16 +49,9 @@
 <div class="my-container">
   <div class="row">
     <div class="col-md-12">
-      <div class="row">
-      <% @category.children.order(:id).each do |child| %>
-        <div class="col-md-3">
-          <div class="my-inner box_category_small" style="background-color: <%= child.background_color %>">
-            <a href="<%= category_path(child) %>"><h1><%= child.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <a href="<%= category_path(child) %>"><p class="logo"><%= image_tag child.logo.url(:medium) %></p></a>
-            <p class="description"><%= child.description %></p>
-          </div>
-        </div>
-      <% end %>
+      <div class="row"><!-- Category boxes -->
+        <%= render partial: "categories/category_box", collection: @category.children, as: :category, locals: {size: 3} %>
+      </div><!-- End row -->
     </div>
   </div>
 </div>
