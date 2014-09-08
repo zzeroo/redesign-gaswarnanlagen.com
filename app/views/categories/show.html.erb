@@ -17,8 +17,19 @@
 </div>
 
 
-<%-# Kategorie Bilder -%>
-<% if @category.attached_assets %>
+<% if false %>
+  Bilder der Kategorien
+
+  Diese Bilder werden überhalb der Boxen und der Produkt Liste angezeigt.
+<% end %>
+<%-# Existiert nur ein Bild dann wird dieses über die gesammte Breite dargestellt -%>
+<% if @category.attached_assets && @category.attached_assets.size == 1 %>
+  <div class="row" style="text-align:center">
+    <%= image_tag @category.attached_assets.first.asset.url %>
+  </div>
+<% end %>
+<%-# Existieren mehrer Bilder dann werden immer 3 nebeneinander dargestellt -%>
+<% if @category.attached_assets && @category.attached_assets.size > 1 %>
 <div class="row">
   <% @category.attached_assets.each_with_index do |asset, index| %>
     <div class="col-md-3" style="padding-bottom: 1em">
