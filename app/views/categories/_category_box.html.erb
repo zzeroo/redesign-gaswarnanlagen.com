@@ -1,0 +1,22 @@
+<div class="col-md-<%= size %>">
+  <div class="my-inner box_category" style="background-color: <%= category.background_color %>">
+    <div class="row">
+      <div class="col-md-10">
+        <a href="<%= category_path(category) %>"><h1><%= category.name %></h1></a>
+      </div>
+      <div class="col-md-2">
+        <i class="pull-right fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a href="<%= category_path(category) %>"><p class="logo" style="background: url(<%= category.logo.url %>) no-repeat center center; background-size: cover;"></p></a>
+      </div>
+      <% unless category.description.blank? %>
+      <div class="col-md-12">
+        <div class="description"><%= category.description %></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

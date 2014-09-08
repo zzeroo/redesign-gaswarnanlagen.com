@@ -6,7 +6,13 @@ class Category < ActiveRecord::Base
   scope :published, -> { where(published: true) }
 
   has_attached_file :logo, {
-                            default_url: "rails.png" }.merge(PAPERCLIP_STORAGE_OPTIONS)
+                      styles: {
+                        thumbnail: "60x60#", 
+                        small: "x100", 
+                        medium: "300x300", 
+                        big: "800x800" 
+                      },
+                      default_url: "rails.png" }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
 
   validates :name, presence: true
@@ -16,6 +22,8 @@ class Category < ActiveRecord::Base
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/
 
+  # TODO: Enable this
+  #before_post_process :check_file_size
 
   # Neues besseres Join Model 
   belongs_to :parent, :class_name => 'Category'
@@ -40,6 +48,12 @@ class Category < ActiveRecord::Base
 
   private
 
+  # Validate before upload
+  # https://github.com/thoughtbot/paperclip/wiki/Thumbnail-Generation
+  def check_file_size
+      valid?
+        errors[:logo_file_size].blank?
+  end
   # Helper function to check if category is parent of her self
   def parent_not_self
     unless parent_id.nil?

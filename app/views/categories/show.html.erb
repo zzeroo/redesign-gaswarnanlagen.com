@@ -2,7 +2,7 @@
 
 <div class="breadcrumb" data-no-turbolink>
   <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to( @category.parent.name, @category.parent ) + " > " if @category.parent %><%= @category.name %>
-  </div>
+</div>
 
 <div class="row">
   <% if current_user && current_user.admin? %>
@@ -16,12 +16,19 @@
   <% end %>
 </div>
 
-<%-# commented line -%>
-<% if @category.attached_assets && @category.attached_assets.size == 1 %>
-  <%= image_tag @category.attached_assets.first.asset_file_name if @category.attached_assets.first.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
-<% end %>
 
-<%-# commented line -%>
+<% if false %>
+  Bilder der Kategorien
+
+  Diese Bilder werden überhalb der Boxen und der Produkt Liste angezeigt.
+<% end %>
+<%-# Existiert nur ein Bild dann wird dieses über die gesammte Breite dargestellt -%>
+<% if @category.attached_assets && @category.attached_assets.size == 1 %>
+  <div class="row" style="text-align:center">
+    <%= image_tag @category.attached_assets.first.asset.url %>
+  </div>
+<% end %>
+<%-# Existieren mehrer Bilder dann werden immer 3 nebeneinander dargestellt -%>
 <% if @category.attached_assets && @category.attached_assets.size > 1 %>
 <div class="row">
   <% @category.attached_assets.each_with_index do |asset, index| %>
@@ -29,34 +36,27 @@
       <%= link_to image_tag( asset.asset.url(:medium) ), asset.asset.url  %>
     </div>
     <div class="col-md-1"></div>
+    <%-# FIXME: Das kann glaube ich wen. Der Umbruch wird, ähnlich wie im nächsten Block automatisch geschehen -%>
+    <%-# Zeilenumbruch wenn das 3. Bild angezeigt wurde -%>
     <% if ( index+1 ) % 3 == 0 %></div><div class="row"><% end %>
   <% end %>
 </div>
 <% end %>
 
 
-<%-# Categories -%>
+<%-# Boxen mit den Kategorien -%>
 <% unless @category.children.empty? %>
 <div class="my-container">
   <div class="row">
     <div class="col-md-12">
-      <div class="row">
-      <% @category.children.order(:id).each do |child| %>
-        <div class="col-md-3">
-          <div class="my-inner box_category_small" style="background-color: <%= child.background_color %>">
-            <a href="<%= category_path(child) %>"><h1><%= child.name %><i class="pull-right fa fa-chevron-down"></i></h1></a>
-            <a href="<%= category_path(child) %>"><p class="logo"><%= image_tag child.logo.url %></p></a>
-            <p class="description"><%= child.description %></p>
-          </div>
-        </div>
-      <% end %>
+      <div class="row"><!-- Category boxes -->
+        <%= render partial: "categories/category_box", collection: @category.children, as: :category, locals: {size: 3} %>
+      </div><!-- End row -->
     </div>
   </div>
 </div>
 <% end %>
 
-
-
-
+<%-# Liste der Produkte -%>
 <%= render 'products/products_list', object: @products %>
 
