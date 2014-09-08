@@ -250,9 +250,9 @@ Die S3 und Datenbank Konfiguration `config/s3_credentials.yml` und `config/datab
 Die Quelle diese Links sind `/var/www/gaswarnanlagen.com/shared/config/database.yml` bzw. `/var/www/gaswarnanlagen.com/shared/config/s3_credentials.yml`.
 Nachdem nun dieses Verzeichnis auf dem Webserver erzeugt wurde, werden die beiden Dateien per `scp` auf den Webserver kopiert.
 
-    ssh gaswarnanlagen@web.gaswarnanlagen.com -c “mkdir -p /var/www/gaswarnanlagen.com/shared/config”
-    scp config/database.yml gaswarnanlagen@web.gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
-    scp config/s3_credentials.yml gaswarnanlagen@web.gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+    ssh gaswarnanlagen@gaswarnanlagen.com -c “mkdir -p /var/www/gaswarnanlagen.com/shared/config”
+    scp config/database.yml       gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+    scp config/s3_credentials.yml gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
 
 - [Capistrano Handbuch](https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown)
 
