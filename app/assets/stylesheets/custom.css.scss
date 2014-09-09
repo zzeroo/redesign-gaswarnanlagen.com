@@ -45,18 +45,19 @@ body > .jumbotron {
   color: #FFF;
   h1, .logo, .description {
     padding: 0;
+    margin: 0;
     overflow: hidden;
   }
   h1, .description, i.fa {
     margin: 0 .5em 0 .5em;
   }
   h1 {
-    height: 3em;
+    max-height: 3em;
     font-size: 1.5em;
     font-weight: normal;
     color: #FFF;
     text-shadow: 1px 1px 3px #6F6504;
-    line-height: 1;
+    line-height: 1.5;
   }
   a {
     color: #FFF;
@@ -71,13 +72,14 @@ body > .jumbotron {
     }
   }
   .description { 
-    height: 15em;
+    height: 12em;
     font-size: 0.85em; 
   }
 }
 
 .box_category {
-  @include h_and_links
+  @include h_and_links;
+  max-height: 35em;
 }
 
 .box_aktuell, .box_nachrichten {
