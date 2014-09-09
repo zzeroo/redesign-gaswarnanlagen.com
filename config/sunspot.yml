@@ -7,10 +7,19 @@ production:
     # read_timeout: 2
     # open_timeout: 0.5
 
+staging:
+  solr:
+    hostname: localhost
+    port: 8080
+    log_level: WARNING
+    path: /solr
+    # read_timeout: 2
+    # open_timeout: 0.5
+
 development:
   solr:
-    min_memory: 512M
-    max_memory: 1G
+    min_memory: 1G
+    max_memory: 3G
     #solr_jar: /path/to/start.jar
     #log_level: DEBUG
     hostname: localhost
