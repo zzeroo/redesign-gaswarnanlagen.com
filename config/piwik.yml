@@ -31,3 +31,11 @@ test:
     disabled: true
     use_async: false
     hostname: localhost
+
+staging:
+  piwik:
+    id_site: 4
+    url: localhost
+    disabled: true
+    use_async: false
+    hostname: localhost
