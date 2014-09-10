@@ -21,7 +21,7 @@ describe "AuthenticationPages" do
       it { should have_selector('div.alert.alert-danger') }
 
       describe "after visiting another page" do
-        before {click_link "Home" }
+        before {click_link "Home", match: :first }
         it { should_not have_selector('div.alert.alert-danger') }
       end
     end
