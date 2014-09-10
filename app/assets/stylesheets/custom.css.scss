@@ -260,11 +260,18 @@ mark, .mark {
   background-color: #ff0;
 }
 
-a.navbar-brand {
+a.brand {
   min-width: 150px;
-    background: url("Logo RA-GAS sw.png") no-repeat scroll 10px 15px;
-    background: none, url("Logo RA-GAS sw.svg") no-repeat scroll 10px 15px;
-    background-size: 126px 28px;
+  background: url("Logo RA-GAS sw.png") no-repeat scroll 10px 15px;
+  background: none, url("Logo RA-GAS sw.svg") no-repeat scroll 10px 15px;
+  background-size: 126px 28px;
+}
+
+a.brand-xs {
+  min-width: 45px;
+  background: url("Logo RA-GAS sw small.png") no-repeat scroll 10px 15px;
+  background: none, url("Logo RA-GAS sw small.svg") no-repeat scroll 10px 15px;
+  background-size: 36.4px 28px;
 }
 
 // contact pages map
