@@ -10,9 +10,8 @@
       </button>
       <%= link_to "RA-GAS GmbH", root_path, class: "navbar-brand hidden-xs text-hide brand", data: { no_turbolink: true }, title: "Home > RA-GAS GmbH Rauch und Gas Warnanlagen"  %>
       <%= link_to "RA-GAS", root_path, class: "navbar-brand visible-xs text-hide brand-xs", data: { no_turbolink: true }, title: "Home > RA-GAS GmbH Rauch und Gas Warnanlagen"  %>
-    </div>
 
-      <%= form_tag products_path, style: "border: 0", method: :get, class: "navbar-form navbar-right", role: "search" do %>
+      <%= form_tag products_path, style: "border: 0; padding: 0 1em", method: :get, class: "navbar-form navbar-right", role: "search" do %>
         <div class="input-group">
           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Suche" %>
           <div class="input-group-btn">
@@ -20,6 +19,7 @@
           </div>
         </div>
       <% end %>
+    </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
