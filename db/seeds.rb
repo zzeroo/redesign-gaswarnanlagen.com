@@ -9,6 +9,7 @@ require 'active_support'
 require 'active_record'
 require 'json'
 
+# Creates some standard user
 def make_users
   User.create!(name: "Stefan Müller",
               email: "s.mueller@it.kls-glt.de",
@@ -22,6 +23,7 @@ def make_users
               admin: true)
 end
 
+# Create some standard categories
 def make_categories
   json = ActiveSupport::JSON.decode(File.read('db/seeds/categories.json'))
 
@@ -30,35 +32,37 @@ def make_categories
   end
 end
 
+# Some category logo from the old web site
+# TODO: Refactor this, maybe with a .json like in make_categories
 def add_category_logo
-    Category.find(1).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/home-co-warnanlage-01.jpg"))
-    Category.find(2).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/home-gaswarnanlage-01.jpg"))
-    Category.find(11).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/home-messfuehler-01.jpg"))
-    Category.find(20).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/home-leuchttransparente-01.jpg"))
+    Category.find(1).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-co-warnanlage-01.jpg"))
+    Category.find(2).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-gaswarnanlage-01.jpg"))
+    Category.find(11).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-messfuehler-01.jpg"))
+    Category.find(20).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-leuchttransparente-01.jpg"))
     
-    Category.find(3).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-01.jpg"))
-    Category.find(4).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-02.jpg"))
-    Category.find(5).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-03.jpg"))
-    Category.find(6).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-04.jpg"))
-    Category.find(7).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-05.jpg"))
-    Category.find(8).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-06.jpg"))
-    Category.find(9).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-07.jpg"))
-    Category.find(10).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-08.jpg"))
+    Category.find(3).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-01.jpg"))
+    Category.find(4).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-02.jpg"))
+    Category.find(5).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-03.jpg"))
+    Category.find(6).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-04.jpg"))
+    Category.find(7).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-05.jpg"))
+    Category.find(8).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-06.jpg"))
+    Category.find(9).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-07.jpg"))
+    Category.find(10).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-08.jpg"))
 
 
-    Category.find(12).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
-    Category.find(13).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
-    Category.find(14).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-03.jpg"))
-    Category.find(15).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
-    Category.find(16).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-05.jpg"))
-    Category.find(17).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
-    Category.find(18).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-07.jpg"))
-    Category.find(19).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-08.jpg"))
+    Category.find(12).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
+    Category.find(13).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
+    Category.find(14).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-03.jpg"))
+    Category.find(15).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-00.jpg"))
+    Category.find(16).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-05.jpg"))
+    Category.find(17).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
+    Category.find(18).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-07.jpg"))
+    Category.find(19).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-08.jpg"))
     
-    Category.find(21).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-01.jpg"))
-    Category.find(22).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-02.jpg"))
-    Category.find(23).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-03.jpg"))
-    Category.find(24).update_attributes(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-04.jpg"))
+    Category.find(21).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-01.jpg"))
+    Category.find(22).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-02.jpg"))
+    Category.find(23).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-03.jpg"))
+    Category.find(24).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-04.jpg"))
 end
 
 def add_category_images
@@ -97,11 +101,12 @@ def fix_postgres_index
   end;nil
 end
 
+# Main
+#
+# Call each function once
 make_users
 make_categories
 add_category_logo
 add_category_images
 make_news
 fix_postgres_index
-
-
