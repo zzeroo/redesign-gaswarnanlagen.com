@@ -7,7 +7,7 @@ describe "GET index" do
   describe "page header" do
     it "should have the right links on the layout" do
       visit root_path
-      click_link 'Home'
+      click_link( 'Home', match: :first )
       expect(page).to have_title('RA-GAS GmbH')
       first(:link, 'Aktuell').click
       expect(page).to have_title('Aktuell')
