@@ -1,3 +1,4 @@
+# Sessions Helper
 module SessionsHelper
 
   def sign_in(user)

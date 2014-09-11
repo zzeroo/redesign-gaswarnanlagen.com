@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
+  before_action :find_news, only: [:edit, :update, :destroy]
  
   def index
     @news = News.order(news_date: :desc)
@@ -21,11 +22,9 @@ class NewsController < ApplicationController
   end
 
   def edit
-    @news = News.find(params[:id])
   end
   
   def update
-    @news = News.find(params[:id])
     if @news.update_attributes(news_params)
       flash[:success] = "News erfolgreich geändert"
       redirect_to news_index_path
@@ -35,12 +34,15 @@ class NewsController < ApplicationController
   end
 
   def destroy
-    @news = News.find(params[:id])
     @news.destroy
     redirect_to news_index_path
   end
 
   private
+
+  def find_news
+    @news = News.find(params[:id])
+  end
 
   def news_params
     params.require(:news).permit(:title, :news_date, :news_body, :news_image)

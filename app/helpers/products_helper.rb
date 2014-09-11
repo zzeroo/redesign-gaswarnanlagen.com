@@ -1,3 +1,4 @@
+# Products Helper
 module ProductsHelper
 
   # Helper to construct the short_description 

@@ -10,8 +10,7 @@
     <div class="row">
       <% if current_user && current_user.admin? %>
         <p class="text-right">
-          <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
-          <%= link_to icon('trash-o'), bda_path(@bda), method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+        <%= render "button_bda_edit" %>
         </p>
       <% end %>
     </div>
@@ -65,8 +64,7 @@
     <div class="row">
       <% if current_user && current_user.admin? %>
         <p class="text-right">
-          <%= link_to 'BDA barbeiten', edit_bda_path(@bda), class: "btn btn-large btn-primary" %>
-          <%= link_to icon('trash-o'), bda_path(@bda), method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+        <%= render "button_bda_edit" %>
         </p>
       <% end %>
     </div>

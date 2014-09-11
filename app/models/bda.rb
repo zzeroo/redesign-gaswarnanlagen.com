@@ -1,3 +1,4 @@
+#BDA stands for "Betriebsanleitung" in german
 class Bda < ActiveRecord::Base
   has_many :attached_assets, :as => :attachable
   accepts_nested_attributes_for :attached_assets, :allow_destroy => true #, reject_if: lambda{|attributes| attributes['asset_file_name'].blank? }

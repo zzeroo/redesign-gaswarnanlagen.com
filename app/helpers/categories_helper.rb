@@ -1,3 +1,4 @@
+# Categiries Helper
 module CategoriesHelper
 
   # Konstructs the select field
