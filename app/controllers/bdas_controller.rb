@@ -1,3 +1,6 @@
+# BDA stand for "Betriebsanleitung" in german
+#
+# This is the Controller for them.
 class BdasController < ApplicationController
   before_action :set_bda, only: [:show, :edit, :update, :destroy]
   before_action :admin_user, only: [:new, :create, :update, :destroy]
@@ -70,6 +73,6 @@ class BdasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bda_params
-      params.require(:bda).permit!# (:name, :description, :product_nr_prefix, { attached_assets_attributes: params[:bda][:attached_assets_attributes].try(:keys) })
+      params.require(:bda).permit(:name, :description, :product_nr_prefix, attached_assets_attributes: [ :asset, :_destroy] )
     end
 end
