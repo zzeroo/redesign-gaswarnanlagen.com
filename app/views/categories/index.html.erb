@@ -2,12 +2,7 @@
 <h1>Produkt Kategorien</h1>
 
 
-<div class="row text-right">
-  <% if current_user && current_user.admin? %>
-    <%= link_to 'Neue Produkt Kategorie erstellen', new_category_path, class: "btn btn-large btn-primary" %>
-  <% end %>
-</div>
-
+<%= render "button_new_category" %>
 
 
 <div class="row">
@@ -15,7 +10,7 @@
 
     <div class="tree">
       <ul>
-        <%= render @categories %>
+        <%= render( @categories ) || "Noch keine Kategorie vorhanden." %>
       </ul>
     </div>
 
@@ -24,8 +19,4 @@
 
 
 
-<div class="row text-right">
-  <% if current_user && current_user.admin? %>
-    <%= link_to 'Neue Produkt Kategorie erstellen', new_category_path, class: "btn btn-large btn-primary" %>
-  <% end %>
-</div>
+<%= render "button_new_category" %>
