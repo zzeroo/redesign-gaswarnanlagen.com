@@ -47,6 +47,7 @@ group :development, :test do
   gem 'forgery'
   gem 'spring-commands-rspec'
   gem 'capybara'
+  gem 'shoulda-matchers', :github => 'thoughtbot/shoulda-matchers'
   gem 'sunspot_solr'
 end
 

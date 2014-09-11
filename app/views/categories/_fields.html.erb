@@ -1,4 +1,5 @@
 <%= render 'shared/error_messages', object: f.object %>
+  <%= f.hidden_field :published, value: true %>
 
 <div class="form-group">
   <%= f.label :name %>
@@ -29,19 +30,21 @@
 <div class="form-group">
   <%= f.label :pictures %>
 
-  <% if @category.new_record? || @category.attached_assets.size == 0 %>
-    <%= f.file_field :attached_assets, multiple: true, name: "category[attached_assets_attributes][][asset]" %>
-<% end %>
-
+  <%# If there are pictures list them all and add a checkbox beside to delete them %>
   <div>
     <% @category.attached_assets.each do |asset| %>
       <%= f.fields_for :attached_assets, asset do |builder| %>
       <% unless @category.new_record? %>
-      <%= builder.check_box '_destroy' %>
-    <%= builder.label :_destroy, asset.asset_file_name %>
-    <%= builder.file_field :asset %>
+        <%= builder.check_box '_destroy' %>
+        <%= builder.label :_destroy, asset.asset_file_name %>
+      <% end %>
+    <% end %>
   <% end %>
-  <% end %>
+
+  <% if @category.new_record? || @category.attached_assets.size == 0 %>
+    <%= f.file_field :attached_assets, multiple: true, name: "category[attached_assets_attributes][][asset]" %>
+  <% else %>
+    <%= f.file_field :attached_assets, name: "category[attached_assets_attributes][#{@category.attached_assets.size}][asset]" %>
   <% end %>
 
     <%#= file_field_tag('category_attached_assets_asset', multiple: true, name: "category[attached_assets_attributes][][asset]") %>

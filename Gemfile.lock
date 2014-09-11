@@ -5,6 +5,13 @@ GIT
     database_cleaner (1.2.0)
 
 GIT
+  remote: git://github.com/thoughtbot/shoulda-matchers.git
+  revision: 2a4b9f1e163fa9c5b84f223962d5f8e099032420
+  specs:
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/zzeroo/docsplit-paperclip-processor.git
   revision: 26f51177f65b9f3f649b0ac7c4e594a8e034906e
   specs:
@@ -415,6 +422,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
+  shoulda-matchers!
   simple_form
   spork-testunit
   spring

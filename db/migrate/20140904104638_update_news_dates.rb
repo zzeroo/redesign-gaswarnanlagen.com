@@ -1,4 +1,7 @@
 class UpdateNewsDates < ActiveRecord::Migration
+  # Create the news like it was on the old site
+  #
+  # TODO: Refactor this, maybe with a json file
   def change
     news = News.find_by_title( "Aufstieg in die Handball-Baden-Württemberg-Oberliga (BWOL)" )
     news.update!( news_date: "22.02.2014 13:00:00" ) unless news.nil?
