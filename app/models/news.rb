@@ -1,3 +1,4 @@
+# News, firm interna and infos about our firm
 class News < ActiveRecord::Base
   has_attached_file  :news_image, {
                       :styles => { medium: "300x300", 
