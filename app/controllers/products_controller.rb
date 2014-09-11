@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy, :ast]
 
   def index
     # with solr search
@@ -13,18 +14,15 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update_attributes(product_params)
       flash[:success] = "Produktgruppe wurde aktualisiert"
       redirect_to @product
@@ -34,8 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
+    @product.destroy
     flash[:success] = "Produkt wurde gelöscht."
     redirect_to products_url
   end
@@ -43,8 +40,6 @@ class ProductsController < ApplicationController
   # TODO: Beschreibund dieser Action
   # FIXME: Restfull ist das nicht
   def ast
-    @product = Product.find(params[:id])
-
     respond_to do |format|
       format.html
       format.txt
@@ -52,6 +47,9 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def find_product
+  end
 
   def product_params
     params.require(:product).permit(:product_nr, :description, :short_description, :short_text1, :short_text2, :technical_data, :has_ast, :tdb, :logo)

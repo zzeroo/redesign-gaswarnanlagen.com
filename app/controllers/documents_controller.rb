@@ -1,13 +1,13 @@
 class DocumentsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
+  before_action :find_document, only: [:show, :edit, :update, :destroy]
  
   def index
     @documents = Document.all
   end
   
   def show
-    @document = Document.find(params[:id])
   end
 
   def new
@@ -25,11 +25,9 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-    @document = Document.find(params[:id])
   end
   
   def update
-    @document = Document.find(params[:id])
     if @document.update_attributes(document_params)
       flash[:success] = "Produktgruppe wurde aktualisiert"
       redirect_to @document
@@ -39,14 +37,16 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    @document = Document.find(params[:id])
     @document.destroy
     redirect_to documents_path
   end
 
 
-
   private
+
+  def find_document
+    @document = Document.find(params[:id])
+  end
 
   def document_params
     params.require(:document).permit(:title, :body, :attached_assets_attributes => [:asset, :asset_file_name ])
