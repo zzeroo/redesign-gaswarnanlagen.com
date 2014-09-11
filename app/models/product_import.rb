@@ -1,3 +1,4 @@
+# Product Import class
 class ProductImport
   include ActiveModel::Model
 

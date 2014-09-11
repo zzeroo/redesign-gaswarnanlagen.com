@@ -1,3 +1,4 @@
+# Our Products
 class Product < ActiveRecord::Base
   searchable do
     text :product_nr, boost: 5

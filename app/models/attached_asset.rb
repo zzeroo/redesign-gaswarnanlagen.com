@@ -1,3 +1,5 @@
+# Attached Assets
+# Meta Model for attachments
 class AttachedAsset < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   has_attached_file :asset, {
