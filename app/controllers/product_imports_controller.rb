@@ -1,3 +1,4 @@
+# Products controller
 class ProductImportsController < ApplicationController
   before_action :admin_user, only: [:new, :create]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
