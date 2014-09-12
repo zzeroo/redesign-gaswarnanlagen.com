@@ -4,18 +4,22 @@ class CategoriesController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :find_category, only: [:show, :edit, :update, :destroy]
  
+  # GET /categories
   def index
     @categories = Category.where(children: nil).order(:id)
   end
   
+  # GET /categoy/1
   def show
     @products = @category.products.paginate(:page => params[:page], :per_page =>10 ) if @category.products
   end
 
+  # GET /categories/new
   def new
     @category = Category.new
   end
 
+  # POST /categories/new
   def create
     @category = Category.create(category_params)
     if @category.save
@@ -26,9 +30,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # POST /categoy/1
   def edit
   end
   
+  # PATCH /categoy/1
   def update
     if @category.update_attributes(category_params)
       flash[:success] = "Produktgruppe wurde aktualisiert"
@@ -38,20 +44,21 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # DELETE /categoy/1
   def destroy
     @category.destroy
     redirect_to categories_path
   end
 
-
   private
-  
-  def find_category
-    @category = Category.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def find_category
+      @category = Category.find(params[:id])
+    end
 
-  def category_params
-    params.require(:category).permit( :name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, attached_assets_attributes: [ :asset, :_destroy] )
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def category_params
+      params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, attached_assets_attributes: [ :asset, :_destroy])
+    end
 
 end
