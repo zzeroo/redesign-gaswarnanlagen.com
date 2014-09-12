@@ -6,11 +6,11 @@
   <!-- Bild -->
   <td><%= image_tag product.logo.url(:small) %></td>
   <!-- Beschreibung -->
-  <td><%= show_description( product, params[:search] ) %><%= link_to ' mehr', product_path(product) %></td>
+  <td><%= show_description(product, params[:search]) %><%= link_to ' mehr', product_path(product) %></td>
   <!-- AST -->
   <td>
     <% if product.has_ast? %>
-      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt')) %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt'), target: '_blank') %>
     <% end %>
   </td>
   <!-- TDB -->
@@ -23,7 +23,7 @@
   <td>
     <% product.bdas.each do |bda| %>
       <% bda.attached_assets.each do |a| %>
-        <p><%= icon_link_to( a, "Betriebsanleitung" ) %></p>
+        <p><%= icon_link_to(a, "Betriebsanleitung", target: '_blank') %></p>
       <% end %>
     <% end %>
   </td>
@@ -36,4 +36,3 @@
     <% end %>
   </td>
 </tr>
-
