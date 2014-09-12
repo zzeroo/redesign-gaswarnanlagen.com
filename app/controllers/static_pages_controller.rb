@@ -1,3 +1,4 @@
+# Static Pages
 class StaticPagesController < ApplicationController
   def home
     @categories = Category.where(parent: nil).where(published: true).order('created_at')
