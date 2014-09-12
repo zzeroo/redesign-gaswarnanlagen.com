@@ -1,5 +1,7 @@
 # Our Products
 class Product < ActiveRecord::Base
+  # Configuration for sunspot_solr search
+  # TODO: Read more about sunspot_solr search, and results.
   searchable do
     text :product_nr, boost: 5
     text :description, :short_description, :short_text1, :short_text2, :technical_data
@@ -26,6 +28,7 @@ class Product < ActiveRecord::Base
   validates :product_nr, presence: true, uniqueness: true
   # validates :description, presence: true
 
+  # Dumps the model as CSV
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
@@ -35,6 +38,8 @@ class Product < ActiveRecord::Base
     end
   end
 
+  # Create a spreadsheet from model attributes.
+  # TODO: Can ths be moved to private?
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
@@ -47,7 +52,8 @@ class Product < ActiveRecord::Base
     end
   end
 
-
+  # Opens the attachment and select the work function based on the file name of the uploaded file.
+  # TODO: Can ths be moved to private?
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
     when '.csv' then Roo::Csv.new(file.path)

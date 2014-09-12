@@ -1,0 +1,5 @@
+<% if current_user && current_user.admin? %>
+  <p class="text-right">
+    <%= link_to 'Produkt barbeiten', edit_product_path(@product), class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>

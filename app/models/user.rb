@@ -10,16 +10,18 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+  # Generate a new remember_token
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
+  # Calculates a SHA1 hash for a given token.
   def User.hash(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
 
   private
-
+    # Creates a new remember_token
     def create_remember_token
       self.remember_token = User.hash(User.new_remember_token)
     end

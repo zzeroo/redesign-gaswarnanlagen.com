@@ -38,4 +38,8 @@ RedesignGaswarnanlagenCom::Application.configure do
   ActiveModel::SecurePassword.min_cost = true
 
   PAPERCLIP_STORAGE_OPTIONS = {}
+
+  # Using integration tests with FactoryGirl may save multiple copies of your test files within the app.
+  # To avoid this, specify a custom path in the config/environments/test.rb like so:
+  Paperclip::Attachment.default_options[:path] = "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension"
 end

@@ -1,9 +1,11 @@
 # Sessions controller
 class SessionsController < ApplicationController
 
+  # GET /sessions/new
   def new
   end
 
+  # GET /sessions/creat
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -15,6 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # DELETE /session/1
   def destroy
     sign_out
     redirect_to root_url
