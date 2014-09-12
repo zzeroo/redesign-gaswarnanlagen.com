@@ -2,7 +2,7 @@
 class Product < ActiveRecord::Base
   searchable do
     text :product_nr, boost: 5
-    text :description, :short_description
+    text :description, :short_description, :short_text1, :short_text2, :technical_data
   end
 
   default_scope { order(product_nr: :asc) }
@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
 
   validates :product_nr, presence: true, uniqueness: true
-  #validates :description, presence: true
+  # validates :description, presence: true
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -64,9 +64,7 @@ class Product < ActiveRecord::Base
   def bdas
     ret = []
     Bda.all.each do |bda|
-      if bda.products.present?
-        ret << bda if bda.products.include?(self)
-      end
+      ret << bda if bda.products.present? and bda.products.include?(self)
     end
     return ret
   end
@@ -76,17 +74,11 @@ class Product < ActiveRecord::Base
     ret = []
     Category.all.each do |cat|
       unless cat.product_nr_prefix.blank?
-        product_nrs = cat.product_nr_prefix.split(',').collect{|x| x.strip}
-        product_nrs.each{|nr| ret << cat if !!(self.product_nr =~ Regexp.new(nr)) }
+        product_nrs = cat.product_nr_prefix.split(',').collect{ |x| x.strip }
+        product_nrs.each{ |nr| ret << cat unless(self.product_nr =~ Regexp.new(nr)) }
       end
     end
     return ret
   end
 
-
-
 end
-
-
-
-
