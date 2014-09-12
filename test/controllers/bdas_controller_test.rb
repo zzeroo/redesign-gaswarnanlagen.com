@@ -1,9 +1,9 @@
 require 'test_helper'
 
 # Unit Test for user controller
-class UsersControllerTest < ActionController::TestCase
+class BdasControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    @bda = FactoryGirl.create(:bad)
   end
 
   test "should get index" do

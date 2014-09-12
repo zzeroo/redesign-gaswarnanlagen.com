@@ -5,7 +5,7 @@ RSpec.describe BdasController do
 
   describe "POST #create" do
     before(:each) do
-      controller.stub!(:admin_user).and_return(true)
+      controller.stub(:admin_user).and_return(true)
     end
 
     it { should permit( :name, :description, :product_nr_prefix, attached_assets_attributes: [ :asset, :_destroy] ).
