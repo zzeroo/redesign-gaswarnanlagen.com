@@ -12,7 +12,7 @@ class Bda < ActiveRecord::Base
       # Die where Clausel wird mit den Productnummern zusammengesetzt.
       # Die Product Nummern werden mit '|' gejoint
       # Das sieht dann z.B. so aus: where("product_nr ~ * ?", "^310|^100|^123")
-      Product.where("product_nr ~* ?", product_nrs.collect{|p| "^" + p}.join('|'))
+      Product.where("product_nr ~* ?", product_nrs.collect{ |p| "^" + p }.join('|'))
     end
   end
 

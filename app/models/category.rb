@@ -23,7 +23,7 @@ class Category < ActiveRecord::Base
   validates_attachment_content_type :logo, content_type: /\Aimage/
 
   # TODO: Enable this
-  #before_post_process :check_file_size
+  # before_post_process :check_file_size
 
   # Neues besseres Join Model 
   belongs_to :parent, class_name: 'Category'
@@ -45,17 +45,16 @@ class Category < ActiveRecord::Base
   end
 
   private
-
-  # Validate before upload
-  # https://github.com/thoughtbot/paperclip/wiki/Thumbnail-Generation
-  def check_file_size
-      valid?
-        errors[:logo_file_size].blank?
-  end
-  # Helper function to check if category is parent of her self
-  def parent_not_self
-    if parent_id.present? && parent_id == id
-      errors.add(:parent_id, :parent_not_self)
+    # Validate before upload
+    # https://github.com/thoughtbot/paperclip/wiki/Thumbnail-Generation
+    def check_file_size
+        valid?
+          errors[:logo_file_size].blank?
     end
-  end
+    # Helper function to check if category is parent of her self
+    def parent_not_self
+      if parent_id.present? && parent_id == id
+        errors.add(:parent_id, :parent_not_self)
+      end
+    end
 end

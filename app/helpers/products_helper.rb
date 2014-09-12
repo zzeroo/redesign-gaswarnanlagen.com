@@ -21,7 +21,7 @@ module ProductsHelper
 
   # Helper für das richtige Symbol, abhänig vom Datei Typ: attachable_type
   # TODO: Optionen mit Options Hash gestalten
-  def icon_link_to( a, link_title = "Download", style = "", css_class = 'fa-2x' )
+  def icon_link_to(a, link_title = "Download", style = "", css_class = 'fa-2x')
     case a.asset.content_type
     when "application/pdf"
       icon_file = 'file-pdf-o'
@@ -37,6 +37,6 @@ module ProductsHelper
       icon_file = 'file-text'
     end
 
-    link_to( icon( icon_file, '', class: css_class, title: link_title, style: style ), a.asset.url ) 
+    link_to( icon(icon_file, '', class: css_class, title: link_title, style: style), a.asset.url) 
   end
 end

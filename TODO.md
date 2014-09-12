@@ -1,5 +1,6 @@
 #TODO: Liste mit Ideen zu Verbesserungen an der Webseite
 
+1. ‘bundle outdated’ ausführen und Gems updaten!!
 1. Product index -> Wenn Beschreibung (:description) leer ist dann Kurztext 1 und Kurztext2 verwenden
 1. Downloads Model schaffen
 1.1. gaswarnanlagen.com/downloads/AGB-RAGAS.pdf

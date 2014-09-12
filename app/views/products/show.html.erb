@@ -9,13 +9,8 @@
   </div>
 
 <div class="row">
-  <% if current_user && current_user.admin? %>
-    <p class="text-right">
-  <%= link_to 'Produkt barbeiten', edit_product_path(@product), class: "btn btn-large btn-primary" %>
-  </p>
-  <% end %>
+  <%= render "button_edit_product" %>
 </div>
-
 
 <div class="row">
   <% unless @product.short_description.blank? %>
@@ -42,17 +37,17 @@
 <% if @product.has_ast? %>
 <div class="row">
   <h4>Ausschreibungstext</h4>
-  <%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), ast_product_path(@product, format: 'txt')) %>
+  <%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), ast_product_path(@product, format: 'txt'), target: '_blank') %>
 </div>
 <% end %>
 
 <% if @product.tdb.present? %>
 <div class="row">
   <h4>Technisches Datenblatt</h4>
-  <span><%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "PDF Format", style: "color: darkred;"), @product.tdb.url(:pdf)) %></span>
+  <span><%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "PDF Format", style: "color: darkred;"), @product.tdb.url(:pdf), target: '_blank') %></span>
 
   <% if current_user && current_user.admin? %>
-    <span><%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), @product.tdb.url) %></span>
+    <span><%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), @product.tdb.url, target: '_blank') %></span>
   <% end %>
 </div>
 <% end %>
@@ -62,17 +57,12 @@
   <h4>Betriebsanleitungen</h4>
   <% @product.bdas.each do |bda| %>
     <% bda.attached_assets.each do |a| %>
-      <span><%= icon_link_to( a, "Betriebsanleitung", '', 'fa-4x' ) %></span>
+      <span><%= icon_link_to(a, "Betriebsanleitung", '', 'fa-4x', target: '_blank') %></span>
     <% end %>
   <% end %>
 </div>
 <% end %>
 
 <div class="row">
-  <% if current_user && current_user.admin? %>
-    <p class="text-right">
-  <%= link_to 'Produkt barbeiten', edit_product_path(@product), class: "btn btn-large btn-primary" %>
-  </p>
-  <% end %>
+  <%= render "button_edit_product" %>
 </div>
-
