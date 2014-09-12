@@ -1,3 +1,4 @@
+# News controller
 class NewsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
   #before_action :signed_in_user, only: [:new, :create, :destroy]
