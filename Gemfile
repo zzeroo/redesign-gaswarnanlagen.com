@@ -39,10 +39,10 @@ gem "rb-readline", "~> 0.5.0"
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
   gem 'spork-testunit'
-  gem 'guard-test'
+  gem 'guard-minitest'
   gem 'guard-rspec'
   gem 'ruby-prof'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14.0.rc1'
   gem 'guard-livereload', require: false
   gem 'forgery'
   gem 'spring-commands-rspec'
