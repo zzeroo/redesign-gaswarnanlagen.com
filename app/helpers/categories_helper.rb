@@ -16,9 +16,9 @@ module CategoriesHelper
     return @retval
   end
 
-
   private
-
+    
+    # Recursive function to itterate over each category child
     def recurs(child)
       @retval << make_array(child)
 
@@ -29,10 +29,16 @@ module CategoriesHelper
       end
     end
 
+    # creates an array with the category name, and it's id.
+    #
+    # Used in a helper to construct the select field
     def make_array(category)
       [ category_name(category), category.id ]
     end
 
+    # Constructs the category name.
+    #
+    # Used in a helper to construct the select field
     def category_name(category)
       if category.parent.blank?
         category.name + " [Hauptkategorie]"
@@ -41,11 +47,14 @@ module CategoriesHelper
       end
     end
 
+    # Constructs the category description.
+    #
+    # Used in a helper to construct the select field
     def category_name_description(category)
       if category.description.blank?
         description = ""
       else
-        description = "> " + truncate(category.description, :length => 30) 
+        description = "> " + truncate(category.description, :length => 30)
       end
       "..." + category.name + description
     end

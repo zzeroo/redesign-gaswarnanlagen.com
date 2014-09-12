@@ -11,9 +11,10 @@ module ApplicationHelper
     end
   end
 
+  # Set the bootstrap class for message boxes
+  # TODO: studdy this deeper
   def bootstrap_class_for flash_type
-    # TODO: studdy
-    #{success: 'alert-success',...}[flash_type] || flash_type.to_s
+    # {success: 'alert-success',...}[flash_type] || flash_type.to_s
     case flash_type
     when :success
       "alert-success"
@@ -28,14 +29,11 @@ module ApplicationHelper
     end
   end
 
+  # Highlight the sunspot_solr search results
   def highlight_it(what, with)
-    #product.product_nr, params[:search]
     what = what.nil? ? "" : what
     with = with.nil? ? "" : with
     return highlight what, with
   end
 
 end
-
-
-
