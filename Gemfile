@@ -34,7 +34,8 @@ gem 'progress_bar'  # fancy progress bar for sunspot solr index
 gem 'simple_form'
 gem 'leaflet-rails'
 gem 'piwik_analytics', '~> 1.0.5', :git => 'https://github.com/zzeroo/piwik_analytics.git'
-gem "rb-readline", "~> 0.5.0"
+gem 'rb-readline', "~> 0.5.0"
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'guard-rspec'
