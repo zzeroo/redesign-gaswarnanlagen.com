@@ -1,5 +1,10 @@
 include ApplicationHelper
 
+# Sign in user, with or without capybara
+#
+# @param [User] user to signin
+# @param [Hash] options the options to controll the sign in process
+# @option options [String] :no_capybara Signin without capybara
 def sign_in(user, options={})
   if options[:no_capybara]
     # Sign in when not using Capybara.
@@ -13,4 +18,3 @@ def sign_in(user, options={})
     click_button "Sign in"
   end
 end
-
