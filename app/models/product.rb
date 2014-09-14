@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   default_scope { order(product_nr: :asc) }
 
   has_attached_file :logo, {
-                      styles: {small: "x30" } }.merge(PAPERCLIP_STORAGE_OPTIONS)
+                      styles: { small: "x30" } }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   validates_attachment :logo, :size => { :in => 0..2.megabytes }
   validates_attachment_content_type :logo, :content_type => /\Aimage/
@@ -47,7 +47,7 @@ class Product < ActiveRecord::Base
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = find_by(id: row["id"]) || new
       parameters = ActionController::Parameters.new(row.to_hash)
-      product.update(parameters.permit(:id,:product_nr,:description,:short_description,:created_at,:updated_at,:product_group_id))
+      product.update(parameters.permit(:id, :product_nr, :description, :short_description, :created_at, :updated_at, :product_group_id))
       product.save!
     end
   end

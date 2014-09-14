@@ -5,7 +5,7 @@ module CategoriesHelper
   def categories_for_select
     @retval = []
 
-    Category.where(parent:nil).collect do |c|
+    Category.where(parent: nil).collect do |c|
       @retval << make_array(c)
 
       c.children.each do |child|
@@ -24,8 +24,8 @@ module CategoriesHelper
 
       return if child.children.blank?
 
-      child.children.each do |child|
-        recurs(child)
+      child.children.each do |subchild|
+        recurs(subchild)
       end
     end
 

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/zzeroo/redesign-gaswarnanlagen.com.svg?branch=master)](https://travis-ci.org/zzeroo/redesign-gaswarnanlagen.com)
+[![Coverage Status](https://coveralls.io/repos/zzeroo/redesign-gaswarnanlagen.com/badge.png)](https://coveralls.io/r/zzeroo/redesign-gaswarnanlagen.com)
 [![PullReview stats](https://www.pullreview.com/github/zzeroo/redesign-gaswarnanlagen.com/badges/master.svg?)](https://www.pullreview.com/github/zzeroo/redesign-gaswarnanlagen.com/reviews/master)
 
 # Webauftritt

@@ -33,3 +33,7 @@ doc/
 solr
 config/s3_credentials.yml
 
+# Paperclip test files
+spec/test_files
+
+.yardoc

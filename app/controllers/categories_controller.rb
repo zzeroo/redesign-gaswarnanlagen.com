@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   
   # GET /categoy/1
   def show
-    @products = @category.products.paginate(:page => params[:page], :per_page =>10 ) if @category.products
+    @products = @category.products.paginate(:page => params[:page], :per_page =>10) if @category.products
   end
 
   # GET /categories/new
