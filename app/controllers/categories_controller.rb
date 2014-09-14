@@ -1,17 +1,17 @@
 # Controller for product categories
 class CategoriesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
-  #before_action :signed_in_user, only: [:new, :create, :destroy]
+  # before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :find_category, only: [:show, :edit, :update, :destroy]
- 
+
   # GET /categories
   def index
     @categories = Category.where(children: nil).order(:id)
   end
-  
+
   # GET /categoy/1
   def show
-    @products = @category.products.paginate(:page => params[:page], :per_page =>10) if @category.products
+    @products = @category.products.paginate(:page => params[:page], :per_page => 10) if @category.products
   end
 
   # GET /categories/new
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
   # POST /categoy/1
   def edit
   end
-  
+
   # PATCH /categoy/1
   def update
     if @category.update_attributes(category_params)
@@ -60,5 +60,4 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, attached_assets_attributes: [ :asset, :_destroy])
     end
-
 end

@@ -1,6 +1,5 @@
 # Products Helper
 module ProductsHelper
-
   # Helper to construct the short_description
   def show_short_description(product, search)
     if product.short_text1.blank?
@@ -10,7 +9,7 @@ module ProductsHelper
     end
   end
 
-  # Helper to construct the description 
+  # Helper to construct the description
   def show_description(product, search)
     if product.short_text2.blank?
       truncate((highlight_it product.description, search), :length => 160)
@@ -28,7 +27,7 @@ module ProductsHelper
       link_title = link_title + ' PDF'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
       style = "color: darkred"
-    when "application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+    when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       icon_file = 'file-word-o'
       link_title = link_title + ' DOCX'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
@@ -36,7 +35,5 @@ module ProductsHelper
     else
       icon_file = 'file-text'
     end
-
-    link_to( icon(icon_file, '', class: css_class, title: link_title, style: style), a.asset.url) 
   end
 end

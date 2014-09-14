@@ -25,7 +25,7 @@ class Category < ActiveRecord::Base
   # TODO: Enable this
   # before_post_process :check_file_size
 
-  # Neues besseres Join Model 
+  # Neues besseres Join Model
   belongs_to :parent, class_name: 'Category'
   has_many :children, class_name: 'Category', foreign_key: 'parent_id'
 
@@ -39,7 +39,7 @@ class Category < ActiveRecord::Base
         # Die where Clausel wird mit den Productnummern zusammengesetzt.
         # Die Product Nummern werden mit '|' gejoint
         # Das sieht dann z.B. so aus: where("product_nr ~ * ?", "^310|^100|^123")
-        Product.where( "product_nr ~* ?", product_nrs.map{ |p| "^" + p }.join('|') )
+        Product.where("product_nr ~* ?", product_nrs.map{ |p| "^" + p }.join('|'))
       end
     end
   end

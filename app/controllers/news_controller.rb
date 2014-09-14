@@ -1,14 +1,14 @@
 # News controller
 class NewsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
-  #before_action :signed_in_user, only: [:new, :create, :destroy]
+  # before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :find_news, only: [:edit, :update, :destroy]
- 
+
   # GET /news
   def index
     @news = News.order(news_date: :desc)
   end
-  
+
   # GET /news/new
   def new
     @news = News.new
@@ -17,7 +17,7 @@ class NewsController < ApplicationController
   # GET /news/1
   def edit
   end
-  
+
   # POST /news/1
   def create
     @news = News.create(news_params)
@@ -55,5 +55,4 @@ class NewsController < ApplicationController
     def news_params
       params.require(:news).permit(:title, :news_date, :news_body, :news_image)
     end
-
 end

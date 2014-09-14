@@ -13,7 +13,7 @@ class ProductImport
     else
       imported_products.each_with_index do |product, index|
         product.errors.full_messages.each do |message|
-          errors.add :base, "Row #{index+4}: #{message}"
+          errors.add :base, "Row #{index + 4}: #{message}"
         end
       end
       false
@@ -32,10 +32,10 @@ class ProductImport
   # TODO: Test this
   def load_imported_products
     spreadsheet = open_spreadsheet
-    header = translate_attributes( spreadsheet.row(1) )
+    header = translate_attributes(spreadsheet.row(1))
     # Before we map over all spreadsheet rows we reject that rows which,
     # after we join them to a plain string, have onle emptyness in it's self
-    (4..spreadsheet.last_row).reject{|i| spreadsheet.row(i).join.empty? }.map do |i|
+    (4..spreadsheet.last_row).reject{ |i| spreadsheet.row(i).join.empty? }.map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = Product.find_by(product_nr: row["product_nr"].strip) || Product.new
       product.attributes = row.to_hash.slice(*Product.attribute_names)
@@ -76,5 +76,4 @@ class ProductImport
     end
     return attributes
   end
-
 end

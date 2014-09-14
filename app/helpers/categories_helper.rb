@@ -1,6 +1,5 @@
 # Categiries Helper
 module CategoriesHelper
-
   # Konstructs the select field
   def categories_for_select
     @retval = []
@@ -17,7 +16,7 @@ module CategoriesHelper
   end
 
   private
-    
+
     # Recursive function to itterate over each category child
     def recurs(child)
       @retval << make_array(child)
@@ -33,7 +32,7 @@ module CategoriesHelper
     #
     # Used in a helper to construct the select field
     def make_array(category)
-      [ category_name(category), category.id ]
+      [category_name(category), category.id]
     end
 
     # Constructs the category name.

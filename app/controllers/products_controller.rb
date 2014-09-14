@@ -1,7 +1,7 @@
 # Products controller
 class ProductsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
-  #before_action :signed_in_user, only: [:new, :create, :destroy]
+  # before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :find_product, only: [:show, :edit, :update, :destroy, :ast]
 
   # GET /products
@@ -64,5 +64,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:product_nr, :description, :short_description, :short_text1, :short_text2, :technical_data, :has_ast, :tdb, :logo)
     end
-
 end

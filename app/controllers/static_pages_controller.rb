@@ -21,5 +21,4 @@ class StaticPagesController < ApplicationController
   # GET /contact
   def contact
   end
-
 end
