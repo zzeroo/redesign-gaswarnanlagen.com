@@ -50,12 +50,14 @@ group :development, :test do
 end
 
 group :development do
-  gem "rails-erd"
+  gem 'rails-erd'
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
   gem 'spring'
   gem 'ruby-graphviz'
+  # gem 'yard', "~> 1.0"
+  gem 'yard'
 end
 
 group :test do

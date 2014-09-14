@@ -1,7 +1,7 @@
 # Products Helper
 module ProductsHelper
 
-  # Helper to construct the short_description 
+  # Helper to construct the short_description
   def show_short_description(product, search)
     if product.short_text1.blank?
       truncate((highlight_it product.short_description, search), :length => 60)
