@@ -41,18 +41,17 @@ set :linked_files, %w{
 set :keep_releases, 5
 
 ## Username Password ask dynamic
-#set(:user) do
-#   Capistrano::CLI.ui.ask "Give me a ssh user: "
-#end
+# set(:user) do
+#    Capistrano::CLI.ui.ask "Give me a ssh user: "
+# end
 #
-#set(:scm_passphrase) do
-#   Capistrano::CLI.ui.ask "Git scm passphrase: "
-#end
+# set(:scm_passphrase) do
+#    Capistrano::CLI.ui.ask "Git scm passphrase: "
+# end
 set :ssh_options, { :forward_agent => true }
-#set :user, "gaswarnanlagen"
+# set :user, "gaswarnanlagen"
 
-#set :rails_env, "production"
-
+# set :rails_env, "production"
 
 namespace :deploy do
 
@@ -69,9 +68,9 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      #within release_path do
-        #execute :rake, 'cache:clear'
-      #end
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
     end
   end
 

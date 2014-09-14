@@ -81,10 +81,9 @@ class Product < ActiveRecord::Base
     Category.all.each do |cat|
       unless cat.product_nr_prefix.blank?
         product_nrs = cat.product_nr_prefix.split(',').collect{ |x| x.strip }
-        product_nrs.each{ |nr| ret << cat unless(self.product_nr =~ Regexp.new(nr)) }
+        product_nrs.each{ |nr| ret << cat unless self.product_nr =~ Regexp.new(nr) }
       end
     end
     return ret
   end
-
 end

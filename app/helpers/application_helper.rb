@@ -1,6 +1,5 @@
 # Application Helper
 module ApplicationHelper
-
   # Return the full title on a per-page basis.
   def full_title(page_title)
     base_title = "RA-GAS GmbH"
@@ -13,7 +12,7 @@ module ApplicationHelper
 
   # Set the bootstrap class for message boxes
   # TODO: studdy this deeper
-  def bootstrap_class_for flash_type
+  def bootstrap_class_for( flash_type )
     # {success: 'alert-success',...}[flash_type] || flash_type.to_s
     case flash_type
     when :success
@@ -35,5 +34,4 @@ module ApplicationHelper
     with = with.nil? ? "" : with
     return highlight what, with
   end
-
 end

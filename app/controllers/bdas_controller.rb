@@ -73,6 +73,6 @@ class BdasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bda_params
-      params.require(:bda).permit(:name, :description, :product_nr_prefix, attached_assets_attributes: [ :asset, :_destroy])
+      params.require(:bda).permit(:name, :description, :product_nr_prefix, attached_assets_attributes: [:asset, :_destroy])
     end
 end

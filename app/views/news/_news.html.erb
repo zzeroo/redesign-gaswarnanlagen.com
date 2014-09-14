@@ -2,6 +2,7 @@
   <div class="col-md-2">
     <%= link_to image_tag( news.news_image.url(:thump)), news.news_image.url  %>
   </div>
+
   <div class="col-md-10">
     <p style="font-weight: bold">
     <% if news.news_date.present? %>
@@ -19,5 +20,5 @@
       </span>
     <% end %>
   </div>
-</div>
 
+</div>
