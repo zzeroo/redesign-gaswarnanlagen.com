@@ -9,20 +9,17 @@
   <% end %>
 </div>
 
-
 <% if current_user && current_user.admin? %>
 <div class="row">
   <p>
   Download:
-  <%= link_to "CSV", products_path(format: "csv") %> | 
+  <%= link_to "CSV", products_path(format: "csv") %>&nbsp;|&nbsp;
   <%= link_to "Excel", products_path(format: "xls") %>
   </p>
 </div>
-  <% end %>
-
+<% end %>
 
 <%= render 'products/products_list', object: @products %>
-
 
 <div class="row">
   <% if current_user && current_user.admin? %>

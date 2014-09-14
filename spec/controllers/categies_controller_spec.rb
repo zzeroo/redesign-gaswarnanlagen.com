@@ -8,9 +8,11 @@ RSpec.describe CategoriesController do
       controller.stub(:admin_user).and_return(true)
     end
 
-    it { should permit( :name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, 
+    it do
+      should permit( :name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id,
                        attached_assets_attributes: [:asset, :_destroy]).
-                                                    for(:create) }
+                                                    for(:create)
+      end
   end
 
   describe "PUT #update" do

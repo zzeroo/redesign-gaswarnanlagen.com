@@ -1,6 +1,5 @@
 # Sessions Helper
 module SessionsHelper
-
   # Sign in user
   def sign_in(user)
     remember_token = User.new_remember_token

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Products pages" do
- 
+
   let(:admin)    { FactoryGirl.create(:admin) }
   let(:category) { FactoryGirl.create(:category) }
   let(:product)  { FactoryGirl.create(:product ) }
@@ -38,4 +38,3 @@ describe "Products pages" do
 
   end
 end
-
