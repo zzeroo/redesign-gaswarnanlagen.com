@@ -1,7 +1,7 @@
 # Documents controller
 class DocumentsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :update, :destroy]
-  #before_action :signed_in_user, only: [:new, :create, :destroy]
+  # before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :find_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
       flash[:success] = 'Dokument gespeichert'
       redirect_to action: "index"
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -49,7 +49,6 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def find_document
@@ -58,6 +57,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:title, :body, :attached_assets_attributes => [:asset, :asset_file_name])
+      params.require(:document).permit(:title, :body, attached_assets_attributes: [:asset, :asset_file_name])
     end
 end

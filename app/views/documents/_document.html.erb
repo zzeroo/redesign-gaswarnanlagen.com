@@ -7,7 +7,7 @@
 
 <div>
   <% document.attached_assets.each do |asset| %>
-    <%= image_tag asset.asset(:thumbnail) if asset.asset_content_type.match( /\Aimage\/.*\Z/ ) %>
+    <%= image_tag asset.asset(:thumbnail) if asset.asset_content_type.match(/\Aimage\/.*\Z/) %>
     <%= link_to asset.asset_file_name, asset.asset.url %>
     <pre>
     <%= asset.asset.url %>

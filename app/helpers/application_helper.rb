@@ -12,7 +12,7 @@ module ApplicationHelper
 
   # Set the bootstrap class for message boxes
   # TODO: studdy this deeper
-  def bootstrap_class_for( flash_type )
+  def bootstrap_class_for(flash_type)
     # {success: 'alert-success',...}[flash_type] || flash_type.to_s
     case flash_type
     when :success

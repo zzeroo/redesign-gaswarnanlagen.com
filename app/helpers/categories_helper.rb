@@ -4,7 +4,7 @@ module CategoriesHelper
   def categories_for_select
     @retval = []
 
-    Category.where(parent: nil).collect do |c|
+    Category.where(parent: nil).map do |c|
       @retval << make_array(c)
 
       c.children.each do |child|
@@ -53,7 +53,7 @@ module CategoriesHelper
       if category.description.blank?
         description = ""
       else
-        description = "> " + truncate(category.description, :length => 30)
+        description = "> " + truncate(category.description, length: 30)
       end
       "..." + category.name + description
     end

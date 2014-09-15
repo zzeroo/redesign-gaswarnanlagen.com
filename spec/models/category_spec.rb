@@ -23,9 +23,9 @@ describe Category do
   describe "product associations" do
     it { should respond_to(:products) }
 
-    let!(:category){ FactoryGirl.create(:category, product_nr_prefix: "111") }
-    let!(:product_in_range){ FactoryGirl.create(:product, product_nr: "111-11111111") }
-    let!(:product_not_in_range){ FactoryGirl.create(:product, product_nr: "999-99999999") }
+    let!(:category) { FactoryGirl.create(:category, product_nr_prefix: "111") }
+    let!(:product_in_range) { FactoryGirl.create(:product, product_nr: "111-11111111") }
+    let!(:product_not_in_range) { FactoryGirl.create(:product, product_nr: "999-99999999") }
 
     describe "product_nr_prefix filters products out" do
       specify { expect(category.products).to include(product_in_range) }
@@ -45,7 +45,6 @@ describe Category do
           less_than(2.megabytes)
     end
   end
-
 
   describe "format of background_color" do
     describe "empty background_color" do
@@ -92,7 +91,7 @@ describe Category do
     end
 
     it "can't be parent of her self" do
-      subject{ parent.save! }.should_not eq(true)
+      subject { parent.save! }.should_not eq(true)
     end
 
     # http://brightbit.com/blog/2012/06/25/testing-custom-activerecord-validations-in-ruby-on-rails-with-rspec/
@@ -102,7 +101,6 @@ describe Category do
       cat.valid?  # trigger validation to run (without saving)
       cat.errors[:parent_id].should include I18n.t('activerecord.errors.models.category.attributes.parent_id.parent_not_self')
     end
-
 
   end
 end

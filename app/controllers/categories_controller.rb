@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
   # GET /categoy/1
   def show
-    @products = @category.products.paginate(:page => params[:page], :per_page => 10) if @category.products
+    @products = @category.products.paginate(page: params[:page], per_page: 10) if @category.products
   end
 
   # GET /categories/new
@@ -58,6 +58,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, attached_assets_attributes: [ :asset, :_destroy])
+      params.require(:category).permit(:name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id, attached_assets_attributes: [:asset, :_destroy])
     end
 end

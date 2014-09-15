@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-#guard 'rspec', cmd:"spring rspec" do
+# guard 'rspec', cmd:"spring rspec" do
 guard :rspec, all_after_pass: false, cli: '--tty --drb --format progress --color', cmd:"spring rspec" do
   notification :tmux, display_message: true
   watch(%r{^spec/.+_spec\.rb$})

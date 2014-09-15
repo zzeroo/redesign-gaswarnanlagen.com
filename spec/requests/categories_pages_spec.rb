@@ -8,7 +8,7 @@ describe "Categories pages" do
   subject { page }
 
   describe "category/index" do
-    let!(:category) { FactoryGirl.create(:category, published: true ) }
+    let!(:category) { FactoryGirl.create(:category, published: true) }
 
     before do
       visit categories_path
@@ -19,8 +19,8 @@ describe "Categories pages" do
 
     it "should list all root categories those without parents" do
       Category.where(parent: nil).each do |category|
-        expect(page).to have_selector('strong', text: category.name )
-        expect(page).to have_selector('p', text: category.description )
+        expect(page).to have_selector('strong', text: category.name)
+        expect(page).to have_selector('p', text: category.description)
       end
     end
 
@@ -62,7 +62,7 @@ describe "Categories pages" do
     let!(:product1) { FactoryGirl.create(:product, product_nr: "100-12345678") }
     let!(:product2) { FactoryGirl.create(:product, product_nr: "200-12345678") }
 
-    before{ visit category_path(category) }
+    before { visit category_path(category) }
 
     it { should have_content(category.name) }
     it { should have_title(category.name) }
@@ -88,7 +88,7 @@ describe "Categories pages" do
 
   describe "category/new" do
 
-    before do 
+    before do
       sign_in admin
       visit new_category_path
     end
@@ -155,7 +155,7 @@ describe "Categories pages" do
     end
 
     describe "as admin" do
-      let!(:category){ FactoryGirl.create(:category, published: true) }
+      let!(:category) { FactoryGirl.create(:category, published: true) }
 
       before do
         sign_in admin
