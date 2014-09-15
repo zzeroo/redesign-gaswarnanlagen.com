@@ -15,7 +15,7 @@
     <p><%= news.news_body.html_safe %></p>
     <% if current_user && current_user.admin? %>
       <span>
-        <%= link_to 'bearbeiten', edit_news_path(news) %> | 
+        <%= link_to 'bearbeiten', edit_news_path(news) %>&nbsp;|&npsp;
         <%= link_to 'löschen', news, method: :delete, data: { confirm: "Bist du sicher?" } %>
       </span>
     <% end %>

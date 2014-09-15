@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "Bdas pages" do
 
-  let(:bda){ FactoryGirl.create(:bda) }
+  let(:bda) { FactoryGirl.create(:bda) }
 
-  subject{ page }
+  subject { page }
 
   describe "index" do
     before do

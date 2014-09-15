@@ -12,14 +12,14 @@ class Product < ActiveRecord::Base
   has_attached_file :logo, {
                       styles: { small: "x30" } }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
-  validates_attachment :logo, :size => { :in => 0..2.megabytes }
-  validates_attachment_content_type :logo, :content_type => /\Aimage/
+  validates_attachment :logo, size: { in: 0..2.megabytes }
+  validates_attachment_content_type :logo, content_type: /\Aimage/
 
   has_attached_file :tdb, {
-                        :styles => {
-                          :pdf => {
-                            :format => "pdf",
-                            :processors => [:docsplit_pdf]
+                        styles: {
+                          pdf: {
+                            format: "pdf",
+                            processors: [:docsplit_pdf]
                           }
                         }
                     }.merge(PAPERCLIP_STORAGE_OPTIONS)
@@ -80,8 +80,8 @@ class Product < ActiveRecord::Base
     ret = []
     Category.all.each do |cat|
       unless cat.product_nr_prefix.blank?
-        product_nrs = cat.product_nr_prefix.split(',').collect{ |x| x.strip }
-        product_nrs.each{ |nr| ret << cat unless self.product_nr =~ Regexp.new(nr) }
+        product_nrs = cat.product_nr_prefix.split(',').map { |x| x.strip }
+        product_nrs.each { |nr| ret << cat unless self.product_nr =~ Regexp.new(nr) }
       end
     end
     return ret
