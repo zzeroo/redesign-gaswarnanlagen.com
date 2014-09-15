@@ -28,13 +28,13 @@ describe Product do
 
   describe "default ordering scope" do
     # cleanup
-    before { Product.all.each{|p| p.destroy! }}
+    before { Product.all.each { |p| p.destroy! } }
 
     let!(:higher_product_nr) do
       FactoryGirl.create(:product, product_nr: "999-99999999")
     end
     let!(:lower_product_nr) do
-      FactoryGirl.create(:product, product_nr: "100-00000001" )
+      FactoryGirl.create(:product, product_nr: "100-00000001")
     end
 
     it "should have the right products in the right order (lower product_numer first)" do

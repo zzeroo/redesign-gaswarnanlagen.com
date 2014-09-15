@@ -3,7 +3,7 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   cities = City.create([ { name: 'Chicago' }, { name: 'Copenhagen' } ])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'active_support'
 require 'active_record'
@@ -39,7 +39,7 @@ def add_category_logo
     Category.find(2).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-gaswarnanlage-01.jpg"))
     Category.find(11).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-messfuehler-01.jpg"))
     Category.find(20).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/home-leuchttransparente-01.jpg"))
-    
+
     Category.find(3).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-01.jpg"))
     Category.find(4).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-02.jpg"))
     Category.find(5).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/gaswarnanlagen-03.jpg"))
@@ -58,7 +58,7 @@ def add_category_logo
     Category.find(17).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-01.jpg"))
     Category.find(18).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-07.jpg"))
     Category.find(19).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/messfuehler-08.jpg"))
-    
+
     Category.find(21).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-01.jpg"))
     Category.find(22).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-02.jpg"))
     Category.find(23).update_attributes!(logo: File.new("#{Rails.root}/app/assets/images/leuchttransparente-03.jpg"))

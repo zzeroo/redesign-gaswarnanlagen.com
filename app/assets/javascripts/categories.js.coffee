@@ -8,7 +8,7 @@ tree = ->
   $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Zweig schließen');
   $('.tree li.parent_li > span').click (e) ->
     children = $(this).parent('li.parent_li').find(' > ul > li');
-    if children.is(":visible") 
+    if children.is(":visible")
       children.hide('fast')
       $(this).attr('title', 'Zweig öffnen').find(' > i').addClass('fa-plus').removeClass('fa-minus')
     else
@@ -18,7 +18,7 @@ tree = ->
 
 # Close all sub categories
 close = ->
-  $('.tree li.parent_li > span > i').parent().effect( "highlight", { color: "#FFE700" }, 2000 );
+  $('.tree li.parent_li > span > i').parent().effect("highlight", { color: "#FFE700" }, 2000);
   $('.tree li.parent_li').find(' > ul > li').delay(1000).hide('slow')
   $('.tree li.parent_li > span').find(' > i').addClass('fa-plus').removeClass('fa-minus')
 

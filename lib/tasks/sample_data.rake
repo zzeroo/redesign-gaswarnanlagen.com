@@ -77,7 +77,7 @@ def make_products
     product_nr = "%d%02d-%08d" % [p/10, p, p]
     description = Faker::Lorem.sentence(1)
     short_description = Faker::Lorem.sentence(2)
-    Product.create!(product_nr: product_nr, description: description, short_description: short_description) 
+    Product.create!(product_nr: product_nr, description: description, short_description: short_description)
   end
 end
 

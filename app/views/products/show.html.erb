@@ -2,7 +2,7 @@
 
 <div class="breadcrumb" data-no-turbolink>
   <%= link_to "http://gaswarnanlagen.com", root_path %>&nbsp;>&nbsp;
-  <!-- TODO: Das muss refactoriert werden. Außerdem muss der Umstand beachtet werden, das ein Produkt in mehreren 
+    <!-- TODO: Das muss refactoriert werden. Außerdem muss der Umstand beachtet werden, das ein Produkt in mehreren
             Kategorien vorhanden sein kann -->
   <%= link_to @product.categories.first.name, @product.categories.first  unless @product.categories.first.nil? %>&nbsp;>&nbsp;
   <%= link_to @product.product_nr, @product  %>
@@ -14,22 +14,22 @@
 
 <div class="row">
   <% unless @product.short_description.blank? %>
-    <%= content_tag(:h2, @product.short_description ) %>
+    <%= content_tag(:h2, @product.short_description) %>
   <% end %>
 
   <p>
     <b>Produkt Nummer:&nbsp;</b><%= @product.product_nr %>
   </p>
 
-  <%= content_tag(:p, simple_format( @product.description )) unless @product.description.blank? %>
+  <%= content_tag(:p, simple_format( @product.description)) unless @product.description.blank? %>
 
-  <%= content_tag(:p, simple_format( @product.short_text1 )) unless @product.short_text1.blank? %>
+  <%= content_tag(:p, simple_format( @product.short_text1)) unless @product.short_text1.blank? %>
 
-  <%= content_tag(:p, simple_format( @product.short_text2 )) unless @product.short_text2.blank? %>
+  <%= content_tag(:p, simple_format( @product.short_text2)) unless @product.short_text2.blank? %>
 
   <% unless @product.technical_data.blank? %>
     <h4>Technische Daten:</h4>
-    <%= content_tag(:p, simple_format( @product.technical_data )) %>
+    <%= content_tag(:p, simple_format( @product.technical_data)) %>
   <% end %>
 </div>
 

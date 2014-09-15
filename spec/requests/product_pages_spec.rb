@@ -4,7 +4,7 @@ describe "Products pages" do
 
   let(:admin)    { FactoryGirl.create(:admin) }
   let(:category) { FactoryGirl.create(:category) }
-  let(:product)  { FactoryGirl.create(:product ) }
+  let(:product)  { FactoryGirl.create(:product) }
 
   subject { page }
 
@@ -19,9 +19,9 @@ describe "Products pages" do
 
     it "should list all products" do
       Product.all.each do |product|
-        expect(page).to have_selector("td>a[href='#{product_path(product)}']", text: product.product_nr )
-        expect(page).to have_selector('td', text: product.short_description )
-        expect(page).to have_selector('td', text: product.description )
+        expect(page).to have_selector("td>a[href='#{product_path(product)}']", text: product.product_nr)
+        expect(page).to have_selector('td', text: product.short_description)
+        expect(page).to have_selector('td', text: product.description)
       end
     end
 
