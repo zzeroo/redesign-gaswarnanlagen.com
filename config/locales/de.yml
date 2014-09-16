@@ -40,7 +40,7 @@ de:
               parent_not_self: 'Eine Kategorie kann nicht Unterkategorie von sich selbst sein!'
 
     models:
-      product: 
+      product:
         one: Produkt
         other: Produkte
 
@@ -68,7 +68,8 @@ de:
         news_image: "Bild"
 
       product:
-        short_description: "Kurzbeschreibung"
+        logo: "Bild"
+        short_description: "Kurzbezeichnung"
         product_nr: "Produktnummer"
         short_text1: "Kurztext1"
         short_text2: "Kurztext2"
