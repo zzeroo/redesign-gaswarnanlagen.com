@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# Diese Test stammen fon Hartls Rails Tutorial
 describe "Products pages" do
 
   let(:admin)    { FactoryGirl.create(:admin) }
@@ -8,25 +9,16 @@ describe "Products pages" do
 
   subject { page }
 
-  describe "index" do
-
-    before do
+  describe "GET /products" do
+    before(:each) do
       visit products_path
     end
 
     it { should have_title('Produkte') }
     it { should have_content('Produkte') }
 
-    it "should list all products" do
-      Product.all.each do |product|
-        expect(page).to have_selector("td>a[href='#{product_path(product)}']", text: product.product_nr)
-        expect(page).to have_selector('td', text: product.short_description)
-        expect(page).to have_selector('td', text: product.description)
-      end
-    end
-
     describe "As admin" do
-      before do
+      before(:each) do
         sign_in admin
         visit products_path
       end

@@ -58,6 +58,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     aws-sdk (1.53.0)
       aws-sdk-v1 (= 1.53.0)
@@ -175,6 +176,8 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     kgio (2.9.2)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     leaflet-rails (0.7.3)
     libnotify (0.8.0)
       ffi (>= 1.0.11)
@@ -397,6 +400,7 @@ DEPENDENCIES
   jquery-rails (= 3.0.4)
   jquery-turbolinks
   jquery-ui-rails
+  launchy
   leaflet-rails
   libnotify (= 0.8.0)
   paperclip
