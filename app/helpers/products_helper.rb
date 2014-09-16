@@ -22,24 +22,24 @@ module ProductsHelper
   # Helper für das richtige Symbol, abhänig vom Datei Typ: attachable_type
   # TODO: Optionen mit Options Hash gestalten
   def icon_link_to(a, **options)
-    css_class =  'fa-2x' if css_class.nil?
+    css_class =  options[:css_class] || 'fa-2x'
 
     case a.asset.content_type
     when "application/pdf"
       icon_file = 'file-pdf-o'
-      link_title = options[:link_title] + ' PDF'
+      title = options[:title] + ' PDF'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
       style = "color: darkred"
     when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       icon_file = 'file-word-o'
-      link_title = options[:link_title] + ' DOCX'
+      title = options[:title] + ' DOCX'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
       style = "color: blue"
     else
       icon_file = 'file-text'
     end
 
-    link_to(icon(icon_file, '', class: css_class, style: style), a.asset.url, html_options: { title: link_title, target: '_blank' })
+    link_to(icon(icon_file, '', class: css_class, style: style, title: title), a.asset.url, html_options: { target: '_blank' })
   end
 
 end
