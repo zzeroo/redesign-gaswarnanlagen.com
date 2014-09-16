@@ -36,6 +36,7 @@ gem 'leaflet-rails'
 gem 'piwik_analytics', '~> 1.0.5', :git => 'https://github.com/zzeroo/piwik_analytics.git'
 gem 'rb-readline', "~> 0.5.0"
 gem 'coveralls', require: false
+gem 'rails-env-favicon', '~> 0.0.5'
 
 group :development, :test do
   gem 'guard-rspec'

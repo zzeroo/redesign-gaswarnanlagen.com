@@ -20,5 +20,6 @@
 //= require bootstrap/scrollspy
 //= require bootstrap/modal
 //= require bootstrap/dropdown
+//= require rails_env_favicon
 //= require_tree .
 //= require turbolinks
