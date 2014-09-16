@@ -18,7 +18,7 @@ gem 'will_paginate-bootstrap'
 gem 'pg', '0.15.1'
 gem "therubyracer"
 gem 'sass-rails', '~> 4.0.2'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'

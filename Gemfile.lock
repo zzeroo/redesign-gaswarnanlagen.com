@@ -384,7 +384,7 @@ DEPENDENCIES
   docsplit-paperclip-processor!
   factory_girl_rails (= 4.2.0)
   faker (= 1.1.2)
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   forgery
   guard-livereload
   guard-rspec
