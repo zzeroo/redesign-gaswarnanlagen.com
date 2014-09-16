@@ -228,6 +228,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.4)
       sprockets-rails (~> 2.0)
+    rails-env-favicon (0.0.5)
+      railties (>= 3.1)
+      tinycon-rails
     rails-erd (1.1.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
@@ -344,6 +347,8 @@ GEM
     timers (4.0.1)
       hitimes
     tins (1.3.2)
+    tinycon-rails (0.0.1)
+      railties (>= 3.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -399,6 +404,7 @@ DEPENDENCIES
   piwik_analytics (~> 1.0.5)!
   progress_bar
   rails (= 4.1.4)
+  rails-env-favicon (~> 0.0.5)
   rails-erd
   rails-i18n (~> 4.0.0)
   rails_12factor
