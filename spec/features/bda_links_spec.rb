@@ -6,6 +6,5 @@ feature "Bda links" do
    scenario "links are constucted well" do
      visit "/products"
 
-     expect(page).to have_text("Download")
    end
 end

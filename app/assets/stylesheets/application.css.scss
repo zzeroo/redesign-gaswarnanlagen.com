@@ -11,11 +11,11 @@
  *= depend_on_asset "layers.png"
  *= depend_on_asset "layers-2x.png"
  *= require_self
- *= require font-awesome
  *= require jquery-ui
  *= require leaflet
  *= require_tree .
  */
 @import "bootstrap";
 /*@import "bootstrap/theme";*/
- 
+@import "font-awesome-sprockets";
+@import "font-awesome";
