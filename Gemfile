@@ -59,6 +59,7 @@ group :development do
   gem 'ruby-graphviz'
   # gem 'yard', "~> 1.0"
   gem 'yard'
+  gem 'launchy'
 end
 
 group :test do
