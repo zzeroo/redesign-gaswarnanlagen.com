@@ -1,10 +1,10 @@
 <tr>
   <!-- Produktnummer -->
   <td><%= link_to (highlight_it product.product_nr, params[:search]), product %></td>
-  <!-- Kurzbeschreibung -->
-  <td><%= show_short_description( product, params[:search]) %><%= link_to ' mehr', product_path(product) %></td>
+  <!-- Kurzbezeichnung -->
+  <td><%= link_to (highlight_it product.short_description, params[:search]), product %></td>
   <!-- Bild -->
-  <td><%= image_tag product.logo.url(:small) %></td>
+  <td><%= image_tag product.logo.url(:small), class: "img-rounded" %></td>
   <!-- Beschreibung -->
   <td><%= show_description(product, params[:search]) %><%= link_to ' mehr', product_path(product) %></td>
   <!-- AST -->
@@ -23,7 +23,7 @@
   <td>
     <% product.bdas.each do |bda| %>
       <% bda.attached_assets.each do |a| %>
-        <p><%= icon_link_to(a, link_title: "Betriebsanleitung") %></p>
+        <p><%= icon_link_to(a, title: "Betriebsanleitung") %></p>
       <% end %>
     <% end %>
   </td>
