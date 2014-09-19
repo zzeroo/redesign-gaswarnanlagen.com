@@ -1,13 +1,11 @@
 # Products Helper
 module ProductsHelper
 
-  # Helper to construct the short_description
+  # Helper to construct the short_description (Kurzbezeichnung)
+  #
+  # Short_description (interna product description)
   def show_short_description(product, search)
-    if product.short_text1.blank?
-      truncate((highlight_it product.short_description, search), length: 60)
-    else
-      truncate((highlight_it product.short_text1, search), length: 60)
-    end
+    truncate((highlight_it product.short_description, search), length: 60)
   end
 
   # Helper to construct the description
