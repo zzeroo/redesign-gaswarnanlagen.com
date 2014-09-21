@@ -60,6 +60,7 @@ group :development do
   # gem 'yard', "~> 1.0"
   gem 'yard'
   gem 'launchy'
+  gem 'guard-cucumber'
 end
 
 group :test do
