@@ -14,6 +14,13 @@
 <div class="form-group">
   <%= f.label :product_nr_prefix %>
   <%= f.text_field :product_nr_prefix, class: "form-control" %>
+  <span class="help-block">Produkte die in dieser Kategorie gelistet werden sollen.<br />
+    <strong>Die Reihenfolge in der die Nummern erfasst werden, spiegelt dann
+      auch die Reihenfolge ihrer Darstellung wieder.</strong>
+    Das heißt werden zum Beispiel die Nummern "300,112,100-120000" erfasst,
+    dann werden die Produkte deren Nummern mit 112 anfangen, vor den
+    Produkten mit 100-120000 bezeichnet sind, angezeigt. Ganz vorn stehen die
+  Produkte mit den Produknummern 300-xxx.. .</span>
 </div>
 
 <div class="form-group">

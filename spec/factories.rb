@@ -12,25 +12,12 @@ FactoryGirl.define do
     end
   end
 
-  factory(:category) do
-    published true
-    sequence(:name) { |n| "Kategorie #{n}" }
-    sequence(:description) { Forgery::LoremIpsum.paragraphs(1) }
-    sequence(:product_nr_prefix) { |n| "#{n}00" }
-    logo { fixture_file_upload(Rails.root.join('spec', 'support', 'rails.png'), 'image/png') }
-  end
-
   factory(:product) do
     sequence(:product_nr) { |n| "%d%02d-%08d" % [n/10, n, n] }
     sequence(:description) { Forgery::LoremIpsum.sentence }
     sequence(:short_description) { Forgery::LoremIpsum.paragraphs(1) }
     sequence(:short_text1) { Forgery::LoremIpsum.sentence }
     sequence(:short_text2) { Forgery::LoremIpsum.sentence }
-  end
-
-  factory(:document) do
-    sequence(:title) { Forgery::LoremIpsum.sentence }
-    sequence(:body) { Forgery::LoremIpsum.sentence }
   end
 
   factory(:news) do
