@@ -83,6 +83,7 @@ describe Category do
     end
   end
 
+  # Validations check
   describe "Validation Categories" do
     let!(:parent) { FactoryGirl.create(:category) }
 
@@ -101,6 +102,19 @@ describe Category do
       cat.valid?  # trigger validation to run (without saving)
       cat.errors[:parent_id].should include I18n.t('activerecord.errors.models.category.attributes.parent_id.parent_not_self')
     end
+  end
 
+  describe "Category->Products join" do
+    let!(:product1) { FactoryGirl.create(:product, product_nr: 500-12345678) }
+    let!(:product2) { FactoryGirl.create(:product, product_nr: 300-12345678) }
+    let!(:product3) { FactoryGirl.create(:product, product_nr: 100-12345678) }
+
+    before do
+      @category = Category.create(name: "Cat with products", product_nr_prefix: "500,300,100")
+    end
+
+    it "should list the products into the right order" do
+      subject { @category.products }.should eq([product1, product2, product3])
+    end
   end
 end
