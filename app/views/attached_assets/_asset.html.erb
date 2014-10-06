@@ -1,0 +1,8 @@
+<div style="display: inline-block;">
+  <p><%= image_tag asset.asset.url(:thumbnail) %></p>
+  <% if @current_user && @current_user.admin? %>
+  <p><%= image_tag asset.asset_file_name %></p>
+  <p><%= image_tag asset.asset.size %></p>
+  <p><%= link_to "löschen", attached_asset_path(asset), class: "delete", method: :delete, remote: true %></p>
+  <% end %>
+</div>
