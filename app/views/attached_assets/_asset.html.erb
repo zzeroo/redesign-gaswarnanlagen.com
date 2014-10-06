@@ -1,8 +1,13 @@
-<div style="display: inline-block;">
-  <p><%= image_tag asset.asset.url(:thumbnail) %></p>
-  <% if @current_user && @current_user.admin? %>
+<div class="col-md-2">
+<% if asset.image? %>
+  <p><%= link_to image_tag(asset.asset.url(:thumbnail)), asset.asset.url %></p>
+<% else %>
+  <p style="display:none" class="hidden-doc"><%= link_to icon('file-pdf-o', '', class: 'fa-4x', style: "color: darkred"), asset.asset.url(:pdf) %></p>
+  <p><%= icon_link_to(asset, css_class: 'fa-4x') %></p>
+<% end %>
+<% if @current_user && @current_user.admin? %>
   <p><%= image_tag asset.asset_file_name %></p>
   <p><%= image_tag asset.asset.size %></p>
   <p><%= link_to "löschen", attached_asset_path(asset), class: "delete", method: :delete, remote: true %></p>
-  <% end %>
+<% end %>
 </div>

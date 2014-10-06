@@ -14,6 +14,7 @@ class BdasController < ApplicationController
   # GET /bdas/1
   # GET /bdas/1.json
   def show
+    @products = @bda.products.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /bdas/new

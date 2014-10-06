@@ -54,11 +54,30 @@
     <div class="bs-docs-section">
       <% unless @bda.products.nil? %>
         <h3>Produkte für diese Anleitung</h3>
-        <ul>
-          <% @bda.products.each do |product| %>
-            <li><%= link_to product.short_description, product %></li>
-          <% end %>
-        </ul>
+        <!-- Products -->
+        <% if @bda.products.present? %>
+        <div class="row">
+          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover table-hover">
+            <tr>
+              <th><%= Product.human_attribute_name :product_nr %></th>
+              <th><%= Product.human_attribute_name :short_description %></th>
+              <th>Bild</th>
+              <th><%= Product.human_attribute_name :description %></th>
+              <th title="Ausschreibungstext">AST</th>
+              <th title="Technisches Daten Blatt">TDB</th>
+              <th title="Betriebsanleitung">BDA</th>
+              <th></th>
+          </tr>
+          <%= render @products %>
+          </table>
+        </div>
+        <div class="row">
+          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+        </div>
+        <% end %>
       <% end %>
 
     </div>
