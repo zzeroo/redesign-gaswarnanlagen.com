@@ -15,6 +15,7 @@
  *= require leaflet
  *= require_tree .
  */
+$grid-float-breakpoint: 1000px;
 @import "bootstrap";
 /*@import "bootstrap/theme";*/
 @import "font-awesome-sprockets";
