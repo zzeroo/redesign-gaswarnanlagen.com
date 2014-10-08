@@ -114,7 +114,7 @@ describe Category do
     end
 
     it "should list the products into the right order" do
-      subject { @category.products }.should eq([product1, product2, product3])
+      @category.products.should eq([product1, product2, product3])
     end
   end
 end

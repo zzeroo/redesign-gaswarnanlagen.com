@@ -24,4 +24,5 @@ class AttachedAsset < ActiveRecord::Base
   def image?
     asset_content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}
   end
+
 end

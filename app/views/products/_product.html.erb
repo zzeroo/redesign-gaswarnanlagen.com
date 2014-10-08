@@ -22,8 +22,14 @@
   <!-- BDA -->
   <td>
     <% product.bdas.each do |bda| %>
-      <% bda.attached_assets.each do |a| %>
-        <p><%= icon_link_to(a, title: "Betriebsanleitung") %></p>
+      <% bda.attached_assets.each_with_index do |a,index| %>
+        <% if bda.attached_assets.size == index + 1 %>
+        <p>
+        <% else %>
+        <p style="display:none" class="hidden-doc">
+        <% end %>
+        <%= icon_link_to(a, title: "Betriebsanleitung") %>
+        </p>
       <% end %>
     <% end %>
   </td>
