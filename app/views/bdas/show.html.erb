@@ -1,8 +1,10 @@
-<% provide(:title, @bda.name) %>
-
 <div class="breadcrumb" data-no-turbolink>
-  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= @bda.name %>
+  <%= link_to "http://gaswarnanlagen.com", root_path %>&nbsp;>&nbsp;
+  <%= link_to "BDA's", bdas_path %>&nbsp;>&nbsp;
+  <%= @bda.name %>
 </div>
+
+<% provide(:title, @bda.name) %>
 
 <div class="row">
   <div class="col-md-12">
@@ -16,14 +18,14 @@
     </div>
 
 
-    <div class="bs-docs-section">
-      <h1 id="overview" class="page-header"><%= @bda.name %></h1>
+    <div class="row">
+      <h2><%= @bda.name %></h2>
 
       <p class="lead"><%= @bda.description %></p>
     </div>
 
 
-    <div class="bs-docs-section">
+    <div class="row">
       <p>
         <strong>Produkt Nummern:</strong>
         <%= @bda.product_nr_prefix %>
@@ -32,27 +34,50 @@
 
 
     <% if @bda.attached_assets.size > 0 %>
-    <div class="bs-docs-section">
+    <div class="row">
       <h1 id="forms" class="page-header">Dateien</h1>
 
       <ul>
-      <% @bda.attached_assets.each do |asset| %>
-        <li><%= link_to asset.asset_file_name, asset.asset.url %></li>
-      <% end %>
+      <%= render partial: 'attached_assets/asset', collection: @bda.attached_assets %>
       </ul>
     </div>
     <% end %>
 
-
+    <% if @current_user && @current_user.admin? %>
+      <%= form_for @bda, id: 'fileupload', html: { multipart: true } do |f| %>
+        <%= f.label :asset, "Dateianhänge" %>
+        <%= f.file_field :attached_assets, multiple: true, name: "bda[attached_assets_attributes][][asset]" %>
+        <%= f.submit 'speichern', class: 'btn' %>
+      <% end %>
+    <% end %>
 
     <div class="bs-docs-section">
       <% unless @bda.products.nil? %>
         <h3>Produkte für diese Anleitung</h3>
-        <ul>
-          <% @bda.products.each do |product| %>
-            <li><%= link_to product.short_description, product %></li>
-          <% end %>
-        </ul>
+        <!-- Products -->
+        <% if @bda.products.present? %>
+        <div class="row">
+          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover table-hover">
+            <tr>
+              <th><%= Product.human_attribute_name :product_nr %></th>
+              <th><%= Product.human_attribute_name :short_description %></th>
+              <th>Bild</th>
+              <th><%= Product.human_attribute_name :description %></th>
+              <th title="Ausschreibungstext">AST</th>
+              <th title="Technisches Daten Blatt">TDB</th>
+              <th title="Betriebsanleitung">BDA</th>
+              <th></th>
+          </tr>
+          <%= render @products %>
+          </table>
+        </div>
+        <div class="row">
+          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+        </div>
+        <% end %>
       <% end %>
 
     </div>
