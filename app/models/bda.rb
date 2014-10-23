@@ -1,7 +1,9 @@
 # BDA stands for "Betriebsanleitung" in german
 class Bda < ActiveRecord::Base
-  has_many :attached_assets, as: :attachable
+  has_many :attached_assets, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :attached_assets, allow_destroy: true # , reject_if: lambda {|attributes| attributes['asset_file_name'].blank? }
+
+  validates :name, presence: true
 
   # Bdas -> Products Beziehung ist weich, d.h. nicht durch eine echte ActiveRecord Beziehung gestaltet.
   def products

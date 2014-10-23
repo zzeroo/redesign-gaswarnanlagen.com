@@ -34,4 +34,5 @@ module ApplicationHelper
     with = with.nil? ? "" : with
     return highlight what, with
   end
+
 end

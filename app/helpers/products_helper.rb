@@ -25,16 +25,17 @@ module ProductsHelper
     case a.asset.content_type
     when "application/pdf"
       icon_file = 'file-pdf-o'
-      title = options[:title] + ' PDF'
+      title = options[:title] || '' + ' PDF'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
       style = "color: darkred"
     when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       icon_file = 'file-word-o'
-      title = options[:title] + ' DOCX'
+      title = options[:title] || '' + ' DOCX'
       # TODO: Style nur setzen wenn nicht im options Hash vorhanden
       style = "color: blue"
     else
       icon_file = 'file-text'
+      title =  a.asset.content_type
     end
 
     link_to(icon(icon_file, '', class: css_class, style: style, title: title), a.asset.url, html_options: { target: '_blank' })

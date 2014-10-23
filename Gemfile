@@ -23,6 +23,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'
 gem 'jquery-turbolinks'
+gem 'jquery-fileupload-rails'
 gem 'jbuilder', '1.0.2'
 gem 'unicorn'
 gem 'roo'
@@ -60,6 +61,7 @@ group :development do
   # gem 'yard', "~> 1.0"
   gem 'yard'
   gem 'launchy'
+  gem 'guard-cucumber'
 end
 
 group :test do

@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'factory_girl'
 require 'rspec/autorun'
 require 'paperclip/matchers'
 require 'capybara/rspec'
@@ -64,5 +65,4 @@ RSpec.configure do |config|
   end
 
   config.include Paperclip::Shoulda::Matchers
-
 end

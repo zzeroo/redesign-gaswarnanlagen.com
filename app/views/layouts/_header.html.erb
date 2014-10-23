@@ -1,8 +1,8 @@
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-body">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -11,7 +11,8 @@
       <%= link_to "RA-GAS GmbH", root_path, class: "navbar-brand hidden-xs text-hide brand", data: { no_turbolink: true }, title: "Home > RA-GAS GmbH Rauch und Gas Warnanlagen"  %>
       <%= link_to "RA-GAS", root_path, class: "navbar-brand visible-xs text-hide brand-xs", data: { no_turbolink: true }, title: "Home > RA-GAS GmbH Rauch und Gas Warnanlagen"  %>
 
-      <%= form_tag products_path, style: "border: 0; padding: 0 1em", method: :get, class: "navbar-form navbar-right", role: "search" do %>
+      <div class="col-xs-8">
+      <%= form_tag products_path, style: "border: 0; padding: 0 1em", method: :get, class: "navbar-form pull-left", role: "search" do %>
         <div class="input-group">
           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Suche" %>
           <div class="input-group-btn">
@@ -19,64 +20,34 @@
           </div>
         </div>
       <% end %>
+      </div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="navbar-collapse collapse" id="header-body">
       <ul class="nav navbar-nav">
         <li><%= link_to "Aktuell", news_index_path %></li>
-        <li><%= link_to "Firmenprofil", about_path %></li>
+        <li><%= link_to "Firma", about_path %></li>
         <li><%= link_to "Referenzen", references_path %></li>
-        <li><%= link_to "Vertriebspartner", distributors_path %></li>
+        <li><%= link_to "Vertrieb", distributors_path %></li>
         <li><%= link_to "Kontakt", contact_path %></li>
-      </ul>
-
-      <ul class="nav navbar-nav">
-        <% if signed_in? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Profil", user_path(current_user) %></li>
-            <li><%= link_to "Einstellungen", edit_user_path(current_user) %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete"  %></li>
-          </ul>
-        </li>
-        <% else %>
-        <li><%= link_to "Login", signin_path %></li>
-        <% end %>
-      </ul>
-      <% if signed_in? %>
-        <% if current_user.admin? %>
-      <ul class="nav navbar-nav">
-        <li class="dropdown" style="background: #fcaf3e">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mehr <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
             <li><%= link_to "Aktuell", news_index_path %></li>
             <li><%= link_to "Produkte", products_path %></li>
             <li><%= link_to "Produkt-Kategorien", categories_path, data: { no_turbolink: true } %></li>
+            <% if signed_in? %>
             <li><%= link_to "BDA's", bdas_path, data: { no_turbolink: true } %></li>
-            <%#<li class="divider"></li>%>
-            <%#<li><a href="#">Separated link</a></li>%>
+            <li><%= link_to "Profil", user_path(current_user) %></li>
+            <li><%= link_to "Einstellungen", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete"  %></li>
+            <% else %>
+            <li><%= link_to "Login", signin_path %></li>
+            <% end %>
           </ul>
         </li>
       </ul>
-        <% end %>
-      <% end %>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-<div id="content" class="bs-docs-header">
-  <div class="container" data-no-turbolink>
-    <!-- Hintergrund des Logos -->
-    <a href="/" alt="Homepage">
-      <div class="row">
-      <!-- Logo for text based browser -->
-        <div id="logo">
-        </div>
-      </div>
-    </a>
+    </div><!--/.nav-collapse -->
   </div>
 </div>
 
