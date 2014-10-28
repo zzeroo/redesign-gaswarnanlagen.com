@@ -5,20 +5,20 @@
 # Webauftritt
 ## http://gaswarnanlagen.com
 ### Redesign und Dynamisierung der Webseite
-Informationen und Beschreibungen zum Aufbau der neuen, 
+Informationen und Beschreibungen zum Aufbau der neuen,
 dynamischen (gaswarnanlagen.com) Webseite.
 
 ## Anforderung
 Im ersten Ausbau sollte alles in Allem eine Kopie der alten Webseite entstehen.
 Alle Funktionen der [“alten” Webseite](http://web.archive.org/web/20140517110348/http://gaswarnanlagen.com/) sollen auch in der neuen Webseite
 funktionieren.
-Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die 
+Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die
 Datenbank der Webseite zu importieren. Die Daten aus dem Programm ‘Easy Win Art’
 sollten über die Exeltabellen Import Funktion in die Webseite importiert werden
 können.
 
 ## Aufbau und Logic der Webseite
-Auf der Homepage werden Gruppen von Produkten (so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, keine Produkte an sich. Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten (aus eine externen Quelle) dargestellt. 
+Auf der Homepage werden Gruppen von Produkten (so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, keine Produkte an sich. Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten (aus eine externen Quelle) dargestellt.
 
 Klickt man auf eine Produkt Kategorie (Categories Model) werden entweder
 Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunde
@@ -26,7 +26,7 @@ sind (siehe Beziehung Kategorie -> Produkte)
 
 ## Beziehungen
 ### Kategorie zu -> Produkte
-Kategorien (Categories) enthalten Produkte (Products) oder Unterkategorien 
+Kategorien (Categories) enthalten Produkte (Products) oder Unterkategorien
 (SubCategories through CategoryJoin) oder beides.
 
 http://stackoverflow.com/questions/6097288/how-can-i-do-self-reference-with-ruby-on-rails
@@ -58,11 +58,11 @@ realisiert.
 - http://jsfiddle.net/jhfrench/GpdgF/
 
 ### Paperclip (Dateianhänge)
-Dateianhänge werden mit dem Paperclip gem realisiert. 
+Dateianhänge werden mit dem Paperclip gem realisiert.
 Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
 wurde das Logo Attribut als has_one Beziehung realisiert.
 Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
-entwurfen welches für unterschiedliche Models geeignet sein wird. 
+entwurfen welches für unterschiedliche Models geeignet sein wird.
 
 - https://github.com/thoughtbot/paperclip
 - http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
@@ -87,7 +87,7 @@ Mapbox ist die Technologie die hinter der Karte im Kontakt View steckt.
 
 ## Aufbau der Entwicklungsumgebung
 
-### AWS EC2 
+### AWS EC2
 Die Webseite ist in der Amazon Elastic Cloud gehostet. Zur Verwaltung, wie zum Beispiel zum erstellen eines Backups, muss das Tool awscli lokal installiert werden.
 
 #### awscli
@@ -108,7 +108,7 @@ ein. Unter dem [Link](http://shapeshed.com/instant-rails-dev-environments-with-t
 
 #### Pandoc
 Mit Pandoc kann Text aus so ziemlich allen gängigen Dateiformaten extrahiert werden.
-Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders 
+Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders
 umzuwandeln.
 
 Mit dem folgenden Befehl zum Beispiel kann die README im Markdown Format
@@ -221,11 +221,13 @@ Auch in der Postgres Datenbank wird ein eigener Benutzer `gaswarnanlagen` angelg
 
     postgres=# CREATE ROLE gaswarnanlagen SUPERUSER LOGIN;
     postgres=# \password gaswarnanlagen
-    postgres=# \q
 
 Die Postgres Shell nicht verlassen! Wir legen gleich noch die Datenbank an.
+Danach kann die Shell verlassen werden.
 
     postgres=# CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;
+    postgres=# \q
+
 
 #### Tipp !!DANGER!!!
 
