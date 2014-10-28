@@ -25,6 +25,12 @@
 
 TESTS, TESTS, TESTS, TESTS schreiben!!!!!!!!!111!1
 
+# Fragen zu Klären
+- Im Vertriebspartner View sind die AGB und Freistellungsaufträge
+  der Vertriebspartner nicht vorhanden.
+  Diese Dokumente waren auch
+  in der alten Webseite (http://old.gaswarnanlagen.com) nicht verlinkt.
+
 # Komponenten die man evtl. auch noch einbauen kann
 
 - [flexibles Drag ‘n Drop Layout](http://blog.ninjacorner.com/blog/2014/05/07/tutorial-incorporating-gridster-to-a-rails-4-app)
