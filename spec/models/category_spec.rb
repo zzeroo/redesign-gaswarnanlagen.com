@@ -104,17 +104,4 @@ describe Category do
     end
   end
 
-  describe "Category->Products join" do
-    let!(:product1) { FactoryGirl.create(:product, product_nr: 500-12345678) }
-    let!(:product2) { FactoryGirl.create(:product, product_nr: 300-12345678) }
-    let!(:product3) { FactoryGirl.create(:product, product_nr: 100-12345678) }
-
-    before do
-      @category = Category.create(name: "Cat with products", product_nr_prefix: "500,300,100")
-    end
-
-    it "should list the products into the right order" do
-      @category.products.should eq([product1, product2, product3])
-    end
-  end
 end

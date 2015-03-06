@@ -11,11 +11,11 @@ describe "GET index" do
       expect(page).to have_title('RA-GAS GmbH')
       first(:link, 'Aktuell').click
       expect(page).to have_title('Aktuell')
-      click_link 'Firmenprofil'
+      click_link 'Firma'
       expect(page).to have_title('Firmenprofil')
       click_link 'Referenzen'
       expect(page).to have_title('Referenzen')
-      click_link 'Vertriebspartner'
+      click_link 'Vertrieb'
       expect(page).to have_title('Vertriebspartner')
       first(:link, 'Kontakt').click
       expect(page).to have_title(full_title('Kontakt'))
