@@ -10,25 +10,26 @@
   <!-- AST -->
   <td>
     <% if product.has_ast? %>
-      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt'), html_options: { target: '_blank' }) %>
+      <%= link_to(icon('file-text', '', class: 'fa-2x', title: "TXT Format"), ast_product_path(product, format: 'txt'), target: '_blank' ) %>
     <% end %>
   </td>
   <!-- TDB -->
   <td>
     <% if product.tdb.present? %>
-      <%= link_to(icon('file-pdf-o', '', class: 'fa-2x', title: "Technisches Datenblatt", style: "color: darkred;"), product.tdb.url(:pdf)) %>
+      <%= link_to(icon('file-pdf-o', '', class: 'fa-2x', title: "Technisches Datenblatt", style: "color: darkred;"), product.tdb.url(:pdf), target: '_blank' ) %>
     <% end %>
   </td>
   <!-- BDA -->
   <td>
     <% product.bdas.each do |bda| %>
-      <% bda.attached_assets.each_with_index do |a,index| %>
+      <% bda.attached_assets.each_with_index do |attachment,index| %>
         <% if bda.attached_assets.size == index + 1 %>
         <p>
         <% else %>
         <p style="display:none" class="hidden-doc">
         <% end %>
-        <%= icon_link_to(a, title: "Betriebsanleitung") %>
+        <%#= icon_link_to(attachment, title: "Betriebsanleitung") %>
+        <%= link_to(icon('file-pdf-o', '', class: 'fa-2x', title: "Betriebsanleitung", style: "color: darkred;"), attachment.asset.url(:pdf), target: '_blank') %>
         </p>
       <% end %>
     <% end %>
@@ -37,7 +38,7 @@
   <td>
     <% if current_user && current_user.admin? %>
       <%= link_to icon('eye') + " anzeigen", product %><br />
-      <%= link_to icon('trash-o') + " löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %><br />
+        <%= link_to icon('trash-o') + " löschen", product, method: :delete, data: { confirm: "Bist du sicher?"} %><br />
       <%= link_to icon('edit') + " bearbeiten", edit_product_path(product) %>
     <% end %>
   </td>
