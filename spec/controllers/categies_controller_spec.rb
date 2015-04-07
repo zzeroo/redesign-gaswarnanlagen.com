@@ -10,7 +10,7 @@ RSpec.describe CategoriesController do
 
     it do
       should permit( :name, :description, :published, :product_nr_prefix, :background_color, :logo, :parent_id,
-                       attached_assets_attributes: [:asset, :_destroy]).
+                       attached_assets_attributes: [:id, :asset, :_destroy]).
                                                     for(:create)
       end
   end

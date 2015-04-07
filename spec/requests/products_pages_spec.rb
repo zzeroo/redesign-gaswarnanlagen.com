@@ -1,12 +1,8 @@
 require 'spec_helper'
 
-# Diese Test stammen fon Hartls Rails Tutorial
+# Diese Test stammen von Hartls Rails Tutorial
 describe "Products pages" do
   let(:product) { FactoryGirl.create(:product) }
-
-  xit 'should have products' do
-    Product.all.size.should eq(1)
-  end
 
   it "should list all products" do
     Product.all.each do |product|
@@ -16,9 +12,4 @@ describe "Products pages" do
     end
   end
 
-  describe "Product admin links" do
-    xit 'should have a "löschen" link' do
-      should have_link('löschen')
-    end
-  end
 end
