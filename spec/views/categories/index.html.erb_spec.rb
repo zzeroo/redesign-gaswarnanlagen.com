@@ -4,11 +4,6 @@ describe "categories/index.html.erb" do
 
   context "with zero category" do
 
-    # TODO: Add test for empty category circumstance
-    xit 'should display a proper error message' do
-      render
-      view.should contain("Noch keine Kategorie vorhanden.")
-    end
   end
 
   context "with zero products" do
