@@ -38,7 +38,7 @@ module ProductsHelper
       title =  a.asset.content_type
     end
 
-    link_to(icon(icon_file, '', class: css_class, style: style, title: title), a.asset.url, html_options: { target: '_blank' })
+    link_to(icon(icon_file, '', class: css_class, style: style, title: title), a.asset.url, target: '_blank' )
   end
 
 end
