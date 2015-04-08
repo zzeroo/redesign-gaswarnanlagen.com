@@ -57,7 +57,7 @@
   <h4>Betriebsanleitungen</h4>
   <% @product.bdas.each do |bda| %>
     <% bda.attached_assets.each do |a| %>
-      <p><%= icon_link_to(a, title: "Betriebsanleitung", css_class: 'fa-4x') %></p>
+      <p><%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "Betriebsanleitung", style: "color: darkred;"), a.asset.url(:pdf), target: '_blank') %>
     <% end %>
   <% end %>
 </div>
