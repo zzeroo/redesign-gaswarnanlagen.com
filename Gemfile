@@ -40,6 +40,7 @@ gem 'coveralls', require: false
 gem 'rails-env-favicon', '~> 0.0.5'
 
 group :development, :test do
+  gem 'foreman'
   gem 'guard-rspec'
   gem 'ruby-prof'
   gem 'rspec-rails', '~> 2.14.0.rc1'
