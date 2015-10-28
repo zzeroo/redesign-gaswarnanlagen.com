@@ -71,27 +71,12 @@ ActiveRecord::Schema.define(version: 20140921172258) do
     t.datetime "news_date"
   end
 
-  create_table "product_groups", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "published"
-    t.string   "product_nr_prefix"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.string   "background_color"
-  end
-
   create_table "products", force: true do |t|
     t.string   "product_nr"
     t.text     "description"
     t.text     "short_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "product_group_id"
     t.text     "short_text1"
     t.text     "short_text2"
     t.text     "technical_data"
