@@ -19,7 +19,7 @@ class Category < ActiveRecord::Base
   validates :background_color, format: { with: /(\A\z|\A#[0-9a-fA-F]{3}\z|\A#[0-9a-fA-F]{6}\z)/ }
   # Validate Category can not children of her self
   validate :parent_not_self
-  validates_attachment :logo, size: { in: 0..2.megabytes }
+  validates_attachment :logo, size: { in: 0..5.megabytes }
   validates_attachment_content_type :logo, content_type: /\Aimage/
 
   # TODO: Enable this
