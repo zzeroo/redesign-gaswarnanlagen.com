@@ -42,7 +42,7 @@ describe Category do
     end
     it do
       should validate_attachment_size(:logo).
-          less_than(2.megabytes)
+          less_than(5.megabytes)
     end
   end
 
