@@ -1,7 +1,7 @@
 <% provide(:title, @category.name) %>
 
 <div class="breadcrumb" data-no-turbolink>
-  <%= link_to "http://gaswarnanlagen.com", root_path %> > <%= link_to(@category.parent.name, @category.parent) + " > " if @category.parent %><%= @category.name %>
+  <%= link_to "https://gaswarnanlagen.com", root_path %> > <%= link_to(@category.parent.name, @category.parent) + " > " if @category.parent %><%= @category.name %>
 </div>
 
 <div class="row">
