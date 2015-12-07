@@ -6,9 +6,9 @@ $boxgruen: #0D440D;
 $boxnachrichten: #5D5D5D;
 
 
-body { 
-  padding-top: 50px; 
-  padding-bottom: 140px; 
+body {
+  padding-top: 50px;
+  padding-bottom: 140px;
 }
 
 .bs-docs-header {
@@ -19,12 +19,12 @@ body {
         display: block;
         width: 100%;
         height: 100%;
-      } 
+      }
       div#logo {
         position: absolute;
         top: 1.3em;
         left: .2em;
-        width: 240px; 
+        width: 240px;
         height: 80px;
         background: url("Logo RA-GAS GmbH.png") no-repeat scroll 0px 0px;
         #background: none, url("Logo RA-GAS GmbH.svg") no-repeat scroll 0px 0px;
@@ -32,7 +32,7 @@ body {
   }
 }
 
-body > .jumbotron { 
+body > .jumbotron {
   background: none;
   padding: 0;
   .container {
@@ -71,9 +71,9 @@ body > .jumbotron {
       min-height: 100%;
     }
   }
-  .description { 
+  .description {
     height: 12em;
-    font-size: 0.85em; 
+    font-size: 0.85em;
   }
 }
 
@@ -89,10 +89,10 @@ body > .jumbotron {
 .box_aktuell {
   background-color: $boxaktuell;
   overflow: hidden;
- 
-  .description { 
+
+  .description {
     height: 100%;
-    font-size: 1em; 
+    font-size: 1em;
   }
 }
 
@@ -124,7 +124,7 @@ body > .jumbotron {
     	line-height: 1.2;
 }
 
-// http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/
+// https://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/
 .my-container [class^="col-"] {
   padding-top: .8em;
 
@@ -248,7 +248,7 @@ body > .jumbotron {
   padding: 1em  0.2;
 }
 
-// custom image as li 
+// custom image as li
 ul
 {
   list-style-image:url('r_s_strich.gif');

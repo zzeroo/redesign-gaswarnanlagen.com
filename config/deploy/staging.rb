@@ -24,7 +24,7 @@ set :branch, 'develop'
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
+# limited set of options, consult[net/ssh documentation](https://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
 #
 # Global options
 # --------------

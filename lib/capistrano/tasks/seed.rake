@@ -1,4 +1,4 @@
-# http://stackoverflow.com/questions/7461985/how-to-seed-the-production-database-using-the-capistrano-gem
+# https://stackoverflow.com/questions/7461985/how-to-seed-the-production-database-using-the-capistrano-gem
 #
 namespace :deploy do
   desc 'Runs rake db:seed for SeedMigrations data'
