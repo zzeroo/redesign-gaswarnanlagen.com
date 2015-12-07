@@ -16,7 +16,7 @@ describe "UserPages" do
     it { should have_content('Alle Benutzer')}
 
     describe "pagination" do
-      
+
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all) { User.delete_all }
 
@@ -131,7 +131,7 @@ describe "UserPages" do
     describe "page" do
       it { should have_content("Profil bearbeiten") }
       it { should have_title("Profil bearbeiten") }
-      it { should have_link('Benutzerbild ändern', href: 'http://gravatar.com/emails') }
+      it { should have_link('Benutzerbild ändern', href: 'https://gravatar.com/emails') }
 
       describe "Link to change gravatar should open in new window or tab" do
         it { find_link('Benutzerbild ändern')[:target].should == '_blank' }

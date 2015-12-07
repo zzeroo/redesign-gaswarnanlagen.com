@@ -72,7 +72,7 @@ def add_category_images
 end
 
 def make_news
-  News.create!(title: "Aufstieg in die Handball-Baden-Württemberg-Oberliga (BWOL)", updated_at: "22.02.2014 13:00:00", news_body: "Mit einem 26:17-Sieg bei der HSG Strohgäu holen sich die Korber Frauen die beiden noch benötigten Punkte und führen vier Spieltage vor Schluss uneinholbar die Tabelle der Württemberliga Nord an. Endlich darf man in Korb das A-Wort in den Mund nehmen. AUFSTIEG in die BWOL... http://www.sckorb-handball.de/frauen1/presse1314.html", news_image: File.new("#{Rails.root}/app/assets/images/aufsteiger2011.jpg"))
+  News.create!(title: "Aufstieg in die Handball-Baden-Württemberg-Oberliga (BWOL)", updated_at: "22.02.2014 13:00:00", news_body: "Mit einem 26:17-Sieg bei der HSG Strohgäu holen sich die Korber Frauen die beiden noch benötigten Punkte und führen vier Spieltage vor Schluss uneinholbar die Tabelle der Württemberliga Nord an. Endlich darf man in Korb das A-Wort in den Mund nehmen. AUFSTIEG in die BWOL... https://www.sckorb-handball.de/frauen1/presse1314.html", news_image: File.new("#{Rails.root}/app/assets/images/aufsteiger2011.jpg"))
 
   News.create!(title: "SC Korb schafft Aufstieg in die Württembergliga", updated_at: "01.04.2011 13:00:00", news_body: "Den Frauen des SC Korb gratulieren wir zum Aufstieg in die Württembergliga.", news_image: File.new("#{Rails.root}/app/assets/images/aufsteiger2011.jpg"))
 
@@ -84,7 +84,7 @@ def make_news
 
   News.create!(title: "Wir unterstützen aktiv die Jugend des SC Korb!", updated_at: "05.08.2009 13:00:00", news_body: "", news_image: File.new("#{Rails.root}/app/assets/images/frauen1_sckorb-02d5a2d3.jpg"))
 
-  News.create!(title: "MdB zu Besuch in Kernen", updated_at: "01.05.2009 13:00:00", news_body: "<a href='http://www.cdu-kernen.de/index.php/2009/05/dr-joachim-pfeiffer-mdb-zu-besuch-in-kernen/#more-758'>Dr. Joachim Pfeiffer MdB zu Besuch in Kernen</a>", news_image: File.new("#{Rails.root}/app/assets/images/Kugelneu.jpg"))
+  News.create!(title: "MdB zu Besuch in Kernen", updated_at: "01.05.2009 13:00:00", news_body: "<a href='https://www.cdu-kernen.de/index.php/2009/05/dr-joachim-pfeiffer-mdb-zu-besuch-in-kernen/#more-758'>Dr. Joachim Pfeiffer MdB zu Besuch in Kernen</a>", news_image: File.new("#{Rails.root}/app/assets/images/Kugelneu.jpg"))
 
   News.create!(title: "Lon-Sensoren sind online!", updated_at: "01.02.2009 13:00:00", news_body: "", news_image: File.new("#{Rails.root}/app/assets/images/Kugelneu.jpg"))
 
@@ -93,7 +93,7 @@ end
 
 
 # Helper to fix the ID colums for category
-# http://stackoverflow.com/questions/11068800/rails-auto-assigning-id-that-already-exists
+# https://stackoverflow.com/questions/11068800/rails-auto-assigning-id-that-already-exists
 # Apie's answer
 def fix_postgres_index
   ActiveRecord::Base.connection.tables.each do |t|
