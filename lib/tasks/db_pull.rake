@@ -8,7 +8,7 @@ namespace :db do
     dumpfile = "#{Rails.root}/tmp/latest.dump"
     puts 'PG_DUMP on production database...'
     production = Rails.application.config.database_configuration['production']
-    system "ssh user@server.tld 'PGPASSWORD=\"#{production['password']}\" pg_dump -U postgres #{production['database']} -h #{production['host']} -F t' > #{dumpfile}"
+    system "ssh smueller@gaswarnanlagen.com 'PGPASSWORD=\"#{production['password']}\" pg_dump -U gaswarnanlagen #{production['database']} -h #{production['host']} -F t' > #{dumpfile}"
     puts 'Done!'
   end
 
