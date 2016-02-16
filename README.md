@@ -5,23 +5,18 @@
 # Webauftritt
 ## http://gaswarnanlagen.com
 ### Redesign und Dynamisierung der Webseite
-Informationen und Beschreibungen zum Aufbau der neuen,
-dynamischen (gaswarnanlagen.com) Webseite.
+Informationen und Beschreibungen zum Aufbau der neuen, dynamischen (gaswarnanlagen.com) Webseite.
 
 ## Anforderung
 Im ersten Ausbau sollte alles in Allem eine Kopie der alten Webseite entstehen.
-Alle Funktionen der [“alten” Webseite](http://web.archive.org/web/20140517110348/http://gaswarnanlagen.com/) sollen auch in der neuen Webseite
-funktionieren.
-Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die
-Datenbank der Webseite zu importieren. Die Daten aus dem Programm ‘Easy Win Art’
-sollten über die Exeltabellen Import Funktion in die Webseite importiert werden
-können.
+Alle Funktionen der [“alten” Webseite](http://web.archive.org/web/20140517110348/http://gaswarnanlagen.com/) sollen auch in der neuen Webseite funktionieren.
+Zudem soll es möglich sein, Exeltabellen mit Daten von Produkten in die Datenbank der Webseite zu importieren. Die Daten aus dem Programm ‘Easy Win Art’ sollten über die Exeltabellen Import Funktion in die Webseite importiert werden können.
 
 ## Aufbau und Logic der Webseite
 Auf der Homepage werden Gruppen von Produkten (so genannte Kategorien, im Categories Model)  dargestellt, nur die Gruppen, keine Produkte an sich. Zudem werden aktuelle Informationen aus der Firma (Aktuell) und  Nachrichten (aus eine externen Quelle) dargestellt.
 
 Klickt man auf eine Produkt Kategorie (Categories Model) werden entweder
-Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunde
+Unterkategorien der Kategie oder Produkte die mit dieser Kategorie verbunden
 sind (siehe Beziehung Kategorie -> Produkte)
 
 ## Beziehungen
@@ -45,8 +40,7 @@ Das CSS Framework der Webseite ist Bootstrap3.
 - [Gaps zwischen den Bootstrap3 columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
 
 ### Pagination
-Die Pagination wird mit will_paginate und dem Bootstrap3 Renderer will_paginate-bootstrap
-realisiert.
+Die Pagination wurde mit will_paginate und dem Bootstrap3 Renderer will_paginate-bootstrap realisiert.
 
 - https://github.com/mislav/will_paginate.git
 - https://github.com/bootstrap-ruby/will_paginate-bootstrap.git
@@ -59,10 +53,8 @@ realisiert.
 
 ### Paperclip (Dateianhänge)
 Dateianhänge werden mit dem Paperclip gem realisiert.
-Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
-wurde das Logo Attribut als has_one Beziehung realisiert.
-Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset)
-entwurfen welches für unterschiedliche Models geeignet sein wird.
+Das erste Model mit Anhang das realisiert wurde war das Category Model, hier wurde das Logo Atriut als has_one Beziehung realisiert.
+Danach wurde im Zuge des Documents Models eine neues Polymorphes Model (AttachedAsset) eingeführt welches für unterschiedliche Models geeignet ist.
 
 - https://github.com/thoughtbot/paperclip
 - http://jimlabs.heroku.com/posts/has-many-file-attachments-using-paperclip
@@ -70,11 +62,13 @@ entwurfen welches für unterschiedliche Models geeignet sein wird.
 - http://platypus.belighted.com/blog/2012/04/14/html5-multi-upload-with-paperclip-the-easy-way/
 
 #### Docsplit Dokumenten Konvertierung
+
 ```
 $ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript tesseract-ocr pdftk
 ```
 
 ##### PDF Erstellung
+
 - https://github.com/tienle/docsplit-paperclip-processor
 
 ### Mapbox
@@ -103,16 +97,12 @@ Diese [Webseite](http://alestic.com/2013/08/awscli) hat ausführliche Infos zu d
 
 ### Verwendete Werkzeuge
 #### Zsh, Tmux, Tmuxinator
-Die Entwicklungsumgebung wird durch das Foreman gem gestartet. Außerdem setze ich Tmux, Zsh und [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
-ein. Unter dem [Link](http://shapeshed.com/instant-rails-dev-environments-with-tmuxinator-and-foreman/) wird hervorragend erklährt wie diese Tools optimal eingesetzt werden.
+Die Entwicklungsumgebung wird durch das Foreman gem gestartet. Außerdem setze ich Tmux, Zsh und [Tmuxinator](https://github.com/tmuxinator/tmuxinator) ein. Unter dem [Link](http://shapeshed.com/instant-rails-dev-environments-with-tmuxinator-and-foreman/) wird hervorragend erklärt wie diese Tools optimal eingesetzt werden.
 
 #### Pandoc
-Mit Pandoc kann Text aus so ziemlich allen gängigen Dateiformaten extrahiert werden.
-Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders
-umzuwandeln.
+Mit Pandoc kann Text aus so ziemlich allen gängigen Dateiformaten extrahiert werden. Außerdem ist es mit Pandoc sehr leicht möglich, ein Dateiformat in ein anders umzuwandeln.
 
-Mit dem folgenden Befehl zum Beispiel kann die README im Markdown Format
-in eine README im html Format umgewandelt werden.
+Mit dem folgenden Befehl zum Beispiel kann die README im Markdown Format in eine README im html Format umgewandelt werden.
 
     pandoc -s README.md -o doc/README.html
 
@@ -135,8 +125,7 @@ Zusammen mit diesem angepassten Befehl erhält man eine Datei gerendert die im A
 
 ## Aufbau Produktiv System
 
-Folgende Punkte beschreiben das grundlegende Setup, welches auf jedem Produktiv
-Server durchzuführen ist.
+Folgende Punkte beschreiben das grundlegende Setup, welches auf jedem Produktiv Server durchzuführen ist.
 
 ### Locale einstellen
 
@@ -187,7 +176,7 @@ Folgende Tools müssen installiert werden:
 
 ### RVM Installation
 
-Die Webseite ist eine in Ruby programmierte Ruby-on-Rails  Anwendung. Ruby und Rails werden durch den [ Ruby Version Manager RVM ] installiert.
+Die Webseite ist eine in Ruby programmierte, Ruby-on-Rails Anwendung. Ruby und Ruby-on-Rails werden durch den [ Ruby Version Manager RVM ] installiert.
 
 Dazu werden folgende Befehle als Root ausgeführt
 
