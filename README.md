@@ -218,7 +218,26 @@ Danach kann die Shell verlassen werden.
     postgres=# \q
 
 
-#### Tipp !!DANGER!!!
+### Tipp Datensicherung der Produktions Datenbank und Wiederherstellung in Dev
+Es existiert ein Capistrano Task mit dem man die Datenbank der Webseite
+(Produktionssystem) sichern und auf dem Entwicklersystem wieder herstellen kann.
+
+Die Tasks sind in der Datei "lib/tasks/db_pull.rake" definiert.
+
+Folgener Ablauf muss auf dem Entwicklersystem durchgeführt werden, alle Dateien
+werden auch nur auf dem Entwicklersystem erstellt.
+
+    bundle exec rake db:dump
+    bundle exec rake db:restore
+
+
+Idee stammt von dieser Webseite:
+https://martinschurig.com/posts/2015/02/pulling-production-database-to-local-machine-rails-task/
+
+#### Tipp Datenbank löschen, neu erstellen !!DANGER!!!
+Die folgenden Befehle stoppen Apache2, so das kein Datenbank Zugriff mehr
+existieren kann, anschließend wird die Datenbank gelöscht und eine leere
+Datenbank erstellt.
 
     service apache2 stop
     su postgres -c 'psql -c "DROP DATABASE gaswarnanlagen;"'
