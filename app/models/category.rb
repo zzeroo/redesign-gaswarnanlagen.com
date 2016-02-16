@@ -12,8 +12,9 @@ class Category < ActiveRecord::Base
                         small: "x100",
                         medium: "300x300",
                         big: "800x800"
-                      },
-                      default_url: "rails.png" }.merge(PAPERCLIP_STORAGE_OPTIONS)
+                      }}.merge(PAPERCLIP_STORAGE_OPTIONS)
+
+  before_save :destroy_logo?
 
   validates :name, presence: true
   validates :background_color, format: { with: /(\A\z|\A#[0-9a-fA-F]{3}\z|\A#[0-9a-fA-F]{6}\z)/ }
@@ -44,6 +45,14 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def logo_delete
+    @logo_delete ||= "0"
+  end
+
+  def logo_delete=(value)
+    @logo_delete = value
+  end
+
   private
     # Validate before upload
     # https://github.com/thoughtbot/paperclip/wiki/Thumbnail-Generation
@@ -56,5 +65,9 @@ class Category < ActiveRecord::Base
       if parent_id.present? && parent_id == id
         errors.add(:parent_id, :parent_not_self)
       end
+    end
+
+    def destroy_logo?
+      self.logo.clear if @logo_delete == "1" and !logo.dirty?
     end
 end
