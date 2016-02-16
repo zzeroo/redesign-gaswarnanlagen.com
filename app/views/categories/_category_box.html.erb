@@ -12,11 +12,13 @@
       <div class="col-md-12">
         <a href="<%= category_path(category) %>"><p class="logo" style="background: url(<%= category.logo.url %>) no-repeat center center; background-size: cover;"></p></a>
       </div>
-      <% unless category.description.blank? %>
       <div class="col-md-12">
-        <div class="description"><%= category.description %></div>
+        <div class="description">
+        <% unless category.description.blank? %>
+            <%= category.description %>
+        <% end %>
+        </div>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
