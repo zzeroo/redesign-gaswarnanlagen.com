@@ -6,7 +6,7 @@ Status](https://coveralls.io/repos/zzeroo/redesign-gaswarnanlagen.com/badge.png)
 stats](https://www.pullreview.com/github/zzeroo/redesign-gaswarnanlagen.com/badges/master.svg?)](https://www.pullreview.com/github/zzeroo/redesign-gaswarnanlagen.com/reviews/master)
 
 # Webauftritt
-## http://gaswarnanlagen.com
+## https://gaswarnanlagen.com
 ### Redesign und Dynamisierung der Webseite
 Informationen und Beschreibungen zum Aufbau der neuen, dynamischen
 (gaswarnanlagen.com) Webseite.
