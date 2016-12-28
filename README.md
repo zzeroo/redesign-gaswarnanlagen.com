@@ -397,7 +397,7 @@ In der Konfiguration wird Tomcat der Benutzer und dessen Password übergeben
       <role rolename="admin"/>
       <role rolename="admin-gui"/>
       <role rolename="manager-gui"/>
-      <user username="tomcat" password="930440Hk"
+      <user username="tomcat" password="xxx"
       roles="manager,admin,manager-gui,admin-gui"/>
     </tomcat-users>
     EOF
