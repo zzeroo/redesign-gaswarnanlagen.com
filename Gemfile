@@ -1,49 +1,51 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
-gem 'rails', '4.1.4'
-gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+ruby '2.5.0'
+gem 'rails'
+gem 'rails-i18n'
 
 group :assets do
-  gem 'uglifier', '>= 1.0.3'
-  gem 'sprockets', '2.11.0' # 2.12.0 is broken
+  gem 'uglifier'
+  gem 'sprockets'
   gem 'sprockets-rails'
   gem 'coffee-rails'
 end
 
-gem 'bcrypt-ruby', '3.1.2'
-gem 'faker', '1.1.2'
-gem 'bootstrap-sass', '~> 3.1.1'#
-gem 'will_paginate', '~> 3.0'
+gem 'bcrypt-ruby'
+gem 'faker'
+gem 'bootstrap-sass'
+gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'pg', '0.15.1'
+gem 'pg'
 gem "therubyracer"
-gem 'sass-rails', '~> 4.0.2'
-gem 'font-awesome-sass', '~> 4.2.0'
-gem 'jquery-rails', '3.0.4'
+gem 'sass-rails'
+gem 'font-awesome-sass'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks', '1.1.1'
+gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jquery-fileupload-rails'
-gem 'jbuilder', '1.0.2'
+gem 'jbuilder'
 gem 'unicorn'
 gem 'roo'
 gem 'paperclip'
-gem 'docsplit-paperclip-processor', github: 'zzeroo/docsplit-paperclip-processor'
+# gem 'docsplit-paperclip-processor', github: 'zzeroo/docsplit-paperclip-processor'
+gem 'docsplit-paperclip-processor'
 gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'progress_bar'  # fancy progress bar for sunspot solr index
 gem 'simple_form'
 gem 'leaflet-rails'
-gem 'piwik_analytics', '~> 1.0.6', :git => 'https://github.com/zzeroo/piwik_analytics.git'
-gem 'rb-readline', "~> 0.5.0"
+# gem 'piwik_analytics', '~> 1.0.6', :git => 'https://github.com/zzeroo/piwik_analytics.git'
+gem 'piwik_analytics'
+gem 'rb-readline'
 gem 'coveralls', require: false
-gem 'rails-env-favicon', '~> 0.0.5'
+gem 'rails-env-favicon'
 
 group :development, :test do
   gem 'foreman'
   gem 'guard-rspec'
   gem 'ruby-prof'
-  gem 'rspec-rails', '~> 2.14.0.rc1'
+  gem 'rspec-rails'
   gem 'guard-livereload', require: false
   gem 'forgery'
   gem 'spring-commands-rspec'
@@ -54,29 +56,33 @@ end
 
 group :development do
   gem 'rails-erd'
-  gem 'capistrano',  '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano'
+  gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'spring'
   gem 'ruby-graphviz'
-  # gem 'yard', "~> 1.0"
   gem 'yard'
   gem 'launchy'
   gem 'guard-cucumber'
 end
 
+group :development, :test do
+  gem "factory_bot_rails"
+  # or
+  gem "factory_bot"
+end
+
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'factory_girl_rails', '4.2.0'
-  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'selenium-webdriver'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Uncomment these lines on Linux.
-  gem 'libnotify', '0.8.0'
+  gem 'libnotify'
 end
 
 group :doc do
-  gem 'sdoc', '0.3.20', require: false
+  gem 'sdoc', require: false
 end
 
 group :production do

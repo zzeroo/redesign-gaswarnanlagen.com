@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe "Categories pages" do
 
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:user) { FactoryBot.create(:user) }
 
   subject { page }
 
   describe "category/index" do
-    let!(:category) { FactoryGirl.create(:category, published: true) }
+    let!(:category) { FactoryBot.create(:category, published: true) }
 
     before do
       visit categories_path
@@ -58,9 +58,9 @@ describe "Categories pages" do
   end
 
   describe "category/show" do
-    let(:category) { FactoryGirl.create(:category, product_nr_prefix: "100") }
-    let!(:product1) { FactoryGirl.create(:product, product_nr: "100-12345678") }
-    let!(:product2) { FactoryGirl.create(:product, product_nr: "200-12345678") }
+    let(:category) { FactoryBot.create(:category, product_nr_prefix: "100") }
+    let!(:product1) { FactoryBot.create(:product, product_nr: "100-12345678") }
+    let!(:product2) { FactoryBot.create(:product, product_nr: "200-12345678") }
 
     before { visit category_path(category) }
 
@@ -116,7 +116,7 @@ describe "Categories pages" do
   end
 
   describe "category/edit" do
-    let(:category) { FactoryGirl.create(:category) }
+    let(:category) { FactoryBot.create(:category) }
 
     before do
       visit edit_category_path(category)
@@ -136,8 +136,8 @@ describe "Categories pages" do
   end
 
   describe "delete category" do
-    before { FactoryGirl.create(:user) }
-    before { FactoryGirl.create(:admin) }
+    before { FactoryBot.create(:user) }
+    before { FactoryBot.create(:admin) }
 
     describe "as non signed_in user" do
       before { visit categories_path }
@@ -155,7 +155,7 @@ describe "Categories pages" do
     end
 
     describe "as admin" do
-      let!(:category) { FactoryGirl.create(:category, published: true) }
+      let!(:category) { FactoryBot.create(:category, published: true) }
 
       before do
         sign_in admin

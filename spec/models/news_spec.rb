@@ -3,7 +3,7 @@ require 'spec_helper'
 describe News do
 
   before do
-    @news = FactoryGirl.create(:news)
+    @news = FactoryBot.create(:news)
   end
 
   subject { @news }

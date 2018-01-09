@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Document do
   before do
-    @document = FactoryGirl.build(:document)
+    @document = FactoryBot.build(:document)
   end
 
   subject { @document }

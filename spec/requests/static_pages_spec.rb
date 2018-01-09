@@ -23,7 +23,7 @@ describe "StaticPages" do
     end
 
     describe "No signup button if signed in" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
       before { sign_in user }
       before { visit root_path }
 
@@ -31,14 +31,14 @@ describe "StaticPages" do
     end
 
     describe "product categories on home page" do
-      let!(:category) { FactoryGirl.create(:category, published: true) }
+      let!(:category) { FactoryBot.create(:category, published: true) }
       before { visit root_path }
 
       it { should have_content(category.name) }
       it { should have_content(category.description) }
 
       describe "non published category" do
-        let!(:non_published_category) { FactoryGirl.create(:category, published: false) }
+        let!(:non_published_category) { FactoryBot.create(:category, published: false) }
         before { visit root_path }
 
         it { should_not have_content(non_published_category.name) }

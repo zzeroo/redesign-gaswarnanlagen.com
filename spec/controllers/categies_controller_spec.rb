@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe CategoriesController do
-  let!(:category) { FactoryGirl.create(:category) }
+  let!(:category) { FactoryBot.create(:category) }
 
   describe "POST #create" do
     before(:each) do

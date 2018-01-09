@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # Diese Test stammen von Hartls Rails Tutorial
 describe "Products pages" do
-  let(:product) { FactoryGirl.create(:product) }
+  let(:product) { FactoryBot.create(:product) }
 
   it "should list all products" do
     Product.all.each do |product|
