@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Bdas pages" do
 
-  let(:bda) { FactoryGirl.create(:bda) }
+  let(:bda) { FactoryBot.create(:bda) }
 
   subject { page }
 

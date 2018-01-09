@@ -7,8 +7,8 @@ describe "categories/index.html.erb" do
   end
 
   context "with zero products" do
-    let!(:category) { FactoryGirl.create(:category) }
-    let!(:product) { FactoryGirl.create(:product) }
+    let!(:category) { FactoryBot.create(:category) }
+    let!(:product) { FactoryBot.create(:product) }
 
     before(:each) do
       assign(:categories, [

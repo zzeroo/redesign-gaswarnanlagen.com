@@ -1,6 +1,6 @@
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory(:category) do
     published true
     sequence(:name) { |n| "Kategorie #{n}" }

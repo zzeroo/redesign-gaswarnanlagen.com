@@ -17,12 +17,6 @@ class AttachedAsset < ActiveRecord::Base
                       }
                       }}.merge(PAPERCLIP_STORAGE_OPTIONS)
 
-  do_not_validate_attachment_file_type :asset
-
-  # Helper method to determine whether or not an attachment is an image.
-  # @note Use only if you have a generic asset-type model that can handle different file types.
-  def image?
-    asset_content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}
-  end
+    validates_attachment_content_type :asset, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/svg"]
 
 end

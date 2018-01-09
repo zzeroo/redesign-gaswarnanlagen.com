@@ -27,7 +27,7 @@ describe "AuthenticationPages" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
       before { sign_in user }
 
       it { should have_title(user.name) }
@@ -46,7 +46,7 @@ describe "AuthenticationPages" do
   describe "authorization" do
 
     describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       describe "when attempting to visit a protected page" do
         before do
@@ -81,7 +81,7 @@ describe "AuthenticationPages" do
       end
 
       describe "in the Categories controller" do
-        let(:category) {FactoryGirl.create(:category)}
+        let(:category) {FactoryBot.create(:category)}
 
         describe "submitting the create action" do
           before { post categories_path }
@@ -96,8 +96,8 @@ describe "AuthenticationPages" do
     end
 
     describe "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      let(:user) { FactoryBot.create(:user) }
+      let(:wrong_user) { FactoryBot.create(:user, email: "wrong@example.com") }
       before { sign_in user, no_capybara: true }
 
       describe "submitting a GET request to the Users#edit action" do
@@ -113,8 +113,8 @@ describe "AuthenticationPages" do
     end
 
     describe "as non-admin user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:non_admin) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:non_admin) { FactoryBot.create(:user) }
 
       before { sign_in non_admin, no_capybara: true }
 

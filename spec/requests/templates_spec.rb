@@ -25,7 +25,7 @@ describe "GET index" do
   describe "'Administation' menu" do
 
     describe "as admin" do
-      let(:admin) { FactoryGirl.create(:admin) }
+      let(:admin) { FactoryBot.create(:admin) }
       before { sign_in admin }
 
       it { should have_link("Aktuell", href: news_index_path) }

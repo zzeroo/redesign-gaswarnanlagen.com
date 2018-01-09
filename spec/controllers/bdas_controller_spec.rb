@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe BdasController do
-  let!(:bda) { FactoryGirl.create(:bda) }
+  let!(:bda) { FactoryBot.create(:bda) }
 
   describe "POST #create" do
     before(:each) do

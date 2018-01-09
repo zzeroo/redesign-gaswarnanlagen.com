@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
 
   before do
-    @category = FactoryGirl.create(:category)
+    @category = FactoryBot.create(:category)
   end
 
   subject { @category }
@@ -23,9 +23,9 @@ describe Category do
   describe "product associations" do
     it { should respond_to(:products) }
 
-    let!(:category) { FactoryGirl.create(:category, product_nr_prefix: "111") }
-    let!(:product_in_range) { FactoryGirl.create(:product, product_nr: "111-11111111") }
-    let!(:product_not_in_range) { FactoryGirl.create(:product, product_nr: "999-99999999") }
+    let!(:category) { FactoryBot.create(:category, product_nr_prefix: "111") }
+    let!(:product_in_range) { FactoryBot.create(:product, product_nr: "111-11111111") }
+    let!(:product_not_in_range) { FactoryBot.create(:product, product_nr: "999-99999999") }
 
     describe "product_nr_prefix filters products out" do
       specify { expect(category.products).to include(product_in_range) }
@@ -85,7 +85,7 @@ describe Category do
 
   # Validations check
   describe "Validation Categories" do
-    let!(:parent) { FactoryGirl.create(:category) }
+    let!(:parent) { FactoryBot.create(:category) }
 
     before do
       parent.parent_id = parent.id
