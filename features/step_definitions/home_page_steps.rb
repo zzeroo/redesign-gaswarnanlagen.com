@@ -1,5 +1,5 @@
 Given(/^there's a category named "(.*?)" with true published$/) do |cat_name|
-  @category = FactoryGirl.create(:category, name: cat_name, published: true )
+  @category = FactoryBot.create(:category, name: cat_name, published: true )
 end
 
 Given(/^none parent$/) do
@@ -17,10 +17,10 @@ Then(/^I should see the "(.*?)" category$/) do |cat_name|
 end
 
 Given(/^a global administrator named "(.*?)"$/) do |arg1|
-  @admin =  FactoryGirl.build(:admin)
+  @admin =  FactoryBot.build(:admin)
 end
 
 Given(/^a category named "(.*?)" without "(.*?)"$/) do |arg1, arg2|
-    @category = FactoryGirl.create(:category, published: true)
+    @category = FactoryBot.create(:category, published: true)
 end
 

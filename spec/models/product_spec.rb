@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Product do
 
   before do
-    @product = FactoryGirl.create(:product)
+    @product = FactoryBot.create(:product)
   end
 
   subject { @product }
@@ -18,7 +18,7 @@ describe Product do
   end
 
   describe "when product_nr is not unique" do
-    let!(:product) { FactoryGirl.create(:product, product_nr: "1") }
+    let!(:product) { FactoryBot.create(:product, product_nr: "1") }
     let!(:product2) { Product.new(product_nr: "1") }
 
     it "should not be valid" do
@@ -31,10 +31,10 @@ describe Product do
     before { Product.all.each { |p| p.destroy! } }
 
     let!(:higher_product_nr) do
-      FactoryGirl.create(:product, product_nr: "999-99999999")
+      FactoryBot.create(:product, product_nr: "999-99999999")
     end
     let!(:lower_product_nr) do
-      FactoryGirl.create(:product, product_nr: "100-00000001")
+      FactoryBot.create(:product, product_nr: "100-00000001")
     end
 
     it "should have the right products in the right order (lower product_numer first)" do

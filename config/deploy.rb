@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '~> 3.10.0'
 
 set :application, 'gaswarnanlagen.com'
 set :repo_url, 'git@github.com:zzeroo/redesign-gaswarnanlagen.com.git'

@@ -5,7 +5,7 @@ describe "UserPages" do
   subject { page }
 
   describe "index" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     before(:each) do
       sign_in user
@@ -17,7 +17,7 @@ describe "UserPages" do
 
     describe "pagination" do
 
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      before(:all) { 30.times { FactoryBot.create(:user) } }
       after(:all) { User.delete_all }
 
       it { should have_selector('div.pagination') }
@@ -34,7 +34,7 @@ describe "UserPages" do
       it { should_not have_link('löschen') }
 
       describe "as an admin user" do
-        let(:admin) { FactoryGirl.create(:admin) }
+        let(:admin) { FactoryBot.create(:admin) }
         before do
           sign_in admin
           visit users_path
@@ -53,7 +53,7 @@ describe "UserPages" do
   end
 
   describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
@@ -122,7 +122,7 @@ describe "UserPages" do
   end
 
   describe "edit" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
     before do
       sign_in user
       visit edit_user_path(user)
@@ -176,7 +176,7 @@ describe "UserPages" do
   end
 
   describe "destroy" do
-    let(:admin) { FactoryGirl.create(:admin) }
+    let(:admin) { FactoryBot.create(:admin) }
 
     before { sign_in admin, no_capybara: true }
 

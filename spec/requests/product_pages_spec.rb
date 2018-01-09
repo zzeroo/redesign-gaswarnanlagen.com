@@ -3,9 +3,9 @@ require 'spec_helper'
 # Diese Test stammen fon Hartls Rails Tutorial
 describe "Products pages" do
 
-  let(:admin)    { FactoryGirl.create(:admin) }
-  let(:category) { FactoryGirl.create(:category) }
-  let(:product)  { FactoryGirl.create(:product) }
+  let(:admin)    { FactoryBot.create(:admin) }
+  let(:category) { FactoryBot.create(:category) }
+  let(:product)  { FactoryBot.create(:product) }
 
   subject { page }
 
