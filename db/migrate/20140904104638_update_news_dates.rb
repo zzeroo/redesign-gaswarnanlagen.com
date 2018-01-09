@@ -1,4 +1,4 @@
-class UpdateNewsDates < ActiveRecord::Migration
+class UpdateNewsDates < ActiveRecord::Migration[5.0]
   # Create the news like it was on the old site
   #
   # TODO: Refactor this, maybe with a json file
