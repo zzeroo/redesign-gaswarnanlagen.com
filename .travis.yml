@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.1.2
+  - 2.5.0
 
 bundler_args: --without production
 
@@ -9,10 +9,9 @@ script:
   - bin/rake sunspot:solr:start RAILS_ENV=test
   - bundle exec rspec spec
 
-addons:
-  postgresql: "9.3"
+services:
+  - postgresql
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.default config/database.yml
-
