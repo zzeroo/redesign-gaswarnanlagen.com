@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,92 +15,91 @@ ActiveRecord::Schema.define(version: 20140921172258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attached_assets", force: true do |t|
-    t.string   "asset_file_name"
-    t.string   "asset_content_type"
-    t.integer  "asset_file_size"
+  create_table "attached_assets", force: :cascade do |t|
+    t.string "asset_file_name"
+    t.string "asset_content_type"
+    t.integer "asset_file_size"
     t.datetime "asset_updated_at"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
+    t.integer "attachable_id"
+    t.string "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "bdas", force: true do |t|
-    t.string   "name"
-    t.string   "product_nr_prefix"
-    t.text     "description"
+  create_table "bdas", force: :cascade do |t|
+    t.string "name"
+    t.string "product_nr_prefix"
+    t.text "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "published"
-    t.string   "product_nr_prefix"
-    t.string   "background_color"
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "published"
+    t.string "product_nr_prefix"
+    t.string "background_color"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
+    t.string "logo_file_name"
+    t.string "logo_content_type"
+    t.integer "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "parent_id"
+    t.integer "parent_id"
   end
 
-  create_table "documents", force: true do |t|
-    t.text     "title"
-    t.text     "desc"
+  create_table "documents", force: :cascade do |t|
+    t.text "title"
+    t.text "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
+    t.integer "attachable_id"
+    t.string "attachable_type"
   end
 
-  create_table "news", force: true do |t|
-    t.string   "title"
-    t.text     "news_body"
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.text "news_body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "news_image_file_name"
-    t.string   "news_image_content_type"
-    t.integer  "news_image_file_size"
+    t.string "news_image_file_name"
+    t.string "news_image_content_type"
+    t.integer "news_image_file_size"
     t.datetime "news_image_updated_at"
     t.datetime "news_date"
   end
 
-  create_table "products", force: true do |t|
-    t.string   "product_nr"
-    t.text     "description"
-    t.text     "short_description"
+  create_table "products", force: :cascade do |t|
+    t.string "product_nr"
+    t.text "description"
+    t.text "short_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "short_text1"
-    t.text     "short_text2"
-    t.text     "technical_data"
-    t.boolean  "has_ast"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
+    t.text "short_text1"
+    t.text "short_text2"
+    t.text "technical_data"
+    t.boolean "has_ast"
+    t.string "logo_file_name"
+    t.string "logo_content_type"
+    t.integer "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "tdb_file_name"
-    t.string   "tdb_content_type"
-    t.integer  "tdb_file_size"
+    t.string "tdb_file_name"
+    t.string "tdb_content_type"
+    t.integer "tdb_file_size"
     t.datetime "tdb_updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.string "password_digest"
+    t.string "remember_token"
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
