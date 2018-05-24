@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Loads all Bootstrap javascripts
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery-ui
@@ -17,7 +18,6 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require leaflet
-// Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap/scrollspy
 //= require bootstrap/modal

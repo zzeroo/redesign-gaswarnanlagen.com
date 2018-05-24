@@ -1,3 +1,4 @@
+# Zeichnet die Karte in das map div von `/contact`
 # initialize the map on the 'map' div
 # with the given map ID, center, and zoom
 
@@ -10,6 +11,12 @@ ready = ->
   }).addTo(map)
   marker = L.marker([48.81246648933948,9.31416392326355]).addTo(map)
   marker.bindPopup("<b>RA-GAS GmbH</b><br>
+  Rudolf-Diesel-Str. 22 a-d<br>
+  <br>
+  71394 Kernen im Remstal<br>
+  <b>Fon</b> +49(0) 7151 930440<br>
+  <b>Fax</b> +49(0) 7151 930443<br>
+  <b>E-Mail</b> <a href='mailto:info@gaswarnanlagen.com'>info@gaswarnanlagen.com</a>
   ").openPopup();
 
 
@@ -24,4 +31,3 @@ toggle = ->
     $("#contact").toggle()
 
 $(document).on('page:load', toggle)
-
