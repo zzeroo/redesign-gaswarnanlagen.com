@@ -3,7 +3,7 @@
   <p><%= link_to image_tag(asset.asset.url(:thumbnail)), asset.asset.url %></p>
 <% elsif asset.asset.url(:pdf) %>
   <p style="display:none" class="hidden-doc"><%= icon_link_to(asset, css_class: 'fa-4x') %></p>
-  <p><%= link_to icon('file-pdf-o', '', class: 'fa-4x', style: "color: darkred"), asset.asset.url(:pdf) %></p>
+  <p><%= link_to icon('fas', 'file-pdf', '', class: 'fa-4x', style: "color: darkred"), asset.asset.url(:pdf) %></p>
 <% end %>
 <% if @current_user && @current_user.admin? %>
   <p><%= image_tag asset.asset_file_name %></p>

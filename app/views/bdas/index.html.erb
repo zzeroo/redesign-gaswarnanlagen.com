@@ -35,9 +35,9 @@
               <td><%= bda.description %></td>
               <td><%= bda.product_nr_prefix %></td>
               <td>
-                <%= link_to icon('eye') +    ' Anzeigen', bda_path(bda) %><br />
-                <%= link_to icon('edit') +    ' Bearbeiten', edit_bda_path(bda) %><br />
-                <%= link_to icon('trash-o') + ' Löschen', bda, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+                <%= link_to icon('far', 'eye') +    ' Anzeigen', bda_path(bda) %><br />
+                <%= link_to icon('far', 'edit') +    ' Bearbeiten', edit_bda_path(bda) %><br />
+                <%= link_to icon('far', 'trash') + ' Löschen', bda, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
               </td>
             </tr>
           <% end %>
@@ -56,9 +56,3 @@
     </p>
   <% end %>
 </div>
-
-
-
-
-
-
