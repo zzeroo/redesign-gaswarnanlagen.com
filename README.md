@@ -9,7 +9,7 @@ Informationen und Beschreibungen zum Aufbau der neuen, dynamischen
 (gaswarnanlagen.com) Webseite.
 
 ## Anforderung
-Im ersten Ausbau sollte alles in Allem eine Kopie der alten Webseite entstehen.
+Im ersten Ausbau sollte Alles in Allem eine Kopie der alten Webseite entstehen.
 Alle Funktionen der [“alten”
 Webseite](http://web.archive.org/web/20140517110348/http://gaswarnanlagen.com/)
 sollen auch in der neuen Webseite funktionieren.
@@ -46,8 +46,6 @@ end
 ### Bootstrap3
 Das CSS Framework der Webseite ist Bootstrap3.
 
-- [Gaps zwischen den Bootstrap3
-  columns](http://www.andre-abt.com/2013/11/26/how-to-use-the-bootstrap-3-grid-system-with-column-margins/)
 
 ### Pagination
 Die Pagination wurde mit will_paginate und dem Bootstrap3 Renderer
@@ -65,8 +63,8 @@ will_paginate-bootstrap realisiert.
 ### Paperclip (Dateianhänge)
 Dateianhänge werden mit dem Paperclip gem realisiert.
 Das erste Model mit Anhang das realisiert wurde war das Category Model, hier
-wurde das Logo Atriut als has_one Beziehung realisiert.
-Danach wurde im Zuge des Documents Models eine neues Polymorphes Model
+wurde das Logo Attribut als `has_one` Beziehung realisiert.
+Danach wurde im Zuge des Documents Models eine neues polymorphes Paperclib Model
 (AttachedAsset) eingeführt welches für unterschiedliche Models geeignet ist.
 
 - https://github.com/thoughtbot/paperclip
@@ -498,7 +496,3 @@ Die README.md Datei sollte eine 80 Zeichen Breite nicht überschreiten
     :set formatoptions+=w
     :set tw=80
     gggqG
-
-
-
-
