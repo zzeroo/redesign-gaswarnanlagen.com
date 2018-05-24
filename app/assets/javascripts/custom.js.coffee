@@ -9,12 +9,12 @@ jQuery ->
     if(confirm("Sind Sie sicher?"))
       $(this).closest('div').delay().fadeOut()
 
-
-# Piwik Turobo Links helper
-# FIXME: Is this working?
-# https://reed.github.io/turbolinks-compatibility/piwik.html
-$(document).on 'page:change', ->
-  if window._paq?
-    _paq.push ['trackPageview']
-  else if window.piwikTracker?
-    piwikTracker.trackPageview()
+#
+# # Piwik Turobo Links helper
+# # FIXME: Is this working?
+# # https://reed.github.io/turbolinks-compatibility/piwik.html
+# $(document).on 'page:change', ->
+#   if window._paq?
+#     _paq.push ['trackPageview']
+#   else if window.piwikTracker?
+#     piwikTracker.trackPageview()
