@@ -13,7 +13,7 @@
     <% if current_user && current_user.admin? %>
       <p class="text-left">
         <%= link_to 'bearbeiten', edit_category_path(category), title: "Kategorie bearbeiten", class: "btn btn-large btn-primary" %>
-        <%= link_to icon('trash-o'), category_path(category)  , title: "Kategorie löschen", method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
+        <%= link_to icon('far', 'trash'), category_path(category)  , title: "Kategorie löschen", method: :delete, data: { confirm: "Bist du sicher?"}, class: "btn btn-large btn-danger" %>
       </p>
     <% end %>
   </div>

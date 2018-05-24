@@ -37,17 +37,17 @@
 <% if @product.has_ast? %>
 <div class="row">
   <h4>Ausschreibungstext</h4>
-  <%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), ast_product_path(@product, format: 'txt'), target: '_blank') %>
+  <%= link_to(icon('far', 'file-text', '', class: 'fa-4x', title: "TXT Format"), ast_product_path(@product, format: 'txt'), target: '_blank') %>
 </div>
 <% end %>
 
 <% if @product.tdb.present? %>
 <div class="row">
   <h4>Technisches Datenblatt</h4>
-  <span><%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "PDF Format", style: "color: darkred;"), @product.tdb.url(:pdf), target: '_blank') %></span>
+  <span><%= link_to(icon('far', 'file-pdf', '', class: 'fa-4x', title: "PDF Format", style: "color: darkred;"), @product.tdb.url(:pdf), target: '_blank') %></span>
 
   <% if current_user && current_user.admin? %>
-    <span><%= link_to(icon('file-text', '', class: 'fa-4x', title: "TXT Format"), @product.tdb.url, target: '_blank') %></span>
+    <span><%= link_to(icon('far', 'file-text', '', class: 'fa-4x', title: "TXT Format"), @product.tdb.url, target: '_blank') %></span>
   <% end %>
 </div>
 <% end %>
@@ -57,7 +57,7 @@
   <h4>Betriebsanleitungen</h4>
   <% @product.bdas.each do |bda| %>
     <% bda.attached_assets.each do |a| %>
-      <p><%= link_to(icon('file-pdf-o', '', class: 'fa-4x', title: "Betriebsanleitung", style: "color: darkred;"), a.asset.url(:pdf), target: '_blank') %>
+      <p><%= link_to(icon('far', 'file-pdf', '', class: 'fa-4x', title: "Betriebsanleitung", style: "color: darkred;"), a.asset.url(:pdf), target: '_blank') %>
     <% end %>
   <% end %>
 </div>
