@@ -1,5 +1,5 @@
 # Configuration:
-# 
+#
 # disabled
 #   false if tracking tag should be shown
 # use_async
@@ -12,7 +12,7 @@
 production:
   piwik:
     id_site: 1
-    url: piwik.gaswarnanlagen.com
+    url: analyse.gaswarnanlagen.com
     use_async: true
     disabled: false
 
