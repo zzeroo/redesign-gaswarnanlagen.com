@@ -10,38 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921172258) do
+ActiveRecord::Schema.define(version: 2014_09_21_172258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attached_assets", force: :cascade do |t|
+  create_table "attached_assets", id: :serial, force: :cascade do |t|
     t.string "asset_file_name"
     t.string "asset_content_type"
     t.integer "asset_file_size"
     t.datetime "asset_updated_at"
     t.integer "attachable_id"
     t.string "attachable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "bdas", force: :cascade do |t|
+  create_table "bdas", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "product_nr_prefix"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", id: :serial, force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.boolean "published"
     t.string "product_nr_prefix"
     t.string "background_color"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "logo_file_name"
     t.string "logo_content_type"
     t.integer "logo_file_size"
@@ -49,20 +49,21 @@ ActiveRecord::Schema.define(version: 20140921172258) do
     t.integer "parent_id"
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "documents", id: :serial, force: :cascade do |t|
     t.text "title"
     t.text "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "attachable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "attachable_type"
+    t.integer "attachable_id"
+    t.index ["attachable_type", "attachable_id"], name: "index_documents_on_attachable_type_and_attachable_id"
   end
 
-  create_table "news", force: :cascade do |t|
+  create_table "news", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "news_body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "news_image_file_name"
     t.string "news_image_content_type"
     t.integer "news_image_file_size"
@@ -70,12 +71,12 @@ ActiveRecord::Schema.define(version: 20140921172258) do
     t.datetime "news_date"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", id: :serial, force: :cascade do |t|
     t.string "product_nr"
     t.text "description"
     t.text "short_description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "short_text1"
     t.text "short_text2"
     t.text "technical_data"
@@ -90,11 +91,11 @@ ActiveRecord::Schema.define(version: 20140921172258) do
     t.datetime "tdb_updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_token"
     t.boolean "admin", default: false

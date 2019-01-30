@@ -2,7 +2,7 @@
   <div class="navbar navbar-custom navbar-fixed-bottom">
     <div class="container">
       <div class="navbar-text small" style="float: left">
-        <%= icon('far', 'copyright') %>&nbsp;2014-2018&nbsp;RA-GAS GmbH&nbsp;
+        <%= icon('far', 'copyright') %>&nbsp;2014-2019&nbsp;RA-GAS GmbH&nbsp;
         <a href="mailto:info@gaswarnanlagen.com">info@gaswarnanlagen.com</a>
       </div>
       <div class="navbar-collapse collapse" id="footer-body">
@@ -10,7 +10,7 @@
           <li><%= link_to "Über uns", about_path %></li>
           <li><%= link_to "Datenschutz", privacy_path %></li>
           <li><%= link_to "Impressum", imprint_path %></li>
-          <li><%= link_to "Kontakt", contact_path %></li>
+          <li><%= link_to "Kontakt", contact_path, data: {turbolinks: false} %></li>
         </ul>
       </div>
       <div class="navbar-header">

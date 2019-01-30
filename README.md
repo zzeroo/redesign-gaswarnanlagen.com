@@ -179,7 +179,7 @@ Benutzer der `sudo` Gruppe hinzu.
     gpasswd -a gaswarnanlagen sudo
 
 Zum feineren Abstimmen der Berechtigungen legen wir zum Schluss noch eine Gruppe
-`deployment` an und fügen den Benutzer `gaswarnanlagen` in diese ein.
+`deployers` an und fügen den Benutzer `gaswarnanlagen` in diese ein.
 
     addgroup deployers
     gpasswd -a gaswarnanlagen deployers
@@ -201,6 +201,10 @@ erstellen den Pfad und setzen die Dateisystemberechtigungen.
     chown gaswarnanlagen: /home/gaswarnanlagen/.ssh -R
     chmod u=rwX /home/gaswarnanlagen/.ssh -R
 
+## Webserver (Apache2) installieren
+
+    apt-get install apache2
+
 ### Installation div. Tools
 
 Folgende Tools müssen installiert werden:
@@ -208,7 +212,7 @@ Folgende Tools müssen installiert werden:
 - [Image Magic](http://www.imagemagick.org/)
 - [Zsh](http://www.zsh.org/)
 
-    apt-get install git imagemagick zsh
+    apt-get install git imagemagick
 
 ### RVM Installation
 
@@ -217,9 +221,14 @@ Ruby-on-Rails werden durch den [ Ruby Version Manager RVM ] installiert.
 
 Dazu werden folgende Befehle als Root ausgeführt
 
-    \curl -sSL https://get.rvm.io | bash -s stable --rails --ruby
+    # Zunächst muss der Schlüssel des rvm Projekts import werden
+    gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
-    gpasswd -a gaswarnanlagen rvm
+    # Jetzt kann rvm und ruby installiert werden
+    \curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+    # der folgende Befehl aktiviert die rvm Umgebung
+    source /home/ubuntu/.rvm/scripts/rvm
 
 ### Apache2 und Passenger
 

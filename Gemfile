@@ -86,3 +86,10 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+
+gem 'rbnacl', '< 5.0', :require => false
+gem 'rbnacl-libsodium', :require => false
+gem 'bcrypt_pbkdf', '< 2.0', :require => false
+
+

@@ -11,17 +11,12 @@
 // about supported directives.
 //
 // Loads all Bootstrap javascripts
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery-ui
+//= require jquery3
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require leaflet
 //= require bootstrap
-//= require bootstrap/scrollspy
-//= require bootstrap/modal
-//= require bootstrap/dropdown
 //= require rails_env_favicon
 //= require_tree .
 //= require turbolinks
