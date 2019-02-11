@@ -75,7 +75,7 @@ Danach wurde im Zuge des Documents Models eine neues polymorphes Paperclib Model
 #### Docsplit Dokumenten Konvertierung
 
 ```
-$ sudo apt-get install graphicsmagick poppler-utils poppler-data ghostscript
+$ sudo apt install graphicsmagick poppler-utils poppler-data ghostscript
 tesseract-ocr pdftk
 ```
 
@@ -106,8 +106,10 @@ Dieses Tool ist ein python Tool das scheinbar auf
 
 Die Installation unter Debian ist denkbar einfach
 
-    sudo apt-get install -y python-pip
-    sudo pip install awscli
+```
+sudo apt install -y python-pip
+sudo pip install awscli
+```
 
 Diese [Webseite](http://alestic.com/2013/08/awscli) hat ausführliche Infos zu
 dem Tool.
@@ -128,11 +130,15 @@ anders umzuwandeln.
 Mit dem folgenden Befehl zum Beispiel kann die README im Markdown Format in eine
 README im html Format umgewandelt werden.
 
-    pandoc -s README.md -o doc/README.html
+```
+pandoc -s README.md -o doc/README.html
+```
 
 das geht natürlich auch mit anderen Dateien als der README
 
-    pandoc -s TODO.md -o doc/TODO.html
+```
+pandoc -s TODO.md -o doc/TODO.html
+```
 
 ##### Pandoc on Steroid
 
@@ -142,8 +148,10 @@ Blundell eine template.html und template.css Datei zur Verfügung.
 Zusammen mit diesem angepassten Befehl erhält man eine Datei gerendert die im
 Aussehen an die Github Pages erinnert.
 
-    pandoc -s README.md -o doc/README.html --template doc/template.html --css
-    doc/template.css --self-contained --toc --toc-depth 2
+```
+pandoc -s README.md -o doc/README.html --template doc/template.html --css
+doc/template.css --self-contained --toc --toc-depth 2
+```
 
 ### Rails Update
 [Diese Webseite beschreibt hervorragend den “Ruby on Rails”
@@ -157,53 +165,71 @@ Updatevorgang:](http://railsapps.github.io/updating-rails.html)
 Folgende Punkte beschreiben das grundlegende Setup, welches auf jedem Produktiv
 Server durchzuführen ist.
 
+### Basis Installation
+
+Basis bietet eine Ubuntu Installation Version 16.04.
+
+```
+apt update && apt upgrade -y
+apt install locales
+```
+
 ### Locale einstellen
 
 Mit folgenden Befehlen wird das gesammte System als deutsche Umgebung
 eingerichtet
 
-    locale-gen de_DE.UTF-8
+```
+locale-gen de_DE.UTF-8
+```
 
 Anschließend muss noch folgende Zeile in die Datei `/etc/environment` eingefügt,
 und der Rechner anschließend neu gestartet werden.
 
-    LC_ALL="de_DE.UTF-8"
+```
+echo LC_ALL="de_DE.UTF-8" | tee -a /etc/environment
+```
 
 ### Deployment Benutzer und Gruppe
 
 Alle Dienste des Webauftritts werden unter dem Benutzer `gaswarnanlagen`
-gestartet. Wir legen diesen Benutzer an, geben ihm ein Password und fügen den
-Benutzer der `sudo` Gruppe hinzu.
-
-    adduser gaswarnanlagen
-    gpasswd -a gaswarnanlagen sudo
-
-Zum feineren Abstimmen der Berechtigungen legen wir zum Schluss noch eine Gruppe
+gestartet. Zum feineren Abstimmen der Berechtigungen legen wir auch eine Gruppe
 `deployers` an und fügen den Benutzer `gaswarnanlagen` in diese ein.
 
-    addgroup deployers
-    gpasswd -a gaswarnanlagen deployers
+Wir legen die Gruppe und den Benutzer an und geben ihm ein Password.
+
+```
+groupadd deployers
+useradd --system --create-home --gid deployers gaswarnanlagen
+```
+
 
 ### Verzeichnisse anlegen
 
 Die Webseite wird nach `/var/www/gaswarnanlagen.com/` deployed. Folgende Befehle
 erstellen den Pfad und setzen die Dateisystemberechtigungen.
 
-    mkdir /var/www/gaswarnanlagen.com -p
-    chown -R gaswarnanlagen:deployers /var/www/gaswarnanlagen.com/
-    chmod -R g+w /var/www/gaswarnanlagen.com/
+```
+mkdir /var/www/gaswarnanlagen.com -p
+chown -R gaswarnanlagen:deployers /var/www/gaswarnanlagen.com/
+chmod -R g+w /var/www/gaswarnanlagen.com/
+```
 
 
 ### SSH Zugang einrichten
 
-    mkdir /home/gaswarnanlagen/.ssh
-    cp /home/ubuntu/.ssh/authorized_keys /home/gaswarnanlagen/.ssh/
-    chown gaswarnanlagen: /home/gaswarnanlagen/.ssh -R
-    chmod u=rwX /home/gaswarnanlagen/.ssh -R
+```
+mkdir -p /home/gaswarnanlagen/.ssh
+cp /home/ubuntu/.ssh/authorized_keys /home/gaswarnanlagen/.ssh/
+chown gaswarnanlagen: /home/gaswarnanlagen/.ssh -R
+chmod u=rwX /home/gaswarnanlagen/.ssh -R
+```
 
 ## Webserver (Apache2) installieren
 
-    apt-get install apache2
+```
+apt install apache2
+```
 
 ### Installation div. Tools
 
@@ -212,35 +238,55 @@ Folgende Tools müssen installiert werden:
 - [Image Magic](http://www.imagemagick.org/)
 - [Zsh](http://www.zsh.org/)
 
-    apt-get install git imagemagick
+```
+apt install git imagemagick
+```
+
+#### Docsplit Dokumenten Konvertierung
+
+```
+apt install graphicsmagick poppler-utils poppler-data ghostscript tesseract-ocr pdftk
+```
 
 ### RVM Installation
 
-Die Webseite ist eine in Ruby programmierte, Ruby-on-Rails Anwendung. Ruby und
+Die Webseite ist eine Ruby programmierte, Ruby-on-Rails Anwendung. Ruby und
 Ruby-on-Rails werden durch den [ Ruby Version Manager RVM ] installiert.
 
-Dazu werden folgende Befehle als Root ausgeführt
+Siehe die Anleitung unter https://rvm.io/rvm/install
 
-    # Zunächst muss der Schlüssel des rvm Projekts import werden
-    gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+**Die installation via apt funktioniert mit der capistrano Installation leider nicht.**
 
-    # Jetzt kann rvm und ruby installiert werden
-    \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-    # der folgende Befehl aktiviert die rvm Umgebung
-    source /home/ubuntu/.rvm/scripts/rvm
+
+```
+# Zunächst muss der Schlüssel des rvm Projekts import werden
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# Zu Benutzer `gaswarnanlagen` wechseln
+su gaswarnanlagen
+# in das Home verzeichnis des Benutzers wechseln
+cd
+\curl -sSL https://get.rvm.io | bash
+rvm install ruby
+```
+
+Neuer Login als root
 
 ### Apache2 und Passenger
 
 Der Webserver wird mit dem Apache2 realisiert, die vermittlung Ruby -> Apache
 wird durch [ Passenger ][passenger] gehandelt.
 
-    apt-get update
-    apt-get upgrade
-    apt-get install build-essential
-    gem install passenger
+```
+apt update
+apt upgrade
+apt install build-essential
+gem install passenger
+```
 
-    passenger-install-apache2-module
+```
+passenger-install-apache2-module
+```
 
 Die genauen Schritte werden hervorragend im `passenger-install-apache2-module`
 beschrieben. Einfach diesen folgen.
@@ -249,36 +295,45 @@ beschrieben. Einfach diesen folgen.
 ### Postgres Datenbank
 Folgende Programme werden auf dem Produktiv System installiert.
 
-    apt-get install postgresql
-    apt-get install libpq-dev
+```
+apt install postgresql
+apt install libpq-dev
+```
 
 Auch in der Postgres Datenbank wird ein eigener Benutzer `gaswarnanlagen`
-angelgt, und das Password gesetzt.
+angelgt, und dessen Password gesetzt.
 
-    sudo su postgres -c psql
+```
+su postgres -c psql
 
-    postgres=# CREATE ROLE gaswarnanlagen SUPERUSER LOGIN;
-    postgres=# \password gaswarnanlagen
+postgres=# CREATE ROLE gaswarnanlagen SUPERUSER LOGIN;
+postgres=# \password gaswarnanlagen
+```
 
-Die Postgres Shell nicht verlassen! Wir legen gleich noch die Datenbank an.
+**Die Postgres Shell nicht verlassen!** Wir legen gleich noch die Datenbank an.
 Danach kann die Shell verlassen werden.
 
-    postgres=# CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;
-    postgres=# \q
+```
+postgres=# CREATE DATABASE gaswarnanlagen OWNER gaswarnanlagen;
+postgres=# \q
+```
 
+----
 
 ### Tipp Datensicherung der Produktions Datenbank und Wiederherstellung in Dev
+
 Es existiert ein Capistrano Task mit dem man die Datenbank der Webseite
 (Produktionssystem) sichern und auf dem Entwicklersystem wieder herstellen kann.
 
 Die Tasks sind in der Datei "lib/tasks/db_pull.rake" definiert.
 
-Folgener Ablauf muss auf dem Entwicklersystem durchgeführt werden, alle Dateien
-werden auch nur auf dem Entwicklersystem erstellt.
+Folgener Ablauf muss **auf dem Entwicklersystem** durchgeführt werden!
+Alle Dateien werden auch nur auf dem Entwicklersystem erstellt!
 
-    bundle exec rake db:dump
-    bundle exec rake db:restore
-
+```
+bundle exec rake db:dump
+bundle exec rake db:restore
+```
 
 Idee stammt von dieser Webseite:
 https://martinschurig.com/posts/2015/02/pulling-production-database-to-local-machine-rails-task/
@@ -288,12 +343,13 @@ Die folgenden Befehle stoppen Apache2, so das kein Datenbank Zugriff mehr
 existieren kann, anschließend wird die Datenbank gelöscht und eine leere
 Datenbank erstellt.
 
-    service apache2 stop
-    su postgres -c 'psql -c "DROP DATABASE gaswarnanlagen;"'
-    su postgres -c 'psql -c "CREATE DATABASE gaswarnanlagen OWNER
-    gaswarnanlagen;"'
-    service apache2 start
-
+```
+service apache2 stop
+su postgres -c 'psql -c "DROP DATABASE gaswarnanlagen;"'
+su postgres -c 'psql -c "CREATE DATABASE gaswarnanlagen OWNER
+gaswarnanlagen;"'
+service apache2 start
+```
 
 ### Capistrano
 
@@ -313,7 +369,9 @@ Forwarding](https://help.github.com/articles/using-ssh-agent-forwarding)
 Nun wird capistrano installiert (via Gemfile) und mit `capify .` die nötigen
 Dateien erzeugt.
 
-    cap deploy:setup
+```
+cap deploy:setup
+```
 
 #### Geschützte Konfigurationsdateien
 
@@ -331,12 +389,14 @@ Die Quelle diese Links sind
 Nachdem nun dieses Verzeichnis auf dem Webserver erzeugt wurde, werden die
 beiden Dateien per `scp` auf den Webserver kopiert.
 
-    ssh gaswarnanlagen@gaswarnanlagen.com -c “mkdir -p
-    /var/www/gaswarnanlagen.com/shared/config”
-    scp config/database.yml
-    gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
-    scp config/s3_credentials.yml
-    gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+```
+ssh gaswarnanlagen@gaswarnanlagen.com -c “mkdir -p
+/var/www/gaswarnanlagen.com/shared/config”
+scp config/database.yml
+gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+scp config/s3_credentials.yml
+gaswarnanlagen@gaswarnanlagen.com:/var/www/gaswarnanlagen.com/shared/config/
+```
 
 - [Capistrano
   Handbuch](https://github.com/leehambley/capistrano-handbook/blob/master/index.markdown)
@@ -349,17 +409,18 @@ beiden Dateien per `scp` auf den Webserver kopiert.
 Scheinbar werden manchmal beim Beenden von Foreman nicht alle Prozesse gestoppt.
 Folgender Befehl beendet alle Komponenten:
 
-    ps -ef |egrep ‘webkit|rspec|unicorn|rails|solr’ |awk ‘{print $2}’ |xargs
-    kill -9
-
+```
+ps -ef |egrep ‘webkit|rspec|unicorn|rails|solr’ |awk ‘{print $2}’ |xargs
+kill -9
+```
 
 ----
 
 ## Datensicherung der AWS EC2 Instance
 
-    aws ec2 create-snapshot --volume-id vol-6f5f3368 --description "root volume
-    snapshot gaswarnanlagen.com"
-
+```
+aws ec2 create-snapshot --volume-id vol-6f5f3368 --description "root volume snapshot gaswarnanlagen.com"
+```
 
 ----
 
@@ -384,109 +445,135 @@ Installation der Solr Suche.
 
 Zu Begin wird das System aktualisiert
 
-    sudo apt-get update && sudo apt-get dist-upgrade
-    sudo apt-get autoremove
+```
+sudo apt update && sudo apt dist-upgrade
+sudo apt autoremove
+```
 
 Dannn erfolgt die Installation von Java und Tomcat
 
-    sudo apt-get install openjdk-7-jdk
-    sudo apt-get install tomcat7 tomcat7-docs tomcat7-examples tomcat7-admin
+```
+sudo apt install openjdk-7-jdk
+sudo apt install tomcat7 tomcat7-docs tomcat7-examples tomcat7-admin
+```
 
 In der Konfiguration wird Tomcat der Benutzer und dessen Password übergeben
 
-    cat <<EOF |sudo tee /etc/tomcat7/tomcat-users.xml\
-    <?xml version='1.0' encoding='utf-8'?>
-    <tomcat-users>
-      <role rolename="manager"/>
-      <role rolename="admin"/>
-      <role rolename="admin-gui"/>
-      <role rolename="manager-gui"/>
-      <user username="tomcat" password="xxx"
-      roles="manager,admin,manager-gui,admin-gui"/>
-    </tomcat-users>
-    EOF
+```
+cat <<EOF |sudo tee /etc/tomcat7/tomcat-users.xml\
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+  <role rolename="manager"/>
+  <role rolename="admin"/>
+  <role rolename="admin-gui"/>
+  <role rolename="manager-gui"/>
+  <user username="tomcat" password="xxx"
+  roles="manager,admin,manager-gui,admin-gui"/>
+</tomcat-users>
+EOF
+```
 
 Jetzt kann Solr heruntergeladen werden
 
-    wget http://mirror.derwebwolf.net/apache/lucene/solr/4.9.0/solr-4.9.0.tgz
-    tar xfvz solr-4.9.0.tgz
-    sudo mv solr-4.9.0 /usr/share/solr
+```
+wget http://mirror.derwebwolf.net/apache/lucene/solr/4.9.0/solr-4.9.0.tgz
+tar xfvz solr-4.9.0.tgz
+sudo mv solr-4.9.0 /usr/share/solr
+```
 
 **Jetzt muss zur Entwicklungsumgebung gewechselt werden.** Hier wird im Root des
 Repository das gesammte Verzeichnis ./solr gepackt, und auf den Webserver hoch
 geladen.
 
-    tar cfvz solr.tgz solr
-    scp solr.tgz gaswarnanlagen@gaswarnanlagen.com:~/
+```
+tar cfvz solr.tgz solr
+scp solr.tgz gaswarnanlagen@gaswarnanlagen.com:~/
+```
 
 Anschließend wird wieder auf dem Webserver weiter gearbeitet. Hier wird das
 soeben hoch geladene solr.tgz Archiv entpackt und das Solr Schema ins System
 kopiert.
 
-    tar xfvz solr.tgz
-    cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
+```
+tar xfvz solr.tgz
+cp ~/solr/conf/schema.xml /usr/share/solr/example/solr/collection1/conf
+```
 
 Folgende Konfiguration konfiguriert den Solr Core
 
-    cat <<EOF |sudo tee /usr/share/solr/example/solr/solr.xml
-    <?xml version="1.0" encoding="UTF-8" ?>
+```
+cat <<EOF |sudo tee /usr/share/solr/example/solr/solr.xml
+<?xml version="1.0" encoding="UTF-8" ?>
 
-    <solr>
+<solr>
 
-      <solrcloud>
-        <str name="host">${host:}</str>
-        <int name="hostPort">${jetty.port:8983}</int>
-        <str name="hostContext">${hostContext:solr}</str>
-        <int name="zkClientTimeout">${zkClientTimeout:30000}</int>
-        <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool>
-      </solrcloud>
+  <solrcloud>
+    <str name="host">${host:}</str>
+    <int name="hostPort">${jetty.port:8983}</int>
+    <str name="hostContext">${hostContext:solr}</str>
+    <int name="zkClientTimeout">${zkClientTimeout:30000}</int>
+    <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool>
+  </solrcloud>
 
-      <shardHandlerFactory name="shardHandlerFactory"
-        class="HttpShardHandlerFactory">
-        <int name="socketTimeout">${socketTimeout:0}</int>
-        <int name="connTimeout">${connTimeout:0}</int>
-      </shardHandlerFactory>
+  <shardHandlerFactory name="shardHandlerFactory"
+    class="HttpShardHandlerFactory">
+    <int name="socketTimeout">${socketTimeout:0}</int>
+    <int name="connTimeout">${connTimeout:0}</int>
+  </shardHandlerFactory>
 
-    </solr>
-    EOF
+</solr>
+EOF
+```
 
 Nun muss noch das Log Verzeichnis erstellt werden.
 
-    sudo touch /usr/share/solr/solr.log
-    sudo chown -R tomcat7 /usr/share/solr
+```
+sudo touch /usr/share/solr/solr.log
+sudo chown -R tomcat7 /usr/share/solr
+```
 
 Der Pfad dieser Log Datei wird im Konfigurations Attribut `solr.log` der Datei
 `/usr/share/tomcat7/lib/log4j.properties` eingestellt
 
-    sudo vim /usr/share/tomcat7/lib/log4j.properties
+```
+sudo vim /usr/share/tomcat7/lib/log4j.properties
 
-    # Pfad zur Log Datei
-    solr.log=/usr/share/solr
+# Pfad zur Log Datei
+solr.log=/usr/share/solr
+```
 
 Jetzt muss noch der Tomcat konfiguriert werden.
 
-    sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
+```
+sudo vim /var/lib/tomcat7/conf/Catalina/localhost/solr.xml
+```
 
 Hierzu muss der folgende Eintrag zu finden sein
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <Context docBase="/usr/share/solr/example/solr/solr.war" debug="0"
-    crossContext="true">
-      <Environment name="solr/home" type="java.lang.String"
-      value="/usr/share/solr/example/solr" override="true" />
-    </Context>
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Context docBase="/usr/share/solr/example/solr/solr.war" debug="0"
+crossContext="true">
+  <Environment name="solr/home" type="java.lang.String"
+  value="/usr/share/solr/example/solr" override="true" />
+</Context>
+```
 
 Zum Abschluss der Solr Installation werden noch die Dateisystemberechtigungen
 gesetzt und der Tomcat Server neu gestartet.
 
-    sudo sudo chown -R tomcat7 /usr/share/solr
-    sudo service tomcat7 restart
+```
+sudo sudo chown -R tomcat7 /usr/share/solr
+sudo service tomcat7 restart
+```
 
 Nun muss noch der Solr Index neu aufgebaut werden.
 
-    RAILS_ENV=production bundle exec rake sunspot:reindex
+```
+RAILS_ENV=production bundle exec rake sunspot:reindex
+```
 
-#Dokumentation
+# Dokumentation
 ## Git Versionskontrolle
 
 Alle Änderungen am Quellcode der Webseite sind in die Versionskontrolle
@@ -502,6 +589,6 @@ im Zweifel sollte aber zu Gunsten von Deutsch entschieden werden.
 Die README.md Datei sollte eine 80 Zeichen Breite nicht überschreiten
 (ausgenommen URL u.ä.)
 
-    :set formatoptions+=w
-    :set tw=80
-    gggqG
+:set formatoptions+=w
+:set tw=80
+gggqG
