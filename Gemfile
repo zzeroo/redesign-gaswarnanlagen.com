@@ -53,6 +53,8 @@ group :development, :test do
 end
 
 group :development do
+  # https://github.com/net-ssh/net-ssh/issues/565
+  gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'rails-erd'
   gem 'capistrano'
   gem 'capistrano-rails'
@@ -91,5 +93,3 @@ end
 gem 'rbnacl', '< 5.0', :require => false
 gem 'rbnacl-libsodium', :require => false
 gem 'bcrypt_pbkdf', '< 2.0', :require => false
-
-
