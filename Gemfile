@@ -38,6 +38,7 @@ gem 'unicorn'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate'
 gem "therubyracer"
+gem 'cookies_eu'
 
 group :development, :test do
   gem 'foreman'

@@ -16,7 +16,7 @@ namespace :db do
     dev = Rails.application.config.database_configuration['development']
     dumpfile = "#{Rails.root}/tmp/latest.dump"
     puts 'PG_RESTORE on development database...'
-    system "pg_restore --verbose --clean --no-acl --no-owner -h 127.0.0.1 -U #{dev['username']} -d #{dev['database']} #{dumpfile}"
+    system "pg_restore --verbose --clean --no-acl --no-owner -h 127.0.0.1 -p #{dev['port']} -U #{dev['username']} -d #{dev['database']} #{dumpfile}"
     puts 'Done!'
   end
 end

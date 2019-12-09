@@ -124,6 +124,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    cookies_eu (1.7.6)
+      js_cookie_rails (~> 2.2.0)
     coveralls (0.8.21)
       json (>= 1.8, < 3)
       simplecov (~> 0.14.1)
@@ -226,6 +228,8 @@ GEM
       turbolinks
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    js_cookie_rails (2.2.0)
+      railties (>= 3.1)
     json (2.1.0)
     kgio (2.11.2)
     launchy (2.4.3)
@@ -468,6 +472,7 @@ DEPENDENCIES
   capistrano-rvm
   capybara
   coffee-rails
+  cookies_eu
   coveralls
   cucumber-rails
   database_cleaner!
