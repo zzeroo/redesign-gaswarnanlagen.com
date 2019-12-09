@@ -17,6 +17,7 @@
       <%= render partial: "shared/flash_messages", flash: flash %>
 
       <%= yield %>
+      <%= render 'cookies_eu/consent_banner' %>
 
       <%= render 'layouts/footer' %>
     </div>

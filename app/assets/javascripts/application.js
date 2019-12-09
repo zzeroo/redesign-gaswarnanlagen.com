@@ -20,3 +20,4 @@
 //= require rails_env_favicon
 //= require_tree .
 //= require turbolinks
+//= require cookies_eu
